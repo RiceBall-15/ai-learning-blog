@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="LangChain4j 技术学习博客" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} - LangChain4j 学习笔记</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="/langchain4j-blog/" class="logo">📚 LangChain4j 学习笔记</a>
+        <nav>
+          <ul>
+            <li><a href="/langchain4j-blog/">首页</a></li>
+            <li><a href="/langchain4j-blog/about">关于</a></li>
+            <li><a href="https://github.com/RiceBall-15/langchain4j-blog" target="_blank">GitHub</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 LangChain4j 学习笔记. Built with ❤️ using Astro</p>
+      </div>
+    </footer>
+  </body>
+</html>

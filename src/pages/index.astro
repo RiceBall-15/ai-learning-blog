@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// 获取所有标签
+const allTags = new Set<string>();
+posts.forEach(post => {
+  post.data.tags.forEach(tag => allTags.add(tag));
+});
+---
+
+<Layout title="首页 - LangChain4j 学习笔记">
+  <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 2rem;">
+    <div>
+      <h1 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-primary);">
+        📚 LangChain4j 学习笔记
+      </h1>
+
+      {posts.length === 0 ? (
+        <p style="color: var(--text-secondary);">暂无文章</p>
+      ) : (
+        <div>
+          {posts.map((post) => (
+            <article class="article-card">
+              <h2 class="article-title">
+                <a href={`/langchain4j-blog/${post.slug}`}>
+                  {post.data.title}
+                </a>
+              </h2>
+
+              <div class="article-meta">
+                <span>📅 {post.data.date.toLocaleDateString('zh-CN')}</span>
+                {post.data.category && <span>📁 {post.data.category}</span>}
+              </div>
+
+              {post.data.description && (
+                <p class="article-excerpt">{post.data.description}</p>
+              )}
+
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="tags">
+                  {post.data.tags.map(tag => (
+                    <a href={`/langchain4j-blog/tags/${tag}`} class="tag">#{tag}</a>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <aside>
+      <div class="sidebar">
+        <h3>📂 分类</h3>
+        <ul>
+          <li><a href="/langchain4j-blog/">全部</a></li>
+          {[...new Set(posts.map(p => p.data.category).filter(Boolean))].map(cat => (
+            <li key={cat}>
+              <a href={`/langchain4j-blog/categories/${cat}`}>{cat}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="sidebar">
+        <h3>🏷️ 标签</h3>
+        <div class="tags">
+          {[...allTags].map(tag => (
+            <a href={`/langchain4j-blog/tags/${tag}`} class="tag">#{tag}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <h3>📊 统计</h3>
+        <ul>
+          <li>文章总数: {posts.length}</li>
+          <li>标签数量: {allTags.size}</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    div[style*="display: grid"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

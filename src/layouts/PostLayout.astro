@@ -1,0 +1,53 @@
+---
+import Layout from './Layout.astro';
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+  <div class="post-content">
+    <h1>{post.data.title}</h1>
+
+    <div class="article-meta">
+      <span>📅 {post.data.date}</span>
+      <span>📝 {post.data.author}</span>
+      {post.data.category && <span>📁 {post.data.category}</span>}
+    </div>
+
+    {post.data.description && <p class="article-excerpt">{post.data.description}</p>}
+
+    {post.data.tags && post.data.tags.length > 0 && (
+      <div class="tags">
+        {post.data.tags.map(tag => (
+          <a href={`/langchain4j-blog/tags/${tag}`} class="tag">#{tag}</a>
+        ))}
+      </div>
+    )}
+
+    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);" />
+
+    <Content />
+  </div>
+</Layout>
+
+<style>
+  .article-meta {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .article-excerpt {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .tags {
+    margin-bottom: 1.5rem;
+  }
+</style>
