@@ -30,15 +30,36 @@ allPosts.forEach(post => {
 const totalPosts = allPosts.length;
 ---
 
-<Layout title="首页 - AI 学习笔记">
+<Layout title="首页 - AI 深度学习笔记">
   <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 2rem;">
     <div>
       <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-primary);">
-        🤖 AI 学习笔记
+        🚀 AI 深度学习笔记
       </h1>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
-        深入探索 LangChain4j、SGLang、LLM训练等AI技术
+      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8;">
+        深入探索大语言模型、框架应用和训练技术的学习之路
       </p>
+
+      <div style="background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 3rem;">
+        <h2 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-primary);">📖 学习系列</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <a href="/ai-learning-blog/#langchain4j" style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: transform 0.3s; border: 1px solid var(--border);">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔗</div>
+            <div style="font-weight: bold; margin-bottom: 0.25rem;">LangChain4j</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">Java AI 框架</div>
+          </a>
+          <a href="/ai-learning-blog/#sglang" style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: transform 0.3s; border: 1px solid var(--border);">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚡</div>
+            <div style="font-weight: bold; margin-bottom: 0.25rem;">SGLang</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">高性能推理</div>
+          </a>
+          <a href="/ai-learning-blog/#llmTraining" style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: transform 0.3s; border: 1px solid var(--border);">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
+            <div style="font-weight: bold; margin-bottom: 0.25rem;">LLM训练</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">模型训练技术</div>
+          </a>
+        </div>
+      </div>
 
       {totalPosts === 0 ? (
         <p style="color: var(--text-secondary);">暂无文章</p>
@@ -48,14 +69,14 @@ const totalPosts = allPosts.length;
           {Object.entries(collections).map(([key, { name, posts }]) => (
             posts.length > 0 && (
               <div key={key} style="margin-bottom: 3rem;">
-                <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--accent);">
+                <h2 id={key} style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--accent); padding-top: 2rem;">
                   {name}
                 </h2>
 
                 {posts.map((post) => (
                   <article class="article-card">
                     <h3 class="article-title">
-                      <a href={`/${post.collection}/${post.slug}`}>
+                      <a href={`/ai-learning-blog/${post.collection}/${post.slug}`}>
                         {post.data.title}
                       </a>
                     </h3>
@@ -72,7 +93,7 @@ const totalPosts = allPosts.length;
                     {post.data.tags && post.data.tags.length > 0 && (
                       <div class="tags">
                         {post.data.tags.map(tag => (
-                          <a href={`/tags/${tag}`} class="tag">#{tag}</a>
+                          <a href={`/ai-learning-blog/tags/${tag}`} class="tag">#{tag}</a>
                         ))}
                       </div>
                     )}
@@ -89,10 +110,10 @@ const totalPosts = allPosts.length;
       <div class="sidebar">
         <h3>📚 学习系列</h3>
         <ul>
-          <li><a href="/">全部</a></li>
-          <li><a href="/langchain4j/">LangChain4j</a></li>
-          <li><a href="/sglang/">SGLang</a></li>
-          <li><a href="/llm-training/">LLM训练</a></li>
+          <li><a href="/ai-learning-blog/">全部</a></li>
+          <li><a href="/ai-learning-blog/#langchain4j">LangChain4j</a></li>
+          <li><a href="/ai-learning-blog/#sglang">SGLang</a></li>
+          <li><a href="/ai-learning-blog/#llmTraining">LLM训练</a></li>
         </ul>
       </div>
 
@@ -100,7 +121,7 @@ const totalPosts = allPosts.length;
         <h3>🏷️ 标签</h3>
         <div class="tags">
           {[...allTags].map(tag => (
-            <a href={`/tags/${tag}`} class="tag">#{tag}</a>
+            <a href={`/ai-learning-blog/tags/${tag}`} class="tag">#{tag}</a>
           ))}
         </div>
       </div>
