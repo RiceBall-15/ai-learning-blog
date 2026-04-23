@@ -1,5 +1,5 @@
 {
-  "name": "tech-blog",
+  "name": "ai-learning-blog",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^3.0.0",
-    "@astrojs/sitemap": "^3.1.0",
     "astro": "^4.5.0"
   },
   "devDependencies": {

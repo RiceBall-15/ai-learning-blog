@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import PostLayout from '../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  // 获取所有集合
+  const collections = ['langchain4j', 'sglang', 'llmTraining'];
+
+  // 为每个集合中的每篇文章生成路径
+  const paths = [];
+  for (const collection of collections) {
+    const posts = await getCollection(collection as any);
+    for (const post of posts) {
+      paths.push({
+        params: {
+          collection,
+          slug: post.slug
+        },
+        props: { post }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { post } = Astro.props;
+---
+
+<PostLayout post={post} />
