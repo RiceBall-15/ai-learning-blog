@@ -27,4 +27,19 @@ const llmTraining = defineCollection({
   schema: postSchema,
 });
 
-export const collections = { langchain4j, sglang, llmTraining };
+const agentMemory = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const modelDeployment = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const evaluation = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+export const collections = { langchain4j, sglang, llmTraining, agentMemory, modelDeployment, evaluation };
