@@ -1,7 +1,7 @@
 ---
 title: "LLM训练与推理技术全景调研"
 description: "全面调研LLM的训练方法和推理优化技术，包括预训练、微调、量化、分布式训练等核心技术"
-date: 2025-04-24
+date: 2026-04-24
 author: "RiceBall-15"
 category: "模型部署训练"
 tags: ["LLM训练", "推理优化", "量化", "分布式训练", "vLLM", "TGI"]

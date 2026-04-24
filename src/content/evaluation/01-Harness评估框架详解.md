@@ -1,7 +1,7 @@
 ---
 title: "Harness评估框架详解"
 description: "深入解析HuggingFace Harness评估框架，包括架构设计、Benchmark支持、模型评估方法和自定义扩展"
-date: 2025-04-24
+date: 2026-04-24
 author: "RiceBall-15"
 category: "模型评估"
 tags: ["Harness", "模型评估", "Benchmark", "MMLU", "HumanEval", "自动化测试"]

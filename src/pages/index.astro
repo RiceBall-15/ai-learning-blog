@@ -9,9 +9,15 @@ const sglangPosts = (await getCollection('sglang'))
   .filter(post => !post.data.draft);
 const llmTrainingPosts = (await getCollection('llmTraining'))
   .filter(post => !post.data.draft);
+const agentMemoryPosts = (await getCollection('agentMemory'))
+  .filter(post => !post.data.draft);
+const modelDeploymentPosts = (await getCollection('modelDeployment'))
+  .filter(post => !post.data.draft);
+const evaluationPosts = (await getCollection('evaluation'))
+  .filter(post => !post.data.draft);
 
 // 合并所有文章
-const allPosts = [...langchain4jPosts, ...sglangPosts, ...llmTrainingPosts]
+const allPosts = [...langchain4jPosts, ...sglangPosts, ...llmTrainingPosts, ...agentMemoryPosts, ...modelDeploymentPosts, ...evaluationPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // 按集合分组
@@ -19,6 +25,9 @@ const collections = {
   langchain4j: { name: 'LangChain4j', posts: langchain4jPosts },
   sglang: { name: 'SGLang', posts: sglangPosts },
   llmTraining: { name: 'LLM训练', posts: llmTrainingPosts },
+  agentMemory: { name: 'Agent记忆系统', posts: agentMemoryPosts },
+  modelDeployment: { name: '模型部署', posts: modelDeploymentPosts },
+  evaluation: { name: '模型评估', posts: evaluationPosts },
 };
 
 // 获取所有标签
