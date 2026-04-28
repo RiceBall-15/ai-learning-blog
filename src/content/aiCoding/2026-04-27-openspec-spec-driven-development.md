@@ -1,11 +1,13 @@
 ---
 title: 告别 AI 乱改代码：OpenSpec 规范驱动开发完全指南
 date: 2026-04-27
-category: AI编程
+category: aiCoding
 source: 掘金
 original_url: https://juejin.cn/post/7633248335969501211
 tags: ['AI编程', 'OpenSpec', '规范驱动开发', 'AI工具']
 description: OpenSpec 通过规范驱动开发模式，让 AI 编程变得可控可追溯。它将人的判断前置到规范制定阶段，通过 "先定规范，再写代码" 的流程，让 AI 在清晰边界内工作，消除 AI 乱改代码的风险。
+author: RiceBall-15
+draft: false
 ---
 
 # 告别 AI 乱改代码：OpenSpec 规范驱动开发完全指南

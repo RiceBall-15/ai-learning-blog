@@ -3,7 +3,7 @@ title: "Agent记忆系统详解"
 description: "深入解析Agent的记忆系统，包括各种记忆类型、实现原理、代码示例和最佳实践"
 date: 2026-04-24
 author: "RiceBall-15"
-category: "Agent记忆系统"
+category: "agentMemory"
 tags: ["记忆系统", "ChatMemory", "RAG", "向量数据库", "长期记忆", "短期记忆"]
 draft: false
 ---
