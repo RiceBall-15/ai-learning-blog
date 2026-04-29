@@ -11,13 +11,15 @@ const llmTrainingPosts = (await getCollection('llmTraining'))
   .filter(post => !post.data.draft);
 const agentMemoryPosts = (await getCollection('agentMemory'))
   .filter(post => !post.data.draft);
-const modelDeploymentPosts = (await getCollection('modelDeployment'))
+const aiCodingPosts = (await getCollection('aiCoding'))
+  .filter(post => !post.data.draft);
+const modelDeploymentTrainingPosts = (await getCollection('modelDeploymentTraining'))
   .filter(post => !post.data.draft);
 const evaluationPosts = (await getCollection('evaluation'))
   .filter(post => !post.data.draft);
 
 // 合并所有文章
-const allPosts = [...langchain4jPosts, ...sglangPosts, ...llmTrainingPosts, ...agentMemoryPosts, ...modelDeploymentPosts, ...evaluationPosts]
+const allPosts = [...langchain4jPosts, ...sglangPosts, ...llmTrainingPosts, ...agentMemoryPosts, ...aiCodingPosts, ...modelDeploymentTrainingPosts, ...evaluationPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // 按集合分组
@@ -26,7 +28,8 @@ const collections = {
   sglang: { name: 'SGLang', posts: sglangPosts },
   llmTraining: { name: 'LLM训练', posts: llmTrainingPosts },
   agentMemory: { name: 'Agent记忆系统', posts: agentMemoryPosts },
-  modelDeployment: { name: '模型部署', posts: modelDeploymentPosts },
+  aiCoding: { name: 'AI编程', posts: aiCodingPosts },
+  modelDeploymentTraining: { name: '模型部署训练', posts: modelDeploymentTrainingPosts },
   evaluation: { name: '模型评估', posts: evaluationPosts },
 };
 
@@ -123,16 +126,20 @@ const totalPosts = allPosts.length;
           <li><a href="/ai-learning-blog/#langchain4j">LangChain4j</a></li>
           <li><a href="/ai-learning-blog/#sglang">SGLang</a></li>
           <li><a href="/ai-learning-blog/#llmTraining">LLM训练</a></li>
+          <li><a href="/ai-learning-blog/#agentMemory">Agent记忆系统</a></li>
+          <li><a href="/ai-learning-blog/#aiCoding">AI编程</a></li>
+          <li><a href="/ai-learning-blog/#modelDeploymentTraining">模型部署训练</a></li>
+          <li><a href="/ai-learning-blog/#evaluation">模型评估</a></li>
         </ul>
       </div>
 
       <div class="sidebar">
-        <h3>🏷️ 标签</h3>
-        <div class="tags">
-          {[...allTags].map(tag => (
-            <a href={`/ai-learning-blog/tags/${tag}`} class="tag">#{tag}</a>
-          ))}
-        </div>
+        <h3>📊 统计</h3>
+        <ul>
+          <li>文章总数: {totalPosts}</li>
+          <li>标签数量: {allTags.size}</li>
+          <li>系列数量: 7</li>
+        </ul>
       </div>
 
       <div class="sidebar">
