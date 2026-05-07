@@ -47,4 +47,54 @@ const modelDeploymentTraining = defineCollection({
   schema: postSchema,
 });
 
-export const collections = { langchain4j, sglang, llmTraining, agentMemory, evaluation, aiCoding, modelDeploymentTraining };
+const llmAgent = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const agentSystem = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const agentOps = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const learningMethodology = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const aiInfrastructure = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const aiEngineering = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+const frontend = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
+export const collections = {
+  langchain4j,
+  sglang,
+  llmTraining,
+  agentMemory,
+  evaluation,
+  aiCoding,
+  modelDeploymentTraining,
+  llmAgent,
+  agentSystem,
+  agentOps,
+  learningMethodology,
+  aiInfrastructure,
+  aiEngineering,
+  frontend
+};
