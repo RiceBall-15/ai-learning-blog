@@ -87,6 +87,11 @@ const agentSkill = defineCollection({
   schema: postSchema,
 });
 
+const architecture = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
 export const collections = {
   langchain4j,
   sglang,
@@ -102,5 +107,6 @@ export const collections = {
   aiInfrastructure,
   aiEngineering,
   frontend,
-  agentSkill
+  agentSkill,
+  architecture
 };
