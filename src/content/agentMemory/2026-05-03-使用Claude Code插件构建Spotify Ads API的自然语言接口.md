@@ -1,6 +1,6 @@
 ---
 title: 使用Claude Code插件构建Spotify Ads API的自然语言接口
-pubDate: 2026-05-01
+date: 2026-05-01
 category: agentMemory
 tags: ['Claude-Code', 'Spotify-API', 'AI代理', 'OpenAPI', '自然语言接口']
 source: Spotify Engineering
