@@ -17,9 +17,45 @@ const modelDeploymentTrainingPosts = (await getCollection('modelDeploymentTraini
   .filter(post => !post.data.draft);
 const evaluationPosts = (await getCollection('evaluation'))
   .filter(post => !post.data.draft);
+const testCollectionPosts = (await getCollection('testCollection'))
+  .filter(post => !post.data.draft);
+const agentSkillPosts = (await getCollection('agentSkill'))
+  .filter(post => !post.data.draft);
+const architecturePosts = (await getCollection('architecture'))
+  .filter(post => !post.data.draft);
+const aiInfrastructurePosts = (await getCollection('aiInfrastructure'))
+  .filter(post => !post.data.draft);
+const llmAgentPosts = (await getCollection('llmAgent'))
+  .filter(post => !post.data.draft);
+const agentSystemPosts = (await getCollection('agentSystem'))
+  .filter(post => !post.data.draft);
+const agentOpsPosts = (await getCollection('agentOps'))
+  .filter(post => !post.data.draft);
+const modelDeploymentPosts = (await getCollection('modelDeployment'))
+  .filter(post => !post.data.draft);
+const frontendPosts = (await getCollection('frontend'))
+  .filter(post => !post.data.draft);
+const aiAgentPosts = (await getCollection('aiAgent'))
+  .filter(post => !post.data.draft);
+
+
+
+const learningMethodologyPosts = (await getCollection('learningMethodology'))
+  .filter(post => !post.data.draft);
+
+
+
+
+
+const aiEngineeringPosts = (await getCollection('aiEngineering'))
+  .filter(post => !post.data.draft);
+
+
+
+
 
 // 合并所有文章
-const allPosts = [...langchain4jPosts, ...sglangPosts, ...llmTrainingPosts, ...agentMemoryPosts, ...aiCodingPosts, ...modelDeploymentTrainingPosts, ...evaluationPosts]
+const allPosts = [...langchain4jPosts, ...sglangPosts, ...llmTrainingPosts, ...agentMemoryPosts, ...aiCodingPosts, ...modelDeploymentTrainingPosts, ...evaluationPosts, ...learningMethodologyPosts, ...aiInfrastructurePosts, ...aiEngineeringPosts, ...frontendPosts, ...agentSkillPosts, ...architecturePosts, ...modelDeploymentPosts, ...aiAgentPosts, ...llmAgentPosts, ...agentSystemPosts, ...agentOpsPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // 按集合分组
@@ -31,6 +67,17 @@ const collections = {
   aiCoding: { name: 'AI编程', posts: aiCodingPosts },
   modelDeploymentTraining: { name: '模型部署训练', posts: modelDeploymentTrainingPosts },
   evaluation: { name: '模型评估', posts: evaluationPosts },
+  learningMethodology: { name: '学习方法', posts: learningMethodologyPosts },
+  aiInfrastructure: { name: 'AI基础设施', posts: aiInfrastructurePosts },
+  aiEngineering: { name: 'AI工程化', posts: aiEngineeringPosts },
+  frontend: { name: '前端开发', posts: frontendPosts },
+  agentSkill: { name: 'Agent技能', posts: agentSkillPosts },
+  architecture: { name: '系统架构', posts: architecturePosts },
+  modelDeployment: { name: '模型部署', posts: modelDeploymentPosts },
+  aiAgent: { name: 'AI代理', posts: aiAgentPosts },
+  llmAgent: { name: 'LLM智能体', posts: llmAgentPosts },
+  agentSystem: { name: '智能体系统', posts: agentSystemPosts },
+  agentOps: { name: '智能体运维', posts: agentOpsPosts },
 };
 
 // 获取所有标签
