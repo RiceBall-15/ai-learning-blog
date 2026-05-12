@@ -30,6 +30,31 @@ allPosts.forEach(post => {
 
 const totalPosts = allPosts.length;
 const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.posts.length > 0);
+
+// 分页配置
+const POSTS_PER_PAGE = 12;
+const currentPage = parseInt(Astro.url.searchParams.get('page') || '1');
+const categoryFilter = Astro.url.searchParams.get('category') || '';
+
+// 根据分类筛选文章
+let filteredPosts = allPosts;
+if (categoryFilter && collectionData[categoryFilter]) {
+  filteredPosts = collectionData[categoryFilter].posts;
+}
+
+const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+const endIndex = startIndex + POSTS_PER_PAGE;
+const currentPosts = filteredPosts.slice(startIndex, endIndex);
+
+// 生成分页URL
+function getPageUrl(page: number) {
+  const params = new URLSearchParams();
+  if (page > 1) params.set('page', page.toString());
+  if (categoryFilter) params.set('category', categoryFilter);
+  const queryString = params.toString();
+  return `/ai-learning-blog/${queryString ? '?' + queryString : ''}`;
+}
 ---
 
 <Layout title="首页 - AI 深度学习笔记">
@@ -48,43 +73,94 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
 
   <!-- Main Content -->
   <main class="main-content">
+    <!-- Category Filter -->
+    <div class="category-filter">
+      <a 
+        href="/ai-learning-blog/" 
+        class={`filter-btn ${!categoryFilter ? 'active' : ''}`}
+      >
+        全部
+      </a>
+      {activeCollections.map(([key, meta]) => (
+        <a 
+          href={`/ai-learning-blog/?category=${key}`} 
+          class={`filter-btn ${categoryFilter === key ? 'active' : ''}`}
+        >
+          <span class="filter-icon">{meta.icon}</span>
+          {meta.name}
+          <span class="filter-count">{meta.posts.length}</span>
+        </a>
+      ))}
+    </div>
+
     <div class="content-grid">
       <!-- Articles Section -->
       <section class="articles-section">
-        {activeCollections.map(([key, meta]) => (
-          <div class="category-section" id={key}>
-            <header class="category-header">
-              <span class="category-icon">{meta.icon}</span>
-              <h2 class="category-title">{meta.name}</h2>
-              <span class="category-count">{meta.posts.length}</span>
-            </header>
-            <p class="category-desc">{meta.description}</p>
+        <div class="articles-header">
+          <h2 class="section-title">
+            {categoryFilter && collectionData[categoryFilter] 
+              ? `${collectionData[categoryFilter].icon} ${collectionData[categoryFilter].name}`
+              : '📚 最新文章'
+            }
+          </h2>
+          <span class="posts-count">
+            共 {filteredPosts.length} 篇，第 {currentPage}/{totalPages} 页
+          </span>
+        </div>
 
-            <div class="articles-grid">
-              {meta.posts.map((post) => (
-                <article class="article-card">
-                  <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="article-link">
-                    <div class="article-meta">
-                      <time class="article-date">{post.data.date.toLocaleDateString('zh-CN')}</time>
-                      {post.data.category && <span class="article-category">{post.data.category}</span>}
-                    </div>
-                    <h3 class="article-title">{post.data.title}</h3>
-                    {post.data.description && (
-                      <p class="article-excerpt">{post.data.description}</p>
-                    )}
-                    {post.data.tags && post.data.tags.length > 0 && (
-                      <div class="article-tags">
-                        {post.data.tags.slice(0, 3).map((tag: string) => (
-                          <span class="tag">#{tag}</span>
-                        ))}
-                      </div>
-                    )}
-                  </a>
-                </article>
+        <div class="articles-grid">
+          {currentPosts.map((post) => (
+            <article class="article-card">
+              <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="article-link">
+                <div class="article-meta">
+                  <time class="article-date">{post.data.date.toLocaleDateString('zh-CN')}</time>
+                  {post.data.category && <span class="article-category">{post.data.category}</span>}
+                </div>
+                <h3 class="article-title">{post.data.title}</h3>
+                {post.data.description && (
+                  <p class="article-excerpt">{post.data.description}</p>
+                )}
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="article-tags">
+                    {post.data.tags.slice(0, 3).map((tag: string) => (
+                      <span class="tag">#{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <!-- Pagination -->
+        {totalPages > 1 && (
+          <nav class="pagination">
+            <a 
+              href={currentPage > 1 ? getPageUrl(currentPage - 1) : '#'} 
+              class={`page-btn prev ${currentPage <= 1 ? 'disabled' : ''}`}
+            >
+              ← 上一页
+            </a>
+            
+            <div class="page-numbers">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <a 
+                  href={getPageUrl(page)} 
+                  class={`page-num ${page === currentPage ? 'active' : ''}`}
+                >
+                  {page}
+                </a>
               ))}
             </div>
-          </div>
-        ))}
+            
+            <a 
+              href={currentPage < totalPages ? getPageUrl(currentPage + 1) : '#'} 
+              class={`page-btn next ${currentPage >= totalPages ? 'disabled' : ''}`}
+            >
+              下一页 →
+            </a>
+          </nav>
+        )}
       </section>
 
       <!-- Sidebar -->
@@ -93,7 +169,7 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
           <h3 class="sidebar-title">分类导航</h3>
           <nav class="category-nav">
             {activeCollections.map(([key, meta]) => (
-              <a href={`#${key}`} class="nav-item">
+              <a href={`/ai-learning-blog/?category=${key}`} class="nav-item">
                 <span class="nav-icon">{meta.icon}</span>
                 <span class="nav-text">{meta.name}</span>
                 <span class="nav-count">{meta.posts.length}</span>
@@ -170,11 +246,63 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
     font-weight: 500;
   }
 
+  /* ==================== Category Filter ==================== */
+  .category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    background: #f5f5f5;
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .filter-btn.active {
+    background: #18E299;
+    color: #0d0d0d;
+    border-color: #18E299;
+  }
+
+  .filter-icon {
+    font-size: 1rem;
+  }
+
+  .filter-count {
+    background: rgba(0, 0, 0, 0.08);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .filter-btn.active .filter-count {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
   /* ==================== Main Content ==================== */
   .main-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2rem;
   }
 
   .content-grid {
@@ -184,23 +312,20 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
   }
 
   /* ==================== Articles Section ==================== */
-  .category-section {
-    margin-bottom: 4rem;
+  .articles-section {
+    min-height: 60vh;
   }
 
-  .category-header {
+  .articles-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-    padding-top: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
-  .category-icon {
-    font-size: 1.5rem;
-  }
-
-  .category-title {
+  .section-title {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
@@ -208,26 +333,16 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
     margin: 0;
   }
 
-  .category-count {
-    background: rgba(0, 0, 0, 0.05);
+  .posts-count {
+    font-size: 0.875rem;
     color: #666666;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.8125rem;
-    font-weight: 500;
-  }
-
-  .category-desc {
-    color: #666666;
-    margin-bottom: 1.5rem;
-    font-size: 0.9375rem;
-    line-height: 1.5;
   }
 
   .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.25rem;
+    margin-bottom: 3rem;
   }
 
   .article-card {
@@ -309,6 +424,76 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
     background: #d4fae8;
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
+  }
+
+  /* ==================== Pagination ==================== */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .page-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .page-btn:hover:not(.disabled) {
+    background: #f5f5f5;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #0d0d0d;
+  }
+
+  .page-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .page-numbers {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .page-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .page-num:hover {
+    background: #f5f5f5;
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .page-num.active {
+    background: #18E299;
+    color: #0d0d0d;
+    border-color: #18E299;
+    font-weight: 600;
   }
 
   /* ==================== Sidebar ==================== */
@@ -418,8 +603,19 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
       font-size: 1.125rem;
     }
 
+    .category-filter {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-btn {
+      flex-shrink: 0;
+    }
+
     .main-content {
-      padding: 2rem 1.5rem;
+      padding: 1.5rem;
     }
 
     .content-grid {
@@ -433,6 +629,28 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
 
     .articles-grid {
       grid-template-columns: 1fr;
+    }
+
+    .articles-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .pagination {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .page-btn {
+      padding: 0.625rem 1rem;
+      font-size: 0.8125rem;
+    }
+
+    .page-num {
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: 0.8125rem;
     }
   }
 </style>
