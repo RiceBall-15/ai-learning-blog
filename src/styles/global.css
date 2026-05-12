@@ -179,21 +179,23 @@ nav a:hover {
   font-weight: 500;
 }
 
+/* 代码块基础样式 - 参考飞书/标准Markdown风格 */
 .post-content pre {
-  background: #f6f8fa !important;
-  color: #24292e !important;
-  border: 2px solid #d0d7de !important;
+  background: #f7f8fa !important;
+  color: #1f2329 !important;
+  border: 1px solid #e5e7eb !important;
   border-radius: 8px !important;
   padding: 1.25rem !important;
   overflow-x: auto;
   margin: 1.5rem 0 !important;
   font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, Liberation Mono, monospace;
   font-size: 0.875rem;
-  line-height: 1.6;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  line-height: 1.7;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   position: relative;
 }
 
+/* 顶部装饰条 */
 .post-content pre::before {
   content: '';
   position: absolute;
@@ -210,13 +212,14 @@ nav a:hover {
   color: inherit !important;
   padding: 0 !important;
   font-size: inherit !important;
+  border: none !important;
 }
 
 /* 行内代码 */
 .post-content code {
   background: #f0f2f5 !important;
   color: #d63384 !important;
-  padding: 0.2rem 0.5rem !important;
+  padding: 0.15rem 0.4rem !important;
   border-radius: 4px !important;
   font-family: var(--font-mono);
   font-size: 0.875rem;
@@ -972,10 +975,10 @@ a, button, input, textarea {
 
 [data-theme="dark"] .post-content pre,
 .dark-mode .post-content pre {
-  background: #161b22 !important;
+  background: #1e1f22 !important;
   color: #e6edf3 !important;
-  border: 2px solid #30363d !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #30363d !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .post-content pre::before,
@@ -983,30 +986,20 @@ a, button, input, textarea {
   background: linear-gradient(90deg, #18E299, #3fb68b);
 }
 
-/* 深色模式下覆盖Shiki生成的代码高亮颜色 */
+/* 深色模式下 - 保留语法高亮，不覆盖 span 颜色 */
 [data-theme="dark"] .post-content pre code,
 .dark-mode .post-content pre code {
   color: #e6edf3 !important;
 }
 
-[data-theme="dark"] .post-content pre code span,
-.dark-mode .post-content pre code span {
-  color: #e6edf3 !important;
-}
-
 [data-theme="dark"] .shiki,
 .dark-mode .shiki {
-  background: #161b22 !important;
-}
-
-[data-theme="dark"] .shiki span,
-.dark-mode .shiki span {
-  color: #e6edf3 !important;
+  background: #1e1f22 !important;
 }
 
 [data-theme="dark"] .post-content code,
 .dark-mode .post-content code {
-  background: #21262d !important;
+  background: #2d3039 !important;
   color: #ff7b72 !important;
   border: 1px solid #30363d !important;
 }
@@ -1070,30 +1063,22 @@ a, button, input, textarea {
   }
   
   :root:not([data-theme="light"]) .post-content pre {
-    background: #161b22 !important;
+    background: #1e1f22 !important;
     color: #e6edf3 !important;
-    border: 2px solid #30363d !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid #30363d !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   }
   
   :root:not([data-theme="light"]) .post-content pre code {
     color: #e6edf3 !important;
   }
   
-  :root:not([data-theme="light"]) .post-content pre code span {
-    color: #e6edf3 !important;
-  }
-  
   :root:not([data-theme="light"]) .shiki {
-    background: #161b22 !important;
-  }
-  
-  :root:not([data-theme="light"]) .shiki span {
-    color: #e6edf3 !important;
+    background: #1e1f22 !important;
   }
   
   :root:not([data-theme="light"]) .post-content code {
-    background: #21262d !important;
+    background: #2d3039 !important;
     color: #ff7b72 !important;
     border: 1px solid #30363d !important;
   }
