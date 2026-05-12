@@ -7,7 +7,6 @@ category: agentSkill
 tags: ["Agent Skill", "企业管理", "平台设计", "微服务", "DevOps"]
 ---
 
-# 企业级 Skill 管理平台设计：从个人工具到组织资产
 
 ## 简介
 

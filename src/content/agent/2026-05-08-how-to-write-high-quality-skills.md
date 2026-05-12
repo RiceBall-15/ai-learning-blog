@@ -7,7 +7,6 @@ category: agentSkill
 tags: ["Agent Skill", "Skill 设计", "最佳实践", "Prompt 优化"]
 ---
 
-# 如何编写高质量的 Agent Skill
 
 ## 简介
 

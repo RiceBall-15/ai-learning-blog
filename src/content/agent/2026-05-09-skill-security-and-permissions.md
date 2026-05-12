@@ -7,7 +7,6 @@ category: agentSkill
 tags: ["Agent Skill", "安全", "权限控制", "沙箱", "RBAC"]
 ---
 
-# Agent Skill 安全性与权限控制：构建可信的 Skill 生态
 
 ## 简介
 

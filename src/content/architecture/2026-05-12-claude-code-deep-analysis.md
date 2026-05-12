@@ -8,7 +8,6 @@ tags: [claude-code, agent, hook, mcp, architecture, multi-agent]
 draft: false
 ---
 
-# Claude Code 深度架构调研
 
 > **调研时间**: 2026-05-12  
 > **调研目的**: 深入理解Claude Code的核心架构，参考其实用流程放到自己的Agent中  

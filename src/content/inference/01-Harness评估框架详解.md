@@ -8,7 +8,6 @@ tags: ["Harness", "模型评估", "Benchmark", "MMLU", "HumanEval", "自动化�
 draft: false
 ---
 
-# Harness工程技术全景调研
 
 > 文档版本: v1.0
 > 创建时间: 2025-04-24

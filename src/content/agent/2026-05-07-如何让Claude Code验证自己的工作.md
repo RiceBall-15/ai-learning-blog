@@ -7,7 +7,6 @@ source: "Towards Data Science"
 tags: ["Claude Code", "LLM Agent", "自验证机制", "AI工程化"]
 ---
 
-# 如何让Claude Code验证自己的工作
 
 Claude Code本身就是一个非常强大的模型。然而，要充分利用其全部能力，你需要让它有机会验证和检查自己的工作。在之前的文章中，我提到过Claude验证自己的工作是优化我自己使用Claude Code的重要组成部分。在本文中，我将深入探讨如何让Claude验证自己的工作。其带来的好处是惊人的。当你让Claude验证自己的工作时，你会得到：
 

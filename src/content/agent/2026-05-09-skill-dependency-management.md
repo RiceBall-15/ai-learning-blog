@@ -7,7 +7,6 @@ category: agentSkill
 tags: ["Agent Skill", "依赖管理", "版本控制", "Git", "CI/CD"]
 ---
 
-# Agent Skill 依赖管理与版本控制：避免版本地狱的实战指南
 
 ## 简介
 

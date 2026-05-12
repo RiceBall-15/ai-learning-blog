@@ -12,7 +12,6 @@ tags:
   - data-architecture
 ---
 
-# The Architecture Of Local-First Web Development
 
 ## 核心概念
 

@@ -8,7 +8,6 @@ source: "Towards Data Science"
 url: "https://towardsdatascience.com/the-next-frontier-of-ai-in-production-is-chaos-engineering/"
 ---
 
-# AI生产环境的下一个前沿：混沌工程
 
 ## 引言
 

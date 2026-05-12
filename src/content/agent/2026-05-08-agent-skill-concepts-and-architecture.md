@@ -7,7 +7,6 @@ category: agentSkill
 tags: ["Agent Skill", "架构设计", "Prompt Engineering", "Skill 框架"]
 ---
 
-# Agent Skill 核心概念与架构设计
 
 ## 简介
 

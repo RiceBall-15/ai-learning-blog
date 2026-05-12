@@ -7,7 +7,6 @@ category: agentSkill
 tags: ["Agent Skill", "多Agent协作", "任务编排", "分布式", "并行计算"]
 ---
 
-# 多 Agent 协作中的 Skill 编排：从单兵作战到军团协同
 
 ## 简介
 

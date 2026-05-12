@@ -7,7 +7,6 @@ category: agentSkill
 tags: ["Agent Skill", "生命周期", "CI/CD", "版本控制", "质量保证"]
 ---
 
-# Agent Skill 生命周期管理：创建、测试与迭代的完整实践
 
 ## 简介
 

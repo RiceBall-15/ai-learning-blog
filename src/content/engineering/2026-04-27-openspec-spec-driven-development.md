@@ -10,7 +10,6 @@ author: RiceBall-15
 draft: false
 ---
 
-# 告别 AI 乱改代码：OpenSpec 规范驱动开发完全指南
 
 ## 简介
 

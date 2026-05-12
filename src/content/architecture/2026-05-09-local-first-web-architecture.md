@@ -14,7 +14,6 @@ source: "Smashing Magazine"
 source_url: "https://www.smashingmagazine.com/2026/05/architecture-local-first-web-development/"
 ---
 
-# Local-First Web应用架构：从理论到实践
 
 2026年10月的一个晚上，我在里斯本的酒店房间，准备向团队演示一个我们花了四个月构建的项目管理工具。酒店的Wi-Fi连接了，但什么都加载不出来。我们的应用——这个我真正感到自豪的东西——渲染了一个空白屏幕和一个旋转器。然后是超时错误。然后什么都没有了。
 

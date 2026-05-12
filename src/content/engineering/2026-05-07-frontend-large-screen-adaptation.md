@@ -7,7 +7,6 @@ category: frontend
 tags: ["大屏适配", "响应式", "Vue3", "ECharts", "前端开发"]
 ---
 
-# 前端大屏适配方案：rem、vw/vh、scale 到底选哪个？
 
 ## 简介
 

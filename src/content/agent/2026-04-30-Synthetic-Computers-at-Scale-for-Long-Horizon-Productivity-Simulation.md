@@ -7,7 +7,6 @@ source: 'arXiv'
 url: 'https://arxiv.org/abs/2604.28181'
 ---
 
-# Synthetic Computers at Scale for Long-Horizon Productivity Simulation
 
 ## 摘要
 
