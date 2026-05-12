@@ -55,57 +55,160 @@ const categoriesData = Object.fromEntries(
 );
 ---
 
-<Layout title="首页 - AI 深度学习笔记">
-  <!-- Hero Section -->
+<Layout title="AI 深度学习笔记">
+  <!-- Hero Section - 现代简约设计 -->
   <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">AI 深度学习笔记</h1>
-      <p class="hero-subtitle">深入探索大语言模型、框架应用和训练技术的学习之路</p>
-      <div class="hero-stats">
-        <span class="stat-badge">{totalPosts} 篇文章</span>
-        <span class="stat-badge">{activeCollections.length} 个系列</span>
-        <span class="stat-badge">{allTags.size} 个标签</span>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-icon">✨</span>
+          <span class="badge-text">AI技术深度研究</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line">深入探索</span>
+          <span class="title-line accent">AI 技术世界</span>
+        </h1>
+        <p class="hero-description">
+          记录大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">{totalPosts}</span>
+            <span class="stat-label">篇文章</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{activeCollections.length}</span>
+            <span class="stat-label">个系列</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{allTags.size}</span>
+            <span class="stat-label">个标签</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#articles" class="btn btn-primary">
+            <span>浏览文章</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#categories" class="btn btn-secondary">
+            <span>探索分类</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="visual-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="visual-content">
+            <div class="code-line">
+              <span class="line-number">1</span>
+              <span class="code-text"><span class="keyword">const</span> <span class="variable">aiKnowledge</span> = <span class="function">explore</span>();</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">2</span>
+              <span class="code-text"><span class="keyword">await</span> <span class="variable">aiKnowledge</span>.<span class="function">deepLearn</span>();</span>
+            </div>
+            <div class="code-line">
+              <span class="line-number">3</span>
+              <span class="code-text"><span class="comment">// 持续学习，不断进化</span></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Main Content -->
-  <main class="main-content">
-    <!-- Category Filter -->
-    <div class="category-filter" id="categoryFilter">
-      <button class="filter-btn active" data-category="all">
-        全部
-      </button>
-      {activeCollections.map(([key, meta]) => (
-        <button class="filter-btn" data-category={key}>
-          <span class="filter-icon">{meta.icon}</span>
-          {meta.name}
-          <span class="filter-count">{meta.posts.length}</span>
-        </button>
-      ))}
-    </div>
+  <main class="main-wrapper">
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="title-icon">📚</span>
+            <span>学习系列</span>
+          </h2>
+          <p class="section-subtitle">按照技术领域分类，系统化学习</p>
+        </div>
+        
+        <div class="categories-grid">
+          {activeCollections.map(([key, meta], index) => (
+            <button 
+              class="category-card" 
+              data-category={key}
+              style={`--delay: ${index * 0.1}s`}
+            >
+              <div class="card-icon">{meta.icon}</div>
+              <div class="card-content">
+                <h3 class="card-title">{meta.name}</h3>
+                <p class="card-count">{meta.posts.length} 篇文章</p>
+              </div>
+              <div class="card-arrow">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7 15L13 10L7 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
 
-    <div class="content-grid">
-      <!-- Articles Section -->
-      <section class="articles-section">
-        <div class="articles-header">
-          <h2 class="section-title" id="sectionTitle">📚 最新文章</h2>
-          <span class="posts-count" id="postsCount">
-            共 {totalPosts} 篇，第 1/{Math.ceil(totalPosts / 12)} 页
-          </span>
+    <!-- Articles Section -->
+    <section class="articles-section" id="articles">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="header-left">
+            <h2 class="section-title">
+              <span class="title-icon">📝</span>
+              <span id="sectionTitle">最新文章</span>
+            </h2>
+            <span class="posts-count" id="postsCount">
+              共 {totalPosts} 篇
+            </span>
+          </div>
+          <div class="filter-tabs" id="categoryFilter">
+            <button class="filter-tab active" data-category="all">全部</button>
+            {activeCollections.map(([key, meta]) => (
+              <button class="filter-tab" data-category={key}>
+                <span class="tab-icon">{meta.icon}</span>
+                <span class="tab-text">{meta.name}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         <div class="articles-grid" id="articlesGrid">
-          {allPosts.slice(0, 12).map((post) => (
-            <article class="article-card" data-slug={post.slug}>
+          {allPosts.slice(0, 9).map((post, index) => (
+            <article 
+              class="article-card" 
+              data-slug={post.slug}
+              style={`--delay: ${index * 0.05}s`}
+            >
               <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="article-link">
-                <div class="article-meta">
-                  <time class="article-date">{post.data.date.toLocaleDateString('zh-CN')}</time>
-                  {post.data.category && <span class="article-category">{post.data.category}</span>}
+                <div class="article-header">
+                  <div class="article-meta">
+                    <time class="article-date">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M4.5 2V3.5M9.5 2V3.5M2 5.5H12M3 1.5H11C11.5523 1.5 12 1.94772 12 2.5V11.5C12 12.0523 11.5523 12.5 11 12.5H3C2.44772 12.5 2 12.0523 2 11.5V2.5C2 1.94772 2.44772 1.5 3 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                    </time>
+                    {post.data.category && (
+                      <span class="article-category">{post.data.category}</span>
+                    )}
+                  </div>
                 </div>
                 <h3 class="article-title">{post.data.title}</h3>
                 {post.data.description && (
-                  <p class="article-excerpt">{post.data.description}</p>
+                  <p class="article-excerpt">{post.data.description.substring(0, 100)}...</p>
                 )}
                 {post.data.tags && post.data.tags.length > 0 && (
                   <div class="article-tags">
@@ -121,51 +224,75 @@ const categoriesData = Object.fromEntries(
 
         <!-- Pagination -->
         <nav class="pagination" id="pagination">
-          <button class="page-btn prev disabled" id="prevBtn">← 上一页</button>
+          <button class="page-btn prev disabled" id="prevBtn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>上一页</span>
+          </button>
           <div class="page-numbers" id="pageNumbers"></div>
-          <button class="page-btn next" id="nextBtn">下一页 →</button>
+          <button class="page-btn next" id="nextBtn">
+            <span>下一页</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </nav>
-      </section>
+      </div>
+    </section>
 
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <div class="sidebar-card">
-          <h3 class="sidebar-title">分类导航</h3>
-          <nav class="category-nav">
-            {activeCollections.map(([key, meta]) => (
-              <a href={`#`} class="nav-item sidebar-category" data-category={key}>
-                <span class="nav-icon">{meta.icon}</span>
-                <span class="nav-text">{meta.name}</span>
-                <span class="nav-count">{meta.posts.length}</span>
-              </a>
-            ))}
-          </nav>
+    <!-- Tags Cloud -->
+    <section class="tags-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="title-icon">🏷️</span>
+            <span>热门标签</span>
+          </h2>
         </div>
-
-        <div class="sidebar-card">
-          <h3 class="sidebar-title">热门标签</h3>
-          <div class="tags-cloud">
-            {Array.from(allTags).slice(0, 12).map(tag => (
-              <a href={`/ai-learning-blog/tags/${tag}`} class="tag-pill">#{tag}</a>
-            ))}
-          </div>
+        <div class="tags-cloud">
+          {Array.from(allTags).slice(0, 20).map((tag, index) => (
+            <a 
+              href={`/ai-learning-blog/tags/${tag}`} 
+              class="tag-pill"
+              style={`--delay: ${index * 0.03}s`}
+            >
+              #{tag}
+            </a>
+          ))}
         </div>
-
-        <div class="sidebar-card">
-          <h3 class="sidebar-title">关于</h3>
-          <p class="about-text">
-            这是我的AI技术学习笔记，记录大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验。
-          </p>
-        </div>
-      </aside>
-    </div>
+      </div>
+    </section>
   </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-icon">🤖</span>
+          <span class="brand-text">AI 深度学习笔记</span>
+        </div>
+        <p class="footer-description">
+          记录AI技术学习之路，分享深度研究心得
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/RiceBall-15" class="footer-link" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
 </Layout>
 
 <!-- 客户端分页和筛选脚本 -->
 <script define:vars={{ postsData, categoriesData }}>
 // 分页状态
-const POSTS_PER_PAGE = 12;
+const POSTS_PER_PAGE = 9;
 let currentPage = 1;
 let currentCategory = 'all';
 let filteredPosts = [...postsData];
@@ -185,15 +312,22 @@ function renderArticles() {
   const end = start + POSTS_PER_PAGE;
   const pagePosts = filteredPosts.slice(start, end);
   
-  articlesGrid.innerHTML = pagePosts.map(post => `
-    <article class="article-card" data-slug="${post.slug}">
+  articlesGrid.innerHTML = pagePosts.map((post, index) => `
+    <article class="article-card" data-slug="${post.slug}" style="--delay: ${index * 0.05}s">
       <a href="/ai-learning-blog/${post.collection}/${post.slug}" class="article-link">
-        <div class="article-meta">
-          <time class="article-date">${new Date(post.date).toLocaleDateString('zh-CN')}</time>
-          ${post.category ? `<span class="article-category">${post.category}</span>` : ''}
+        <div class="article-header">
+          <div class="article-meta">
+            <time class="article-date">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M4.5 2V3.5M9.5 2V3.5M2 5.5H12M3 1.5H11C11.5523 1.5 12 1.94772 12 2.5V11.5C12 12.0523 11.5523 12.5 11 12.5H3C2.44772 12.5 2 12.0523 2 11.5V2.5C2 1.94772 2.44772 1.5 3 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              ${new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+            </time>
+            ${post.category ? `<span class="article-category">${post.category}</span>` : ''}
+          </div>
         </div>
         <h3 class="article-title">${post.title}</h3>
-        ${post.description ? `<p class="article-excerpt">${post.description}</p>` : ''}
+        ${post.description ? `<p class="article-excerpt">${post.description.substring(0, 100)}...</p>` : ''}
         ${post.tags && post.tags.length > 0 ? `
           <div class="article-tags">
             ${post.tags.slice(0, 3).map(tag => `<span class="tag">#${tag}</span>`).join('')}
@@ -202,6 +336,11 @@ function renderArticles() {
       </a>
     </article>
   `).join('');
+  
+  // 添加动画
+  document.querySelectorAll('.article-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.05}s`;
+  });
 }
 
 // 渲染分页
@@ -227,11 +366,11 @@ function renderPagination() {
 function updateCounts() {
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   const categoryInfo = currentCategory === 'all' 
-    ? { name: '📚 最新文章', icon: '' }
+    ? { name: '最新文章', icon: '' }
     : categoriesData[currentCategory];
   
   sectionTitle.textContent = categoryInfo.name;
-  postsCount.textContent = `共 ${filteredPosts.length} 篇，第 ${currentPage}/${totalPages} 页`;
+  postsCount.textContent = `共 ${filteredPosts.length} 篇`;
 }
 
 // 跳转到指定页
@@ -261,7 +400,7 @@ function filterByCategory(category) {
   }
   
   // 更新筛选按钮状态
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  document.querySelectorAll('.filter-tab').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.category === category);
   });
   
@@ -272,16 +411,17 @@ function filterByCategory(category) {
 
 // 初始化事件监听
 document.getElementById('categoryFilter').addEventListener('click', (e) => {
-  const btn = e.target.closest('.filter-btn');
+  const btn = e.target.closest('.filter-tab');
   if (btn) {
     filterByCategory(btn.dataset.category);
   }
 });
 
-document.querySelectorAll('.sidebar-category').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    filterByCategory(link.dataset.category);
+document.querySelectorAll('.category-card').forEach(card => {
+  card.addEventListener('click', () => {
+    filterByCategory(card.dataset.category);
+    // 滚动到文章区域
+    document.querySelector('.articles-section').scrollIntoView({ behavior: 'smooth' });
   });
 });
 
@@ -292,5 +432,3 @@ nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
 renderPagination();
 updateCounts();
 </script>
-
-

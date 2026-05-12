@@ -3,34 +3,406 @@ import Layout from './Layout.astro';
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+// 格式化日期
+const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
 ---
 
 <Layout title={post.data.title}>
-  <div class="post-content">
-    {post.data.tags && post.data.tags.length > 0 && (
-      <div class="tags">
-        {post.data.tags.map(tag => (
-          <a href={`/langchain4j-blog/tags/${tag}`} class="tag">#{tag}</a>
-        ))}
+  <article class="article-container">
+    <!-- Article Header -->
+    <header class="article-header">
+      <div class="article-meta-top">
+        <a href={`/ai-learning-blog/${post.collection}`} class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          返回列表
+        </a>
       </div>
-    )}
+      
+      <h1 class="article-title">{post.data.title}</h1>
+      
+      <div class="article-info">
+        <time class="article-date">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4.5 2V3.5M11.5 2V3.5M2 5.5H14M3 1.5H13C13.5523 1.5 14 1.94772 14 2.5V13.5C14 14.0523 13.5523 14.5 13 14.5H3C2.44772 14.5 2 14.0523 2 13.5V2.5C2 1.94772 2.44772 1.5 3 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {formattedDate}
+        </time>
+        
+        {post.data.category && (
+          <span class="article-category">{post.data.category}</span>
+        )}
+      </div>
+      
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="article-tags">
+          {post.data.tags.map(tag => (
+            <a href={`/ai-learning-blog/tags/${tag}`} class="tag">#{tag}</a>
+          ))}
+        </div>
+      )}
+    </header>
 
-    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);" />
+    <!-- Article Content -->
+    <div class="article-content">
+      <Content />
+    </div>
 
-    <Content />
-  </div>
+    <!-- Article Footer -->
+    <footer class="article-footer">
+      <div class="share-section">
+        <span class="share-label">分享文章：</span>
+        <div class="share-buttons">
+          <button class="share-btn" data-platform="twitter" aria-label="分享到Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </button>
+          <button class="share-btn" data-platform="copy" aria-label="复制链接">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+  </article>
 </Layout>
 
 <style>
-  .tags {
+  /* Article Container */
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .article-container {
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  /* Article Header */
+  .article-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-meta-top {
     margin-bottom: 1.5rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--color-primary);
+  }
+
+  .article-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .article-title {
+      font-size: 1.75rem;
+    }
+  }
+
+  .article-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .article-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .article-date svg {
+    opacity: 0.7;
+  }
+
+  .article-category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, var(--color-primary-light, #818cf8), var(--color-primary, #6366f1));
+    color: white;
+    border-radius: var(--radius-full, 9999px);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: var(--color-surface-hover, #f1f5f9);
+    color: var(--color-text-muted, #64748b);
+    border-radius: var(--radius-full, 9999px);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition-fast, 150ms);
+  }
+
+  .tag:hover {
+    background: var(--color-primary, #6366f1);
+    color: white;
+  }
+
+  /* Article Content */
+  .article-content {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+  }
+
+  .article-content :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border-light, #e2e8f0);
+  }
+
+  .article-content :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .article-content :global(p) {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary, #475569);
+  }
+
+  .article-content :global(a) {
+    color: var(--color-primary, #6366f1);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .article-content :global(a:hover) {
+    color: var(--color-primary-dark, #4f46e5);
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .article-content :global(li) {
+    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary, #475569);
+  }
+
+  .article-content :global(blockquote) {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background: var(--color-surface-hover, #f8fafc);
+    border-left: 4px solid var(--color-primary, #6366f1);
+    border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
+    color: var(--color-text-secondary, #475569);
+    font-style: italic;
+  }
+
+  .article-content :global(code) {
+    background: var(--color-surface-hover, #f1f5f9);
+    color: var(--color-primary-dark, #4f46e5);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-sm, 6px);
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .article-content :global(pre) {
+    background: var(--color-surface, #ffffff) !important;
+    border: 1px solid var(--color-border, #e2e8f0) !important;
+    border-radius: var(--radius-lg, 12px) !important;
+    padding: 1.25rem !important;
+    overflow-x: auto;
+    margin: 1.5rem 0 !important;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
+    position: relative !important;
+  }
+
+  .article-content :global(pre code) {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+  }
+
+  .article-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg, 12px);
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+  }
+
+  .article-content :global(table) {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .article-content :global(th),
+  .article-content :global(td) {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border, #e2e8f0);
+  }
+
+  .article-content :global(th) {
+    background: var(--color-surface-hover, #f8fafc);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .article-content :global(td) {
+    color: var(--color-text-secondary, #475569);
+  }
+
+  .article-content :global(tr:hover) {
+    background: var(--color-surface-hover, #f8fafc);
+  }
+
+  /* Article Footer */
+  .article-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border, #e2e8f0);
+  }
+
+  .share-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .share-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #64748b);
+    font-weight: 500;
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-md, 8px);
+    color: var(--color-text-muted, #64748b);
+    cursor: pointer;
+    transition: all var(--transition-fast, 150ms);
+  }
+
+  .share-btn:hover {
+    background: var(--color-primary, #6366f1);
+    border-color: var(--color-primary, #6366f1);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Code Block Copy Button */
+  .copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    color: #666;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+    z-index: 10;
+  }
+
+  :global(pre:hover) .copy-button {
+    opacity: 1;
+  }
+
+  .copy-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
+  }
+
+  .copy-button.copied {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.4);
+    color: var(--color-primary, #6366f1);
+  }
+
+  /* Dark mode adjustments */
+  [data-theme="dark"] .copy-button {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+  }
+
+  [data-theme="dark"] .copy-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #e2e8f0;
   }
 </style>
 
 <script>
   // 代码块复制功能
   document.addEventListener('DOMContentLoaded', () => {
-    // 为所有代码块添加复制按钮
     const codeBlocks = document.querySelectorAll('pre');
     
     codeBlocks.forEach((block) => {
@@ -50,11 +422,10 @@ const { Content } = await post.render();
         const text = code ? code.textContent : block.textContent;
         
         try {
-          await navigator.clipboard.writeText(text);
+          await navigator.clipboard.writeText(text || '');
           copyButton.innerHTML = '✅ 已复制';
           copyButton.classList.add('copied');
           
-          // 2秒后恢复原状
           setTimeout(() => {
             copyButton.innerHTML = '📋 复制';
             copyButton.classList.remove('copied');
@@ -67,43 +438,28 @@ const { Content } = await post.render();
         }
       });
     });
+
+    // 分享功能
+    document.querySelectorAll('.share-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const platform = btn.getAttribute('data-platform');
+        const url = window.location.href;
+        const title = document.querySelector('.article-title')?.textContent || '';
+        
+        if (platform === 'twitter') {
+          window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+        } else if (platform === 'copy') {
+          navigator.clipboard.writeText(url).then(() => {
+            btn.innerHTML = '✅';
+            setTimeout(() => {
+              btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>`;
+            }, 2000);
+          });
+        }
+      });
+    });
   });
 </script>
-
-<style is:global>
-  /* 代码块复制按钮样式 */
-  pre {
-    position: relative !important;
-  }
-  
-  .copy-button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    padding: 4px 8px;
-    font-size: 12px;
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    color: #666;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.2s, background 0.2s;
-    z-index: 10;
-  }
-  
-  pre:hover .copy-button {
-    opacity: 1;
-  }
-  
-  .copy-button:hover {
-    background: rgba(0, 0, 0, 0.1);
-    color: #333;
-  }
-  
-  .copy-button.copied {
-    background: rgba(24, 226, 153, 0.2);
-    border-color: rgba(24, 226, 153, 0.4);
-    color: #0fa76e;
-  }
-</style>
