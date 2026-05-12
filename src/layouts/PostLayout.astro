@@ -7,8 +7,6 @@ const { Content } = await post.render();
 
 <Layout title={post.data.title}>
   <div class="post-content">
-    <h1>{post.data.title}</h1>
-
     {post.data.tags && post.data.tags.length > 0 && (
       <div class="tags">
         {post.data.tags.map(tag => (
