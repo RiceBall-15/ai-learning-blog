@@ -42,22 +42,7 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
         深入探索大语言模型、框架应用和训练技术的学习之路
       </p>
 
-      <!-- 学习系列卡片 - 动态显示所有分类 -->
-      <div style="background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 3rem;">
-        <h2 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-primary);">📖 学习系列</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
-          {activeCollections.map(([key, meta]) => (
-            <a 
-              href={`/ai-learning-blog/#${key}`} 
-              style="background: var(--bg-secondary); padding: 1rem; border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: transform 0.3s; border: 1px solid var(--border);"
-            >
-              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">{meta.icon}</div>
-              <div style="font-weight: bold; margin-bottom: 0.25rem;">{meta.name}</div>
-              <div style="font-size: 0.85rem; color: var(--text-secondary);">{meta.posts.length} 篇文章</div>
-            </a>
-          ))}
-        </div>
-      </div>
+
 
       {totalPosts === 0 ? (
         <p style="color: var(--text-secondary);">暂无文章</p>
