@@ -1031,6 +1031,17 @@ a, button, input, textarea {
   color: #e6edf3 !important;
 }
 
+/* Shiki 双主题支持 - 在深色模式下应用 --shiki-dark CSS 变量 */
+[data-theme="dark"] .shiki span,
+.dark-mode .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
+[data-theme="dark"] .shiki code,
+.dark-mode .shiki code {
+  color: var(--shiki-dark) !important;
+}
+
 [data-theme="dark"] .post-content code,
 .dark-mode .post-content code {
   background: #2d3039 !important;
@@ -1126,6 +1137,15 @@ a, button, input, textarea {
   :root:not([data-theme="light"]) .shiki span[style*="color:#005cc5"],
   :root:not([data-theme="light"]) .shiki span[style*="color: #005cc5"] {
     color: #e6edf3 !important;
+  }
+  
+  /* Shiki 双主题支持 - 系统深色模式下应用 --shiki-dark CSS 变量 */
+  :root:not([data-theme="light"]) .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+  
+  :root:not([data-theme="light"]) .shiki code {
+    color: var(--shiki-dark) !important;
   }
   
   :root:not([data-theme="light"]) .shiki {
