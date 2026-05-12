@@ -25,8 +25,6 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
         </a>
       </div>
       
-      <h1 class="article-title">{post.data.title}</h1>
-      
       <div class="article-info">
         <time class="article-date">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -92,13 +90,13 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
 
   /* Article Header */
   .article-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--color-border);
   }
 
   .article-meta-top {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .back-link {
@@ -115,26 +113,11 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     color: var(--color-primary);
   }
 
-  .article-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.25rem;
-  }
-
-  @media (max-width: 768px) {
-    .article-title {
-      font-size: 1.75rem;
-    }
-  }
-
   .article-info {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     flex-wrap: wrap;
   }
 
@@ -184,11 +167,21 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     color: white;
   }
 
-  /* Article Content */
+  /* Article Content - vhAstro-Theme Style */
   .article-content {
     font-size: 1.0625rem;
     line-height: 1.8;
     color: var(--color-text-primary);
+  }
+
+  /* Headings - 清晰层级 */
+  .article-content :global(h1) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary);
   }
 
   .article-content :global(h2) {
@@ -197,7 +190,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     color: var(--color-text-primary);
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border-light, #e2e8f0);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .article-content :global(h3) {
@@ -207,114 +200,170 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     margin: 2rem 0 0.75rem;
   }
 
-  .article-content :global(p) {
-    margin-bottom: 1.5rem;
-    color: var(--color-text-secondary, #475569);
+  .article-content :global(h4) {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 1.5rem 0 0.5rem;
   }
 
+  /* Paragraphs */
+  .article-content :global(p) {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Links */
   .article-content :global(a) {
-    color: var(--color-primary, #6366f1);
+    color: var(--color-primary);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
   .article-content :global(a:hover) {
-    color: var(--color-primary-dark, #4f46e5);
+    color: var(--color-primary-dark);
   }
 
+  /* Lists */
   .article-content :global(ul),
   .article-content :global(ol) {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
+    color: var(--color-text-secondary);
   }
 
   .article-content :global(li) {
     margin-bottom: 0.5rem;
-    color: var(--color-text-secondary, #475569);
+    color: var(--color-text-secondary);
   }
 
+  /* Blockquote - vhAstro-Theme Style */
   .article-content :global(blockquote) {
     margin: 1.5rem 0;
     padding: 1rem 1.5rem;
-    background: var(--color-surface-hover, #f8fafc);
-    border-left: 4px solid var(--color-primary, #6366f1);
-    border-radius: 0 var(--radius-md, 8px) var(--radius-md, 8px) 0;
-    color: var(--color-text-secondary, #475569);
-    font-style: italic;
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    color: var(--color-text-secondary);
   }
 
-  .article-content :global(code) {
-    background: var(--color-surface-hover, #f1f5f9);
-    color: var(--color-primary-dark, #4f46e5);
-    padding: 0.2rem 0.4rem;
-    border-radius: var(--radius-sm, 6px);
+  .article-content :global(blockquote p) {
+    margin-bottom: 0;
+  }
+
+  /* Inline Code */
+  .article-content :global(code:not(pre code)) {
+    background: var(--color-surface-hover);
+    color: var(--color-primary);
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm);
     font-family: var(--font-mono, 'JetBrains Mono', monospace);
-    font-size: 0.875rem;
+    font-size: 0.875em;
     font-weight: 500;
   }
 
+  /* Code Blocks - vhAstro-Theme Style */
   .article-content :global(pre) {
-    background: var(--color-surface, #ffffff) !important;
-    border: 1px solid var(--color-border, #e2e8f0) !important;
-    border-radius: var(--radius-lg, 12px) !important;
-    padding: 1.25rem !important;
-    overflow-x: auto;
+    background: var(--color-surface) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 0 !important;
+    overflow: hidden;
     margin: 1.5rem 0 !important;
-    font-family: var(--font-mono, 'JetBrains Mono', monospace);
-    font-size: 0.875rem;
-    line-height: 1.7;
-    box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05));
     position: relative !important;
   }
 
   .article-content :global(pre code) {
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    color: inherit;
+    display: block;
+    padding: 1.25rem !important;
+    overflow-x: auto;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    background: transparent !important;
+    color: var(--color-text-primary) !important;
   }
 
-  .article-content :global(img) {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg, 12px);
-    margin: 1.5rem 0;
-    box-shadow: var(--shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+  /* Shiki code blocks - 强制覆盖 */
+  .article-content :global(.shiki) {
+    background: var(--color-surface) !important;
+    padding: 1.25rem !important;
   }
 
+  .article-content :global(.shiki span) {
+    color: var(--color-text-primary) !important;
+  }
+
+  /* Line numbers in code blocks */
+  .article-content :global(.line-number) {
+    color: var(--color-text-muted);
+    user-select: none;
+    margin-right: 1rem;
+    display: inline-block;
+    min-width: 1.5rem;
+    text-align: right;
+  }
+
+  /* Tables - vhAstro-Theme Style */
   .article-content :global(table) {
     width: 100%;
     margin: 1.5rem 0;
     border-collapse: collapse;
     font-size: 0.9375rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
   }
 
-  .article-content :global(th),
-  .article-content :global(td) {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--color-border, #e2e8f0);
+  .article-content :global(thead) {
+    background: var(--color-surface-hover);
   }
 
   .article-content :global(th) {
-    background: var(--color-surface-hover, #f8fafc);
+    padding: 0.875rem 1rem;
+    text-align: left;
     font-weight: 600;
     color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-border);
   }
 
   .article-content :global(td) {
-    color: var(--color-text-secondary, #475569);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border-light);
   }
 
-  .article-content :global(tr:hover) {
-    background: var(--color-surface-hover, #f8fafc);
+  .article-content :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .article-content :global(tbody tr:hover) {
+    background: var(--color-surface-hover);
+  }
+
+  /* Images */
+  .article-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Horizontal Rule */
+  .article-content :global(hr) {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid var(--color-border);
   }
 
   /* Article Footer */
   .article-footer {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--color-border, #e2e8f0);
+    border-top: 1px solid var(--color-border);
   }
 
   .share-section {
@@ -325,7 +374,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
 
   .share-label {
     font-size: 0.875rem;
-    color: var(--color-text-muted, #64748b);
+    color: var(--color-text-muted);
     font-weight: 500;
   }
 
@@ -340,32 +389,32 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: var(--color-surface, #ffffff);
-    border: 1px solid var(--color-border, #e2e8f0);
-    border-radius: var(--radius-md, 8px);
-    color: var(--color-text-muted, #64748b);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
     cursor: pointer;
-    transition: all var(--transition-fast, 150ms);
+    transition: all var(--transition-fast);
   }
 
   .share-btn:hover {
-    background: var(--color-primary, #6366f1);
-    border-color: var(--color-primary, #6366f1);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
     color: white;
     transform: translateY(-2px);
   }
 
-  /* Code Block Copy Button */
+  /* Copy Button - Inside Code Block */
   .copy-button {
     position: absolute;
     top: 8px;
     right: 8px;
-    padding: 4px 8px;
+    padding: 4px 10px;
     font-size: 12px;
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    color: #666;
+    background: var(--color-surface-hover);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.2s, background 0.2s;
@@ -377,26 +426,15 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
   }
 
   .copy-button:hover {
-    background: rgba(0, 0, 0, 0.1);
-    color: #333;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
   }
 
   .copy-button.copied {
-    background: rgba(99, 102, 241, 0.2);
-    border-color: rgba(99, 102, 241, 0.4);
-    color: var(--color-primary, #6366f1);
-  }
-
-  /* Dark mode adjustments */
-  [data-theme="dark"] .copy-button {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: #94a3b8;
-  }
-
-  [data-theme="dark"] .copy-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: #e2e8f0;
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
   }
 </style>
 
@@ -444,7 +482,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
       btn.addEventListener('click', () => {
         const platform = btn.getAttribute('data-platform');
         const url = window.location.href;
-        const title = document.querySelector('.article-title')?.textContent || '';
+        const title = document.querySelector('h1')?.textContent || '';
         
         if (platform === 'twitter') {
           window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
