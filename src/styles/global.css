@@ -1011,26 +1011,24 @@ a, button, input, textarea {
   background: #1e1f22 !important;
 }
 
-/* Shiki 双主题：深色模式使用 github-dark 主题的颜色 */
-[data-theme="dark"] .shiki.github-light {
-  display: none;
-}
-
-[data-theme="dark"] .shiki.github-dark {
-  display: block;
-}
-
-/* 浅色模式：隐藏深色主题 */
-.shiki.github-dark {
-  display: none;
-}
-
-[data-theme="light"] .shiki.github-light {
-  display: block;
-}
-
-[data-theme="light"] .shiki.github-dark {
-  display: none;
+/* 深色模式下覆盖所有深色文字 - github-light 主题中接近黑色的颜色 */
+[data-theme="dark"] .shiki span[style*="color:#24292e"],
+[data-theme="dark"] .shiki span[style*="color: #24292e"],
+[data-theme="dark"] .shiki span[style*="color:#24292f"],
+[data-theme="dark"] .shiki span[style*="color: #24292f"],
+[data-theme="dark"] .shiki span[style*="color:#032f62"],
+[data-theme="dark"] .shiki span[style*="color: #032f62"],
+[data-theme="dark"] .shiki span[style*="color:#005cc5"],
+[data-theme="dark"] .shiki span[style*="color: #005cc5"],
+.dark-mode .shiki span[style*="color:#24292e"],
+.dark-mode .shiki span[style*="color: #24292e"],
+.dark-mode .shiki span[style*="color:#24292f"],
+.dark-mode .shiki span[style*="color: #24292f"],
+.dark-mode .shiki span[style*="color:#032f62"],
+.dark-mode .shiki span[style*="color: #032f62"],
+.dark-mode .shiki span[style*="color:#005cc5"],
+.dark-mode .shiki span[style*="color: #005cc5"] {
+  color: #e6edf3 !important;
 }
 
 [data-theme="dark"] .post-content code,
@@ -1116,6 +1114,18 @@ a, button, input, textarea {
   
   :root:not([data-theme="light"]) .shiki.github-dark {
     display: block;
+  }
+  
+  /* 系统深色模式下覆盖所有深色文字 */
+  :root:not([data-theme="light"]) .shiki span[style*="color:#24292e"],
+  :root:not([data-theme="light"]) .shiki span[style*="color: #24292e"],
+  :root:not([data-theme="light"]) .shiki span[style*="color:#24292f"],
+  :root:not([data-theme="light"]) .shiki span[style*="color: #24292f"],
+  :root:not([data-theme="light"]) .shiki span[style*="color:#032f62"],
+  :root:not([data-theme="light"]) .shiki span[style*="color: #032f62"],
+  :root:not([data-theme="light"]) .shiki span[style*="color:#005cc5"],
+  :root:not([data-theme="light"]) .shiki span[style*="color: #005cc5"] {
+    color: #e6edf3 !important;
   }
   
   :root:not([data-theme="light"]) .shiki {
