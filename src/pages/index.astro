@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { collections, categoryMeta } from '../content/config';
+import { categoryMeta } from '../content/config';
 
 // 动态获取所有分类的文章
 const collectionData: Record<string, { name: string; icon: string; description: string; posts: any[] }> = {};
@@ -33,99 +33,406 @@ const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.po
 ---
 
 <Layout title="首页 - AI 深度学习笔记">
-  <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 2rem;">
-    <div>
-      <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-primary);">
-        🚀 AI 深度学习笔记
-      </h1>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8;">
-        深入探索大语言模型、框架应用和训练技术的学习之路
-      </p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">AI 深度学习笔记</h1>
+      <p class="hero-subtitle">深入探索大语言模型、框架应用和训练技术的学习之路</p>
+      <div class="hero-stats">
+        <span class="stat-badge">{totalPosts} 篇文章</span>
+        <span class="stat-badge">{activeCollections.length} 个系列</span>
+        <span class="stat-badge">{allTags.size} 个标签</span>
+      </div>
+    </div>
+  </section>
 
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-grid">
+      <!-- Articles Section -->
+      <section class="articles-section">
+        {activeCollections.map(([key, meta]) => (
+          <div class="category-section" id={key}>
+            <header class="category-header">
+              <span class="category-icon">{meta.icon}</span>
+              <h2 class="category-title">{meta.name}</h2>
+              <span class="category-count">{meta.posts.length}</span>
+            </header>
+            <p class="category-desc">{meta.description}</p>
 
-
-      {totalPosts === 0 ? (
-        <p style="color: var(--text-secondary);">暂无文章</p>
-      ) : (
-        <div>
-          {/* 按分类动态显示文章 */}
-          {activeCollections.map(([key, meta]) => (
-            <div key={key} style="margin-bottom: 3rem;">
-              <h2 id={key} style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--accent); padding-top: 2rem; display: flex; align-items: center; gap: 0.5rem;">
-                <span>{meta.icon}</span>
-                <span>{meta.name}</span>
-                <span style="font-size: 0.9rem; color: var(--text-secondary); font-weight: normal;">({meta.posts.length})</span>
-              </h2>
-              <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                {meta.description}
-              </p>
-
+            <div class="articles-grid">
               {meta.posts.map((post) => (
                 <article class="article-card">
-                  <h3 class="article-title">
-                    <a href={`/ai-learning-blog/${post.collection}/${post.slug}`}>
-                      {post.data.title}
-                    </a>
-                  </h3>
-
-                  <div class="article-meta">
-                    <span>📅 {post.data.date.toLocaleDateString('zh-CN')}</span>
-                    {post.data.category && <span>📁 {post.data.category}</span>}
-                  </div>
-
-                  {post.data.description && (
-                    <p class="article-excerpt">{post.data.description}</p>
-                  )}
-
-                  {post.data.tags && post.data.tags.length > 0 && (
-                    <div class="tags">
-                      {post.data.tags.map((tag: string) => (
-                        <a href={`/ai-learning-blog/tags/${tag}`} class="tag">#{tag}</a>
-                      ))}
+                  <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="article-link">
+                    <div class="article-meta">
+                      <time class="article-date">{post.data.date.toLocaleDateString('zh-CN')}</time>
+                      {post.data.category && <span class="article-category">{post.data.category}</span>}
                     </div>
-                  )}
+                    <h3 class="article-title">{post.data.title}</h3>
+                    {post.data.description && (
+                      <p class="article-excerpt">{post.data.description}</p>
+                    )}
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="article-tags">
+                        {post.data.tags.slice(0, 3).map((tag: string) => (
+                          <span class="tag">#{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </a>
                 </article>
               ))}
             </div>
-          ))}
-        </div>
-      )}
-    </div>
+          </div>
+        ))}
+      </section>
 
-    <!-- 侧边栏 -->
-    <aside>
-      <div class="sidebar">
-        <h3>📚 学习系列</h3>
-        <ul>
-          <li><a href="/ai-learning-blog/">全部文章</a></li>
-          {activeCollections.map(([key, meta]) => (
-            <li>
-              <a href={`/ai-learning-blog/#${key}`}>
-                {meta.icon} {meta.name}
-                <span style="color: var(--text-secondary); font-size: 0.85rem;"> ({meta.posts.length})</span>
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">分类导航</h3>
+          <nav class="category-nav">
+            {activeCollections.map(([key, meta]) => (
+              <a href={`#${key}`} class="nav-item">
+                <span class="nav-icon">{meta.icon}</span>
+                <span class="nav-text">{meta.name}</span>
+                <span class="nav-count">{meta.posts.length}</span>
               </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div class="sidebar">
-        <h3>🏷️ 热门标签</h3>
-        <div class="tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-          {Array.from(allTags).slice(0, 15).map(tag => (
-            <a href={`/ai-learning-blog/tags/${tag}`} class="tag">#{tag}</a>
-          ))}
+            ))}
+          </nav>
         </div>
-      </div>
 
-      <div class="sidebar">
-        <h3>📊 统计</h3>
-        <ul>
-          <li>📝 文章总数: {totalPosts}</li>
-          <li>🏷️ 标签数量: {allTags.size}</li>
-          <li>📂 系列数量: {activeCollections.length}</li>
-        </ul>
-      </div>
-    </aside>
-  </div>
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">热门标签</h3>
+          <div class="tags-cloud">
+            {Array.from(allTags).slice(0, 12).map(tag => (
+              <a href={`/ai-learning-blog/tags/${tag}`} class="tag-pill">#{tag}</a>
+            ))}
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">关于</h3>
+          <p class="about-text">
+            这是我的AI技术学习笔记，记录大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验。
+          </p>
+        </div>
+      </aside>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  /* ==================== Hero Section ==================== */
+  .hero {
+    background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -1.28px;
+    color: #0d0d0d;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666666;
+    margin-bottom: 2rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-badge {
+    background: #d4fae8;
+    color: #0fa76e;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* ==================== Main Content ==================== */
+  .main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+  }
+
+  /* ==================== Articles Section ==================== */
+  .category-section {
+    margin-bottom: 4rem;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding-top: 2rem;
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+  }
+
+  .category-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin: 0;
+  }
+
+  .category-count {
+    background: rgba(0, 0, 0, 0.05);
+    color: #666666;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .category-desc {
+    color: #666666;
+    margin-bottom: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .article-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 2px 4px;
+  }
+
+  .article-card:hover {
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 8px;
+    transform: translateY(-2px);
+  }
+
+  .article-link {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8125rem;
+    color: #888888;
+  }
+
+  .article-date {
+    font-weight: 500;
+  }
+
+  .article-category {
+    background: #f5f5f5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+
+  .article-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #0d0d0d;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.2px;
+  }
+
+  .article-card:hover .article-title {
+    color: #18E299;
+  }
+
+  .article-excerpt {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #666666;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    color: #0fa76e;
+    background: #d4fae8;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  /* ==================== Sidebar ==================== */
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  .sidebar-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 2px 4px;
+  }
+
+  .sidebar-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0d0d0d;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .category-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333333;
+    transition: background 0.2s ease;
+  }
+
+  .nav-item:hover {
+    background: #f5f5f5;
+    color: #18E299;
+  }
+
+  .nav-icon {
+    font-size: 1.125rem;
+  }
+
+  .nav-text {
+    flex: 1;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .nav-count {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    color: #666666;
+  }
+
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-pill {
+    background: #f5f5f5;
+    color: #333333;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .tag-pill:hover {
+    background: #d4fae8;
+    color: #0fa76e;
+  }
+
+  .about-text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #666666;
+  }
+
+  /* ==================== Responsive ==================== */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+    }
+
+    .main-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      position: static;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
