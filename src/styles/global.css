@@ -986,23 +986,51 @@ a, button, input, textarea {
   background: linear-gradient(90deg, #18E299, #3fb68b);
 }
 
-/* 深色模式下 - 保留语法高亮，修复深色文字问题 */
-[data-theme="dark"] .post-content pre code,
-.dark-mode .post-content pre code {
+/* 深色模式下 - Shiki 双主题支持 */
+[data-theme="dark"] .post-content pre,
+.dark-mode .post-content pre {
+  background: #1e1f22 !important;
   color: #e6edf3 !important;
+  border: 1px solid #30363d !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* 修复 Shiki 浅色主题在深色模式下看不清的深色文字 */
-[data-theme="dark"] .shiki span[style*="color: #24292f"],
-[data-theme="dark"] .shiki span[style*="color: rgb(36, 41, 46)"],
-.dark-mode .shiki span[style*="color: #24292f"],
-.dark-mode .shiki span[style*="color: rgb(36, 41, 46)"] {
+[data-theme="dark"] .post-content pre::before,
+.dark-mode .post-content pre::before {
+  background: linear-gradient(90deg, #18E299, #3fb68b);
+}
+
+/* 深色模式下的代码颜色 */
+[data-theme="dark"] .post-content pre code,
+.dark-mode .post-content pre code {
   color: #e6edf3 !important;
 }
 
 [data-theme="dark"] .shiki,
 .dark-mode .shiki {
   background: #1e1f22 !important;
+}
+
+/* Shiki 双主题：深色模式使用 github-dark 主题的颜色 */
+[data-theme="dark"] .shiki.github-light {
+  display: none;
+}
+
+[data-theme="dark"] .shiki.github-dark {
+  display: block;
+}
+
+/* 浅色模式：隐藏深色主题 */
+.shiki.github-dark {
+  display: none;
+}
+
+[data-theme="light"] .shiki.github-light {
+  display: block;
+}
+
+[data-theme="light"] .shiki.github-dark {
+  display: none;
 }
 
 [data-theme="dark"] .post-content code,
@@ -1081,10 +1109,13 @@ a, button, input, textarea {
     color: #e6edf3 !important;
   }
   
-  /* 修复 Shiki 浅色主题在深色模式下看不清的深色文字 - 系统主题 */
-  :root:not([data-theme="light"]) .shiki span[style*="color: #24292f"],
-  :root:not([data-theme="light"]) .shiki span[style*="color: rgb(36, 41, 46)"] {
-    color: #e6edf3 !important;
+  /* Shiki 双主题：系统深色模式使用 github-dark 主题的颜色 */
+  :root:not([data-theme="light"]) .shiki.github-light {
+    display: none;
+  }
+  
+  :root:not([data-theme="light"]) .shiki.github-dark {
+    display: block;
   }
   
   :root:not([data-theme="light"]) .shiki {
