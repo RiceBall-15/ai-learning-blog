@@ -975,6 +975,7 @@ a, button, input, textarea {
   background: #161b22 !important;
   color: #e6edf3 !important;
   border: 2px solid #30363d !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .post-content pre::before,
@@ -982,11 +983,45 @@ a, button, input, textarea {
   background: linear-gradient(90deg, #18E299, #3fb68b);
 }
 
+/* 深色模式下覆盖Shiki生成的代码高亮颜色 */
+[data-theme="dark"] .post-content pre code,
+.dark-mode .post-content pre code {
+  color: #e6edf3 !important;
+}
+
+[data-theme="dark"] .post-content pre code span,
+.dark-mode .post-content pre code span {
+  color: #e6edf3 !important;
+}
+
+[data-theme="dark"] .shiki,
+.dark-mode .shiki {
+  background: #161b22 !important;
+}
+
+[data-theme="dark"] .shiki span,
+.dark-mode .shiki span {
+  color: #e6edf3 !important;
+}
+
 [data-theme="dark"] .post-content code,
 .dark-mode .post-content code {
   background: #21262d !important;
   color: #ff7b72 !important;
   border: 1px solid #30363d !important;
+}
+
+[data-theme="dark"] .copy-button,
+.dark-mode .copy-button {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #c9d1d9 !important;
+}
+
+[data-theme="dark"] .copy-button:hover,
+.dark-mode .copy-button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #e6edf3 !important;
 }
 
 [data-theme="dark"] header,
@@ -1038,12 +1073,40 @@ a, button, input, textarea {
     background: #161b22 !important;
     color: #e6edf3 !important;
     border: 2px solid #30363d !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  :root:not([data-theme="light"]) .post-content pre code {
+    color: #e6edf3 !important;
+  }
+  
+  :root:not([data-theme="light"]) .post-content pre code span {
+    color: #e6edf3 !important;
+  }
+  
+  :root:not([data-theme="light"]) .shiki {
+    background: #161b22 !important;
+  }
+  
+  :root:not([data-theme="light"]) .shiki span {
+    color: #e6edf3 !important;
   }
   
   :root:not([data-theme="light"]) .post-content code {
     background: #21262d !important;
     color: #ff7b72 !important;
     border: 1px solid #30363d !important;
+  }
+  
+  :root:not([data-theme="light"]) .copy-button {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #c9d1d9 !important;
+  }
+  
+  :root:not([data-theme="light"]) .copy-button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #e6edf3 !important;
   }
   
   :root:not([data-theme="light"]) header {
