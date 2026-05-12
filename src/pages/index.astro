@@ -56,22 +56,20 @@ const categoriesData = Object.fromEntries(
 ---
 
 <Layout title="AI 深度学习笔记">
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-icon">✨</span>
-          <span class="badge-text">AI技术深度研究</span>
-        </div>
-        <h1 class="hero-title">
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="banner-bg"></div>
+    <div class="banner-content">
+      <div class="banner-text">
+        <h1 class="banner-title">
           <span class="title-line">深入探索</span>
           <span class="title-line accent">AI 技术世界</span>
         </h1>
-        <p class="hero-description">
-          记录大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验
+        <p class="banner-subtitle">
+          <span class="typing-text" id="typingText"></span>
+          <span class="cursor">|</span>
         </p>
-        <div class="hero-stats">
+        <div class="banner-stats">
           <div class="stat-item">
             <span class="stat-number">{totalPosts}</span>
             <span class="stat-label">篇文章</span>
@@ -88,14 +86,14 @@ const categoriesData = Object.fromEntries(
           </div>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="visual-card">
-          <div class="visual-header">
+      <div class="banner-visual">
+        <div class="code-window">
+          <div class="window-header">
             <div class="dot red"></div>
             <div class="dot yellow"></div>
             <div class="dot green"></div>
           </div>
-          <div class="visual-content">
+          <div class="window-content">
             <div class="code-line">
               <span class="line-number">1</span>
               <span class="code-text"><span class="keyword">const</span> <span class="variable">aiKnowledge</span> = <span class="function">explore</span>();</span>
@@ -114,22 +112,17 @@ const categoriesData = Object.fromEntries(
     </div>
   </section>
 
-  <!-- Main Content - 左右分栏布局 -->
-  <main class="main-wrapper">
+  <!-- Main Content - 两列布局 -->
+  <main class="main-content">
     <div class="main-container">
       <!-- 左侧：文章列表 -->
-      <section class="articles-section" id="articles">
+      <section class="articles-section">
         <div class="section-header">
-          <div class="header-left">
-            <h2 class="section-title">
-              <span class="title-icon">📝</span>
-              <span id="sectionTitle">最新文章</span>
-            </h2>
-            <span class="posts-count" id="postsCount">
-              共 {totalPosts} 篇
-            </span>
-          </div>
-          <div class="filter-tabs" id="categoryFilter">
+          <h2 class="section-title">
+            <span class="title-icon">📝</span>
+            <span id="sectionTitle">最新文章</span>
+          </h2>
+          <div class="filter-tabs">
             <button class="filter-tab active" data-category="all">全部</button>
             {activeCollections.map(([key, meta]) => (
               <button class="filter-tab" data-category={key}>
@@ -140,34 +133,25 @@ const categoriesData = Object.fromEntries(
           </div>
         </div>
 
-        <div class="articles-grid" id="articlesGrid">
-          {allPosts.slice(0, 9).map((post, index) => (
-            <article 
-              class="article-card" 
-              data-slug={post.slug}
-              style={`--delay: ${index * 0.05}s`}
-            >
+        <div class="articles-list" id="articlesList">
+          {allPosts.slice(0, 10).map((post, index) => (
+            <article class="article-item" style={`--delay: ${index * 0.05}s`}>
               <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="article-link">
-                <div class="article-header">
-                  <div class="article-meta">
-                    <time class="article-date">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M4.5 2V3.5M9.5 2V3.5M2 5.5H12M3 1.5H11C11.5523 1.5 12 1.94772 12 2.5V11.5C12 12.0523 11.5523 12.5 11 12.5H3C2.44772 12.5 2 12.0523 2 11.5V2.5C2 1.94772 2.44772 1.5 3 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
-                    </time>
-                    {post.data.category && (
-                      <span class="article-category">{post.data.category}</span>
-                    )}
-                  </div>
+                <div class="article-meta">
+                  <time class="article-date">
+                    {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                  </time>
+                  {post.data.category && (
+                    <span class="article-category">{post.data.category}</span>
+                  )}
                 </div>
                 <h3 class="article-title">{post.data.title}</h3>
                 {post.data.description && (
-                  <p class="article-excerpt">{post.data.description.substring(0, 80)}...</p>
+                  <p class="article-excerpt">{post.data.description.substring(0, 100)}...</p>
                 )}
                 {post.data.tags && post.data.tags.length > 0 && (
                   <div class="article-tags">
-                    {post.data.tags.slice(0, 2).map((tag: string) => (
+                    {post.data.tags.slice(0, 3).map((tag: string) => (
                       <span class="tag">#{tag}</span>
                     ))}
                   </div>
@@ -177,24 +161,27 @@ const categoriesData = Object.fromEntries(
           ))}
         </div>
 
-        <!-- Pagination -->
+        <!-- 分页 -->
         <nav class="pagination" id="pagination">
-          <button class="page-btn prev disabled" id="prevBtn">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          <button class="page-btn prev disabled" id="prevBtn">上一页</button>
           <div class="page-numbers" id="pageNumbers"></div>
-          <button class="page-btn next" id="nextBtn">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          <button class="page-btn next" id="nextBtn">下一页</button>
         </nav>
       </section>
 
       <!-- 右侧：侧边栏 -->
       <aside class="sidebar">
+        <!-- 公告 -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">
+            <span class="title-icon">📢</span>
+            <span>公告</span>
+          </h3>
+          <div class="announcement">
+            <p>欢迎访问我的AI技术博客！这里记录了大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验。</p>
+          </div>
+        </div>
+
         <!-- 学习系列 -->
         <div class="sidebar-card">
           <h3 class="sidebar-title">
@@ -203,11 +190,11 @@ const categoriesData = Object.fromEntries(
           </h3>
           <nav class="category-list">
             {activeCollections.map(([key, meta]) => (
-              <button class="category-item" data-category={key}>
+              <a href="#" class="category-item" data-category={key}>
                 <span class="category-icon">{meta.icon}</span>
                 <span class="category-name">{meta.name}</span>
                 <span class="category-count">{meta.posts.length}</span>
-              </button>
+              </a>
             ))}
           </nav>
         </div>
@@ -218,12 +205,26 @@ const categoriesData = Object.fromEntries(
             <span class="title-icon">🏷️</span>
             <span>热门标签</span>
           </h3>
-          <div class="tags-list">
-            {Array.from(allTags).slice(0, 15).map(tag => (
+          <div class="tags-cloud">
+            {Array.from(allTags).slice(0, 20).map(tag => (
               <a href={`/ai-learning-blog/tags/${tag}`} class="tag-item">
                 #{tag}
               </a>
             ))}
+          </div>
+        </div>
+
+        <!-- 个人网站 -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">
+            <span class="title-icon">🔗</span>
+            <span>个人网站</span>
+          </h3>
+          <div class="website-links">
+            <a href="https://github.com/RiceBall-15" target="_blank" rel="noopener" class="website-link">
+              <span class="link-icon">🐱</span>
+              <span class="link-text">GitHub</span>
+            </a>
           </div>
         </div>
       </aside>
@@ -231,45 +232,740 @@ const categoriesData = Object.fromEntries(
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <span class="brand-icon">🤖</span>
-          <span class="brand-text">AI 深度学习笔记</span>
-        </div>
-        <p class="footer-description">
-          记录AI技术学习之路，分享深度研究心得
-        </p>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="brand-icon">🤖</span>
+        <span class="brand-text">AI 深度学习笔记</span>
       </div>
+      <p class="footer-description">记录AI技术学习之路，分享深度研究心得</p>
       <div class="footer-links">
-        <a href="https://github.com/RiceBall-15" class="footer-link" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
-          </svg>
-          <span>GitHub</span>
-        </a>
+        <a href="https://github.com/RiceBall-15" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/RiceBall-15/ai-learning-blog" target="_blank" rel="noopener">博客源码</a>
       </div>
     </div>
   </footer>
 </Layout>
 
-<!-- 客户端分页和筛选脚本 -->
+<style>
+  /* ==================== 全局样式 ==================== */
+  :root {
+    --color-primary: #6366f1;
+    --color-primary-light: #818cf8;
+    --color-primary-dark: #4f46e5;
+    --color-text: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-text-muted: #94a3b8;
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-border: #e2e8f0;
+    --color-border-light: #f1f5f9;
+    --transition: all 0.3s ease;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+  }
+
+  [data-theme="dark"] {
+    --color-text: #f1f5f9;
+    --color-text-secondary: #94a3b8;
+    --color-text-muted: #64748b;
+    --color-bg: #0f172a;
+    --color-bg-secondary: #1e293b;
+    --color-border: #334155;
+    --color-border-light: #1e293b;
+  }
+
+  /* ==================== Hero Banner ==================== */
+  .hero-banner {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .banner-bg {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .banner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .banner-text {
+    color: white;
+  }
+
+  .banner-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-line {
+    display: block;
+  }
+
+  .title-line.accent {
+    background: linear-gradient(90deg, #fff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .banner-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    min-height: 2rem;
+  }
+
+  .typing-text {
+    display: inline;
+  }
+
+  .cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .banner-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .banner-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .code-window {
+    background: #1e293b;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .window-header {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #0f172a;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #ef4444; }
+  .dot.yellow { background: #f59e0b; }
+  .dot.green { background: #10b981; }
+
+  .window-content {
+    padding: 1rem;
+  }
+
+  .code-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.25rem 0;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+  }
+
+  .line-number {
+    color: #64748b;
+    min-width: 20px;
+    text-align: right;
+  }
+
+  .code-text {
+    color: #e2e8f0;
+  }
+
+  .keyword { color: #c084fc; }
+  .variable { color: #60a5fa; }
+  .function { color: #34d399; }
+  .comment { color: #64748b; }
+
+  /* ==================== 主内容区 ==================== */
+  .main-content {
+    background: var(--color-bg);
+    min-height: 60vh;
+  }
+
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+  }
+
+  /* ==================== 文章列表 ==================== */
+  .articles-section {
+    min-width: 0;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .filter-tab:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .filter-tab.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
+
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .article-item {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: var(--delay);
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .article-item:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .article-link {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-date {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .article-category {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+  }
+
+  .article-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  .article-excerpt {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.6;
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    background: rgba(99, 102, 241, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ==================== 分页 ==================== */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .page-btn {
+    padding: 0.5rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .page-btn:hover:not(.disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .page-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .page-numbers {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .page-num {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .page-num:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .page-num.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
+
+  /* ==================== 侧边栏 ==================== */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sidebar-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+
+  .sidebar-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 1rem 0;
+  }
+
+  .announcement {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .announcement p {
+    margin: 0;
+  }
+
+  .category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: var(--transition);
+  }
+
+  .category-item:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--color-primary);
+  }
+
+  .category-icon {
+    font-size: 1.25rem;
+  }
+
+  .category-name {
+    flex: 1;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .category-count {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+  }
+
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-item {
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.75rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .tag-item:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .website-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .website-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: var(--transition);
+  }
+
+  .website-link:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--color-primary);
+  }
+
+  .link-icon {
+    font-size: 1.25rem;
+  }
+
+  .link-text {
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  /* ==================== Footer ==================== */
+  .site-footer {
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 2rem;
+    margin-top: 3rem;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .brand-icon {
+    font-size: 1.5rem;
+  }
+
+  .brand-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .footer-description {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 1rem 0;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* ==================== 响应式 ==================== */
+  @media (max-width: 1024px) {
+    .main-container {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .banner-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .banner-title {
+      font-size: 2rem;
+    }
+
+    .banner-visual {
+      display: none;
+    }
+
+    .banner-stats {
+      justify-content: center;
+    }
+
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .filter-tabs {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-banner {
+      min-height: 300px;
+    }
+
+    .banner-content {
+      padding: 2rem 1rem;
+    }
+
+    .main-container {
+      padding: 2rem 1rem;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+    }
+
+    .article-link {
+      padding: 1rem;
+    }
+
+    .article-title {
+      font-size: 1rem;
+    }
+  }
+</style>
+
 <script define:vars={{ postsData, categoriesData }}>
+// 打字机效果
+const typingTexts = [
+  '记录大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验',
+  '持续学习，不断进化，探索AI技术的无限可能',
+  '分享实战经验，助力技术成长'
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.getElementById('typingText');
+
+function typeWriter() {
+  const currentText = typingTexts[textIndex];
+  
+  if (isDeleting) {
+    typingElement.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typingElement.textContent = currentText.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let typeSpeed = isDeleting ? 30 : 50;
+
+  if (!isDeleting && charIndex === currentText.length) {
+    typeSpeed = 2000;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    textIndex = (textIndex + 1) % typingTexts.length;
+    typeSpeed = 500;
+  }
+
+  setTimeout(typeWriter, typeSpeed);
+}
+
+// 启动打字机
+typeWriter();
+
 // 分页状态
-const POSTS_PER_PAGE = 9;
+const POSTS_PER_PAGE = 10;
 let currentPage = 1;
 let currentCategory = 'all';
 let filteredPosts = [...postsData];
 
 // DOM元素
-const articlesGrid = document.getElementById('articlesGrid');
-const pagination = document.getElementById('pagination');
+const articlesList = document.getElementById('articlesList');
 const pageNumbers = document.getElementById('pageNumbers');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const sectionTitle = document.getElementById('sectionTitle');
-const postsCount = document.getElementById('postsCount');
 
 // 渲染文章
 function renderArticles() {
@@ -277,25 +973,20 @@ function renderArticles() {
   const end = start + POSTS_PER_PAGE;
   const pagePosts = filteredPosts.slice(start, end);
   
-  articlesGrid.innerHTML = pagePosts.map((post, index) => `
-    <article class="article-card" data-slug="${post.slug}" style="--delay: ${index * 0.05}s">
+  articlesList.innerHTML = pagePosts.map((post, index) => `
+    <article class="article-item" style="--delay: ${index * 0.05}s">
       <a href="/ai-learning-blog/${post.collection}/${post.slug}" class="article-link">
-        <div class="article-header">
-          <div class="article-meta">
-            <time class="article-date">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M4.5 2V3.5M9.5 2V3.5M2 5.5H12M3 1.5H11C11.5523 1.5 12 1.94772 12 2.5V11.5C12 12.0523 11.5523 12.5 11 12.5H3C2.44772 12.5 2 12.0523 2 11.5V2.5C2 1.94772 2.44772 1.5 3 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              ${new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
-            </time>
-            ${post.category ? `<span class="article-category">${post.category}</span>` : ''}
-          </div>
+        <div class="article-meta">
+          <time class="article-date">
+            ${new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+          </time>
+          ${post.category ? `<span class="article-category">${post.category}</span>` : ''}
         </div>
         <h3 class="article-title">${post.title}</h3>
-        ${post.description ? `<p class="article-excerpt">${post.description.substring(0, 80)}...</p>` : ''}
+        ${post.description ? `<p class="article-excerpt">${post.description.substring(0, 100)}...</p>` : ''}
         ${post.tags && post.tags.length > 0 ? `
           <div class="article-tags">
-            ${post.tags.slice(0, 2).map(tag => `<span class="tag">#${tag}</span>`).join('')}
+            ${post.tags.slice(0, 3).map(tag => `<span class="tag">#${tag}</span>`).join('')}
           </div>
         ` : ''}
       </a>
@@ -320,14 +1011,13 @@ function renderPagination() {
   nextBtn.classList.toggle('disabled', currentPage >= totalPages);
 }
 
-// 更新计数显示
-function updateCounts() {
+// 更新标题
+function updateTitle() {
   const categoryInfo = currentCategory === 'all' 
-    ? { name: '最新文章', icon: '' }
+    ? { name: '最新文章' }
     : categoriesData[currentCategory];
   
   sectionTitle.textContent = categoryInfo.name;
-  postsCount.textContent = `共 ${filteredPosts.length} 篇`;
 }
 
 // 跳转到指定页
@@ -338,7 +1028,6 @@ function goToPage(page) {
   currentPage = page;
   renderArticles();
   renderPagination();
-  updateCounts();
   
   document.querySelector('.articles-section').scrollIntoView({ behavior: 'smooth' });
 }
@@ -367,11 +1056,11 @@ function filterByCategory(category) {
   
   renderArticles();
   renderPagination();
-  updateCounts();
+  updateTitle();
 }
 
 // 初始化事件监听
-document.getElementById('categoryFilter').addEventListener('click', (e) => {
+document.querySelector('.filter-tabs').addEventListener('click', (e) => {
   const btn = e.target.closest('.filter-tab');
   if (btn) {
     filterByCategory(btn.dataset.category);
@@ -379,7 +1068,8 @@ document.getElementById('categoryFilter').addEventListener('click', (e) => {
 });
 
 document.querySelectorAll('.category-item').forEach(item => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
     filterByCategory(item.dataset.category);
     document.querySelector('.articles-section').scrollIntoView({ behavior: 'smooth' });
   });
@@ -390,5 +1080,5 @@ nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
 
 // 初始化
 renderPagination();
-updateCounts();
+updateTitle();
 </script>
