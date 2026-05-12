@@ -1,13 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import PostLayout from '../../layouts/PostLayout.astro';
+import { categoryMeta } from '../../content/config';
 
 export async function getStaticPaths() {
-  // 获取所有集合
-  const collections = ['langchain4j', 'sglang', 'llmTraining', 'agentMemory', 'evaluation', 
-                       'aiCoding', 'modelDeploymentTraining', 'agentSkill', 'architecture',
-                       'ai-engineering', 'aiInfrastructure', 'llmAgent', 'agentSystem', 
-                       'agentOps', 'learning-methodology', 'modelDeployment', 'frontend', 'aiAgent', 'testCollection' ];
+  // 动态获取所有分类名称
+  const collections = Object.keys(categoryMeta);
 
   // 为每个集合中的每篇文章生成路径
   const paths = [];
