@@ -180,23 +180,48 @@ nav a:hover {
 }
 
 .post-content pre {
-  background: #f6f8fa;
-  color: #24292e;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
-  padding: 1rem;
+  background: #f6f8fa !important;
+  color: #24292e !important;
+  border: 2px solid #d0d7de !important;
+  border-radius: 8px !important;
+  padding: 1.25rem !important;
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 1.5rem 0 !important;
   font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, Liberation Mono, monospace;
   font-size: 0.875rem;
-  line-height: 1.45;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.post-content pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #18E299, #0fa76e);
+  border-radius: 8px 8px 0 0;
 }
 
 .post-content pre code {
-  background: none;
-  color: inherit;
-  padding: 0;
-  font-size: inherit;
+  background: none !important;
+  color: inherit !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+}
+
+/* 行内代码 */
+.post-content code {
+  background: #f0f2f5 !important;
+  color: #d63384 !important;
+  padding: 0.2rem 0.5rem !important;
+  border-radius: 4px !important;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
 }
 
 .post-content ul, .post-content ol {
@@ -915,4 +940,176 @@ a, button, input, textarea {
     height: 2.25rem;
     font-size: 0.8125rem;
   }
+}
+
+/* ==================== 深色模式支持 ==================== */
+[data-theme="dark"],
+.dark-mode {
+  --color-bg: #0d1117;
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #c9d1d9;
+  --color-text-muted: #8b949e;
+  --color-text-placeholder: #6e7681;
+  
+  --color-brand: #18E299;
+  --color-brand-light: rgba(24, 226, 153, 0.15);
+  --color-brand-deep: #3fb68b;
+  
+  --color-gray-50: #161b22;
+  --color-gray-100: #21262d;
+  --color-gray-200: #30363d;
+  --color-gray-400: #484f58;
+  --color-gray-500: #6e7681;
+  --color-gray-700: #c9d1d9;
+  --color-gray-900: #f0f6fc;
+  
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-medium: rgba(255, 255, 255, 0.12);
+  
+  --shadow-card: rgba(0, 0, 0, 0.3) 0px 2px 4px;
+  --shadow-button: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+}
+
+[data-theme="dark"] .post-content pre,
+.dark-mode .post-content pre {
+  background: #161b22 !important;
+  color: #e6edf3 !important;
+  border: 2px solid #30363d !important;
+}
+
+[data-theme="dark"] .post-content pre::before,
+.dark-mode .post-content pre::before {
+  background: linear-gradient(90deg, #18E299, #3fb68b);
+}
+
+[data-theme="dark"] .post-content code,
+.dark-mode .post-content code {
+  background: #21262d !important;
+  color: #ff7b72 !important;
+  border: 1px solid #30363d !important;
+}
+
+[data-theme="dark"] header,
+.dark-mode header {
+  background: rgba(13, 17, 23, 0.85);
+}
+
+[data-theme="dark"] .article-card,
+.dark-mode .article-card {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+[data-theme="dark"] .sidebar,
+.dark-mode .sidebar {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+/* ==================== 跟随系统主题 ==================== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0d1117;
+    --color-text-primary: #e6edf3;
+    --color-text-secondary: #c9d1d9;
+    --color-text-muted: #8b949e;
+    --color-text-placeholder: #6e7681;
+    
+    --color-brand: #18E299;
+    --color-brand-light: rgba(24, 226, 153, 0.15);
+    --color-brand-deep: #3fb68b;
+    
+    --color-gray-50: #161b22;
+    --color-gray-100: #21262d;
+    --color-gray-200: #30363d;
+    --color-gray-400: #484f58;
+    --color-gray-500: #6e7681;
+    --color-gray-700: #c9d1d9;
+    --color-gray-900: #f0f6fc;
+    
+    --color-border-subtle: rgba(255, 255, 255, 0.08);
+    --color-border-medium: rgba(255, 255, 255, 0.12);
+    
+    --shadow-card: rgba(0, 0, 0, 0.3) 0px 2px 4px;
+    --shadow-button: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+  }
+  
+  :root:not([data-theme="light"]) .post-content pre {
+    background: #161b22 !important;
+    color: #e6edf3 !important;
+    border: 2px solid #30363d !important;
+  }
+  
+  :root:not([data-theme="light"]) .post-content code {
+    background: #21262d !important;
+    color: #ff7b72 !important;
+    border: 1px solid #30363d !important;
+  }
+  
+  :root:not([data-theme="light"]) header {
+    background: rgba(13, 17, 23, 0.85);
+  }
+  
+  :root:not([data-theme="light"]) .article-card {
+    background: #161b22;
+    border-color: #30363d;
+  }
+  
+  :root:not([data-theme="light"]) .sidebar {
+    background: #161b22;
+    border-color: #30363d;
+  }
+}
+
+/* ==================== 主题切换按钮 ==================== */
+.theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border-medium);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 主题切换动画 */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun,
+.dark-mode .theme-toggle .icon-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon,
+.dark-mode .theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(-180deg);
+}
+
+.theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
 }
