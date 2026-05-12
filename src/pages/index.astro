@@ -31,30 +31,28 @@ allPosts.forEach(post => {
 const totalPosts = allPosts.length;
 const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.posts.length > 0);
 
-// 分页配置
-const POSTS_PER_PAGE = 12;
-const currentPage = parseInt(Astro.url.searchParams.get('page') || '1');
-const categoryFilter = Astro.url.searchParams.get('category') || '';
+// 准备JSON数据供JavaScript使用
+const postsData = allPosts.map(post => ({
+  slug: post.slug,
+  collection: post.collection,
+  title: post.data.title,
+  description: post.data.description || '',
+  date: post.data.date.toISOString(),
+  tags: post.data.tags || [],
+  category: post.data.category || '',
+}));
 
-// 根据分类筛选文章
-let filteredPosts = allPosts;
-if (categoryFilter && collectionData[categoryFilter]) {
-  filteredPosts = collectionData[categoryFilter].posts;
-}
-
-const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
-const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-const endIndex = startIndex + POSTS_PER_PAGE;
-const currentPosts = filteredPosts.slice(startIndex, endIndex);
-
-// 生成分页URL
-function getPageUrl(page: number) {
-  const params = new URLSearchParams();
-  if (page > 1) params.set('page', page.toString());
-  if (categoryFilter) params.set('category', categoryFilter);
-  const queryString = params.toString();
-  return `/ai-learning-blog/${queryString ? '?' + queryString : ''}`;
-}
+const categoriesData = Object.fromEntries(
+  activeCollections.map(([key, meta]) => [
+    key, 
+    { 
+      name: meta.name, 
+      icon: meta.icon, 
+      count: meta.posts.length,
+      posts: meta.posts.map(p => p.slug)
+    }
+  ])
+);
 ---
 
 <Layout title="首页 - AI 深度学习笔记">
@@ -74,22 +72,16 @@ function getPageUrl(page: number) {
   <!-- Main Content -->
   <main class="main-content">
     <!-- Category Filter -->
-    <div class="category-filter">
-      <a 
-        href="/ai-learning-blog/" 
-        class={`filter-btn ${!categoryFilter ? 'active' : ''}`}
-      >
+    <div class="category-filter" id="categoryFilter">
+      <button class="filter-btn active" data-category="all">
         全部
-      </a>
+      </button>
       {activeCollections.map(([key, meta]) => (
-        <a 
-          href={`/ai-learning-blog/?category=${key}`} 
-          class={`filter-btn ${categoryFilter === key ? 'active' : ''}`}
-        >
+        <button class="filter-btn" data-category={key}>
           <span class="filter-icon">{meta.icon}</span>
           {meta.name}
           <span class="filter-count">{meta.posts.length}</span>
-        </a>
+        </button>
       ))}
     </div>
 
@@ -97,20 +89,15 @@ function getPageUrl(page: number) {
       <!-- Articles Section -->
       <section class="articles-section">
         <div class="articles-header">
-          <h2 class="section-title">
-            {categoryFilter && collectionData[categoryFilter] 
-              ? `${collectionData[categoryFilter].icon} ${collectionData[categoryFilter].name}`
-              : '📚 最新文章'
-            }
-          </h2>
-          <span class="posts-count">
-            共 {filteredPosts.length} 篇，第 {currentPage}/{totalPages} 页
+          <h2 class="section-title" id="sectionTitle">📚 最新文章</h2>
+          <span class="posts-count" id="postsCount">
+            共 {totalPosts} 篇，第 1/{Math.ceil(totalPosts / 12)} 页
           </span>
         </div>
 
-        <div class="articles-grid">
-          {currentPosts.map((post) => (
-            <article class="article-card">
+        <div class="articles-grid" id="articlesGrid">
+          {allPosts.slice(0, 12).map((post) => (
+            <article class="article-card" data-slug={post.slug}>
               <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="article-link">
                 <div class="article-meta">
                   <time class="article-date">{post.data.date.toLocaleDateString('zh-CN')}</time>
@@ -133,34 +120,11 @@ function getPageUrl(page: number) {
         </div>
 
         <!-- Pagination -->
-        {totalPages > 1 && (
-          <nav class="pagination">
-            <a 
-              href={currentPage > 1 ? getPageUrl(currentPage - 1) : '#'} 
-              class={`page-btn prev ${currentPage <= 1 ? 'disabled' : ''}`}
-            >
-              ← 上一页
-            </a>
-            
-            <div class="page-numbers">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                <a 
-                  href={getPageUrl(page)} 
-                  class={`page-num ${page === currentPage ? 'active' : ''}`}
-                >
-                  {page}
-                </a>
-              ))}
-            </div>
-            
-            <a 
-              href={currentPage < totalPages ? getPageUrl(currentPage + 1) : '#'} 
-              class={`page-btn next ${currentPage >= totalPages ? 'disabled' : ''}`}
-            >
-              下一页 →
-            </a>
-          </nav>
-        )}
+        <nav class="pagination" id="pagination">
+          <button class="page-btn prev disabled" id="prevBtn">← 上一页</button>
+          <div class="page-numbers" id="pageNumbers"></div>
+          <button class="page-btn next" id="nextBtn">下一页 →</button>
+        </nav>
       </section>
 
       <!-- Sidebar -->
@@ -169,7 +133,7 @@ function getPageUrl(page: number) {
           <h3 class="sidebar-title">分类导航</h3>
           <nav class="category-nav">
             {activeCollections.map(([key, meta]) => (
-              <a href={`/ai-learning-blog/?category=${key}`} class="nav-item">
+              <a href={`#`} class="nav-item sidebar-category" data-category={key}>
                 <span class="nav-icon">{meta.icon}</span>
                 <span class="nav-text">{meta.name}</span>
                 <span class="nav-count">{meta.posts.length}</span>
@@ -197,6 +161,137 @@ function getPageUrl(page: number) {
     </div>
   </main>
 </Layout>
+
+<!-- 客户端分页和筛选脚本 -->
+<script define:vars={{ postsData, categoriesData }}>
+// 分页状态
+const POSTS_PER_PAGE = 12;
+let currentPage = 1;
+let currentCategory = 'all';
+let filteredPosts = [...postsData];
+
+// DOM元素
+const articlesGrid = document.getElementById('articlesGrid');
+const pagination = document.getElementById('pagination');
+const pageNumbers = document.getElementById('pageNumbers');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const sectionTitle = document.getElementById('sectionTitle');
+const postsCount = document.getElementById('postsCount');
+
+// 渲染文章
+function renderArticles() {
+  const start = (currentPage - 1) * POSTS_PER_PAGE;
+  const end = start + POSTS_PER_PAGE;
+  const pagePosts = filteredPosts.slice(start, end);
+  
+  articlesGrid.innerHTML = pagePosts.map(post => `
+    <article class="article-card" data-slug="${post.slug}">
+      <a href="/ai-learning-blog/${post.collection}/${post.slug}" class="article-link">
+        <div class="article-meta">
+          <time class="article-date">${new Date(post.date).toLocaleDateString('zh-CN')}</time>
+          ${post.category ? `<span class="article-category">${post.category}</span>` : ''}
+        </div>
+        <h3 class="article-title">${post.title}</h3>
+        ${post.description ? `<p class="article-excerpt">${post.description}</p>` : ''}
+        ${post.tags && post.tags.length > 0 ? `
+          <div class="article-tags">
+            ${post.tags.slice(0, 3).map(tag => `<span class="tag">#${tag}</span>`).join('')}
+          </div>
+        ` : ''}
+      </a>
+    </article>
+  `).join('');
+}
+
+// 渲染分页
+function renderPagination() {
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  
+  // 更新页码显示
+  pageNumbers.innerHTML = '';
+  for (let i = 1; i <= totalPages; i++) {
+    const pageBtn = document.createElement('button');
+    pageBtn.className = `page-num ${i === currentPage ? 'active' : ''}`;
+    pageBtn.textContent = i;
+    pageBtn.addEventListener('click', () => goToPage(i));
+    pageNumbers.appendChild(pageBtn);
+  }
+  
+  // 更新上一页/下一页按钮状态
+  prevBtn.classList.toggle('disabled', currentPage <= 1);
+  nextBtn.classList.toggle('disabled', currentPage >= totalPages);
+}
+
+// 更新计数显示
+function updateCounts() {
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const categoryInfo = currentCategory === 'all' 
+    ? { name: '📚 最新文章', icon: '' }
+    : categoriesData[currentCategory];
+  
+  sectionTitle.textContent = categoryInfo.name;
+  postsCount.textContent = `共 ${filteredPosts.length} 篇，第 ${currentPage}/${totalPages} 页`;
+}
+
+// 跳转到指定页
+function goToPage(page) {
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  if (page < 1 || page > totalPages) return;
+  
+  currentPage = page;
+  renderArticles();
+  renderPagination();
+  updateCounts();
+  
+  // 滚动到文章区域顶部
+  document.querySelector('.articles-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 筛选分类
+function filterByCategory(category) {
+  currentCategory = category;
+  currentPage = 1;
+  
+  if (category === 'all') {
+    filteredPosts = [...postsData];
+  } else {
+    const categoryPostSlugs = categoriesData[category]?.posts || [];
+    filteredPosts = postsData.filter(p => categoryPostSlugs.includes(p.slug));
+  }
+  
+  // 更新筛选按钮状态
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.category === category);
+  });
+  
+  renderArticles();
+  renderPagination();
+  updateCounts();
+}
+
+// 初始化事件监听
+document.getElementById('categoryFilter').addEventListener('click', (e) => {
+  const btn = e.target.closest('.filter-btn');
+  if (btn) {
+    filterByCategory(btn.dataset.category);
+  }
+});
+
+document.querySelectorAll('.sidebar-category').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    filterByCategory(link.dataset.category);
+  });
+});
+
+prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+
+// 初始化
+renderPagination();
+updateCounts();
+</script>
 
 <style>
   /* ==================== Hero Section ==================== */
@@ -267,7 +362,7 @@ function getPageUrl(page: number) {
     font-size: 0.875rem;
     font-weight: 500;
     color: #333333;
-    text-decoration: none;
+    cursor: pointer;
     transition: all 0.2s ease;
   }
 
@@ -447,7 +542,7 @@ function getPageUrl(page: number) {
     font-size: 0.875rem;
     font-weight: 500;
     color: #333333;
-    text-decoration: none;
+    cursor: pointer;
     transition: all 0.2s ease;
   }
 
@@ -460,7 +555,6 @@ function getPageUrl(page: number) {
   .page-btn.disabled {
     opacity: 0.4;
     cursor: not-allowed;
-    pointer-events: none;
   }
 
   .page-numbers {
@@ -480,7 +574,7 @@ function getPageUrl(page: number) {
     font-size: 0.875rem;
     font-weight: 500;
     color: #333333;
-    text-decoration: none;
+    cursor: pointer;
     transition: all 0.2s ease;
   }
 
@@ -536,6 +630,7 @@ function getPageUrl(page: number) {
     border-radius: 8px;
     text-decoration: none;
     color: #333333;
+    cursor: pointer;
     transition: background 0.2s ease;
   }
 
