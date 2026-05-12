@@ -9,14 +9,6 @@ const { Content } = await post.render();
   <div class="post-content">
     <h1>{post.data.title}</h1>
 
-    <div class="article-meta">
-      <span>📅 {post.data.date}</span>
-      <span>📝 {post.data.author}</span>
-      {post.data.category && <span>📁 {post.data.category}</span>}
-    </div>
-
-    {post.data.description && <p class="article-excerpt">{post.data.description}</p>}
-
     {post.data.tags && post.data.tags.length > 0 && (
       <div class="tags">
         {post.data.tags.map(tag => (
@@ -32,22 +24,86 @@ const { Content } = await post.render();
 </Layout>
 
 <style>
-  .article-meta {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  .article-excerpt {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-
   .tags {
     margin-bottom: 1.5rem;
+  }
+</style>
+
+<script>
+  // 代码块复制功能
+  document.addEventListener('DOMContentLoaded', () => {
+    // 为所有代码块添加复制按钮
+    const codeBlocks = document.querySelectorAll('pre');
+    
+    codeBlocks.forEach((block) => {
+      // 创建复制按钮
+      const copyButton = document.createElement('button');
+      copyButton.className = 'copy-button';
+      copyButton.innerHTML = '📋 复制';
+      copyButton.setAttribute('aria-label', '复制代码');
+      
+      // 添加按钮到代码块
+      block.style.position = 'relative';
+      block.appendChild(copyButton);
+      
+      // 点击复制功能
+      copyButton.addEventListener('click', async () => {
+        const code = block.querySelector('code');
+        const text = code ? code.textContent : block.textContent;
+        
+        try {
+          await navigator.clipboard.writeText(text);
+          copyButton.innerHTML = '✅ 已复制';
+          copyButton.classList.add('copied');
+          
+          // 2秒后恢复原状
+          setTimeout(() => {
+            copyButton.innerHTML = '📋 复制';
+            copyButton.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          copyButton.innerHTML = '❌ 失败';
+          setTimeout(() => {
+            copyButton.innerHTML = '📋 复制';
+          }, 2000);
+        }
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  /* 代码块复制按钮样式 */
+  pre {
+    position: relative !important;
+  }
+  
+  .copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+    z-index: 10;
+  }
+  
+  pre:hover .copy-button {
+    opacity: 1;
+  }
+  
+  .copy-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .copy-button.copied {
+    background: rgba(24, 226, 153, 0.3);
+    border-color: rgba(24, 226, 153, 0.5);
   }
 </style>
