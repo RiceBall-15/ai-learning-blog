@@ -1006,39 +1006,39 @@ a, button, input, textarea {
   color: #e6edf3 !important;
 }
 
-[data-theme="dark"] .shiki,
-.dark-mode .shiki {
+[data-theme="dark"] .astro-code,
+.dark-mode .astro-code {
   background: #1e1f22 !important;
 }
 
 /* 深色模式下覆盖所有深色文字 - github-light 主题中接近黑色的颜色 */
-[data-theme="dark"] .shiki span[style*="color:#24292e"],
-[data-theme="dark"] .shiki span[style*="color: #24292e"],
-[data-theme="dark"] .shiki span[style*="color:#24292f"],
-[data-theme="dark"] .shiki span[style*="color: #24292f"],
-[data-theme="dark"] .shiki span[style*="color:#032f62"],
-[data-theme="dark"] .shiki span[style*="color: #032f62"],
-[data-theme="dark"] .shiki span[style*="color:#005cc5"],
-[data-theme="dark"] .shiki span[style*="color: #005cc5"],
-.dark-mode .shiki span[style*="color:#24292e"],
-.dark-mode .shiki span[style*="color: #24292e"],
-.dark-mode .shiki span[style*="color:#24292f"],
-.dark-mode .shiki span[style*="color: #24292f"],
-.dark-mode .shiki span[style*="color:#032f62"],
-.dark-mode .shiki span[style*="color: #032f62"],
-.dark-mode .shiki span[style*="color:#005cc5"],
-.dark-mode .shiki span[style*="color: #005cc5"] {
+[data-theme="dark"] .astro-code span[style*="color:#24292e"],
+[data-theme="dark"] .astro-code span[style*="color: #24292e"],
+[data-theme="dark"] .astro-code span[style*="color:#24292f"],
+[data-theme="dark"] .astro-code span[style*="color: #24292f"],
+[data-theme="dark"] .astro-code span[style*="color:#032f62"],
+[data-theme="dark"] .astro-code span[style*="color: #032f62"],
+[data-theme="dark"] .astro-code span[style*="color:#005cc5"],
+[data-theme="dark"] .astro-code span[style*="color: #005cc5"],
+.dark-mode .astro-code span[style*="color:#24292e"],
+.dark-mode .astro-code span[style*="color: #24292e"],
+.dark-mode .astro-code span[style*="color:#24292f"],
+.dark-mode .astro-code span[style*="color: #24292f"],
+.dark-mode .astro-code span[style*="color:#032f62"],
+.dark-mode .astro-code span[style*="color: #032f62"],
+.dark-mode .astro-code span[style*="color:#005cc5"],
+.dark-mode .astro-code span[style*="color: #005cc5"] {
   color: #e6edf3 !important;
 }
 
 /* Shiki 双主题支持 - 在深色模式下应用 --shiki-dark CSS 变量 */
-[data-theme="dark"] .shiki span,
-.dark-mode .shiki span {
+[data-theme="dark"] .astro-code span,
+.dark-mode .astro-code span {
   color: var(--shiki-dark) !important;
 }
 
-[data-theme="dark"] .shiki code,
-.dark-mode .shiki code {
+[data-theme="dark"] .astro-code code,
+.dark-mode .astro-code code {
   color: var(--shiki-dark) !important;
 }
 
@@ -1119,36 +1119,36 @@ a, button, input, textarea {
   }
   
   /* Shiki 双主题：系统深色模式使用 github-dark 主题的颜色 */
-  :root:not([data-theme="light"]) .shiki.github-light {
+  :root:not([data-theme="light"]) .astro-code.github-light {
     display: none;
   }
   
-  :root:not([data-theme="light"]) .shiki.github-dark {
+  :root:not([data-theme="light"]) .astro-code.github-dark {
     display: block;
   }
   
   /* 系统深色模式下覆盖所有深色文字 */
-  :root:not([data-theme="light"]) .shiki span[style*="color:#24292e"],
-  :root:not([data-theme="light"]) .shiki span[style*="color: #24292e"],
-  :root:not([data-theme="light"]) .shiki span[style*="color:#24292f"],
-  :root:not([data-theme="light"]) .shiki span[style*="color: #24292f"],
-  :root:not([data-theme="light"]) .shiki span[style*="color:#032f62"],
-  :root:not([data-theme="light"]) .shiki span[style*="color: #032f62"],
-  :root:not([data-theme="light"]) .shiki span[style*="color:#005cc5"],
-  :root:not([data-theme="light"]) .shiki span[style*="color: #005cc5"] {
+  :root:not([data-theme="light"]) .astro-code span[style*="color:#24292e"],
+  :root:not([data-theme="light"]) .astro-code span[style*="color: #24292e"],
+  :root:not([data-theme="light"]) .astro-code span[style*="color:#24292f"],
+  :root:not([data-theme="light"]) .astro-code span[style*="color: #24292f"],
+  :root:not([data-theme="light"]) .astro-code span[style*="color:#032f62"],
+  :root:not([data-theme="light"]) .astro-code span[style*="color: #032f62"],
+  :root:not([data-theme="light"]) .astro-code span[style*="color:#005cc5"],
+  :root:not([data-theme="light"]) .astro-code span[style*="color: #005cc5"] {
     color: #e6edf3 !important;
   }
   
   /* Shiki 双主题支持 - 系统深色模式下应用 --shiki-dark CSS 变量 */
-  :root:not([data-theme="light"]) .shiki span {
+  :root:not([data-theme="light"]) .astro-code span {
     color: var(--shiki-dark) !important;
   }
   
-  :root:not([data-theme="light"]) .shiki code {
+  :root:not([data-theme="light"]) .astro-code code {
     color: var(--shiki-dark) !important;
   }
   
-  :root:not([data-theme="light"]) .shiki {
+  :root:not([data-theme="light"]) .astro-code {
     background: #1e1f22 !important;
   }
   
