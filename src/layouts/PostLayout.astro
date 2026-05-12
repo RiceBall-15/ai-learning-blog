@@ -41,7 +41,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="article-tags">
           {post.data.tags.map(tag => (
-            <a href={`/ai-learning-blog/tags/${tag}`} class="tag">#{tag}</a>
+            <span class="tag">#{tag}</span>
           ))}
         </div>
       )}
