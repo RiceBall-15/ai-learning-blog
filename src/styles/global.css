@@ -48,6 +48,29 @@
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 }
 
+/* ==================== 深色主题 - 首页标题修复 ==================== */
+[data-theme="dark"] .banner-title,
+[data-theme="dark"] .title-line {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .title-line.accent {
+  background: linear-gradient(90deg, #e0e7ff 0%, #c7d2fe 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+[data-theme="dark"] .article-title,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .sidebar-title {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .stat-number {
+  color: #f8fafc !important;
+}
+
 /* ==================== 深色主题 ==================== */
 [data-theme="dark"],
 .dark-mode {
@@ -1107,7 +1130,7 @@ pre {
   overflow: hidden;
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  line-height: 1.7;
+  line-height: 1;
   margin: 1.5rem 0;
   position: relative;
 }
@@ -1141,15 +1164,15 @@ pre.astro-code {
   padding: 0 !important;
   overflow: hidden;
   margin: 1.5rem 0 !important;
-  line-height: 1.5 !important;
+  line-height: 1 !important;
 }
 
 pre.astro-code code {
-  line-height: 1.5 !important;
+  line-height: 1 !important;
 }
 
 pre.astro-code .line {
-  line-height: 1.5 !important;
+  line-height: 1 !important;
 }
 
 /* 暗色模式 - 强制覆盖内联样式 */
@@ -1183,7 +1206,7 @@ pre.astro-code .line {
 pre.astro-code .line {
   display: block;
   padding: 0 1rem;
-  line-height: 1.5 !important;
+  line-height: 1 !important;
 }
 
 pre.astro-code .line-number {
