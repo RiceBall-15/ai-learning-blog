@@ -12,7 +12,20 @@ export default defineConfig({
         light: 'github-light',
         dark: 'github-dark'
       },
-      wrap: true
+      wrap: true,
+      // 启用行号
+      transformers: [{
+        name: 'add-line-numbers',
+        line(node, line) {
+          node.properties.class = 'line';
+          node.children.unshift({
+            type: 'element',
+            tagName: 'span',
+            properties: { class: 'line-number' },
+            children: [{ type: 'text', value: String(line) }]
+          });
+        }
+      }]
     }
   }
 });

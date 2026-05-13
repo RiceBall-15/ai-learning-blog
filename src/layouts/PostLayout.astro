@@ -284,14 +284,46 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     color: var(--color-text-primary) !important;
   }
 
-  /* Shiki code blocks - 强制覆盖 */
-  .article-content :global(.shiki) {
-    background: var(--color-surface) !important;
-    padding: 1.25rem !important;
+  /* Shiki code blocks - 支持Astro双主题 */
+  .article-content :global(pre.astro-code) {
+    background: var(--shiki-light-bg, var(--color-surface)) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 0 !important;
+    overflow: hidden;
+    margin: 1.5rem 0 !important;
+    position: relative !important;
   }
 
-  .article-content :global(.shiki span) {
-    color: var(--color-text-primary) !important;
+  /* 暗色模式：使用Shiki的双主题变量 */
+  [data-theme="dark"] .article-content :global(pre.astro-code),
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .article-content :global(pre.astro-code) {
+      background: var(--shiki-dark-bg, #1a2332) !important;
+    }
+  }
+
+  /* 语言标签 */
+  .article-content :global(pre.astro-code[data-language]::before) {
+    content: attr(data-language);
+    display: block;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.15);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: lowercase;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  [data-theme="dark"] .article-content :global(pre.astro-code[data-language]::before) {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .article-content :global(pre.astro-code[data-language]::before) {
+      background: rgba(0, 0, 0, 0.3);
+    }
   }
 
   /* Line numbers in code blocks */
