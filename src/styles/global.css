@@ -1141,18 +1141,41 @@ pre.astro-code {
   padding: 0 !important;
   overflow: hidden;
   margin: 1.5rem 0 !important;
+  line-height: 1.5 !important;
 }
 
-/* 暗色模式 - 使用Astro双主题CSS变量 */
+pre.astro-code code {
+  line-height: 1.5 !important;
+}
+
+pre.astro-code .line {
+  line-height: 1.5 !important;
+}
+
+/* 暗色模式 - 强制覆盖内联样式 */
 [data-theme="dark"] pre.astro-code {
-  background: var(--shiki-dark-bg, #1a2332) !important;
+  background: var(--shiki-dark-bg, #24292e) !important;
+  color: var(--shiki-dark, #e1e4e8) !important;
   border-color: #2d3748 !important;
+}
+
+[data-theme="dark"] pre.astro-code code {
+  color: var(--shiki-dark, #e1e4e8) !important;
+}
+
+[data-theme="dark"] pre.astro-code span {
+  color: var(--shiki-dark, #e1e4e8) !important;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) pre.astro-code {
-    background: var(--shiki-dark-bg, #1a2332) !important;
+    background: var(--shiki-dark-bg, #24292e) !important;
+    color: var(--shiki-dark, #e1e4e8) !important;
     border-color: #2d3748 !important;
+  }
+  
+  :root:not([data-theme="light"]) pre.astro-code code {
+    color: var(--shiki-dark, #e1e4e8) !important;
   }
 }
 
@@ -1160,6 +1183,7 @@ pre.astro-code {
 pre.astro-code .line {
   display: block;
   padding: 0 1rem;
+  line-height: 1.5 !important;
 }
 
 pre.astro-code .line-number {
@@ -1170,6 +1194,10 @@ pre.astro-code .line-number {
   color: var(--color-text-muted);
   opacity: 0.5;
   user-select: none;
+}
+
+[data-theme="dark"] pre.astro-code .line-number {
+  color: #8b949e !important;
 }
 
 /* 代码块语言标签 */

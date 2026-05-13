@@ -293,13 +293,39 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     overflow: hidden;
     margin: 1.5rem 0 !important;
     position: relative !important;
+    line-height: 1.5 !important;
   }
 
-  /* 暗色模式：使用Shiki的双主题变量 */
-  [data-theme="dark"] .article-content :global(pre.astro-code),
+  .article-content :global(pre.astro-code code) {
+    line-height: 1.5 !important;
+  }
+
+  .article-content :global(pre.astro-code .line) {
+    line-height: 1.5 !important;
+  }
+
+  /* 暗色模式：强制覆盖内联样式 */
+  [data-theme="dark"] .article-content :global(pre.astro-code) {
+    background: var(--shiki-dark-bg, #24292e) !important;
+    color: var(--shiki-dark, #e1e4e8) !important;
+  }
+
+  [data-theme="dark"] .article-content :global(pre.astro-code code) {
+    color: var(--shiki-dark, #e1e4e8) !important;
+  }
+
+  [data-theme="dark"] .article-content :global(pre.astro-code span) {
+    color: var(--shiki-dark, #e1e4e8) !important;
+  }
+
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) .article-content :global(pre.astro-code) {
-      background: var(--shiki-dark-bg, #1a2332) !important;
+      background: var(--shiki-dark-bg, #24292e) !important;
+      color: var(--shiki-dark, #e1e4e8) !important;
+    }
+    
+    :root:not([data-theme="light"]) .article-content :global(pre.astro-code code) {
+      color: var(--shiki-dark, #e1e4e8) !important;
     }
   }
 
