@@ -1130,7 +1130,7 @@ pre {
   overflow: hidden;
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  line-height: 1.4;
+  line-height: 0.8;
   margin: 1.5rem 0;
   position: relative;
 }
@@ -1164,15 +1164,15 @@ pre.astro-code {
   padding: 0 !important;
   overflow: hidden;
   margin: 1.5rem 0 !important;
-  line-height: 1.4 !important;
+  line-height: 0.8 !important;
 }
 
 pre.astro-code code {
-  line-height: 1.4 !important;
+  line-height: 0.8 !important;
 }
 
 pre.astro-code .line {
-  line-height: 1.4 !important;
+  line-height: 0.8 !important;
 }
 
 /* 暗色模式 - 强制覆盖内联样式 */
@@ -1206,7 +1206,7 @@ pre.astro-code .line {
 pre.astro-code .line {
   display: block;
   padding: 0 1rem;
-  line-height: 1.4 !important;
+  line-height: 0.8 !important;
 }
 
 pre.astro-code .line-number {
