@@ -279,7 +279,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     overflow-x: auto;
     font-family: var(--font-mono, 'JetBrains Mono', monospace);
     font-size: 0.875rem;
-    line-height: 1.7;
+    line-height: 1.4 !important;
     background: transparent !important;
     color: var(--color-text-primary) !important;
   }
@@ -293,15 +293,15 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     overflow: hidden;
     margin: 1.5rem 0 !important;
     position: relative !important;
-    line-height: 1.5 !important;
+    line-height: 1.4 !important;
   }
 
   .article-content :global(pre.astro-code code) {
-    line-height: 1.5 !important;
+    line-height: 1.4 !important;
   }
 
   .article-content :global(pre.astro-code .line) {
-    line-height: 1.5 !important;
+    line-height: 1.4 !important;
   }
 
   /* 暗色模式：强制覆盖内联样式 */
