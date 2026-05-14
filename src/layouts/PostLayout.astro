@@ -279,7 +279,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     overflow-x: auto;
     font-family: var(--font-mono, 'JetBrains Mono', monospace);
     font-size: 0.875rem;
-    line-height: 0.8 !important;
+    line-height: 1.7 !important;
     background: transparent !important;
     color: var(--color-text-primary) !important;
   }
@@ -293,15 +293,15 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     overflow: hidden;
     margin: 1.5rem 0 !important;
     position: relative !important;
-    line-height: 0.8 !important;
+    line-height: 1.7 !important;
   }
 
   .article-content :global(pre.astro-code code) {
-    line-height: 0.8 !important;
+    line-height: 1.7 !important;
   }
 
   .article-content :global(pre.astro-code .line) {
-    line-height: 0.8 !important;
+    line-height: 1.7 !important;
   }
 
   /* 暗色模式：强制覆盖内联样式 */
@@ -363,15 +363,22 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
   }
 
   /* Tables - vhAstro-Theme Style */
-  .article-content :global(table) {
-    width: 100%;
+  .article-content :global(.table-wrapper) {
+    overflow-x: auto;
     margin: 1.5rem 0;
-    border-collapse: collapse;
-    font-size: 0.9375rem;
-    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    background: var(--color-surface);
+  }
+
+  .article-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
 
   .article-content :global(thead) {
@@ -497,19 +504,32 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
 </style>
 
 <script>
-  // 代码块复制功能
-  document.addEventListener('DOMContentLoaded', () => {
-    const codeBlocks = document.querySelectorAll('pre');
+  function initCodeCopyAndTables() {
+    // 包裹表格用于横向滚动
+    const tables = document.querySelectorAll('.article-content table');
+    tables.forEach((table) => {
+      if (table.parentElement?.classList.contains('table-wrapper')) return;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentNode?.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+
+    // 代码块复制功能
+    const codeBlocks = document.querySelectorAll('.article-content pre');
     
     codeBlocks.forEach((block) => {
+      // 跳过已添加按钮的代码块
+      if (block.querySelector('.copy-button')) return;
+      
+      // 确保代码块有相对定位
+      block.style.position = 'relative';
+      
       // 创建复制按钮
       const copyButton = document.createElement('button');
       copyButton.className = 'copy-button';
       copyButton.innerHTML = '📋 复制';
       copyButton.setAttribute('aria-label', '复制代码');
-      
-      // 添加按钮到代码块
-      block.style.position = 'relative';
       block.appendChild(copyButton);
       
       // 点击复制功能
@@ -537,6 +557,8 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
 
     // 分享功能
     document.querySelectorAll('.share-btn').forEach(btn => {
+      if (btn.dataset.initialized) return;
+      btn.dataset.initialized = 'true';
       btn.addEventListener('click', () => {
         const platform = btn.getAttribute('data-platform');
         const url = window.location.href;
@@ -557,5 +579,9 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
         }
       });
     });
-  });
+  }
+
+  // 兼容 Astro SPA 导航和首次加载
+  document.addEventListener('astro:page-load', initCodeCopyAndTables);
+  document.addEventListener('DOMContentLoaded', initCodeCopyAndTables);
 </script>
