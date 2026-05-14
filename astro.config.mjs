@@ -12,7 +12,7 @@ export default defineConfig({
         light: 'github-light',
         dark: 'github-dark'
       },
-      wrap: true,
+      wrap: false,
       // 启用行号
       transformers: [{
         name: 'add-line-numbers',

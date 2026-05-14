@@ -263,69 +263,82 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
   }
 
   /* Code Blocks - vhAstro-Theme Style */
-  .article-content :global(pre) {
+  .article-content :global(pre),
+  .article-content :global(pre.astro-code) {
     background: var(--color-surface) !important;
     border: 1px solid var(--color-border) !important;
     border-radius: var(--radius-lg) !important;
     padding: 0 !important;
-    overflow: hidden;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     margin: 1.5rem 0 !important;
     position: relative !important;
+    line-height: 1.7 !important;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .article-content :global(pre code) {
+  .article-content :global(pre code),
+  .article-content :global(pre.astro-code code) {
     display: block;
     padding: 1.25rem !important;
-    overflow-x: auto;
+    overflow-x: visible;
     font-family: var(--font-mono, 'JetBrains Mono', monospace);
     font-size: 0.875rem;
     line-height: 1.7 !important;
     background: transparent !important;
     color: var(--color-text-primary) !important;
+    white-space: pre !important;
   }
 
-  /* Shiki code blocks - 支持Astro双主题 */
-  .article-content :global(pre.astro-code) {
-    background: var(--shiki-light-bg, var(--color-surface)) !important;
-    border: 1px solid var(--color-border) !important;
-    border-radius: var(--radius-lg) !important;
-    padding: 0 !important;
-    overflow: hidden;
-    margin: 1.5rem 0 !important;
-    position: relative !important;
-    line-height: 1.7 !important;
-  }
-
-  .article-content :global(pre.astro-code code) {
-    line-height: 1.7 !important;
-  }
-
+  /* Shiki 行元素：确保每行是独立块，换行时行距正确 */
+  .article-content :global(pre .line),
   .article-content :global(pre.astro-code .line) {
+    display: block !important;
     line-height: 1.7 !important;
+    min-height: 1.7em;
   }
 
   /* 暗色模式：强制覆盖内联样式 */
+  [data-theme="dark"] .article-content :global(pre),
   [data-theme="dark"] .article-content :global(pre.astro-code) {
-    background: var(--shiki-dark-bg, #24292e) !important;
-    color: var(--shiki-dark, #e1e4e8) !important;
+    background: #1a2332 !important;
+    color: #e2e8f0 !important;
   }
 
+  [data-theme="dark"] .article-content :global(pre code),
   [data-theme="dark"] .article-content :global(pre.astro-code code) {
-    color: var(--shiki-dark, #e1e4e8) !important;
+    color: #e2e8f0 !important;
   }
 
+  [data-theme="dark"] .article-content :global(pre span),
   [data-theme="dark"] .article-content :global(pre.astro-code span) {
-    color: var(--shiki-dark, #e1e4e8) !important;
+    color: inherit !important;
+  }
+
+  [data-theme="dark"] .article-content :global(pre) .copy-button,
+  [data-theme="dark"] .article-content :global(pre.astro-code) .copy-button {
+    background: #334155;
+    border-color: #475569;
+    color: #94a3b8;
   }
 
   @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .article-content :global(pre),
     :root:not([data-theme="light"]) .article-content :global(pre.astro-code) {
-      background: var(--shiki-dark-bg, #24292e) !important;
-      color: var(--shiki-dark, #e1e4e8) !important;
+      background: #1a2332 !important;
+      color: #e2e8f0 !important;
     }
     
+    :root:not([data-theme="light"]) .article-content :global(pre code),
     :root:not([data-theme="light"]) .article-content :global(pre.astro-code code) {
-      color: var(--shiki-dark, #e1e4e8) !important;
+      color: #e2e8f0 !important;
+    }
+
+    :root:not([data-theme="light"]) .article-content :global(pre) .copy-button,
+    :root:not([data-theme="light"]) .article-content :global(pre.astro-code) .copy-button {
+      background: #334155;
+      border-color: #475569;
+      color: #94a3b8;
     }
   }
 
@@ -469,8 +482,8 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     transform: translateY(-2px);
   }
 
-  /* Copy Button - Inside Code Block */
-  .copy-button {
+  .article-content :global(pre) .copy-button,
+  .article-content :global(pre.astro-code) .copy-button {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -486,17 +499,18 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     z-index: 10;
   }
 
-  :global(pre:hover) .copy-button {
+  .article-content :global(pre:hover) .copy-button,
+  .article-content :global(pre.astro-code:hover) .copy-button {
     opacity: 1;
   }
 
-  .copy-button:hover {
+  .article-content :global(.copy-button:hover) {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: white;
   }
 
-  .copy-button.copied {
+  .article-content :global(.copy-button.copied) {
     background: #10b981;
     border-color: #10b981;
     color: white;
