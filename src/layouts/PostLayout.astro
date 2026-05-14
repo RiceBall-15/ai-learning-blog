@@ -273,7 +273,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     overflow-y: hidden !important;
     margin: 1.5rem 0 !important;
     position: relative !important;
-    line-height: 1.7 !important;
+    line-height: 1.5 !important;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -284,7 +284,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
     overflow-x: visible;
     font-family: var(--font-mono, 'JetBrains Mono', monospace);
     font-size: 0.875rem;
-    line-height: 1.7 !important;
+    line-height: 1.5 !important;
     background: transparent !important;
     color: var(--color-text-primary) !important;
     white-space: pre !important;
@@ -294,8 +294,8 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
   .article-content :global(pre .line),
   .article-content :global(pre.astro-code .line) {
     display: block !important;
-    line-height: 1.7 !important;
-    min-height: 1.7em;
+    line-height: 1.5 !important;
+    min-height: 1.5em !important;
   }
 
   /* 暗色模式：强制覆盖内联样式 */
@@ -501,23 +501,60 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
 
   .article-content :global(pre:hover) .copy-button,
   .article-content :global(pre.astro-code:hover) .copy-button {
-    opacity: 1;
+    opacity: 1 !important;
   }
 
   .article-content :global(.copy-button:hover) {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: white;
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: white !important;
   }
 
   .article-content :global(.copy-button.copied) {
+    background: #10b981 !important;
+    border-color: #10b981 !important;
+    color: white !important;
+  }
+
+  /* 代码复制 Toast 提示 */
+  .copy-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 24px;
     background: #10b981;
-    border-color: #10b981;
     color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .copy-toast.show {
+    opacity: 1;
   }
 </style>
 
 <script>
+  // Toast 提示函数
+  function showCopyToast(message) {
+    let toast = document.querySelector('.copy-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'copy-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 1800);
+  }
+
   function initCodeCopyAndTables() {
     // 包裹表格用于横向滚动
     const tables = document.querySelectorAll('.article-content table');
@@ -555,6 +592,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
           await navigator.clipboard.writeText(text || '');
           copyButton.innerHTML = '✅ 已复制';
           copyButton.classList.add('copied');
+          showCopyToast('✅ 代码已复制到剪贴板');
           
           setTimeout(() => {
             copyButton.innerHTML = '📋 复制';
@@ -562,6 +600,7 @@ const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
           }, 2000);
         } catch (err) {
           copyButton.innerHTML = '❌ 失败';
+          showCopyToast('❌ 复制失败，请手动复制');
           setTimeout(() => {
             copyButton.innerHTML = '📋 复制';
           }, 2000);
