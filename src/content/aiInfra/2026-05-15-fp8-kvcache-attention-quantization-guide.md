@@ -3,7 +3,7 @@ title: "FP8 KV-Cache与注意力量化：从原理到生产部署的完整指南
 description: "深入解析FP8 KV-Cache量化技术的工作原理、精度陷阱、性能收益及在vLLM中的生产实践，帮助你以一半内存成本服务长上下文LLM"
 date: 2026-05-15
 author: "RiceBall-15"
-category: "inference"
+category: aiInfra
 tags: ["FP8", "KV-Cache", "量化", "vLLM", "LLM推理", "长上下文", "性能优化"]
 draft: false
 ---

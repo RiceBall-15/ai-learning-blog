@@ -3,7 +3,7 @@ title: "LLM多令牌预测(MTP)与串行识别Token技术深度对比：架构�
 description: "深入剖析LLM中的两种token预测策略：多令牌预测(MTP)与串行识别token，从架构设计、训练效率、推理速度到实际应用场景进行全面对比分析"
 date: 2026-05-15
 author: RiceBall-15
-category: modelTraining
+category: aiInfra
 tags: ["LLM", "多令牌预测", "MTP", "串行识别token", "自回归生成", "推测解码", "训练优化", "推理加速"]
 draft: false
 ---

@@ -3,7 +3,7 @@ title: "SGLang 高性能推理框架指南"
 description: "深入解析 SGLang 框架的架构、特性、性能对比和最佳实践"
 date: 2026-04-24
 author: "RiceBall-15"
-category: "推理框架"
+category: aiInfra
 tags: ["SGLang", "LLM推理", "结构化生成", "高性能"]
 draft: false
 ---

@@ -11,7 +11,7 @@ const postSchema = z.object({
   draft: z.boolean().default(false),
 });
 
-// ============ 6个核心分类 ============
+// ============ 5个核心分类 ============
 
 // 🤖 AI智能体 (合并: agentMemory, agentSkill, agentOps, llmAgent, aiAgent, agentSystem)
 const agent = defineCollection({
@@ -19,14 +19,8 @@ const agent = defineCollection({
   schema: postSchema,
 });
 
-// 🧠 模型训练 (合并: llmTraining, modelDeploymentTraining, modelDeployment)
-const modelTraining = defineCollection({
-  type: 'content',
-  schema: postSchema,
-});
-
-// ⚡ 推理与评估 (合并: sglang, evaluation)
-const inference = defineCollection({
+// 🔧 AI基础设施 (合并: modelTraining, inference, llmTraining, sglang, evaluation, modelDeployment等)
+const aiInfra = defineCollection({
   type: 'content',
   schema: postSchema,
 });
@@ -51,8 +45,7 @@ const architecture = defineCollection({
 
 export const collections = {
   agent,
-  modelTraining,
-  inference,
+  aiInfra,
   framework,
   engineering,
   architecture,
@@ -65,15 +58,10 @@ export const categoryMeta: Record<string, { name: string; icon: string; descript
     icon: '🤖',
     description: 'Agent架构、记忆系统、技能开发与运维实践',
   },
-  modelTraining: {
-    name: '模型训练',
-    icon: '🧠',
-    description: 'LLM训练技术、微调方法、分布式训练与模型部署',
-  },
-  inference: {
-    name: '推理与评估',
-    icon: '⚡',
-    description: '高性能推理框架、模型评估与基准测试',
+  aiInfra: {
+    name: 'AI基础设施',
+    icon: '🔧',
+    description: '模型训练、推理优化、量化评估与AI Infra工程实践',
   },
   framework: {
     name: '框架应用',
@@ -100,11 +88,11 @@ export const legacyCollectionMap: Record<string, string> = {
   llmAgent: 'agent',
   aiAgent: 'agent',
   agentSystem: 'agent',
-  llmTraining: 'modelTraining',
-  modelDeploymentTraining: 'modelTraining',
-  modelDeployment: 'modelTraining',
-  sglang: 'inference',
-  evaluation: 'inference',
+  llmTraining: 'aiInfra',
+  modelDeploymentTraining: 'aiInfra',
+  modelDeployment: 'aiInfra',
+  sglang: 'aiInfra',
+  evaluation: 'aiInfra',
   langchain4j: 'framework',
   aiCoding: 'engineering',
   'ai-engineering': 'engineering',

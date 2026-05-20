@@ -3,7 +3,7 @@ title: "GRPO深度解析：从PPO到群组相对策略优化，LLM推理能力�
 description: "深入剖析GRPO算法原理、与PPO的核心差异、DeepSeek R1的训练策略，以及如何用TRL/Axolotl实战GRPO训练"
 date: 2026-05-16
 author: RiceBall-15
-category: modelTraining
+category: aiInfra
 tags: ["GRPO", "强化学习", "DeepSeek R1", "PPO", "RLHF", "LLM推理", "策略优化"]
 draft: false
 ---

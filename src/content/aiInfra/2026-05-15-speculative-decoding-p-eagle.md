@@ -3,7 +3,7 @@ title: "投机解码演进：从基础Speculative Decoding到P-EAGLE并行草稿
 description: "全面解析LLM投机解码技术的演进——从基础Draft-Verify范式到EAGLE系列，再到P-EAGLE的并行突破，涵盖原理、架构与生产部署实践"
 date: 2026-05-15
 author: "RiceBall-15"
-category: "inference"
+category: aiInfra
 tags: ["投机解码", "Speculative Decoding", "EAGLE", "P-EAGLE", "vLLM", "LLM推理", "推理加速"]
 draft: false
 ---
