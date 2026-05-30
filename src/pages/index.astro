@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { categoryMeta } from '../content/config';
+import { categoryMeta, subCategories, legacySubCategoryMap } from '../content/config';
 
 // 动态获取所有分类的文章
 const collectionData: Record<string, { name: string; icon: string; description: string; posts: any[] }> = {};
@@ -40,6 +40,7 @@ const postsData = allPosts.map(post => ({
   date: post.data.date.toISOString(),
   tags: post.data.tags || [],
   category: post.data.category || '',
+  subCategory: post.data.subCategory || legacySubCategoryMap[post.data.category] || '',
 }));
 
 const categoriesData = Object.fromEntries(
@@ -49,10 +50,35 @@ const categoriesData = Object.fromEntries(
       name: meta.name, 
       icon: meta.icon, 
       count: meta.posts.length,
-      posts: meta.posts.map(p => p.slug)
+      subCategories: subCategories[key] || [],
+      posts: meta.posts.map(p => ({
+        slug: p.slug,
+        subCategory: p.data.subCategory || legacySubCategoryMap[p.data.category] || '',
+      }))
     }
   ])
 );
+
+// 构建子分类文章映射
+const subCategoryPosts: Record<string, { name: string; icon: string; posts: any[] }> = {};
+for (const [catKey, catMeta] of Object.entries(categoriesData)) {
+  const subs = catMeta.subCategories;
+  for (const sub of subs) {
+    const posts = catMeta.posts.filter(p => p.subCategory === sub.id);
+    if (posts.length > 0) {
+      subCategoryPosts[sub.id] = {
+        name: sub.name,
+        icon: sub.icon,
+        posts,
+        parent: catKey,
+      };
+    }
+  }
+}
+
+// 打印调试信息
+console.log('SubCategories defined:', Object.keys(subCategories));
+console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
 ---
 
 <Layout title="AI 深度学习笔记">
@@ -123,8 +149,18 @@ const categoriesData = Object.fromEntries(
             <span id="sectionTitle">最新文章</span>
             <span class="article-count" id="articleCount">({totalPosts}篇)</span>
           </h2>
-          <div class="filter-tabs">
-            <button class="filter-tab active" data-category="all">全部</button>
+          <!-- 视图切换 -->
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="list" title="列表视图">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M2 3h12v1H2V3zm0 4h12v1H2V7zm0 4h12v1H2v-1z"/>
+              </svg>
+            </button>
+            <button class="view-btn" data-view="grouped" title="分组视图">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M1 2h6v6H1V2zm8 0h6v6H9V2zM1 10h6v4H1v-4zm8 0h6v4H9v-4z"/>
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -141,6 +177,7 @@ const categoriesData = Object.fromEntries(
           <span class="search-count" id="searchCount"></span>
         </div>
 
+        <!-- 分类筛选标签 -->
         <div class="filter-tabs" id="filterTabs">
           <button class="filter-tab active" data-category="all">全部</button>
           {activeCollections.map(([key, meta]) => (
@@ -152,8 +189,9 @@ const categoriesData = Object.fromEntries(
           ))}
         </div>
 
+        <!-- 文章列表视图 -->
         <div class="articles-list" id="articlesList">
-          {allPosts.slice(0, 10).map((post, index) => (
+          {allPosts.slice(0, 12).map((post, index) => (
             <article class="article-item" style={`--delay: ${index * 0.05}s`}>
               <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="article-link">
                 <div class="article-meta">
@@ -180,6 +218,90 @@ const categoriesData = Object.fromEntries(
           ))}
         </div>
 
+        <!-- 分组视图 -->
+        <div class="grouped-view" id="groupedView" style="display: none;">
+          {activeCollections.map(([catKey, catMeta]) => (
+            <div class="category-group" data-category={catKey}>
+              <div class="group-header" data-toggle={catKey}>
+                <span class="group-icon">{catMeta.icon}</span>
+                <span class="group-name">{catMeta.name}</span>
+                <span class="group-count">{catMeta.posts.length}篇</span>
+                <span class="group-arrow">▼</span>
+              </div>
+              <div class="group-content" id={`group-${catKey}`}>
+                {/* 显示子分类 */}
+                {(subCategories[catKey] || []).map(sub => {
+                  const subPosts = allPosts.filter(p => {
+                    const postSubCat = p.data.subCategory || legacySubCategoryMap[p.data.category] || '';
+                    return p.collection === catKey && postSubCat === sub.id;
+                  });
+                  if (subPosts.length === 0) return null;
+                  return (
+                    <div class="subcategory-group">
+                      <div class="subcategory-header" data-toggle={`sub-${sub.id}`}>
+                        <span class="subcategory-icon">{sub.icon}</span>
+                        <span class="subcategory-name">{sub.name}</span>
+                        <span class="subcategory-count">{subPosts.length}</span>
+                        <span class="subcategory-arrow">›</span>
+                      </div>
+                      <div class="subcategory-content" id={`sub-${sub.id}`}>
+                        {subPosts.slice(0, 5).map(post => (
+                          <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="grouped-article-link">
+                            <span class="article-dot">•</span>
+                            <span class="article-title-text">{post.data.title}</span>
+                            <span class="article-date-small">
+                              {post.data.date.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' })}
+                            </span>
+                          </a>
+                        ))}
+                        {subPosts.length > 5 && (
+                          <div class="show-more" data-category={catKey} data-subcategory={sub.id}>
+                            查看全部 {subPosts.length} 篇 →
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+                {/* 显示未分类的文章 */}
+                {(() => {
+                  const uncategorized = allPosts.filter(p => {
+                    const postSubCat = p.data.subCategory || legacySubCategoryMap[p.data.category] || '';
+                    return p.collection === catKey && !postSubCat;
+                  });
+                  if (uncategorized.length === 0) return null;
+                  return (
+                    <div class="subcategory-group">
+                      <div class="subcategory-header" data-toggle={`sub-uncategorized-${catKey}`}>
+                        <span class="subcategory-icon">📄</span>
+                        <span class="subcategory-name">其他</span>
+                        <span class="subcategory-count">{uncategorized.length}</span>
+                        <span class="subcategory-arrow">›</span>
+                      </div>
+                      <div class="subcategory-content" id={`sub-uncategorized-${catKey}`}>
+                        {uncategorized.slice(0, 5).map(post => (
+                          <a href={`/ai-learning-blog/${post.collection}/${post.slug}`} class="grouped-article-link">
+                            <span class="article-dot">•</span>
+                            <span class="article-title-text">{post.data.title}</span>
+                            <span class="article-date-small">
+                              {post.data.date.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' })}
+                            </span>
+                          </a>
+                        ))}
+                        {uncategorized.length > 5 && (
+                          <div class="show-more" data-category={catKey}>
+                            查看全部 {uncategorized.length} 篇 →
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+          ))}
+        </div>
+
         <!-- 分页 -->
         <nav class="pagination" id="pagination">
           <button class="page-btn prev disabled" id="prevBtn">上一页</button>
@@ -201,19 +323,52 @@ const categoriesData = Object.fromEntries(
           </div>
         </div>
 
-        <!-- 学习系列 -->
+        <!-- 学习系列 - 树形导航 -->
         <div class="sidebar-card">
           <h3 class="sidebar-title">
             <span class="title-icon">📚</span>
             <span>学习系列</span>
           </h3>
-          <nav class="category-list">
+          <nav class="category-tree">
             {activeCollections.map(([key, meta]) => (
-              <a href="#" class="category-item" data-category={key}>
-                <span class="category-icon">{meta.icon}</span>
-                <span class="category-name">{meta.name}</span>
-                <span class="category-count">{meta.posts.length}</span>
-              </a>
+              <div class="tree-parent">
+                <a href="#" class="tree-parent-link" data-category={key}>
+                  <span class="tree-icon">{meta.icon}</span>
+                  <span class="tree-name">{meta.name}</span>
+                  <span class="tree-count">{meta.posts.length}</span>
+                  <span class="tree-arrow" data-toggle-tree={key}>▶</span>
+                </a>
+                <div class="tree-children" id={`tree-${key}`}>
+                  {(subCategories[key] || []).map(sub => {
+                    const subCount = allPosts.filter(p => {
+                      const postSubCat = p.data.subCategory || legacySubCategoryMap[p.data.category] || '';
+                      return p.collection === key && postSubCat === sub.id;
+                    }).length;
+                    if (subCount === 0) return null;
+                    return (
+                      <a href="#" class="tree-child-link" data-category={key} data-subcategory={sub.id}>
+                        <span class="child-icon">{sub.icon}</span>
+                        <span class="child-name">{sub.name}</span>
+                        <span class="child-count">{subCount}</span>
+                      </a>
+                    );
+                  })}
+                  {(() => {
+                    const uncategorizedCount = allPosts.filter(p => {
+                      const postSubCat = p.data.subCategory || legacySubCategoryMap[p.data.category] || '';
+                      return p.collection === key && !postSubCat;
+                    }).length;
+                    if (uncategorizedCount === 0) return null;
+                    return (
+                      <a href="#" class="tree-child-link" data-category={key} data-subcategory="">
+                        <span class="child-icon">📄</span>
+                        <span class="child-name">其他</span>
+                        <span class="child-count">{uncategorizedCount}</span>
+                      </a>
+                    );
+                  })()}
+                </div>
+              </div>
             ))}
           </nav>
         </div>
@@ -499,6 +654,39 @@ const categoriesData = Object.fromEntries(
     margin: 0;
   }
 
+  /* ==================== 视图切换 ==================== */
+  .view-toggle {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .view-btn:hover {
+    color: var(--color-text);
+  }
+
+  .view-btn.active {
+    background: var(--color-primary);
+    color: white;
+  }
+
   .filter-tabs {
     display: flex;
     gap: 0.5rem;
@@ -716,6 +904,181 @@ const categoriesData = Object.fromEntries(
     border-radius: var(--radius-sm);
   }
 
+  /* ==================== 分组视图 ==================== */
+  .grouped-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .category-group {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: var(--color-bg-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .group-header:hover {
+    background: rgba(99, 102, 241, 0.05);
+  }
+
+  .group-icon {
+    font-size: 1.25rem;
+  }
+
+  .group-name {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .group-count {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+  }
+
+  .group-arrow {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s ease;
+  }
+
+  .category-group.expanded .group-arrow {
+    transform: rotate(180deg);
+  }
+
+  .group-content {
+    display: none;
+    padding: 0.5rem;
+  }
+
+  .category-group.expanded .group-content {
+    display: block;
+  }
+
+  /* 子分类样式 */
+  .subcategory-group {
+    margin: 0.5rem;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .subcategory-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .subcategory-header:hover {
+    background: rgba(99, 102, 241, 0.05);
+  }
+
+  .subcategory-icon {
+    font-size: 1rem;
+  }
+
+  .subcategory-name {
+    flex: 1;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .subcategory-count {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    padding: 0.125rem 0.375rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+  }
+
+  .subcategory-arrow {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s ease;
+  }
+
+  .subcategory-group.expanded .subcategory-arrow {
+    transform: rotate(90deg);
+  }
+
+  .subcategory-content {
+    display: none;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .subcategory-group.expanded .subcategory-content {
+    display: block;
+  }
+
+  .grouped-article-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    color: var(--color-text);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+  }
+
+  .grouped-article-link:hover {
+    background: var(--color-bg-secondary);
+    color: var(--color-primary);
+  }
+
+  .article-dot {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+  }
+
+  .article-title-text {
+    flex: 1;
+    font-size: 0.875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .article-date-small {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+
+  .show-more {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition);
+  }
+
+  .show-more:hover {
+    background: rgba(99, 102, 241, 0.05);
+  }
+
   /* ==================== 分页 ==================== */
   .pagination {
     display: flex;
@@ -835,17 +1198,22 @@ const categoriesData = Object.fromEntries(
     margin: 0;
   }
 
-  .category-list {
+  /* ==================== 树形导航 ==================== */
+  .category-tree {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
 
-  .category-item {
+  .tree-parent {
+    margin-bottom: 0.25rem;
+  }
+
+  .tree-parent-link {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
     background: var(--color-bg-secondary);
     border-radius: var(--radius-md);
     text-decoration: none;
@@ -853,27 +1221,80 @@ const categoriesData = Object.fromEntries(
     transition: var(--transition);
   }
 
-  .category-item:hover {
+  .tree-parent-link:hover {
     background: rgba(99, 102, 241, 0.1);
     color: var(--color-primary);
   }
 
-  .category-icon {
-    font-size: 1.25rem;
+  .tree-icon {
+    font-size: 1rem;
   }
 
-  .category-name {
+  .tree-name {
     flex: 1;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 500;
   }
 
-  .category-count {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+  .tree-count {
+    font-size: 0.7rem;
+    padding: 0.125rem 0.375rem;
     background: var(--color-primary);
     color: white;
+    border-radius: 10px;
+  }
+
+  .tree-arrow {
+    font-size: 0.625rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s ease;
+  }
+
+  .tree-parent.expanded .tree-arrow {
+    transform: rotate(90deg);
+  }
+
+  .tree-children {
+    display: none;
+    padding-left: 1.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .tree-parent.expanded .tree-children {
+    display: block;
+  }
+
+  .tree-child-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    color: var(--color-text-secondary);
     border-radius: var(--radius-sm);
+    transition: var(--transition);
+    font-size: 0.8125rem;
+  }
+
+  .tree-child-link:hover {
+    background: rgba(99, 102, 241, 0.05);
+    color: var(--color-primary);
+  }
+
+  .child-icon {
+    font-size: 0.875rem;
+  }
+
+  .child-name {
+    flex: 1;
+  }
+
+  .child-count {
+    font-size: 0.6875rem;
+    padding: 0.0625rem 0.3125rem;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-muted);
+    border-radius: 8px;
   }
 
   .tags-cloud {
@@ -1108,11 +1529,14 @@ typeWriter();
 const POSTS_PER_PAGE = 12;
 let currentPage = 1;
 let currentCategory = 'all';
+let currentSubCategory = '';
 let filteredPosts = [...postsData];
 let searchQuery = '';
+let currentView = 'list';
 
 // DOM元素
 const articlesList = document.getElementById('articlesList');
+const groupedView = document.getElementById('groupedView');
 const pageNumbers = document.getElementById('pageNumbers');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -1126,16 +1550,18 @@ const articleCount = document.getElementById('articleCount');
 function getFilteredPosts() {
   let posts = currentCategory === 'all' 
     ? [...postsData] 
-    : postsData.filter(p => {
-        const categoryPostSlugs = categoriesData[currentCategory]?.posts || [];
-        return categoryPostSlugs.includes(p.slug);
-      });
+    : postsData.filter(p => p.collection === currentCategory);
+  
+  // 应用子分类过滤
+  if (currentSubCategory) {
+    posts = posts.filter(p => p.subCategory === currentSubCategory);
+  }
   
   if (searchQuery) {
     const query = searchQuery.toLowerCase();
     posts = posts.filter(p => 
-      p.title.toLowerCase().includes(query) ||
-      p.description.toLowerCase().includes(query) ||
+      p.title.toLowerCase().includes(query) || 
+      p.description.toLowerCase().includes(query) || 
       p.tags.some(t => t.toLowerCase().includes(query))
     );
   }
@@ -1191,7 +1617,6 @@ function renderPagination() {
   pageNumbers.innerHTML = '';
   
   if (totalPages <= 7) {
-    // 页数少，全部显示
     for (let i = 1; i <= totalPages; i++) {
       const pageBtn = document.createElement('button');
       pageBtn.className = `page-num ${i === currentPage ? 'active' : ''}`;
@@ -1200,7 +1625,6 @@ function renderPagination() {
       pageNumbers.appendChild(pageBtn);
     }
   } else {
-    // 页数多，显示省略号
     const pages = new Set([1, totalPages]);
     for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
       pages.add(i);
@@ -1233,11 +1657,18 @@ function renderPagination() {
 
 // 更新标题
 function updateTitle() {
-  const categoryInfo = currentCategory === 'all' 
-    ? { name: '最新文章' }
-    : categoriesData[currentCategory];
-  
-  sectionTitle.textContent = categoryInfo.name;
+  let title = '最新文章';
+  if (currentCategory !== 'all') {
+    const categoryInfo = categoriesData[currentCategory];
+    title = categoryInfo.name;
+    if (currentSubCategory) {
+      const subCat = categoryInfo.subCategories?.find(s => s.id === currentSubCategory);
+      if (subCat) {
+        title = `${categoryInfo.name} / ${subCat.name}`;
+      }
+    }
+  }
+  sectionTitle.textContent = title;
 }
 
 // 跳转到指定页
@@ -1253,8 +1684,9 @@ function goToPage(page) {
 }
 
 // 筛选分类
-function filterByCategory(category) {
+function filterByCategory(category, subCategory = '') {
   currentCategory = category;
+  currentSubCategory = subCategory;
   currentPage = 1;
   
   // 更新筛选按钮状态
@@ -1262,9 +1694,19 @@ function filterByCategory(category) {
     btn.classList.toggle('active', btn.dataset.category === category);
   });
   
-  // 更新侧边栏分类状态
-  document.querySelectorAll('.category-item').forEach(item => {
-    item.classList.toggle('active', item.dataset.category === category);
+  // 更新侧边栏树形导航状态
+  document.querySelectorAll('.tree-parent').forEach(item => {
+    const key = item.querySelector('.tree-parent-link')?.dataset.category;
+    if (key === category) {
+      item.classList.add('expanded');
+    } else {
+      item.classList.remove('expanded');
+    }
+  });
+  
+  document.querySelectorAll('.tree-child-link').forEach(item => {
+    const isMatch = item.dataset.category === category && item.dataset.subcategory === subCategory;
+    item.classList.toggle('active', isMatch);
   });
   
   renderArticles();
@@ -1293,6 +1735,25 @@ function clearSearch() {
   updateTitle();
 }
 
+// 视图切换
+function switchView(view) {
+  currentView = view;
+  
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === view);
+  });
+  
+  if (view === 'list') {
+    articlesList.style.display = 'flex';
+    groupedView.style.display = 'none';
+    document.getElementById('pagination').style.display = 'flex';
+  } else {
+    articlesList.style.display = 'none';
+    groupedView.style.display = 'flex';
+    document.getElementById('pagination').style.display = 'none';
+  }
+}
+
 // 初始化事件监听
 document.getElementById('filterTabs').addEventListener('click', (e) => {
   const btn = e.target.closest('.filter-tab');
@@ -1301,11 +1762,59 @@ document.getElementById('filterTabs').addEventListener('click', (e) => {
   }
 });
 
-document.querySelectorAll('.category-item').forEach(item => {
+// 树形导航点击
+document.querySelectorAll('.tree-parent-link').forEach(item => {
   item.addEventListener('click', (e) => {
     e.preventDefault();
-    filterByCategory(item.dataset.category);
-    document.querySelector('.articles-section').scrollIntoView({ behavior: 'smooth' });
+    const category = item.dataset.category;
+    const parent = item.closest('.tree-parent');
+    
+    // 切换展开状态
+    parent.classList.toggle('expanded');
+    
+    // 应用分类筛选
+    filterByCategory(category);
+  });
+});
+
+document.querySelectorAll('.tree-child-link').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const category = item.dataset.category;
+    const subCategory = item.dataset.subcategory;
+    filterByCategory(category, subCategory);
+  });
+});
+
+// 分组视图展开/折叠
+document.querySelectorAll('.group-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const group = header.closest('.category-group');
+    group.classList.toggle('expanded');
+  });
+});
+
+document.querySelectorAll('.subcategory-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const subGroup = header.closest('.subcategory-group');
+    subGroup.classList.toggle('expanded');
+  });
+});
+
+// 显示全部按钮
+document.querySelectorAll('.show-more').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.dataset.category;
+    const subCategory = btn.dataset.subcategory;
+    filterByCategory(category, subCategory);
+    switchView('list');
+  });
+});
+
+// 视图切换按钮
+document.querySelectorAll('.view-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchView(btn.dataset.view);
   });
 });
 
@@ -1326,7 +1835,6 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && searchQuery) {
     clearSearch();
   }
-  // Ctrl/Cmd + K 聚焦搜索框
   if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
     e.preventDefault();
     searchInput.focus();

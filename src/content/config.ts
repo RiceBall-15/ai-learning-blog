@@ -7,6 +7,7 @@ const postSchema = z.object({
   date: z.coerce.date(),
   author: z.string().default('RiceBall-15'),
   category: z.string().optional(),
+  subCategory: z.string().optional(), // 新增：子分类
   tags: z.array(z.string()).default([]),
   draft: z.boolean().default(false),
 });
@@ -49,6 +50,36 @@ export const collections = {
   framework,
   engineering,
   architecture,
+};
+
+// ============ 子分类定义 ============
+export const subCategories: Record<string, { id: string; name: string; icon: string }[]> = {
+  agent: [
+    { id: 'agent-architecture', name: '架构设计', icon: '🏛️' },
+    { id: 'agent-memory', name: '记忆系统', icon: '🧠' },
+    { id: 'agent-skill', name: '技能开发', icon: '⚡' },
+    { id: 'agent-ops', name: '运维实践', icon: '🔧' },
+  ],
+  aiInfra: [
+    { id: 'model-training', name: '模型训练', icon: '🏋️' },
+    { id: 'inference', name: '推理优化', icon: '🚀' },
+    { id: 'evaluation', name: '量化评估', icon: '📊' },
+  ],
+  framework: [
+    { id: 'rag', name: 'RAG系统', icon: '📚' },
+    { id: 'agent-framework', name: 'Agent框架', icon: '🤖' },
+    { id: 'protocols', name: '工具协议', icon: '🔌' },
+  ],
+  engineering: [
+    { id: 'ai-coding', name: 'AI编程工具', icon: '💻' },
+    { id: 'infra', name: '基础设施', icon: '🏗️' },
+    { id: 'learning', name: '学习方法', icon: '📖' },
+  ],
+  architecture: [
+    { id: 'distributed', name: '分布式系统', icon: '🌐' },
+    { id: 'microservices', name: '微服务架构', icon: '🧩' },
+    { id: 'cloud-native', name: '云原生', icon: '☁️' },
+  ],
 };
 
 // ============ 分类元数据（供首页和导航使用）============
@@ -100,4 +131,26 @@ export const legacyCollectionMap: Record<string, string> = {
   frontend: 'engineering',
   'learning-methodology': 'engineering',
   architecture: 'architecture',
+};
+
+// ============ 旧子分类到新子分类的映射 ============
+export const legacySubCategoryMap: Record<string, string> = {
+  agentMemory: 'agent-memory',
+  agentSkill: 'agent-skill',
+  agentOps: 'agent-ops',
+  llmAgent: 'agent-architecture',
+  aiAgent: 'agent-architecture',
+  agentSystem: 'agent-architecture',
+  llmTraining: 'model-training',
+  modelDeploymentTraining: 'model-training',
+  modelDeployment: 'inference',
+  sglang: 'inference',
+  evaluation: 'evaluation',
+  langchain4j: 'rag',
+  aiCoding: 'ai-coding',
+  'ai-engineering': 'ai-coding',
+  aiInfrastructure: 'infra',
+  frontend: 'infra',
+  'learning-methodology': 'learning',
+  architecture: 'distributed',
 };
