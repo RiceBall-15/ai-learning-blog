@@ -12,7 +12,7 @@ const postSchema = z.object({
   draft: z.boolean().default(false),
 });
 
-// ============ 5个核心分类 ============
+// ============ 6个核心分类 ============
 
 // 🤖 AI智能体 (合并: agentMemory, agentSkill, agentOps, llmAgent, aiAgent, agentSystem)
 const agent = defineCollection({
@@ -44,12 +44,19 @@ const architecture = defineCollection({
   schema: postSchema,
 });
 
+// 📖 优秀文章精选 (新增: 参考优秀博主风格的文章)
+const featured = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
 export const collections = {
   agent,
   aiInfra,
   framework,
   engineering,
   architecture,
+  featured,
 };
 
 // ============ 子分类定义 ============
@@ -80,6 +87,11 @@ export const subCategories: Record<string, { id: string; name: string; icon: str
     { id: 'microservices', name: '微服务架构', icon: '🧩' },
     { id: 'cloud-native', name: '云原生', icon: '☁️' },
   ],
+  featured: [
+    { id: 'ai-architecture', name: 'AI架构', icon: '🤖' },
+    { id: 'interview', name: '面试精选', icon: '💼' },
+    { id: 'deep-dive', name: '深度解析', icon: '🔍' },
+  ],
 };
 
 // ============ 分类元数据（供首页和导航使用）============
@@ -108,6 +120,11 @@ export const categoryMeta: Record<string, { name: string; icon: string; descript
     name: '系统架构',
     icon: '🏗',
     description: 'AI系统架构设计、分布式系统与工程实践',
+  },
+  featured: {
+    name: '优秀文章精选',
+    icon: '⭐',
+    description: '参考优秀博主风格的深度技术文章，面试精选与架构深度解析',
   },
 };
 
