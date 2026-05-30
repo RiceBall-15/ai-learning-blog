@@ -6,6 +6,7 @@ category: "agentMemory"
 source: "DEV Community"
 original_url: "https://dev.to/meridian-ai/building-a-21-layer-memory-stack-for-an-ai-that-forgets-every-5-minutes-4gpp"
 author: RiceBall-15
+subCategory: agent-memory
 tags: ["AI代理", "记忆系统", "架构设计"]
 draft: false
 ---

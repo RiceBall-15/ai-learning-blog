@@ -4,6 +4,7 @@ description: "深入解析Claude-Mem的5个Hook生命周期事件、触发时机
 date: 2026-05-12
 author: RiceBall-15
 category: agentMemory
+subCategory: agent-memory
 tags:
   - AI Agent
   - Hook机制

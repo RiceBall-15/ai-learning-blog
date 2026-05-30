@@ -4,6 +4,7 @@ description: "深入解析Claude-Mem的双存储架构设计，包括SQLite关�
 date: 2026-05-12
 author: RiceBall-15
 category: agentMemory
+subCategory: agent-memory
 tags:
   - AI Agent
   - SQLite

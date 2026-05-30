@@ -4,6 +4,7 @@ description: "深入解析Claude-Mem的典型应用场景、部署配置、性�
 date: 2026-05-12
 author: RiceBall-15
 category: agentMemory
+subCategory: agent-memory
 tags:
   - AI Agent
   - 最佳实践

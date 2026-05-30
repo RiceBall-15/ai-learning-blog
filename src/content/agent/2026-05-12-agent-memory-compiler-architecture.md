@@ -4,6 +4,7 @@ description: "深入解析Claude Memory Compiler的架构设计，探讨如何�
 date: 2026-05-12
 author: RiceBall-15
 category: agentMemory
+subCategory: agent-memory
 tags: ["Agent记忆", "知识库", "对话编译", "Karpathy架构", "自动化"]
 draft: false
 ---

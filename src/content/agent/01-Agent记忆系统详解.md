@@ -4,6 +4,7 @@ description: "深入解析Agent的记忆系统，包括各种记忆类型、实�
 date: 2026-04-24
 author: "RiceBall-15"
 category: "agentMemory"
+subCategory: agent-memory
 tags: ["记忆系统", "ChatMemory", "RAG", "向量数据库", "长期记忆", "短期记忆"]
 draft: false
 ---

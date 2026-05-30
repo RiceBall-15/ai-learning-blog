@@ -4,6 +4,7 @@ description: 从向量检索到多层记忆系统，详解Agent记忆架构的�
 date: 2026-05-13
 author: RiceBall-15
 category: agent
+subCategory: agent-memory
 tags: [Agent, 记忆系统, 向量检索, 架构设计, 性能优化]
 draft: false
 ---

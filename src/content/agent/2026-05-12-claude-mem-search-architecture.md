@@ -4,6 +4,7 @@ description: "深入解析Claude-Mem的搜索架构设计，包括3层渐进式�
 date: 2026-05-12
 author: RiceBall-15
 category: agentMemory
+subCategory: agent-memory
 tags:
   - AI Agent
   - 搜索架构

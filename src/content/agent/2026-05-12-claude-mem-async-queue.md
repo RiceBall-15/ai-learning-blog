@@ -4,6 +4,7 @@ description: "深入解析Claude-Mem的异步队列处理机制、PendingMessage
 date: 2026-05-12
 author: RiceBall-15
 category: agentMemory
+subCategory: agent-memory
 tags:
   - AI Agent
   - 异步队列

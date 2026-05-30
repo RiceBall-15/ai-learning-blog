@@ -4,6 +4,7 @@ description: "深度解析Claude Code的Skills技能系统和Memory记忆系统�
 date: 2026-05-12
 author: "AI学习笔记"
 category: "agent"
+subCategory: agent-memory
 tags:
   - Claude Code
   - Skills

@@ -4,6 +4,7 @@ description: "深入解析Claude-Mem项目的核心价值、解决的问题、�
 date: 2026-05-12
 author: RiceBall-15
 category: agentMemory
+subCategory: agent-memory
 tags:
   - AI Agent
   - 持久化记忆
