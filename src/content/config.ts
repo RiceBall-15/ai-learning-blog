@@ -12,7 +12,7 @@ const postSchema = z.object({
   draft: z.boolean().default(false),
 });
 
-// ============ 6个核心分类 ============
+// ============ 7个核心分类 ============
 
 // 🤖 AI智能体 (合并: agentMemory, agentSkill, agentOps, llmAgent, aiAgent, agentSystem)
 const agent = defineCollection({
@@ -50,6 +50,12 @@ const featured = defineCollection({
   schema: postSchema,
 });
 
+// 🔧 AI工具评测 (新增: AI工具深度评测与对比)
+const aiTools = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
 export const collections = {
   agent,
   aiInfra,
@@ -57,6 +63,7 @@ export const collections = {
   engineering,
   architecture,
   featured,
+  'ai-tools': aiTools,
 };
 
 // ============ 子分类定义 ============
@@ -92,6 +99,11 @@ export const subCategories: Record<string, { id: string; name: string; icon: str
     { id: 'interview', name: '面试精选', icon: '💼' },
     { id: 'deep-dive', name: '深度解析', icon: '🔍' },
   ],
+  'ai-tools': [
+    { id: 'coding-tools', name: '编程工具', icon: '💻' },
+    { id: 'browser-tools', name: '浏览器工具', icon: '🌐' },
+    { id: 'protocol-tools', name: '协议工具', icon: '🔌' },
+  ],
 };
 
 // ============ 分类元数据（供首页和导航使用）============
@@ -126,6 +138,11 @@ export const categoryMeta: Record<string, { name: string; icon: string; descript
     icon: '⭐',
     description: '参考优秀博主风格的深度技术文章，面试精选与架构深度解析',
   },
+  'ai-tools': {
+    name: 'AI工具评测',
+    icon: '🔧',
+    description: 'AI工具深度评测、对比分析与最佳实践',
+  },
 };
 
 // ============ 旧分类到新分类的映射（兼容定时任务）============
@@ -148,6 +165,7 @@ export const legacyCollectionMap: Record<string, string> = {
   frontend: 'engineering',
   'learning-methodology': 'engineering',
   architecture: 'architecture',
+  'ai-tools': 'ai-tools',
 };
 
 // ============ 旧子分类到新子分类的映射 ============

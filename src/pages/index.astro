@@ -82,6 +82,13 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
 ---
 
 <Layout title="AI 深度学习笔记">
+  <!-- 返回顶部按钮 -->
+  <button class="back-to-top" id="backToTop" title="返回顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+  
   <!-- Hero Banner -->
   <section class="hero-banner">
     <div class="banner-bg"></div>
@@ -304,9 +311,14 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
 
         <!-- 分页 -->
         <nav class="pagination" id="pagination">
-          <button class="page-btn prev disabled" id="prevBtn">上一页</button>
-          <div class="page-numbers" id="pageNumbers"></div>
-          <button class="page-btn next" id="nextBtn">下一页</button>
+          <div class="page-info">
+            <span id="pageInfo">第 1 页 / 共 1 页，共 {totalPosts} 篇</span>
+          </div>
+          <div class="page-controls">
+            <button class="page-btn prev disabled" id="prevBtn">上一页</button>
+            <div class="page-numbers" id="pageNumbers"></div>
+            <button class="page-btn next" id="nextBtn">下一页</button>
+          </div>
         </nav>
       </section>
 
@@ -1407,6 +1419,74 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
   }
 
   /* ==================== 响应式 ==================== */
+  
+  /* 返回顶部按钮 */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+  }
+  
+  /* 分页优化 */
+  .pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  
+  .page-info {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-align: center;
+  }
+  
+  .page-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* 过滤标签横滑 */
+  .filter-tabs {
+    scrollbar-width: thin;
+    scrollbar-color: #6366f1 transparent;
+  }
+  
+  .filter-tabs::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .filter-tabs::-webkit-scrollbar-thumb {
+    background: #6366f1;
+    border-radius: 2px;
+  }
   @media (max-width: 1024px) {
     .main-container {
       grid-template-columns: 1fr;
@@ -1613,6 +1693,12 @@ function renderArticles() {
 // 渲染分页
 function renderPagination() {
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  
+  // 更新分页信息
+  const pageInfo = document.getElementById('pageInfo');
+  if (pageInfo) {
+    pageInfo.textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页，共 ${filteredPosts.length} 篇`;
+  }
   
   pageNumbers.innerHTML = '';
   
@@ -1845,4 +1931,20 @@ document.addEventListener('keydown', (e) => {
 renderArticles();
 renderPagination();
 updateTitle();
+
+// 返回顶部按钮
+const backToTopBtn = document.getElementById('backToTop');
+if (backToTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+  
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 </script>
