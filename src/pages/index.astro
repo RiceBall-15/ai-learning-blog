@@ -121,16 +121,35 @@ const categoriesData = Object.fromEntries(
           <h2 class="section-title">
             <span class="title-icon">📝</span>
             <span id="sectionTitle">最新文章</span>
+            <span class="article-count" id="articleCount">({totalPosts}篇)</span>
           </h2>
           <div class="filter-tabs">
             <button class="filter-tab active" data-category="all">全部</button>
-            {activeCollections.map(([key, meta]) => (
-              <button class="filter-tab" data-category={key}>
-                <span class="tab-icon">{meta.icon}</span>
-                <span class="tab-text">{meta.name}</span>
-              </button>
-            ))}
           </div>
+        </div>
+
+        <!-- 搜索框 -->
+        <div class="search-container">
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索文章... (Ctrl+K)" />
+            <button class="search-clear" id="searchClear" style="display: none;">×</button>
+          </div>
+          <span class="search-count" id="searchCount"></span>
+        </div>
+
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-category="all">全部</button>
+          {activeCollections.map(([key, meta]) => (
+            <button class="filter-tab" data-category={key}>
+              <span class="tab-icon">{meta.icon}</span>
+              <span class="tab-text">{meta.name}</span>
+              <span class="tab-count">{meta.posts.length}</span>
+            </button>
+          ))}
         </div>
 
         <div class="articles-list" id="articlesList">
@@ -484,6 +503,11 @@ const categoriesData = Object.fromEntries(
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    scrollbar-width: none;
+  }
+
+  .filter-tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .filter-tab {
@@ -510,6 +534,91 @@ const categoriesData = Object.fromEntries(
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: white;
+  }
+
+  .tab-count {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    margin-left: 0.25rem;
+  }
+
+  .filter-tab:not(.active) .tab-count {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--color-primary);
+  }
+
+  .article-count {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  /* ==================== 搜索框 ==================== */
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+  }
+
+  .search-box:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  .search-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+
+  .search-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+
+  .search-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .search-clear {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: var(--transition);
+  }
+
+  .search-clear:hover {
+    color: var(--color-text);
+  }
+
+  .search-count {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
   }
 
   .articles-list {
@@ -550,6 +659,12 @@ const categoriesData = Object.fromEntries(
     padding: 1.5rem;
     text-decoration: none;
     color: inherit;
+    border-left: 3px solid transparent;
+    transition: var(--transition);
+  }
+
+  .article-item:hover .article-link {
+    border-left-color: var(--color-primary);
   }
 
   .article-meta {
@@ -662,11 +777,35 @@ const categoriesData = Object.fromEntries(
     color: white;
   }
 
+  .page-ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
   /* ==================== 侧边栏 ==================== */
   .sidebar {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 2px;
   }
 
   .sidebar-card {
@@ -884,6 +1023,16 @@ const categoriesData = Object.fromEntries(
       width: 100%;
       overflow-x: auto;
       padding-bottom: 0.5rem;
+      flex-wrap: nowrap;
+    }
+
+    .search-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .search-count {
+      text-align: center;
     }
   }
 
@@ -956,10 +1105,11 @@ function typeWriter() {
 typeWriter();
 
 // 分页状态
-const POSTS_PER_PAGE = 10;
+const POSTS_PER_PAGE = 12;
 let currentPage = 1;
 let currentCategory = 'all';
 let filteredPosts = [...postsData];
+let searchQuery = '';
 
 // DOM元素
 const articlesList = document.getElementById('articlesList');
@@ -967,9 +1117,38 @@ const pageNumbers = document.getElementById('pageNumbers');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const sectionTitle = document.getElementById('sectionTitle');
+const searchInput = document.getElementById('searchInput');
+const searchClear = document.getElementById('searchClear');
+const searchCount = document.getElementById('searchCount');
+const articleCount = document.getElementById('articleCount');
+
+// 获取过滤后的文章
+function getFilteredPosts() {
+  let posts = currentCategory === 'all' 
+    ? [...postsData] 
+    : postsData.filter(p => {
+        const categoryPostSlugs = categoriesData[currentCategory]?.posts || [];
+        return categoryPostSlugs.includes(p.slug);
+      });
+  
+  if (searchQuery) {
+    const query = searchQuery.toLowerCase();
+    posts = posts.filter(p => 
+      p.title.toLowerCase().includes(query) ||
+      p.description.toLowerCase().includes(query) ||
+      p.tags.some(t => t.toLowerCase().includes(query))
+    );
+  }
+  
+  return posts;
+}
 
 // 渲染文章
 function renderArticles() {
+  filteredPosts = getFilteredPosts();
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  currentPage = Math.min(currentPage, totalPages || 1);
+  
   const start = (currentPage - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
   const pagePosts = filteredPosts.slice(start, end);
@@ -979,12 +1158,12 @@ function renderArticles() {
       <a href="/ai-learning-blog/${post.collection}/${post.slug}" class="article-link">
         <div class="article-meta">
           <time class="article-date">
-            ${new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+            ${new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
           </time>
           ${post.category ? `<span class="article-category">${post.category}</span>` : ''}
         </div>
         <h3 class="article-title">${post.title}</h3>
-        ${post.description ? `<p class="article-excerpt">${post.description.substring(0, 100)}...</p>` : ''}
+        ${post.description ? `<p class="article-excerpt">${post.description.substring(0, 120)}${post.description.length > 120 ? '...' : ''}</p>` : ''}
         ${post.tags && post.tags.length > 0 ? `
           <div class="article-tags">
             ${post.tags.slice(0, 3).map(tag => `<span class="tag">#${tag}</span>`).join('')}
@@ -993,6 +1172,16 @@ function renderArticles() {
       </a>
     </article>
   `).join('');
+  
+  // 更新搜索结果计数
+  if (searchQuery) {
+    searchCount.textContent = `找到 ${filteredPosts.length} 篇文章`;
+  } else {
+    searchCount.textContent = '';
+  }
+  
+  // 更新文章总数显示
+  articleCount.textContent = `(${filteredPosts.length}篇)`;
 }
 
 // 渲染分页
@@ -1000,12 +1189,42 @@ function renderPagination() {
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   
   pageNumbers.innerHTML = '';
-  for (let i = 1; i <= totalPages; i++) {
-    const pageBtn = document.createElement('button');
-    pageBtn.className = `page-num ${i === currentPage ? 'active' : ''}`;
-    pageBtn.textContent = i;
-    pageBtn.addEventListener('click', () => goToPage(i));
-    pageNumbers.appendChild(pageBtn);
+  
+  if (totalPages <= 7) {
+    // 页数少，全部显示
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement('button');
+      pageBtn.className = `page-num ${i === currentPage ? 'active' : ''}`;
+      pageBtn.textContent = i;
+      pageBtn.addEventListener('click', () => goToPage(i));
+      pageNumbers.appendChild(pageBtn);
+    }
+  } else {
+    // 页数多，显示省略号
+    const pages = new Set([1, totalPages]);
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+      pages.add(i);
+    }
+    
+    const sortedPages = Array.from(pages).sort((a, b) => a - b);
+    let lastPage = 0;
+    
+    sortedPages.forEach(page => {
+      if (page - lastPage > 1) {
+        const ellipsis = document.createElement('span');
+        ellipsis.className = 'page-ellipsis';
+        ellipsis.textContent = '...';
+        pageNumbers.appendChild(ellipsis);
+      }
+      
+      const pageBtn = document.createElement('button');
+      pageBtn.className = `page-num ${page === currentPage ? 'active' : ''}`;
+      pageBtn.textContent = page;
+      pageBtn.addEventListener('click', () => goToPage(page));
+      pageNumbers.appendChild(pageBtn);
+      
+      lastPage = page;
+    });
   }
   
   prevBtn.classList.toggle('disabled', currentPage <= 1);
@@ -1038,13 +1257,6 @@ function filterByCategory(category) {
   currentCategory = category;
   currentPage = 1;
   
-  if (category === 'all') {
-    filteredPosts = [...postsData];
-  } else {
-    const categoryPostSlugs = categoriesData[category]?.posts || [];
-    filteredPosts = postsData.filter(p => categoryPostSlugs.includes(p.slug));
-  }
-  
   // 更新筛选按钮状态
   document.querySelectorAll('.filter-tab').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.category === category);
@@ -1060,8 +1272,29 @@ function filterByCategory(category) {
   updateTitle();
 }
 
+// 搜索功能
+function handleSearch(query) {
+  searchQuery = query.trim();
+  currentPage = 1;
+  searchClear.style.display = searchQuery ? 'block' : 'none';
+  renderArticles();
+  renderPagination();
+  updateTitle();
+}
+
+// 清除搜索
+function clearSearch() {
+  searchInput.value = '';
+  searchQuery = '';
+  searchClear.style.display = 'none';
+  currentPage = 1;
+  renderArticles();
+  renderPagination();
+  updateTitle();
+}
+
 // 初始化事件监听
-document.querySelector('.filter-tabs').addEventListener('click', (e) => {
+document.getElementById('filterTabs').addEventListener('click', (e) => {
   const btn = e.target.closest('.filter-tab');
   if (btn) {
     filterByCategory(btn.dataset.category);
@@ -1079,7 +1312,29 @@ document.querySelectorAll('.category-item').forEach(item => {
 prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
 nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
 
+// 搜索事件
+let searchTimeout;
+searchInput.addEventListener('input', (e) => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => handleSearch(e.target.value), 300);
+});
+
+searchClear.addEventListener('click', clearSearch);
+
+// 键盘快捷键
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && searchQuery) {
+    clearSearch();
+  }
+  // Ctrl/Cmd + K 聚焦搜索框
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    searchInput.focus();
+  }
+});
+
 // 初始化
+renderArticles();
 renderPagination();
 updateTitle();
 </script>
