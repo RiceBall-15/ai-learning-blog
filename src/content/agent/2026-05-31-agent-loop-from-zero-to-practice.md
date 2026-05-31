@@ -4,7 +4,7 @@ description: "从厨师做菜的生活类比出发，深入浅出地讲解Agent 
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-dev"
+subCategory: "interview"
 tags: ["Agent Loop", "ReAct", "从零到实战", "面试"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度剖析三大Agent Loop执行模式的状态机本质，含�
 date: 2026-05-30
 author: "RiceBall-15"
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: ["Agent Loop", "ReAct", "Plan-Execute", "Reflexion", "状态机"]
 draft: false
 ---

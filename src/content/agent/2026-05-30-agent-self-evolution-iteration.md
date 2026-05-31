@@ -4,7 +4,7 @@ description: "深入解析Agent自我迭代与进化的完整体系——从自�
 date: 2026-05-30
 author: RiceBall-15
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: [自我迭代, 自我进化, Prompt优化, 群体进化]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析多Agent系统的消息通信架构，涵盖同步/异
 date: 2026-05-30
 author: "技术学习笔记"
 category: "agent"
-subCategory: "架构"
+subCategory: 'interview'
 tags: ["Agent", "消息通信", "事件驱动", "面试"]
 ---
 

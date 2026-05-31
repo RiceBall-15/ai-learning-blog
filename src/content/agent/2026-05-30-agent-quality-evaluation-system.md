@@ -4,7 +4,7 @@ description: "系统讲解Agent质量评估体系设计，涵盖自动化Eval Pi
 date: 2026-05-30
 author: RiceBall-15
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: [Eval Pipeline, A/B Testing, Regression Detection, 质量评估]
 draft: false
 ---

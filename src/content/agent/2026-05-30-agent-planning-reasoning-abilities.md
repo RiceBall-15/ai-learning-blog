@@ -4,7 +4,7 @@ description: "深度解析Agent规划能力的推理范式演进（CoT→ToT→G
 date: 2026-05-30
 author: "RiceBall-15"
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: ["CoT", "ToT", "GoT", "任务分解", "Agent规划"]
 draft: false
 ---

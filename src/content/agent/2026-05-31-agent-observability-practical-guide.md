@@ -4,7 +4,7 @@ description: "从零搭建Agent可观测性系统，覆盖OTel部署、Span设�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-dev'
+subCategory: 'interview'
 tags: ['Agent可观测性', 'Tracing', '监控', '面试']
 draft: false
 ---

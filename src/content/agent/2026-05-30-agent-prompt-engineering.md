@@ -4,7 +4,7 @@ description: "深入解析Agent系统提示词的架构设计、Few-shot策略�
 date: 2026-05-30
 author: "技术学习笔记"
 category: "agent"
-subCategory: "技能"
+subCategory: 'interview'
 tags: ["Agent", "PromptEngineering", "系统提示词", "面试"]
 ---
 

@@ -4,7 +4,7 @@ description: '深入剖析Agent规划失败的五大模式、检测机制、回�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-dev'
+subCategory: 'interview'
 tags: ['规划恢复', 'CoT', 'ToT', '面试']
 draft: false
 ---

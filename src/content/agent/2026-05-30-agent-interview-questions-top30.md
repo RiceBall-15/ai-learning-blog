@@ -4,7 +4,7 @@ description: '精心整理30道Agent开发高频面试题，附详细解析和�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-dev'
+subCategory: 'interview'
 tags: ['面试题', 'Agent开发', '技术面试', '架构设计']
 draft: false
 ---

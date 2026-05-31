@@ -4,7 +4,7 @@ description: "深入探讨Agent可观测性体系：Span设计、LangSmith/Phoen
 date: 2026-05-30
 author: RiceBall-15
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: ["Tracing", "Observability", "LangSmith", "Phoenix", "OpenTelemetry"]
 draft: false
 ---

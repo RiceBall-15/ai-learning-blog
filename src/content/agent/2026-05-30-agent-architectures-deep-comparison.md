@@ -4,7 +4,7 @@ description: "深入剖析六大Agent架构的设计哲学、核心机制与适�
 date: 2026-05-30
 author: RiceBall-15
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: [Agent架构, ReAct, Reflexion, LLMCompiler, ToolFormer, LATS]
 draft: false
 ---

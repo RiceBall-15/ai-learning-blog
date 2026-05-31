@@ -4,7 +4,7 @@ description: "深入解析Google A2A、Anthropic MCP、多Agent系统通信模�
 date: 2026-05-30
 author: RiceBall-15
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: [A2A, MCP, MAS, 通信协议, Agent互联]
 draft: false
 ---

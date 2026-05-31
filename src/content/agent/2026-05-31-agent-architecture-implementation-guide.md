@@ -4,7 +4,7 @@ description: "从ReAct到LATS，六种Agent架构的核心实现代码、选型�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-dev'
+subCategory: 'interview'
 tags: ['Agent架构', '代码实现', '架构选型', '面试']
 draft: false
 ---

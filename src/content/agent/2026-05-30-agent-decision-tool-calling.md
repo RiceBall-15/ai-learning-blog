@@ -4,7 +4,7 @@ description: 深度解析AI Agent的决策机制与工具调用体系，涵盖Fu
 date: 2026-05-30
 author: RiceBall-15
 category: agent
-subCategory: agent-dev
+subCategory: interview
 tags: [Function Calling, 工具调用, 动态加载, 权限控制]
 draft: false
 ---
