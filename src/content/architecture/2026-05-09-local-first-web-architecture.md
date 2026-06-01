@@ -4,6 +4,7 @@ date: 2026-05-06
 description: "深入探讨Local-first架构的核心概念、适用场景和技术栈选择，帮助开发者构建高性能、离线友好的Web应用"
 categories:
   - architecture
+subCategory: distributed
 tags:
   - local-first
   - architecture

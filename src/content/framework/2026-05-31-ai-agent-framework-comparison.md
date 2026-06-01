@@ -4,6 +4,7 @@ description: "系统对比三大主流AI Agent框架的架构设计、核心特�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["AI Agent", "LangChain", "CrewAI", "AutoGen", "框架对比"]
 draft: false
 ---

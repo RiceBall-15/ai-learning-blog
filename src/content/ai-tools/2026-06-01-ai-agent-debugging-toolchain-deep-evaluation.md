@@ -4,6 +4,7 @@ description: "全面评测当前AI Agent开发中的调试工具链，覆盖Lang
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI调试", "Agent追踪", "LangSmith", "可观测性", "LLM评估", "开发工具"]
 draft: false
 ---

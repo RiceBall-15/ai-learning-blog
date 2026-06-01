@@ -4,6 +4,7 @@ description: "深入解析CopilotKit提出的AG-UI协议，探索Agent系统如�
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: protocols
 tags: ["AG-UI", "CopilotKit", "Agent协议", "实时交互", "前端架构", "AI应用"]
 draft: false
 ---

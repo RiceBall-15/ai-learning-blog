@@ -4,6 +4,7 @@ description: "基于vLLM团队与Red Hat AI对TurboQuant的首次全面评估，
 date: 2026-05-25
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["KV-Cache", "量化", "FP8", "TurboQuant", "推理优化", "vLLM", "大模型推理"]
 draft: false
 ---

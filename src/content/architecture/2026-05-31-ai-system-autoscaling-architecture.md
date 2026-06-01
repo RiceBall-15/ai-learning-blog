@@ -4,6 +4,7 @@ description: "深入解析AI系统自动伸缩架构的核心挑战、设计方�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
+subCategory: cloud-native
 tags: ["自动伸缩", "弹性架构", "GPU调度", "Kubernetes", "AI Infra", "成本优化"]
 draft: false
 ---

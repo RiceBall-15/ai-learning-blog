@@ -4,6 +4,7 @@ description: "AI架构最佳实践 - 关键设计考虑因素和实施指南"
 date: 2024-04-15
 author: "RiceBall"
 category: "AI架构"
+subCategory: agent-architecture
 tags: ["architecture", "best-practices", "design"]
 draft: false
 ---

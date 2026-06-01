@@ -4,6 +4,7 @@ description: "从个人开发到生产部署，四款主流本地LLM运行工具
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["本地部署", "Ollama", "vLLM", "llama.cpp", "LLM推理"]
 draft: false
 ---

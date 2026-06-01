@@ -2,6 +2,7 @@
 title: The Complete Guide to API Selection for AI Agents (2026)
 description: AI代理API选择的革命性评估方法 - AN Score框架与agent-native服务
 date: 2026-04-01
+subCategory: agent-architecture
 tags: ['AI代理', 'API设计', '系统架构', '技术选型']
 ---
 

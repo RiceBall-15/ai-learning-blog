@@ -4,6 +4,7 @@ description: "深入解析AI应用可解释性(XAI)技术体系，涵盖LIME、S
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["XAI", "可解释AI", "模型可解释性", "LLM透明化", "AI信任", "SHAP", "LIME", "Attention可视化"]
 draft: false
 ---

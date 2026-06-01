@@ -4,6 +4,7 @@ description: "深入剖析AI安全与对齐的核心技术路线，涵盖RLHF、
 date: 2026-05-30
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["AI安全", "对齐", "RLHF", "DPO", "Constitutional AI", "红队测试", "LLM"]
 draft: false
 ---

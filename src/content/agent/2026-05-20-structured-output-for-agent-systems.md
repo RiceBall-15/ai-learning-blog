@@ -4,6 +4,7 @@ description: "深入对比三种结构化输出方式——JSON Mode、Tool Use/
 date: 2026-05-20
 author: "RiceBall-15"
 category: agent
+subCategory: agent-skill
 tags: ["结构化输出", "JSON Mode", "Function Calling", "Tool Use", "Grammar-Based Generation", "Outlines", "LMQL"]
 draft: false
 ---

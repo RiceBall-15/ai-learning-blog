@@ -4,6 +4,7 @@ description: "深入解析Mastra框架的设计哲学、核心架构与生产实
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["Mastra", "Agent框架", "TypeScript", "AI开发", "多Agent", "工作流"]
 draft: false
 ---

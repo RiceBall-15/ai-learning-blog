@@ -4,6 +4,7 @@ description: "深入解析MLOps核心实践，涵盖数据管理、模型训练�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["MLOps", "机器学习", "模型部署", "CI/CD", "自动化"]
 draft: false
 ---

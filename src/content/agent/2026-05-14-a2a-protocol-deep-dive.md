@@ -4,6 +4,7 @@ description: 深度剖析Google推出的Agent-to-Agent (A2A) 协议，对比MCP�
 date: 2026-05-14
 author: RiceBall-15
 category: agent
+subCategory: agent-architecture
 tags: [A2A, Agent, 多智能体, Google, 通信协议, 互操作性]
 draft: false
 ---

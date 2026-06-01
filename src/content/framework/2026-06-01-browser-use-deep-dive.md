@@ -4,6 +4,7 @@ description: "深入解析Browser-Use框架的核心架构——Playwright驱动
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["Browser-Use", "浏览器自动化", "AI Agent", "Playwright", "Web Agent", "网页操作"]
 draft: false
 ---

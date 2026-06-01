@@ -4,6 +4,7 @@ description: "深入解析约束解码技术原理，系统对比JSON Mode、Gra
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["结构化输出", "Constrained Decoding", "JSON Mode", "LLM推理", "Function Calling", "Grammars"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "深入解析PydanticAI框架的设计哲学、核心机制与实�
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["PydanticAI", "Agent框架", "类型安全", "Python", "AI工程"]
 draft: false
 ---

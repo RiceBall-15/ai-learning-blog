@@ -4,6 +4,7 @@ description: "深入解析LLM推理服务架构的两次范式转变——Contin
 date: 2026-05-24
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["LLM推理", "vLLM", "Continuous Batching", "PD分离", "KV-Cache量化", "Elastic EP", "推理优化"]
 draft: false
 ---

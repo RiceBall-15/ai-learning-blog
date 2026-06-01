@@ -4,6 +4,7 @@ description: "深入探讨 Agent Skill 从创建、测试到持续迭代的完�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "生命周期", "CI/CD", "版本控制", "质量保证"]
 ---
 

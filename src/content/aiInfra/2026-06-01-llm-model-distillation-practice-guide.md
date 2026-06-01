@@ -4,6 +4,7 @@ description: "深入解析大语言模型蒸馏技术原理、主流方法对比
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
+subCategory: model-training
 tags: ["模型蒸馏", "知识蒸馏", "LLM", "模型训练", "部署优化"]
 draft: false
 ---

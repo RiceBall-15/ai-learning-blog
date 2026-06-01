@@ -4,6 +4,7 @@ description: "深入解析AI系统可观测性架构设计，涵盖指标采集�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["可观测性", "分布式追踪", "AI运维", "系统架构", "LLM监控"]
 draft: false
 ---

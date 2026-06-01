@@ -4,6 +4,7 @@ description: "深入探讨LLM应用的可观测性体系建设，涵盖分布式
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["可观测性", "LLM", "OpenTelemetry", "MLOps", "生产运维"]
 draft: false
 ---

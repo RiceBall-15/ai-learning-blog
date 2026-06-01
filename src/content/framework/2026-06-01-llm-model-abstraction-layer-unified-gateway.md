@@ -4,6 +4,7 @@ description: "深度解析LLM应用中模型抽象层的设计与实现，覆盖
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["模型路由", "LLM网关", "多模型架构", "成本优化", "故障转移", "抽象层"]
 draft: false
 ---

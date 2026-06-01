@@ -4,6 +4,7 @@ description: "深入剖析多Agent系统的故障模式、检测机制与自愈�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["AI Agent", "容错架构", "高可用", "自愈系统", "分布式"]
 draft: false
 ---

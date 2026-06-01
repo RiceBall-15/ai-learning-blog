@@ -4,6 +4,7 @@ description: "系统解析KV Cache的核心瓶颈与优化技术——GQA、MQA�
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
+subCategory: inference
 tags: ["KV Cache", "GQA", "MLA", "PagedAttention", "vLLM", "LLM推理", "内存优化"]
 draft: false
 ---

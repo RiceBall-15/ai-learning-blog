@@ -4,6 +4,7 @@ description: "探讨如何构建企业级的 Agent Skill 管理平台，包括�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "企业管理", "平台设计", "微服务", "DevOps"]
 ---
 

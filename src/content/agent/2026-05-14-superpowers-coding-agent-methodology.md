@@ -4,6 +4,7 @@ description: "深度解析GitHub 19万星的Superpowers项目——如何用7步
 date: 2026-05-14
 author: "RiceBall-15"
 category: "agent"
+subCategory: agent-skill
 tags: ["Superpowers", "Coding Agent", "TDD", "Claude Code", "系统化开发"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "探讨多个 Agent 如何通过 Skill 编排实现复杂任务分�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-architecture
 tags: ["Agent Skill", "多Agent协作", "任务编排", "分布式", "并行计算"]
 ---
 

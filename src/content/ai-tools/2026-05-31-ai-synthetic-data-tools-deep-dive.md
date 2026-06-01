@@ -4,6 +4,7 @@ description: "深度评测Gretel、Mostly AI、SDV、Synthesized等主流合成�
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["合成数据", "数据隐私", "AI工具评测", "数据增强", "GDPR"]
 draft: false
 ---

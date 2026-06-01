@@ -4,6 +4,7 @@ description: "深入分析vLLM最近发布的弹性专家并行(Elastic EP)技�
 date: 2026-05-25
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["vLLM", "MoE", "专家并行", "弹性伸缩", "推理优化", "大规模推理"]
 draft: false
 ---

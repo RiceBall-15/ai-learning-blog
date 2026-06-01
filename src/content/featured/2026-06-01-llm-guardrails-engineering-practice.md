@@ -4,6 +4,7 @@ description: "深入解析LLM应用安全防护的工程实践——输入消毒
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["Guardrails", "LLM安全", "AI安全", "输入验证", "输出过滤", "幻觉检测", "NeMo Guardrails", "生产安全"]
 draft: false
 ---

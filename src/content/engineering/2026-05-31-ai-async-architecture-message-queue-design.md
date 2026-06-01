@@ -4,6 +4,7 @@ description: "深度解析AI应用中大模型异步任务的架构设计，涵�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["异步架构", "消息队列", "LLM工程化", "任务编排", "系统设计"]
 draft: false
 ---

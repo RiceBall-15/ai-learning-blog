@@ -4,6 +4,7 @@ description: "深入解析FP8 KV-Cache量化技术的工作原理、精度陷阱
 date: 2026-05-15
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["FP8", "KV-Cache", "量化", "vLLM", "LLM推理", "长上下文", "性能优化"]
 draft: false
 ---

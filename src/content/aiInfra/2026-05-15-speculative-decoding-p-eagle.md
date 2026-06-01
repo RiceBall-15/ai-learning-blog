@@ -4,6 +4,7 @@ description: "全面解析LLM投机解码技术的演进——从基础Draft-Ver
 date: 2026-05-15
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["投机解码", "Speculative Decoding", "EAGLE", "P-EAGLE", "vLLM", "LLM推理", "推理加速"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "从架构设计、核心能力、适用场景三个维度，深度
 date: 2026-05-30
 author: RiceBall-15
 category: framework
+subCategory: agent-framework
 tags: ["AI Agent", "LangGraph", "CrewAI", "AutoGen", "多Agent系统", "框架应用"]
 draft: false
 ---

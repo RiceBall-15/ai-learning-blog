@@ -4,6 +4,7 @@ description: "解析多Agent系统中的事件驱动架构设计，对比消息�
 date: 2026-05-30
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["多Agent系统", "事件驱动架构", "Agent协作", "消息队列", "系统设计"]
 draft: false
 ---

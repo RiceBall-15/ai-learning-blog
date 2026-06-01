@@ -2,6 +2,7 @@
 title: "一口气讲清楚 Agent、RAG、Skill、MCP 到底是什么？"
 date: 2026-03-29
 category: "agentMemory"
+subCategory: agent-skill
 tags: ["AI", "Agent", "RAG", "MCP"]
 source: "稀土掘金"
 original_url: "https://juejin.cn/post/7621878684524740671"

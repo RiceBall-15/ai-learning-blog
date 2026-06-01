@@ -4,6 +4,7 @@ description: "深度对比Notion AI、Obsidian Copilot、Mem、Heptabase等主�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI知识管理", "Notion AI", "Obsidian", "第二大脑", "智能笔记", "工具评测"]
 draft: false
 ---

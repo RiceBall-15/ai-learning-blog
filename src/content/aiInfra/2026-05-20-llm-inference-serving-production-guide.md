@@ -4,6 +4,7 @@ description: "系统对比 vLLM、SGLang、TGI、TensorRT-LLM 四大推理服务
 date: 2026-05-20
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["推理服务", "vLLM", "SGLang", "TGI", "TensorRT-LLM", "生产部署", "性能调优"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "深度对比三款主流AI工作流编排平台的核心架构、�
 date: 2026-05-30
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["工作流编排", "n8n", "Dify", "Coze", "AI自动化", "低代码"]
 draft: false
 ---

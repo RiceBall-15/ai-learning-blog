@@ -4,6 +4,7 @@ description: "系统剖析知识蒸馏的核心原理、主流方法与生产实
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["模型压缩", "知识蒸馏", "模型部署", "推理优化", "深度学习"]
 draft: false
 ---

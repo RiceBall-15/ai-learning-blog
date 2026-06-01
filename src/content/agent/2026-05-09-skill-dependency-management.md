@@ -4,6 +4,7 @@ description: "深入探讨 Agent Skill 的依赖管理策略、版本控制最�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "依赖管理", "版本控制", "Git", "CI/CD"]
 ---
 

@@ -4,6 +4,7 @@ date: 2026-05-31
 description: "分享AI工程师的成长路径和学习方法论，涵盖技能树构建、知识体系搭建、实战项目选择和职业发展策略，帮助工程师高效成长"
 categories:
   - engineering
+subCategory: learning
 tags:
   - 学习方法
   - 职业发展

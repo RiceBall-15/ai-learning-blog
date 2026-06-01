@@ -4,6 +4,7 @@ description: "深度对比Cursor、GitHub Copilot、Claude Code、Windsurf等主
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI编程", "Cursor", "Copilot", "Claude Code", "Windsurf", "开发工具"]
 draft: false
 ---

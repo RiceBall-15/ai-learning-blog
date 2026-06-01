@@ -4,6 +4,7 @@ description: "深入解析 vLLM 推理引擎的核心架构——PagedAttention�
 date: 2026-05-17
 author: "RiceBall-15"
 category: framework
+subCategory: agent-framework
 tags: ["vLLM", "LLM推理", "PagedAttention", "连续批处理", "分布式推理", "高性能推理"]
 draft: false
 ---

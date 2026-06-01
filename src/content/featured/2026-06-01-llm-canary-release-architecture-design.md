@@ -4,6 +4,7 @@ description: "深度解析LLM应用灰度发布架构，涵盖流量分割策略
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["LLM架构", "灰度发布", "A/B测试", "MLOps", "生产部署"]
 draft: false
 ---

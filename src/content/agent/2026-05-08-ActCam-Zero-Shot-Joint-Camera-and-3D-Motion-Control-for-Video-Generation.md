@@ -2,6 +2,7 @@
 title: "ActCam: Zero-Shot Joint Camera and 3D Motion Control for Video Generation"
 date: 2026-05-08
 category: agentMemory
+subCategory: agent-architecture
 tags:
   - computer-vision
   - video-generation

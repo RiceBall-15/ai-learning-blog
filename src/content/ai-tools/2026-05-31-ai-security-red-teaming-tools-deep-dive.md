@@ -4,6 +4,7 @@ description: "深度评测Garak、PyRIT、Nemoguardrails等主流AI安全测试�
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: protocol-tools
 tags: ["AI安全", "红队测试", "LLM安全", "prompt注入", "越狱检测", "AI治理"]
 draft: false
 ---

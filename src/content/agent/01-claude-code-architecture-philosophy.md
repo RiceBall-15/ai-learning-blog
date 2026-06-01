@@ -4,6 +4,7 @@ description: "从第一性原理深度解析Claude Code的设计哲学，为什�
 date: 2026-05-12
 author: "AI学习笔记"
 category: "agent"
+subCategory: agent-architecture
 tags:
   - Claude Code
   - Agent架构

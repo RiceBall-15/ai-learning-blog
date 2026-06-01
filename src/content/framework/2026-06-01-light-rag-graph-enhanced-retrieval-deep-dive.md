@@ -4,6 +4,7 @@ description: "深度解析LightRAG如何用图结构革新传统RAG系统，从�
 date: 2026-06-01
 author: "RiceBall"
 category: "rag"
+subCategory: rag
 tags: ["LightRAG", "GraphRAG", "RAG", "知识图谱", "向量检索", "生产部署", "AI架构"]
 draft: false
 ---

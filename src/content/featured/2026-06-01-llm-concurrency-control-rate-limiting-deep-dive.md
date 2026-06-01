@@ -4,6 +4,7 @@ description: "从令牌桶到自适应限流，深入解析LLM应用中的并发
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["并发控制", "限流", "弹性伸缩", "LLM应用", "高可用", "流控策略"]
 draft: false
 ---

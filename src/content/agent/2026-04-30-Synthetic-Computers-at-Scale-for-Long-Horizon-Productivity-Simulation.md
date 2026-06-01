@@ -2,6 +2,7 @@
 title: 'Synthetic Computers at Scale for Long-Horizon Productivity Simulation'
 date: 2026-04-30
 category: 'agentOps'
+subCategory: agent-ops
 tags: ['agent', 'simulation', 'synthetic-data', 'productivity']
 source: 'arXiv'
 url: 'https://arxiv.org/abs/2604.28181'

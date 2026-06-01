@@ -4,6 +4,7 @@ description: "从设计哲学到生产实践，深入剖析OpenAI Agents SDK的�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
+subCategory: agent-framework
 tags: ["OpenAI", "Agents SDK", "Multi-Agent", "Agent Framework", "Handoff", "Guardrails"]
 draft: false
 ---

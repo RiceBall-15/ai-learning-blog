@@ -4,6 +4,7 @@ description: "从原理到实战，深度评测主流LLM量化工具的架构设
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["LLM", "量化", "llama.cpp", "AutoGPTQ", "bitsandbytes", "推理优化", "模型部署"]
 draft: false
 ---

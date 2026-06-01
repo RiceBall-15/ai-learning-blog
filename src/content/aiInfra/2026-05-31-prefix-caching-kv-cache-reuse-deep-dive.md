@@ -4,6 +4,7 @@ description: "深入解析Prefix Caching、Automatic Prefix Caching、Prompt Cac
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
+subCategory: inference
 tags: ["Prefix Caching", "KV Cache", "Prompt Caching", "LLM推理", "vLLM", "SGLang", "推理优化", "AI Infra"]
 draft: false
 ---

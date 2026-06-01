@@ -4,6 +4,7 @@ description: "深入剖析向量数据库核心技术原理，对比主流方案
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["向量数据库", "Milvus", "Qdrant", "Pinecone", "RAG", "AI基础设施", "性能优化"]
 draft: false
 ---

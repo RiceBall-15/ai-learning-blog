@@ -4,6 +4,7 @@ description: 从OpenTelemetry到Agent专用Tracing，详解AI Agent系统的可�
 date: 2026-05-14
 author: RiceBall-15
 category: agent
+subCategory: agent-ops
 tags: [Agent, 可观测性, Tracing, OpenTelemetry, 成本优化, 调试]
 draft: false
 ---

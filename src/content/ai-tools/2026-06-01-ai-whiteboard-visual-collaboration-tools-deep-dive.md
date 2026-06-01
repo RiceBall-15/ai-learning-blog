@@ -4,6 +4,7 @@ description: "系统评测AI白板与可视化协作工具，涵盖Miro AI、Fig
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI白板", "可视化工具", "协作工具", "架构图", "流程图", "AI设计"]
 draft: false
 ---

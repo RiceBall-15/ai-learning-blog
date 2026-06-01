@@ -4,6 +4,7 @@ description: "全面解析Haystack框架的Pipeline架构、组件生态与生�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["Haystack", "RAG框架", "Pipeline", "deepset", "深度解析"]
 draft: false
 ---

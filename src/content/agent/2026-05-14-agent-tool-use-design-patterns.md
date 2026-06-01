@@ -4,6 +4,7 @@ description: 深度剖析AI Agent工具调用的核心设计模式，涵盖Funct
 date: 2026-05-14
 author: RiceBall-15
 category: agent
+subCategory: agent-skill
 tags: [Agent, Function Calling, 工具调用, 架构设计, 错误恢复, 并行编排]
 draft: false
 ---

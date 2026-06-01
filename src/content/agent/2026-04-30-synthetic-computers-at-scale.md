@@ -3,6 +3,7 @@ title: "大规模合成计算机：长期生产力模拟的新范式"
 description: "探索Synthetic Computers at Scale方法论如何通过创建逼真的合成计算机环境，为Agent训练提供大规模合成数据，解决长期生产力任务中的数据稀缺和上下文依赖挑战。"
 date: 2026-04-30
 category: agentMemory
+subCategory: agent-ops
 tags:
   - agent
   - synthetic-data

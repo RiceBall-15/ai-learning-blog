@@ -4,6 +4,7 @@ date: 2026-05-31
 description: "深入解析AI推理系统的架构演进，涵盖模型并行、流水线并行、动态批处理等关键技术，提供从原型到生产级系统的完整实现路径"
 categories:
   - architecture
+subCategory: distributed
 tags:
   - AI架构
   - 分布式系统

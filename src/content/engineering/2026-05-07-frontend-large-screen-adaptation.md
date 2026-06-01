@@ -4,6 +4,7 @@ description: "系统对比四种主流大屏适配方案（scale、vw/vh、rem�
 date: 2026-05-07
 author: RiceBall-15
 category: frontend
+subCategory: ai-coding
 tags: ["大屏适配", "响应式", "Vue3", "ECharts", "前端开发"]
 ---
 

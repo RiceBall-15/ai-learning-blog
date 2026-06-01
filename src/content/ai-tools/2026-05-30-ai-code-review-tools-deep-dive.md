@@ -4,6 +4,7 @@ description: "深度评测10+款AI代码审查工具的技术原理、审查能�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI代码审查", "CodeRabbit", "GitHub Copilot", "代码质量", "工具评测", "DevOps"]
 draft: false
 ---

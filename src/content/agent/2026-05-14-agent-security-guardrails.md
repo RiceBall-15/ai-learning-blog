@@ -4,6 +4,7 @@ description: 系统性分析AI Agent面临的安全威胁，涵盖Prompt Injecti
 date: 2026-05-14
 author: RiceBall-15
 category: agent
+subCategory: agent-architecture
 tags: [Agent安全, Prompt Injection, Guardrails, 对抗攻击, 防御架构]
 draft: false
 ---

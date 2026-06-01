@@ -4,6 +4,7 @@ description: "深入解析Letta框架的自编辑记忆架构、分层记忆管�
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["Letta", "MemGPT", "AI Agent", "记忆系统", "无限上下文", "长期记忆"]
 draft: false
 ---

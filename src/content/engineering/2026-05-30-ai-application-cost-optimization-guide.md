@@ -4,6 +4,7 @@ description: "系统性拆解AI应用的成本结构，提供Prompt优化、推�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
+subCategory: infra
 tags: ["成本优化", "AI工程", "推理加速", "Token优化", "MLOps", "架构设计"]
 draft: false
 ---

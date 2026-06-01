@@ -4,6 +4,7 @@ description: "深入探讨 Agent Skill 的性能瓶颈分析、缓存设计、�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "性能优化", "缓存", "并发", "延迟优化"]
 ---
 

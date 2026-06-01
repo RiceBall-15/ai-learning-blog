@@ -4,6 +4,7 @@ description: "从模型推理层、中间件层到应用层，给出 AI 原生�
 date: 2026-05-20
 author: "RiceBall-15"
 category: architecture
+subCategory: distributed
 tags: ["架构设计", "技术选型", "全链路", "AI应用", "中间件", "系统架构", "框架"]
 draft: false
 ---

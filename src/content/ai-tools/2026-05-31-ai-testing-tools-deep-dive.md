@@ -4,6 +4,7 @@ description: "全面评测主流AI测试工具，涵盖单元测试、集成测�
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: protocol-tools
 tags: ["AI测试", "LLM测试", "质量保障", "深度评测", "MLOps"]
 draft: false
 ---

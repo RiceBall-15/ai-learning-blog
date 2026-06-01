@@ -4,6 +4,7 @@ description: "提供编写高质量 Agent Skill 的方法论和实践指南，�
 date: 2026-05-08
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "Skill 设计", "最佳实践", "Prompt 优化"]
 ---
 

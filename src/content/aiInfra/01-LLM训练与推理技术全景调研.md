@@ -4,6 +4,7 @@ description: "全面调研LLM的训练方法和推理优化技术，包括预训
 date: 2026-04-24
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["LLM训练", "推理优化", "量化", "分布式训练", "vLLM", "TGI"]
 draft: false
 ---

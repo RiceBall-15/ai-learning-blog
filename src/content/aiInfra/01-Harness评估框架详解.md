@@ -4,6 +4,7 @@ description: "深入解析HuggingFace Harness评估框架，包括架构设计�
 date: 2026-04-24
 author: "RiceBall-15"
 category: aiInfra
+subCategory: evaluation
 tags: ["Harness", "模型评估", "Benchmark", "MMLU", "HumanEval", "自动化测试"]
 draft: false
 ---

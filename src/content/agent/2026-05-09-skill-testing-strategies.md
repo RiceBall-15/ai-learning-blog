@@ -4,6 +4,7 @@ description: "深入探讨 Agent Skill 的测试方法论，包括单元测试�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "测试", "单元测试", "集成测试", "CI/CD"]
 ---
 

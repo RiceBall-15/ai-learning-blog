@@ -4,6 +4,7 @@ description: "从架构设计、RAG能力、模型支持、部署运维四个维
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
+subCategory: rag
 tags: ["RAG", "Dify", "FastGPT", "RAGFlow", "AI应用开发", "开源平台"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "系统评测主流AI翻译与本地化工具，涵盖DeepL、Googl
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI翻译", "本地化", "Neural Machine Translation", "LLM应用", "工具评测", "i18n"]
 draft: false
 ---

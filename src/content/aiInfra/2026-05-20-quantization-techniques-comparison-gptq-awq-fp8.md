@@ -4,6 +4,7 @@ description: "从原理到生产实践，系统对比 GPTQ、AWQ、GGUF、FP8 �
 date: 2026-05-20
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["量化", "GPTQ", "AWQ", "FP8", "GGUF", "LLM推理", "模型压缩"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "系统梳理AI辅助代码审查的技术演进——从传统Lint
 date: 2026-05-20
 author: "RiceBall-15"
 category: engineering
+subCategory: ai-coding
 tags: ["代码审查", "Code Review", "AI编程", "Static Analysis", "Agentic Review", "工程实践"]
 draft: false
 ---

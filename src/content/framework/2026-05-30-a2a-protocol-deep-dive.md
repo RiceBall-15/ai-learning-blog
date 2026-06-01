@@ -4,6 +4,7 @@ description: "深入剖析A2A（Agent-to-Agent）协议的核心架构、通信�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
+subCategory: protocols
 tags: ["A2A", "Agent", "多Agent协作", "协议", "框架应用"]
 draft: false
 ---

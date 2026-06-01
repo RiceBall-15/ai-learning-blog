@@ -4,6 +4,7 @@ description: "深入解析Vibe Coding的工程实践，涵盖工具链选型、P
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
+subCategory: ai-coding
 tags: ["Vibe Coding", "AI编程", "Cursor", "Claude Code", "开发效率", "AI工程化"]
 draft: false
 ---

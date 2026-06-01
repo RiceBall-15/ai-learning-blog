@@ -4,6 +4,7 @@ description: "深度解析AI应用模型路由框架的设计哲学，涵盖路�
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["模型路由", "Model Router", "AI框架", "成本优化", "故障转移", "模型编排", "LLM网关"]
 draft: false
 ---

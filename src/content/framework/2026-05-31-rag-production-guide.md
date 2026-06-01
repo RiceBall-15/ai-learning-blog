@@ -4,6 +4,7 @@ description: "深入探讨RAG（检索增强生成）系统在生产环境中的
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
+subCategory: rag
 tags: ["RAG", "检索增强生成", "知识库", "生产部署", "性能优化"]
 draft: false
 ---

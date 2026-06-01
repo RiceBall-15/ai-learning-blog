@@ -4,6 +4,7 @@ description: "深入探讨 Agent Skill 的安全威胁模型、权限控制机�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "安全", "权限控制", "沙箱", "RBAC"]
 ---
 

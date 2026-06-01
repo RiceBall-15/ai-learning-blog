@@ -4,6 +4,7 @@ description: "系统讲解AI应用可观测性的完整方案，涵盖分布式�
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["可观测性", "LLM监控", "MLOps", "AI工程化", "生产运维"]
 draft: false
 ---

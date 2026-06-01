@@ -4,6 +4,7 @@ description: 深入探讨多Agent协作的核心挑战、架构模式和工程�
 date: 2026-05-13
 author: RiceBall-15
 category: agent
+subCategory: agent-architecture
 tags: [Agent, 多智能体, 协作系统, 架构设计, 任务分解]
 draft: false
 ---

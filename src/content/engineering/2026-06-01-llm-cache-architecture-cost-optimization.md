@@ -4,6 +4,7 @@ description: "系统解析LLM应用中的多级缓存架构设计，覆盖Prompt
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["Prompt Cache", "Semantic Cache", "KV Cache", "LLM成本优化", "缓存架构", "推理加速"]
 draft: false
 ---

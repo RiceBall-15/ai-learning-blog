@@ -4,6 +4,7 @@ description: "全面解析微软Semantic Kernel框架的核心架构、插件系
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["Semantic Kernel", "AI编排", "微软", "企业级AI", "插件系统", "规划器"]
 draft: false
 ---

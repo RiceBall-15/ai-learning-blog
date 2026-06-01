@@ -4,6 +4,7 @@ description: "从架构原理到生产实践，全面对比四大主流LLM推理
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
+subCategory: inference
 tags: ["LLM推理", "vLLM", "SGLang", "TensorRT-LLM", "KTransformers", "性能优化"]
 draft: false
 ---

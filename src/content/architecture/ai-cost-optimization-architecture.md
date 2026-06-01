@@ -4,6 +4,7 @@ description: "深入解析AI应用的六大成本优化架构模式，涵盖模�
 date: 2026-05-30
 author: RiceBall-15
 category: architecture
+subCategory: distributed
 tags: ["AI架构", "成本优化", "模型路由", "语义缓存", "Prompt压缩", "系统架构"]
 draft: false
 ---

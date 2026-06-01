@@ -4,6 +4,7 @@ description: "深入对比三种主流Agent工作流编排模式——Chain、DA
 date: 2026-05-20
 author: "RiceBall-15"
 category: agent
+subCategory: agent-architecture
 tags: ["Agent工作流", "编排模式", "Chain", "DAG", "State Machine", "LangGraph", "DSPy", "架构设计"]
 draft: false
 ---

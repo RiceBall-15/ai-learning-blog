@@ -4,6 +4,7 @@ description: 全面剖析Anthropic推出的Model Context Protocol，对比OpenAP
 date: 2026-05-14
 author: RiceBall-15
 category: agent
+subCategory: agent-skill
 tags: [MCP, Agent, 协议设计, 工具调用, Anthropic, 标准化]
 draft: false
 ---

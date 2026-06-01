@@ -4,6 +4,7 @@ description: "深入对比三大分布式训练框架的核心原理、性能差
 date: 2026-05-30
 author: "RiceBall"
 category: "aiInfra"
+subCategory: model-training
 tags: ["分布式训练", "FSDP", "DeepSpeed", "Megatron-LM", "大模型训练"]
 draft: false
 ---

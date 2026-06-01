@@ -4,6 +4,7 @@ description: "2026年主流AI视频生成工具的技术架构、生成质量、
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["视频生成", "AI工具评测", "Sora", "Kling", "多模态", "选型指南"]
 draft: false
 ---

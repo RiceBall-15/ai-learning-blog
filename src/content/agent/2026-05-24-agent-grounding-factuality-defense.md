@@ -4,6 +4,7 @@ description: "深入分析Agent落地中最关键的可靠性挑战——Groundi
 date: 2026-05-24
 author: "RiceBall-15"
 category: agent
+subCategory: agent-architecture
 tags: ["Agent Grounding", "幻觉防御", "事实校验", "可信AI", "Self-Validation", "LLM可靠性"]
 draft: false
 ---

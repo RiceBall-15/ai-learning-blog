@@ -4,6 +4,7 @@ description: "深入解析AI Agent核心推理技术的演进脉络——ReAct�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["AI Agent", "推理", "规划", "ReAct", "LATS", "Tree of Thoughts", "Reflexion", "LLM"]
 draft: false
 ---

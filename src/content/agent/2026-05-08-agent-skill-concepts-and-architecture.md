@@ -4,6 +4,7 @@ description: "深入分析 Agent Skill 的定义、核心架构、设计原理�
 date: 2026-05-08
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-architecture
 tags: ["Agent Skill", "架构设计", "Prompt Engineering", "Skill 框架"]
 ---
 

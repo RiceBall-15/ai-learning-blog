@@ -4,6 +4,7 @@ description: 深入解析RAG系统的核心挑战、优化策略和工程实践�
 date: 2026-05-13
 author: RiceBall-15
 category: agent
+subCategory: agent-architecture
 tags: [RAG, 检索增强, 向量检索, 知识库, 优化策略]
 draft: false
 ---

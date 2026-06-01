@@ -4,6 +4,7 @@ description: "深度对比2026年主流AI搜索工具的架构差异、检索质
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI搜索", "Deep Research", "Perplexity", "SearchGPT", "信息检索", "RAG"]
 draft: false
 ---

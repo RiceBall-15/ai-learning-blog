@@ -4,6 +4,7 @@ description: "从架构设计、上下文理解、代码生成质量到工作流
 date: 2025-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI编程工具", "Claude Code", "Cursor", "工具评测", "开发效率"]
 draft: false
 ---

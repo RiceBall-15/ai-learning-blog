@@ -4,6 +4,7 @@ description: "深入解析MoE（Mixture-of-Experts）大模型的推理架构：
 date: 2026-05-26
 author: RiceBall-15
 category: aiInfra
+subCategory: inference
 tags: ["MoE", "Mixture-of-Experts", "推理优化", "负载均衡", "大模型推理", "AI基础设施"]
 draft: false
 ---

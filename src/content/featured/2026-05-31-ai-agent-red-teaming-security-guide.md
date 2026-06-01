@@ -4,6 +4,7 @@ description: "深入解析AI Agent系统面临的安全威胁、红队测试方�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["AI安全", "红队测试", "Agent安全", "Prompt注入", "攻防", "AI对齐"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "全面评测AI合成内容检测工具，涵盖文本检测、图�
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: protocol-tools
 tags: ["AIGC检测", "AI内容溯源", "深度评测", "内容安全", "模型水印"]
 draft: false
 ---

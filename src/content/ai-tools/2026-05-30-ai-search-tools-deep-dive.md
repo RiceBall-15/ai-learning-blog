@@ -4,6 +4,7 @@ description: "深度评测10+款AI搜索工具的技术架构、检索策略、�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI搜索", "Perplexity", "Google AI Mode", "信息检索", "RAG", "工具评测"]
 draft: false
 ---

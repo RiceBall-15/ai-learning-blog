@@ -4,6 +4,7 @@ description: "深度评测LangSmith、PromptLayer、HumanLoop等主流Prompt管�
 date: 2026-05-30
 author: "RiceBall"
 category: "ai-tools"
+subCategory: protocol-tools
 tags: ["Prompt管理", "A/B测试", "LLMOps", "工具评测"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "MCP（Model Context Protocol）正在重塑AI应用的工具调用
 date: 2026-06-01
 author: "RiceBall"
 category: "protocols"
+subCategory: protocols
 tags: ["MCP", "Model Context Protocol", "AI工具", "Server开发", "协议设计"]
 draft: false
 ---

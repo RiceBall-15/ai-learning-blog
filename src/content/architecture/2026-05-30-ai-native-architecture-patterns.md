@@ -4,6 +4,7 @@ description: "深入解析AI-Native应用的四大架构模式：管道模式、
 date: 2026-05-30
 author: RiceBall-15
 category: architecture
+subCategory: distributed
 tags: ["AI架构", "微服务", "事件驱动", "智能体集群", "云原生", "系统架构"]
 draft: false
 ---

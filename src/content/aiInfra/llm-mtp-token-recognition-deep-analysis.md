@@ -4,6 +4,7 @@ description: "深入剖析LLM中的两种token预测策略：多令牌预测(MTP
 date: 2026-05-15
 author: RiceBall-15
 category: aiInfra
+subCategory: inference
 tags: ["LLM", "多令牌预测", "MTP", "串行识别token", "自回归生成", "推测解码", "训练优化", "推理加速"]
 draft: false
 ---

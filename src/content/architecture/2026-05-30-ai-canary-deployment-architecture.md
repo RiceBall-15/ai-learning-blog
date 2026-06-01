@@ -4,6 +4,7 @@ description: "深入解析AI应用灰度发布的核心挑战与架构设计，�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
+subCategory: distributed
 tags: ["灰度发布", "渐进式交付", "A/B测试", "模型版本管理", "AI系统", "系统架构"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "一套经过实战验证的 LLM 应用架构演进方法论，覆�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["架构设计", "LLM应用", "渐进式架构", "生产级系统", "AI工程", "架构演进"]
 draft: false
 ---

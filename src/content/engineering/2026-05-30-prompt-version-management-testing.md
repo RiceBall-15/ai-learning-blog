@@ -4,6 +4,7 @@ description: "系统构建LLM应用的Prompt工程化体系，覆盖Prompt版本
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
+subCategory: infra
 tags: ["Prompt Engineering", "版本管理", "自动化测试", "LLM应用", "AI工程化", "质量保障"]
 draft: false
 ---

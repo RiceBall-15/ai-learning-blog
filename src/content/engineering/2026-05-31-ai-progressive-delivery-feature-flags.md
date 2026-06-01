@@ -4,6 +4,7 @@ description: "深入探讨AI应用的渐进式交付策略，涵盖Prompt版本�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["渐进式交付", "特性开关", "A/B测试", "Prompt版本管理", "AI工程化"]
 draft: false
 ---

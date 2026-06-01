@@ -4,6 +4,7 @@ description: "系统性地构建LLM应用的测试金字塔，涵盖Prompt测试
 date: 2026-05-30
 author: RiceBall-15
 category: engineering
+subCategory: ai-coding
 tags: ["LLM测试", "AI工程化", "Prompt测试", "质量保障", "评估框架", "MLOps"]
 draft: false
 ---

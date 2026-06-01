@@ -4,6 +4,7 @@ description: "深度评测2026年主流AI营销文案与内容创作工具，涵
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI工具评测", "内容创作", "营销文案", "AI写作", "内容营销"]
 draft: false
 ---

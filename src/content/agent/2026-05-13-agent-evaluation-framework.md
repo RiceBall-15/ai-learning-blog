@@ -4,6 +4,7 @@ description: 深入探讨Agent评估的核心维度、指标体系和自动化�
 date: 2026-05-13
 author: RiceBall-15
 category: agent
+subCategory: agent-architecture
 tags: [Agent, 评估框架, 质量保障, 自动化测试, 指标体系]
 draft: false
 ---

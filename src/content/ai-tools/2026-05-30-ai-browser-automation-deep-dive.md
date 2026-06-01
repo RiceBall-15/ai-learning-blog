@@ -4,6 +4,7 @@ description: "深入剖析AI浏览器自动化的技术原理、主流工具对�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
+subCategory: browser-tools
 tags: ["Browser Automation", "Computer Use", "AI Agent", "Browser Use", "Stagehand", "Web Agent"]
 draft: false
 ---

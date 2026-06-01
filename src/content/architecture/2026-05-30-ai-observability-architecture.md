@@ -4,6 +4,7 @@ description: "深入剖析AI系统可观测性架构设计，覆盖LLM调用追�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
+subCategory: distributed
 tags: ["可观测性", "AI系统", "监控", "Agent", "LLM", "架构设计"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "从请求入口到模型推理，构建LLM应用的全链路追踪
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["可观测性", "分布式追踪", "LLM", "架构设计", "SRE"]
 draft: false
 ---

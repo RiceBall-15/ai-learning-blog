@@ -4,6 +4,7 @@ description: "深度解析主流AI模型评测工具的原理与实战，构建�
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: protocol-tools
 tags: ["模型评测", "LLM评估", "质量保障", "自动化测试", "AI工具"]
 draft: false
 ---

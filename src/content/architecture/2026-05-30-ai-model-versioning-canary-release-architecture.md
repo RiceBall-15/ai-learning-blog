@@ -4,6 +4,7 @@ description: "深入解析AI模型版本管理的核心挑战，设计一套支�
 date: 2026-05-30
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["模型版本管理", "灰度发布", "MLOps", "模型部署"]
 draft: false
 ---

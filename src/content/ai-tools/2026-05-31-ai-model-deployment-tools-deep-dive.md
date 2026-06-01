@@ -4,6 +4,7 @@ description: "深度对比分析vLLM、TGI、TensorRT-LLM、Ollama等主流AI模
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["模型部署", "推理优化", "vLLM", "TensorRT-LLM", "AI基础设施"]
 draft: false
 ---

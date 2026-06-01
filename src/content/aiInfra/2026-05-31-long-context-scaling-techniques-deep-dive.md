@@ -4,6 +4,7 @@ description: "系统解析YaRN、NTK-aware Scaling、ALiBi等主流长上下文�
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
+subCategory: inference
 tags: ["长上下文", "RoPE", "YaRN", "位置编码", "KV Cache", "推理优化"]
 draft: false
 ---

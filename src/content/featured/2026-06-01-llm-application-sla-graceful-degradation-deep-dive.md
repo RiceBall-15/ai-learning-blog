@@ -4,6 +4,7 @@ description: "深入剖析LLM应用在生产环境中如何构建完整的SLA保
 date: 2026-06-01
 author: "RiceBall"
 category: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM", "SLA", "优雅降级", "熔断器", "生产实战", "可靠性工程", "AI架构"]
 draft: false
 ---

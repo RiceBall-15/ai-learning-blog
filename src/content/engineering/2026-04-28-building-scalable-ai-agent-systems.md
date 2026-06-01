@@ -3,6 +3,7 @@ title: 构建可扩展的AI Agent系统：从原型到生产环境
 date: 2026-04-28
 description: 本文提供了从原型到生产环境的完整AI Agent系统构建指南，包含可复用的代码实现和工程最佳实践。核心价值在于：（1）分层架构设计便于团队协作和维护；（2）状态管理方案解决了上下文溢出问题；（3）性能优化策略可将LLM调用成本降低30-50%；（4）容错机制保证系统稳定性；（5）安全措施防止恶意攻击...
 category: aiCoding
+subCategory: infra
 tags: ['AI', 'Agent', '架构设计', '生产环境']
 source: 技术实践博客
 original_url: https://example.com/building-scalable-ai-agent-systems

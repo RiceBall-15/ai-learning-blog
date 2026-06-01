@@ -4,6 +4,7 @@ description: "全面评测 Vanna.ai、Defog、SQLChat、Julius AI 等主流 AI �
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["Text-to-SQL", "AI数据分析", "智能BI", "自然语言查询", "深度评测"]
 draft: false
 ---

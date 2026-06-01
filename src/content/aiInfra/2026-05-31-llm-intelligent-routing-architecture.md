@@ -4,6 +4,7 @@ description: "通过请求复杂度分析将流量智能路由到不同规模的
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
+subCategory: inference
 tags: ["模型路由", "成本优化", "LLM", "推理优化", "MLOps"]
 draft: false
 ---

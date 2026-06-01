@@ -4,6 +4,7 @@ description: "深度对比分析Claude Code与Cursor、Copilot、Continue、Lang
 date: 2026-05-12
 author: "AI学习笔记"
 category: "agent"
+subCategory: agent-architecture
 tags:
   - Claude Code
   - 竞品分析

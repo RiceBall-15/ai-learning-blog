@@ -4,6 +4,7 @@ description: "从原理到实践，全面解析主流量化方案的精度、性
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
+subCategory: inference
 tags: ["量化", "GPTQ", "AWQ", "GGUF", "推理优化"]
 draft: false
 ---

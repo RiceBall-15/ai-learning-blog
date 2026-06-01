@@ -4,6 +4,7 @@ description: "深入剖析GRPO算法原理、与PPO的核心差异、DeepSeek R1
 date: 2026-05-16
 author: RiceBall-15
 category: aiInfra
+subCategory: model-training
 tags: ["GRPO", "强化学习", "DeepSeek R1", "PPO", "RLHF", "LLM推理", "策略优化"]
 draft: false
 ---

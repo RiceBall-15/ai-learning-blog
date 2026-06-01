@@ -4,6 +4,7 @@ description: "深入解析生产环境中多模型混合推理架构的设计与
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
+subCategory: inference
 tags: ["模型推理", "LLM", "混合架构", "模型路由", "生产部署"]
 draft: false
 ---

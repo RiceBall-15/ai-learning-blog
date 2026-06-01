@@ -4,6 +4,7 @@ description: "深入探讨 Agent Skill 的调试技巧、错误处理机制、�
 date: 2026-05-09
 author: RiceBall-15
 category: agentSkill
+subCategory: agent-skill
 tags: ["Agent Skill", "调试", "错误处理", "日志", "问题排查"]
 ---
 

@@ -4,6 +4,7 @@ description: "通过自验证机制显著提升Claude Code的性能，包括更�
 date: 2026-05-05
 category: "llmAgent"
 source: "Towards Data Science"
+subCategory: agent-skill
 tags: ["Claude Code", "LLM Agent", "自验证机制", "AI工程化"]
 ---
 

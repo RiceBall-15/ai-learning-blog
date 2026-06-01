@@ -2,6 +2,7 @@
 title: "Quickstart - LangChain快速入门指南"
 date: 2026-04-29
 category: "ai-engineering"
+subCategory: ai-coding
 tags: ["LangChain", "AI Agents", "LangGraph", "Python"]
 source: "LangChain官方文档"
 original_url: "https://docs.langchain.com/oss/python/langchain/quickstart"

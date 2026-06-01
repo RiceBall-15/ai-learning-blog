@@ -4,6 +4,7 @@ description: "深入解析MLOps核心流程：实验管理、特征工程、模�
 date: 2026-05-30
 author: RiceBall-15
 category: engineering
+subCategory: infra
 tags: ["MLOps", "模型部署", "实验管理", "CI/CD", "模型监控", "AI工程化"]
 draft: false
 ---

@@ -2,6 +2,7 @@
 title: "构建生产级智能体AI系统：架构设计与工程实践"
 date: 2026-04-27
 category: "agentMemory"
+subCategory: agent-architecture
 tags: ["AI", "Agentic AI", "Architecture", "Production", "LLM"]
 source: "DEV Community"
 original_url: "https://dev.to/artyom_mukhopad_a9444ed6d/building-production-grade-agentic-ai-architecture-challenges-and-best-practices-4g2"

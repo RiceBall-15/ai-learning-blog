@@ -4,6 +4,7 @@ description: "深入剖析DSPy框架的核心架构：Signature系统、优化�
 date: 2026-05-26
 author: RiceBall-15
 category: framework
+subCategory: agent-framework
 tags: ["DSPy", "声明式编程", "LM优化", "Prompt工程", "框架应用"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "深入剖析Claude Code的Hooks系统设计，如何通过钩子�
 date: 2026-05-12
 author: "AI学习笔记"
 category: "agent"
+subCategory: agent-skill
 tags:
   - Claude Code
   - Hooks

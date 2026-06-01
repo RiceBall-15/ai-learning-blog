@@ -4,6 +4,7 @@ description: "深入解析 SGLang 框架的架构、特性、性能对比和最�
 date: 2026-04-24
 author: "RiceBall-15"
 category: aiInfra
+subCategory: inference
 tags: ["SGLang", "LLM推理", "结构化生成", "高性能"]
 draft: false
 ---

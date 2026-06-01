@@ -4,6 +4,7 @@ description: "深度剖析港大开源的OpenSpace框架——AI Agent自我进�
 date: 2026-05-14
 author: "RiceBall-15"
 category: "agent"
+subCategory: agent-skill
 tags: ["OpenSpace", "Agent技能", "自我进化", "MCP", "技能社区"]
 draft: false
 ---

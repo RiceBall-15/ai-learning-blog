@@ -4,6 +4,7 @@ description: "深入分析Claude Code的核心架构，包括Hook系统、MCP协
 date: 2026-05-12
 author: RiceBall-15
 category: architecture
+subCategory: distributed
 tags: [claude-code, agent, hook, mcp, architecture, multi-agent]
 draft: false
 ---

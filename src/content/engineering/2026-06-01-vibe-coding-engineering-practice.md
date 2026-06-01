@@ -4,6 +4,7 @@ description: "Vibe Coding不只是让AI写代码那么简单。本文深入探�
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-coding"
+subCategory: ai-coding
 tags: ["Vibe Coding", "AI编程", "工程化实践", "代码质量", "团队协作"]
 draft: false
 ---

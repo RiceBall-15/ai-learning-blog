@@ -4,6 +4,7 @@ description: "深入剖析向量数据库核心技术，涵盖索引算法、查
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["向量数据库", "架构设计", "性能优化", "AI基础设施"]
 draft: false
 ---

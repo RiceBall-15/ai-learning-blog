@@ -4,6 +4,7 @@ description: "从易用性、性能、生态、扩展性四大维度全面对比
 date: 2026-05-30
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["本地部署", "Ollama", "llama.cpp", "大模型", "AI工具", "模型推理"]
 draft: false
 ---

@@ -3,6 +3,7 @@ title: 全网最简单的 OpenClaw 部署教程，5 分钟拥有你的 AI 员工
 date: 2026-02-10
 description: OpenClaw 是一个能操作电脑干活的 AI 数字员工，支持读写文件、编写程序、执行任务，7×24小时不间断工作
 category: agentMemory
+subCategory: agent-skill
 tags:
   - AI智能体
   - OpenClaw

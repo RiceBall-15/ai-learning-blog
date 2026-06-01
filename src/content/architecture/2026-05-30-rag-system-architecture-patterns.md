@@ -4,6 +4,7 @@ description: "深度解析RAG系统的6种核心架构模式，结合真实业�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
+subCategory: distributed
 tags: ["RAG", "系统架构", "检索增强生成", "向量数据库", "LLM应用", "架构设计模式"]
 draft: false
 ---

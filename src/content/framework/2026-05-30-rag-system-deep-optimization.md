@@ -4,6 +4,7 @@ description: "深入剖析RAG系统三代架构演进：Naive RAG的局限、Adv
 date: 2026-05-30
 author: RiceBall-15
 category: framework
+subCategory: rag
 tags: ["RAG", "检索增强生成", "向量数据库", "语义检索", "LLM应用", "框架应用"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "深度对比主流 AI 对话平台：Coze、Dify、Botpress、Rasa
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["AI工具", "智能客服", "对话平台", "Coze", "Dify", "Botpress", "Rasa", "AI应用"]
 draft: false
 ---

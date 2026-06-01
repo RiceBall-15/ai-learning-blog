@@ -4,6 +4,7 @@ description: "系统评测主流Prompt Engineering工具，涵盖可视化调试
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: protocol-tools
 tags: ["Prompt Engineering", "AI工具", "LLM开发", "工具评测"]
 draft: false
 ---

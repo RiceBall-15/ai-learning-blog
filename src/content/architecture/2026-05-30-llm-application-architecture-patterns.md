@@ -4,6 +4,7 @@ description: "系统梳理生产环境中LLM应用的五大架构模式：管道
 date: 2026-05-30
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["LLM架构", "系统设计", "分布式系统", "生产部署", "架构模式"]
 draft: false
 ---

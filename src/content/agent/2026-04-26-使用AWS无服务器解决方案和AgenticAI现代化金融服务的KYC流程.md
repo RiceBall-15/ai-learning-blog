@@ -2,6 +2,7 @@
 title: 使用AWS无服务器解决方案和Agentic AI现代化金融服务的KYC流程
 date: 2026-04-26
 category: aiAgent
+subCategory: agent-architecture
 tags:
   - AWS
   - Agentic AI

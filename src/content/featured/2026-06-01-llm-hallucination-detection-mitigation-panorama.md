@@ -4,6 +4,7 @@ description: "深入解析LLM幻觉问题的检测方法、缓解策略与系统
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["幻觉检测", "Hallucination", "LLM安全", "RAG", "事实性验证", "模型对齐"]
 draft: false
 ---

@@ -4,6 +4,7 @@ description: "深入解析CrewAI的架构原理、角色系统、任务编排机
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
+subCategory: agent-framework
 tags: ["CrewAI", "多智能体", "Agent框架", "AI协作", "LLM应用", "工具编排"]
 draft: false
 ---

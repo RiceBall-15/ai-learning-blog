@@ -4,6 +4,7 @@ date: 2026-05-06
 source: Smashing Magazine
 url: https://www.smashingmagazine.com/2026/05/architecture-local-first-web-development/
 category: architecture
+subCategory: distributed
 tags:
   - local-first
   - architecture

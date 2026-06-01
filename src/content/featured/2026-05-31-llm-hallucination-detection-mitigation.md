@@ -4,6 +4,7 @@ description: "系统梳理LLM幻觉的成因、检测方法与缓解策略，结
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["幻觉检测", "LLM安全", "RAG优化", "模型评估", "AI可靠性"]
 draft: false
 ---

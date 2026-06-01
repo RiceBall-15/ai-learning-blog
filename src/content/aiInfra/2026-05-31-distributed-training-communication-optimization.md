@@ -4,6 +4,7 @@ description: "深入解析大模型分布式训练中的通信瓶颈与优化策
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
+subCategory: model-training
 tags: ["分布式训练", "通信优化", "NCCL", "梯度压缩", "大规模训练"]
 draft: false
 ---

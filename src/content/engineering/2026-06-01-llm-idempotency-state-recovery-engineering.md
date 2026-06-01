@@ -4,6 +4,7 @@ description: "深入探讨LLM应用中幂等性设计的核心挑战，涵盖请
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["幂等性", "状态恢复", "重试策略", "LLM工程", "Exactly-Once", "可靠性"]
 draft: false
 ---

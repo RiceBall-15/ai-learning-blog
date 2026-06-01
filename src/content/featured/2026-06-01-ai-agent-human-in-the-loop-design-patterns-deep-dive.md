@@ -4,6 +4,7 @@ description: "系统解析AI Agent系统中人机协同的核心设计模式，�
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
+subCategory: deep-dive
 tags: ["Human-in-the-Loop", "AI Agent", "人机协同", "交互设计", "生产实践", "审批流", "渐进式自主"]
 draft: false
 ---

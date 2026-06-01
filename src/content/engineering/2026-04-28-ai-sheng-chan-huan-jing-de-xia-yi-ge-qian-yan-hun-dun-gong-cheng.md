@@ -3,6 +3,7 @@ title: "AI生产环境的下一个前沿：混沌工程"
 description: "探讨如何将混沌工程从脚本化测试转变为意图驱动的弹性验证，将实验锚定到用户行为和业务指标而非组件，使混沌测试更有意义和信息价值"
 date: 2026-04-28
 category: "aiInfrastructure"
+subCategory: infra
 tags: ["chaos-engineering", "resilience", "AI", "production", "slo"]
 source: "Towards Data Science"
 url: "https://towardsdatascience.com/the-next-frontier-of-ai-in-production-is-chaos-engineering/"

@@ -4,6 +4,7 @@ description: "深度评测主流AI安全防护与Guardrails工具的技术架构
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
+subCategory: protocol-tools
 tags: ["AI安全", "Guardrails", "LLM安全", "Prompt注入", "内容安全", "工具评测"]
 draft: false
 ---

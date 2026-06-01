@@ -4,6 +4,7 @@ description: "深入解析模型合并(Model Merging)技术原理与工程实践
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
+subCategory: inference
 tags: ["模型合并", "Model Merging", "TIES", "DARE", "SLERP", "LLM", "推理优化"]
 draft: false
 ---
