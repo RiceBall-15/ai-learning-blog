@@ -3,8 +3,8 @@ title: "多Agent消息通信机制：从同步调用到事件驱动的架构选�
 description: "深入解析多Agent系统的消息通信架构，涵盖同步/异步/事件驱动模式、消息代理选型（Kafka/RabbitMQ/NATS）、协议对比（gRPC/WebSocket/MCP）、消息Schema设计、死信队列、背压处理等生产级方案。"
 date: 2026-05-30
 author: "技术学习笔记"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["Agent", "消息通信", "事件驱动", "面试"]
 ---
 

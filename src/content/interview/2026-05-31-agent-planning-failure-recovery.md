@@ -3,8 +3,8 @@ title: 'Agent规划失败恢复：当CoT/ToT/GoT走错路时的自救策略'
 description: '深入剖析Agent规划失败的五大模式、检测机制、回滚策略、降级执行、Reflexion学习与动态重规划，附带面试深度问答。'
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['规划恢复', 'CoT', 'ToT', '面试']
 draft: false
 ---

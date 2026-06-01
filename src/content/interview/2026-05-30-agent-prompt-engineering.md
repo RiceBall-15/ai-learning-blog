@@ -3,8 +3,8 @@ title: "Agent系统提示词工程：从指令设计到行为控制的艺术"
 description: "深入解析Agent系统提示词的架构设计、Few-shot策略、思维链触发、工具调用模式、反幻觉技术等核心主题，结合ChatGPT、Claude、Gemini等主流Agent产品的实战经验，全面覆盖面试高频考点。"
 date: 2026-05-30
 author: "技术学习笔记"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: behavioral
 tags: ["Agent", "PromptEngineering", "系统提示词", "面试"]
 ---
 

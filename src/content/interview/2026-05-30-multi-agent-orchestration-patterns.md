@@ -3,8 +3,8 @@ title: "多Agent协同模式：从简单编排到智能团队的进化之路"
 description: "深入剖析多Agent系统的核心编排模式、通信拓扑、冲突解决机制与常见反模式，结合AutoGen、CrewAI、LangGraph等框架的生产实践，探讨如何构建高效的智能Agent团队。"
 date: 2026-05-30
 author: "技术学习笔记"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["Agent", "MultiAgent", "Orchestration", "面试"]
 ---
 

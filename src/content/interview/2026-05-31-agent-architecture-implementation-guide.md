@@ -3,8 +3,8 @@ title: "Agent架构实战指南：六种主流架构的代码实现与选型决�
 description: "从ReAct到LATS，六种Agent架构的核心实现代码、选型决策树、生产演进路径，附面试回答框架，一篇搞定Agent架构从理论到实战"
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['Agent架构', '代码实现', '架构选型', '面试']
 draft: false
 ---

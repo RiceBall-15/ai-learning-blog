@@ -3,8 +3,8 @@ title: "Agent生产化部署：从原型到大规模服务的工程实践"
 description: "深入解析AI Agent在生产环境中的容器编排、自动伸缩、成本优化、A/B测试、蓝绿发布、回滚策略、SLA定义及多区域部署等核心工程实践，面向Agent开发者面试及生产化落地。"
 date: 2026-05-30
 author: "技术学习笔记"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: behavioral
 tags: ["Agent", "Deployment", "Production", "面试"]
 ---
 

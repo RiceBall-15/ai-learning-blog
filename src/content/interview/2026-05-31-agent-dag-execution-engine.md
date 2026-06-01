@@ -3,8 +3,8 @@ title: "Agent DAG执行引擎：从理论到生产级工作流编排的完整指
 description: "系统讲解Agent DAG执行引擎的核心概念、四种执行模式、生产级架构设计、检查点机制、并发控制，以及用LangGraph实战构建的完整流程。"
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['DAG执行', '任务调度', '工作流编排', '面试']
 draft: false
 ---

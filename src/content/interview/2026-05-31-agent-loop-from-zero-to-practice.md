@@ -3,8 +3,8 @@ title: "Agent Loop从零到实战：手把手构建一个完整的ReAct Agent"
 description: "从厨师做菜的生活类比出发，深入浅出地讲解Agent Loop的完整实战：最简实现、生产级改进、终止条件设计、三种Loop模式对比、并行调度、优化策略及面试要点。"
 date: 2026-05-31
 author: "RiceBall-15"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["Agent Loop", "ReAct", "从零到实战", "面试"]
 draft: false
 ---

@@ -3,8 +3,8 @@ title: "Agent可观测性实战：从零搭建生产级Tracing与监控系统"
 description: "从零搭建Agent可观测性系统，覆盖OTel部署、Span设计、成本追踪、告警策略到生产踩坑，面试深度指南。"
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['Agent可观测性', 'Tracing', '监控', '面试']
 draft: false
 ---

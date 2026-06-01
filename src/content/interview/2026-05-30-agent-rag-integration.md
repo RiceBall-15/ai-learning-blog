@@ -3,8 +3,8 @@ title: "Agent与RAG的深度融合：从检索增强到知识驱动的智能体"
 description: "深入剖析Agent与RAG的融合架构模式，涵盖检索增强策略、知识图谱集成、多步推理检索、混合搜索策略及生产级架构设计，面向Agent开发者面试的深度技术指南。"
 date: 2026-05-30
 author: 技术学习笔记
-category: agent
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: [Agent, RAG, 知识增强, 面试]
 ---
 

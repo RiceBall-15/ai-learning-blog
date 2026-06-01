@@ -3,8 +3,8 @@ title: "Agent安全与对齐体系：从威胁建模到生产防线的完整指�
 description: "深度解析Agent系统的7大攻击面、Prompt注入攻防、工具调用安全、RLHF/DPO对齐实践、多Agent信任隔离及生产环境四层安全架构，附面试题解析。"
 date: 2026-05-31
 author: "RiceBall-15"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["Agent安全", "对齐", "Prompt注入", "面试"]
 draft: false
 ---

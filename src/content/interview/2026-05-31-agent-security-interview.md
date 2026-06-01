@@ -3,8 +3,8 @@ title: "Agent安全防护面试题：Prompt注入、工具滥用、数据泄露�
 description: "高频面试题：如何保障Agent系统的安全？从攻击类型、防御策略、最佳实践三个维度深度解析"
 date: 2026-05-31
 author: "RiceBall-15"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: behavioral
 tags: ["面试题", "Agent安全", "Prompt注入", "安全防护"]
 draft: false
 ---

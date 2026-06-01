@@ -3,8 +3,8 @@ title: 'Agent面试题TOP30：从初级到架构师的深度解析'
 description: '精心整理30道Agent开发高频面试题，附详细解析和考察点分析'
 date: 2026-05-30
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['面试题', 'Agent开发', '技术面试', '架构设计']
 draft: false
 ---

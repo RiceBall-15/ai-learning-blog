@@ -3,8 +3,8 @@ title: "多Agent系统实战：从需求分析到上线的完整项目构建"
 description: "基于AI研究团队场景，完整拆解多Agent协同系统的架构设计、通信机制、任务调度与生产化改造，附百万用户平台面试题解析。"
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['多Agent系统', '实战项目', '协同架构', '面试']
 draft: false
 ---

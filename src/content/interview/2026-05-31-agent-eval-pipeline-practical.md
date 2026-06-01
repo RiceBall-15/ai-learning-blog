@@ -3,8 +3,8 @@ title: 'Agent Eval Pipeline实战：从零搭建自动化质量评估系统'
 description: '系统讲解Agent评估Pipeline的搭建方法，涵盖评估维度体系、LLM-as-Judge、数据集构建、CI/CD集成与A/B测试框架，附完整架构设计与面试深度解析。'
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['Eval Pipeline', 'Agent评估', 'A/B测试', '面试']
 draft: false
 ---

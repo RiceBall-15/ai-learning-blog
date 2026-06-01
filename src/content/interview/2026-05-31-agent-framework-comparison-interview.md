@@ -3,8 +3,8 @@ title: "Agent框架选型面试题：LangChain vs AutoGPT vs CrewAI vs Dify深�
 description: "高频面试题：如何选择合适的Agent框架？从架构设计、开发体验、生产部署三个维度深度对比主流框架"
 date: 2026-05-31
 author: "RiceBall-15"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: technical
 tags: ["面试题", "Agent框架", "LangChain", "CrewAI", "框架选型"]
 draft: false
 ---

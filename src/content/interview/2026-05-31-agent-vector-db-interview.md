@@ -3,8 +3,8 @@ title: "Agent向量数据库面试题：Milvus vs Pinecone vs Weaviate选型与�
 description: "高频面试题：如何为Agent选择合适的向量数据库？从架构设计、性能对比、生产部署三个维度深度解析"
 date: 2026-05-31
 author: "RiceBall-15"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["面试题", "向量数据库", "Milvus", "Pinecone", "选型"]
 draft: false
 ---

@@ -3,8 +3,8 @@ title: "Agent评测方法面试题：如何科学评估Agent系统的效果与�
 description: "高频面试题：如何评测Agent系统？从评测维度、基准测试、自动化评测三个维度深度解析"
 date: 2026-05-31
 author: "RiceBall-15"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["面试题", "Agent评测", "基准测试", "效果评估"]
 draft: false
 ---

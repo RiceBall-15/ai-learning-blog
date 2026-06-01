@@ -3,8 +3,8 @@ title: "Agent系统测试：从单元测试到端到端验证的完整方案"
 description: "深入探讨Agent系统的测试策略与质量保障体系，涵盖测试金字塔、Mock策略、回归测试、评估基准、自动化评分、A/B测试、灰度发布、模糊测试与混沌工程等核心实践。"
 date: 2026-05-30
 author: "技术学习笔记"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: behavioral
 tags: ["Agent", "测试", "质量保障", "面试"]
 ---
 
@@ -231,7 +231,7 @@ Agent的回归测试是质量保障的核心——确保系统改动不会破坏
 ```yaml
 # test_cases/weather_query.yaml
 test_id: "TC-001"
-category: "天气查询"
+category: interview
 description: "基础天气查询功能"
 input: "北京今天天气怎么样"
 expected_tools:
@@ -250,7 +250,7 @@ tags: ["weather", "basic"]
 
 # test_cases/multi_step_research.yaml
 test_id: "TC-015"
-category: "多步研究"
+category: interview
 description: "复杂研究任务需要多步工具调用"
 input: "帮我研究一下量子计算在金融领域的应用现状"
 expected_tools:

@@ -3,8 +3,8 @@ title: "Agent自进化实战：构建一个能持续学习和自我改进的Agen
 description: "深度解析Agent自进化机制，涵盖自我反思、经验积累、Prompt自动优化、工具学习、记忆驱动进化等核心模块，附带实战架构设计和面试高频问题拆解。"
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['Agent进化', '自我学习', 'Prompt优化', '面试']
 draft: false
 ---

@@ -3,8 +3,8 @@ title: "Agent调试与问题定位：从现象到根因的系统化排查方法"
 description: "深入剖析AI Agent系统的常见故障模式与调试方法论，涵盖幻觉循环、工具调用失败、上下文溢出、Prompt注入等问题的系统化排查策略，结合日志分析、Trace追踪、混沌工程等实战技术，帮助开发者快速定位并解决Agent生产环境中的疑难问题。"
 date: 2026-05-30
 author: "技术学习笔记"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["Agent", "调试", "运维", "面试"]
 ---
 

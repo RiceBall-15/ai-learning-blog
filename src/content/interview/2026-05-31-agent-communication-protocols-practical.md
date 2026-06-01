@@ -3,8 +3,8 @@ title: "Agent通信协议实战：A2A/MCP协议的生产级实现指南"
 description: "深度解析Google A2A与Anthropic MCP两大Agent通信协议，涵盖协议对比、生产化改造、融合架构设计及面试高频问题。"
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['A2A协议', 'MCP', 'Agent通信', '面试']
 draft: false
 ---

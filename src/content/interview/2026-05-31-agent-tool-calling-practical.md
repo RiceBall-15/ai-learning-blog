@@ -3,8 +3,8 @@ title: "Agent工具调用实战：从Function Calling到工具市场生态的完
 description: "深度解析Agent工具调用的演进、Schema设计、工具注册中心、MCP协议、安全机制与成本优化，附1000+工具系统的面试设计题。"
 date: 2026-05-31
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['工具调用', 'Function Calling', '工具市场', '面试']
 draft: false
 ---
@@ -93,7 +93,7 @@ draft: false
 | **参数格式** | JSON Schema（标准） | JSON Schema（标准） | JSON Schema（标准） |
 | **多工具选择** | `tool_choice: "auto"/"none"/"required"/指定名` | `tool_choice: {"type": "auto"}` / 指定名 | `tool_config: {mode: "AUTO"}` |
 | **并行调用** | 支持（返回多个tool_calls） | 支持（返回多个tool_use） | 支持（parallel_function_calling） |
-| **工具类别** | 无 | 支持 `category: "search"/"tool"/"connector"` | 无 |
+| **工具类别** | 无 | 支持 `category: interview/"tool"/"connector"` | 无 |
 | **调用结果格式** | 单一JSON字符串 | 单一JSON（需手动wrap为content block） | JSON对象 |
 | **强制调用工具** | `tool_choice: {"type": "function", "function": {"name": "xxx"}}` | `tool_choice: {"type": "tool", "name": "xxx"}` | `tool_config: {mode: "ANY"}` |
 | **最大工具数** | ~128（实践建议<30） | ~128 | ~128 |
@@ -217,7 +217,7 @@ class ToolDefinition:
     
     # 描述信息
     description: str          # 模型可见的描述
-    category: str             # 分类：search/code/data/io
+    category: interview
     tags: list[str]           # 标签
     
     # 接口定义

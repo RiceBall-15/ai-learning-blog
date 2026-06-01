@@ -3,8 +3,8 @@ title: 'Agent开发工程师面试技术体系：10大方向深度索引'
 description: '系统梳理Agent开发面试的10大核心技术方向，涵盖执行机制、架构设计、多Agent协同、评估体系等'
 date: 2026-05-30
 author: 'RiceBall-15'
-category: 'agent'
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ['面试体系', 'Agent架构', '技术方向', '面试题']
 draft: false
 ---

@@ -3,8 +3,8 @@ title: "Agent性能优化面试题：延迟、吞吐量、成本的三角平衡"
 description: "高频面试题：如何优化Agent系统的性能？从推理优化、缓存策略、并发控制三个维度深度解析"
 date: 2026-05-31
 author: "RiceBall-15"
-category: "agent"
-subCategory: interview
+category: interview
+subCategory: system-design
 tags: ["面试题", "性能优化", "Agent优化", "延迟优化"]
 draft: false
 ---
