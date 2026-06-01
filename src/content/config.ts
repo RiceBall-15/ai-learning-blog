@@ -125,6 +125,11 @@ export const categoryMeta: Record<string, { name: string; icon: string; descript
     icon: '🤖',
     description: 'Agent架构、记忆系统、技能开发与运维实践',
   },
+  interview: {
+    name: '面试精选',
+    icon: '💼',
+    description: '系统设计、算法编程、行为面试与技术面试深度解析',
+  },
   aiInfra: {
     name: 'AI基础设施',
     icon: '🔧',
@@ -149,11 +154,6 @@ export const categoryMeta: Record<string, { name: string; icon: string; descript
     name: '优秀文章精选',
     icon: '⭐',
     description: '参考优秀博主风格的深度技术文章与架构深度解析',
-  },
-  interview: {
-    name: '面试精选',
-    icon: '💼',
-    description: '系统设计、算法编程、行为面试与技术面试深度解析',
   },
   'ai-tools': {
     name: 'AI工具评测',
