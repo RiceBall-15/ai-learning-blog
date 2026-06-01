@@ -1,0 +1,56 @@
+{
+  "last_execution": "2026-06-01",
+  "articles_published": [
+    {
+      "date": "2026-06-01",
+      "files": [
+        "src/content/architecture/2026-06-01-ai-microservices-circuit-breaker-adaptive-rate-limiting.md",
+        "src/content/aiInfra/2026-06-01-rag-evaluation-framework-comprehensive-guide.md"
+      ],
+      "subcategories": [
+        "architecture/microservices",
+        "aiInfra/evaluation"
+      ]
+    }
+  ],
+  "total_articles": 542,
+  "subcategory_distribution": {
+    "agent/agent-architecture": 21,
+    "agent/agent-memory": 20,
+    "agent/agent-ops": 8,
+    "agent/agent-skill": 25,
+    "agent/interview": 37,
+    "ai-tools/browser-tools": 7,
+    "ai-tools/coding-tools": 51,
+    "ai-tools/protocol-tools": 15,
+    "aiInfra/evaluation": 9,
+    "aiInfra/inference": 46,
+    "aiInfra/model-training": 17,
+    "architecture/cloud-native": 15,
+    "architecture/distributed": 50,
+    "architecture/microservices": 8,
+    "engineering/ai-coding": 20,
+    "engineering/infra": 46,
+    "engineering/learning": 7,
+    "featured/ai-architecture": 7,
+    "featured/deep-dive": 63,
+    "framework/agent-framework": 39,
+    "framework/protocols": 9,
+    "framework/rag": 22
+  },
+  "weakest_subcategories": [
+    "engineering/learning: 7",
+    "featured/ai-architecture: 7",
+    "ai-tools/browser-tools: 7",
+    "agent/agent-ops: 8",
+    "architecture/microservices: 8",
+    "aiInfra/evaluation: 9",
+    "framework/protocols: 9"
+  ],
+  "next_execution_recommendations": [
+    "engineering/learning: AI工程师学习路径与成长体系",
+    "featured/ai-architecture: AI架构演进趋势与最佳实践",
+    "ai-tools/browser-tools: 浏览器自动化工具深度评测",
+    "framework/protocols: MCP协议深度解析与实战"
+  ]
+}
