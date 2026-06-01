@@ -1,11 +1,14 @@
 ---
+
 title: "AI数据质量管理工具深度评测：从数据清洗到模型训练的全链路质量保障"
 description: "深度评测主流AI数据质量管理工具，涵盖数据清洗、标注质量控制、数据漂移检测等核心能力，帮助团队构建可靠的AI数据基础设施"
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
+subCategory: coding-tools
 tags: ["数据质量", "MLOps", "数据治理", "工具评测"]
 draft: false
+
 ---
 
 # AI数据质量管理工具深度评测：从数据清洗到模型训练的全链路质量保障

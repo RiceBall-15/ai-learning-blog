@@ -1,11 +1,14 @@
 ---
+
 title: "Agno多智能体框架深度实战：从架构设计到生产落地"
 description: "全面剖析Agno框架的核心设计理念、多智能体协作模式与生产环境部署策略，结合真实业务场景给出可复用的架构模板。"
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
+subCategory: agent-framework
 tags: ["Agno", "多智能体", "Agent框架", "AI工程化"]
 draft: false
+
 ---
 
 ## 引言：为什么需要一个新的Agent框架？

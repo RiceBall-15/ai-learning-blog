@@ -1,11 +1,14 @@
 ---
+
 title: "LLM应用可测试性工程实践：如何为不确定性系统构建可靠的测试体系"
 description: "系统性探讨LLM应用测试的独特挑战与解决方案，涵盖单元测试、集成测试、评估测试到生产监控的全链路测试工程实践"
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
+subCategory: infra
 tags: ["LLM测试", "可测试性", "质量工程", "AI工程化"]
 draft: false
+
 ---
 
 # LLM应用可测试性工程实践：如何为不确定性系统构建可靠的测试体系

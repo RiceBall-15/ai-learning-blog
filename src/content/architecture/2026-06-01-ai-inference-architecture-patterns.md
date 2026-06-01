@@ -1,11 +1,14 @@
 ---
+
 title: "AI推理服务架构设计模式：从单机到分布式的演进之路"
 description: "深入解析LLM推理服务的核心架构模式，涵盖动态批处理、KV Cache管理、负载均衡策略，结合生产环境实战经验总结可落地的架构方案。"
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
+subCategory: distributed
 tags: ["LLM推理", "系统架构", "性能优化", "分布式系统"]
 draft: false
+
 ---
 
 ## 引言：推理服务为什么越来越难做？
