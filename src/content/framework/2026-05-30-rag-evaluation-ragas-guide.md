@@ -4,7 +4,7 @@ description: '从主观判断到量化评估，构建完整的RAG系统评估体
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'framework'
-subCategory: 'rag'
+subCategory: rag
 tags: ['RAGAS', 'RAG评估', '评估体系', 'A/B测试']
 draft: false
 ---

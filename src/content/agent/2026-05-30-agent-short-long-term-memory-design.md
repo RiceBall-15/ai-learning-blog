@@ -4,7 +4,7 @@ description: '深入解析AI Agent的多层记忆架构，从工作记忆到语�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-memory'
+subCategory: agent-memory
 tags: ['短期记忆', '长期记忆', '工作记忆', '情景记忆', '记忆架构']
 draft: false
 ---

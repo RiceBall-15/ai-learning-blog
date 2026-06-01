@@ -4,7 +4,7 @@ description: '从攻击原理到防御策略，全面解析AI Agent面临的安�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-ops'
+subCategory: agent-ops
 tags: ['Agent安全', 'Prompt注入', '输出过滤', '安全防御']
 draft: false
 ---

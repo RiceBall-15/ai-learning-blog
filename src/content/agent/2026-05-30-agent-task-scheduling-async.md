@@ -4,7 +4,7 @@ description: '从任务队列到资源隔离，全面解析Agent系统的高效�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'interview'
+subCategory: interview
 tags: ['任务调度', '异步执行', '并发控制', '资源管理']
 draft: false
 ---

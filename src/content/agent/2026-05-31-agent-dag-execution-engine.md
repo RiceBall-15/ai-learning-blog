@@ -4,7 +4,7 @@ description: "系统讲解Agent DAG执行引擎的核心概念、四种执行模
 date: 2026-05-31
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'interview'
+subCategory: interview
 tags: ['DAG执行', '任务调度', '工作流编排', '面试']
 draft: false
 ---

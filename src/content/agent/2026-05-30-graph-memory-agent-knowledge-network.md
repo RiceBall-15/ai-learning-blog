@@ -4,7 +4,7 @@ description: '用知识图谱增强Agent记忆，实现关系推理与多跳查�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-memory'
+subCategory: agent-memory
 tags: ['Graph Memory', '知识图谱', 'Neo4j', '向量图混合', '关系推理']
 draft: false
 ---

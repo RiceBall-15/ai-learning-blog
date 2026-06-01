@@ -4,7 +4,7 @@ description: '深入解析多Agent协作拓扑、AutoGen/CrewAI/LangGraph三大�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'interview'
+subCategory: interview
 tags: ['多Agent', 'AutoGen', 'CrewAI', 'AI Team', '协作架构']
 draft: false
 ---

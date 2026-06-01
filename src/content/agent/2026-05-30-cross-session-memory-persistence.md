@@ -4,7 +4,7 @@ description: '解决Agent的会话边界问题，实现记忆跨设备、跨会�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-memory'
+subCategory: agent-memory
 tags: ['跨会话记忆', '持久化', '增量同步', 'CRDT', '分布式一致性']
 draft: false
 ---

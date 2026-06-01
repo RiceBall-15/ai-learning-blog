@@ -4,7 +4,7 @@ description: '全面剖析AI Agent记忆系统的隐私保护架构，涵盖PII�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'agent-memory'
+subCategory: agent-memory
 tags: ['记忆安全', '隐私保护', 'PII检测', 'GDPR', '审计机制']
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "基于AI研究团队场景，完整拆解多Agent协同系统的�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'interview'
+subCategory: interview
 tags: ['多Agent系统', '实战项目', '协同架构', '面试']
 draft: false
 ---

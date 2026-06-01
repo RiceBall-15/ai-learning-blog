@@ -4,7 +4,7 @@ description: "深入解析AI Agent长期记忆系统的设计与实现，涵盖�
 date: 2026-05-30
 author: "技术学习笔记"
 category: "agent"
-subCategory: 'interview'
+subCategory: interview
 tags:
   - "Agent"
   - "长期记忆"

@@ -4,7 +4,7 @@ description: "深入解析AI Agent在生产环境中的容器编排、自动伸�
 date: 2026-05-30
 author: "技术学习笔记"
 category: "agent"
-subCategory: 'interview'
+subCategory: interview
 tags: ["Agent", "Deployment", "Production", "面试"]
 ---
 

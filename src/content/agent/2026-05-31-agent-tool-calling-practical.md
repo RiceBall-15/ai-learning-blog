@@ -4,7 +4,7 @@ description: "深度解析Agent工具调用的演进、Schema设计、工具注�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: 'agent'
-subCategory: 'interview'
+subCategory: interview
 tags: ['工具调用', 'Function Calling', '工具市场', '面试']
 draft: false
 ---

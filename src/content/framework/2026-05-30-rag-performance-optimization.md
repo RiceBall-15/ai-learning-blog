@@ -4,7 +4,7 @@ description: '深入解析RAG系统各阶段性能瓶颈，提供Embedding/检�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'framework'
-subCategory: 'rag'
+subCategory: rag
 tags: ['RAG', '性能优化', 'P99', '吞吐量', '向量检索']
 draft: false
 ---

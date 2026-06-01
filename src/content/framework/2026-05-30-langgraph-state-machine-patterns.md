@@ -4,7 +4,7 @@ description: '从状态管理到条件路由，全面解析LangGraph构建复杂
 date: 2026-05-30
 author: 'RiceBall-15'
 category: 'framework'
-subCategory: 'agent-framework'
+subCategory: agent-framework
 tags: ['LangGraph', '状态机', 'Agent工作流', '设计模式']
 draft: false
 ---
