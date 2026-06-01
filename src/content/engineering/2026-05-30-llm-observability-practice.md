@@ -4,7 +4,7 @@ description: "深入解析LLM应用的可观测性建设，涵盖分布式追踪
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["LLM可观测性", "分布式追踪", "监控告警", "AI工程化", "MLOps", "成本分析"]
 draft: false
 ---

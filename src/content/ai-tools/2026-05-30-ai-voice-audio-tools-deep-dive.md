@@ -4,7 +4,7 @@ description: "深度评测2026年主流AI语音与音频工具，覆盖语音识
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI语音", "TTS", "STT", "语音克隆", "Whisper", "ElevenLabs", "音频工具"]
 draft: false
 ---

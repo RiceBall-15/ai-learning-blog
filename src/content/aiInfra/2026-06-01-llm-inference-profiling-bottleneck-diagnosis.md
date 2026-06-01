@@ -4,7 +4,7 @@ description: "系统性介绍LLM推理性能剖析方法论，涵盖nsight、PyT
 date: 2026-06-01
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["LLM推理", "性能剖析", "Profiling", "GPU优化", "瓶颈诊断", "NVIDIA Nsight"]
 draft: false
 ---

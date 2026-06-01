@@ -4,7 +4,7 @@ description: "深入解析CUDA Graph在大模型推理中的应用，包括原�
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["CUDA Graph", "LLM推理", "GPU优化", "推理引擎", "性能优化"]
 draft: false
 ---

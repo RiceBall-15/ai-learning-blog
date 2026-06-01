@@ -4,7 +4,7 @@ description: "深度解析多Agent系统在生产环境中面临的工程挑战�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["多Agent系统", "Agent架构", "状态管理", "错误恢复", "人机协作", "生产实践"]
 draft: false
 ---

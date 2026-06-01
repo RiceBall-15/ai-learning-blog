@@ -4,7 +4,7 @@ description: "深入剖析Agno框架的架构设计、核心组件与生产级�
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Agno", "Phidata", "AI Agent", "Agent框架", "Python", "多Agent"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析AI系统可观测性的三大支柱（日志、指标�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["可观测性", "AI系统", "监控", "日志", "分布式追踪", "LLM运维"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统剖析大模型结构化输出的技术原理、主流方案
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["结构化输出", "Constrained Decoding", "JSON Mode", "Function Calling", "LLM推理", "Outlines", "LLama.cpp"]
 draft: false
 ---

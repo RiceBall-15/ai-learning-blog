@@ -4,7 +4,7 @@ description: "从零设计企业级AI Gateway，涵盖路由、限流、缓存�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "microservices"
+subCategory: microservices
 tags: ["AI Gateway", "架构设计", "微服务", "可观测性", "限流"]
 draft: false
 ---

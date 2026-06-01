@@ -4,7 +4,7 @@ description: "深入剖析AI应用中的状态管理挑战，覆盖多轮对话�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["状态管理", "对话系统", "会话存储", "上下文管理", "AI工程", "Redis", "状态机", "生产实践"]
 draft: false
 ---

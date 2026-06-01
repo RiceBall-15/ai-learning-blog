@@ -4,7 +4,7 @@ description: "深度解析语义缓存的架构设计、向量化匹配策略、
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["语义缓存", "Semantic Cache", "LLM成本优化", "向量相似度", "Redis", "AI工程化"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析Mixture of Agents架构的设计理念、协作机制�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["Mixture of Agents", "MoA", "多模型协作", "LLM推理", "AI架构", "模型路由"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统梳理模型蒸馏技术演进，深入分析KD、PKD、Tiny
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["模型蒸馏", "知识蒸馏", "DeepSeek", "模型压缩", "小模型部署", "训练优化"]
 draft: false
 ---

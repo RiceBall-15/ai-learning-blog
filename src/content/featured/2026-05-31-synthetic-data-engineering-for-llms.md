@@ -4,7 +4,7 @@ description: "系统讲解大模型训练与微调中的合成数据工程实践
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["合成数据", "数据工程", "LLM训练", "数据质量", "微调", "数据飞轮"]
 draft: false
 ---

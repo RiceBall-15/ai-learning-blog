@@ -4,7 +4,7 @@ description: "深入剖析 LLM 推理系统的核心优化技术，涵盖 KV Cac
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM推理", "KV Cache", "PagedAttention", "vLLM", "推理优化"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析Agent系统的可观测性架构设计，涵盖链路�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-architecture"
+subCategory: agent-architecture
 tags: ["Agent可观测性", "链路追踪", "OpenTelemetry", "决策日志", "LLM监控", "生产调试"]
 draft: false
 ---

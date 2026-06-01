@@ -4,7 +4,7 @@ description: "深入解析TensorRT-LLM的核心架构、优化技术与生产部
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["TensorRT-LLM", "推理优化", "LLM部署", "NVIDIA", "性能调优"]
 draft: false
 ---

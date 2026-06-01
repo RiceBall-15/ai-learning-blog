@@ -4,7 +4,7 @@ description: "深度解析大规模模型训练的核心工程挑战，覆盖分
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["分布式训练", "并行策略", "GPU集群", "模型训练", "MLOps"]
 draft: false
 ---

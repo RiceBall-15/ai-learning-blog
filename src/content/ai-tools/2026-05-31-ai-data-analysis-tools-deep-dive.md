@@ -4,7 +4,7 @@ description: "全面评测ChatBI、Text2SQL、智能仪表盘等AI数据分析�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI数据分析", "ChatBI", "Text2SQL", "数据可视化", "BI工具", "LLM应用"]
 draft: false
 ---

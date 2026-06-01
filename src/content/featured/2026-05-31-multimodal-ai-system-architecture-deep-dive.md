@@ -4,7 +4,7 @@ description: "系统梳理多模态AI系统的核心架构设计，涵盖视觉�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["多模态AI", "系统架构", "视觉语言模型", "跨模态融合", "生产部署"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度对比三款主流AI编程工具的核心能力、使用体�
 date: 2025-05-31
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI编程", "Cursor", "Windsurf", "Cline", "代码助手", "IDE"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度剖析LLM应用的成本结构与Token经济学，从模型�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["成本优化", "Token经济学", "LLM应用", "架构设计", "成本工程", "AI架构"]
 draft: false
 ---

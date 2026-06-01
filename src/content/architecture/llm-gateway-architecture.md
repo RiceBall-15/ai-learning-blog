@@ -4,7 +4,7 @@ description: "深入剖析LLM网关的架构设计，涵盖路由策略、流量
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["LLM", "网关架构", "微服务", "负载均衡", "AI基础设施"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度解析Agent系统中的状态机设计模式，涵盖FSM/状
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Agent", "状态机", "FSM", "LangGraph", "行为树", "效用Agent", "Agent架构", "设计模式"]
 draft: false
 ---

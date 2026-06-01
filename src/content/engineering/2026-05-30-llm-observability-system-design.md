@@ -4,7 +4,7 @@ description: "系统设计LLM应用的可观测性体系，覆盖LangSmith/LangF
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["可观测性", "Observability", "LLM监控", "LangSmith", "LangFuse", "MLOps", "Trace"]
 draft: false
 ---

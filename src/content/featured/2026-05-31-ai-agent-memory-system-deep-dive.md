@@ -4,7 +4,7 @@ description: "系统性剖析AI Agent记忆系统的四大类型、架构设计�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["AI Agent", "记忆系统", "Agent架构", "长期记忆", "短期记忆", "上下文管理"]
 draft: false
 ---

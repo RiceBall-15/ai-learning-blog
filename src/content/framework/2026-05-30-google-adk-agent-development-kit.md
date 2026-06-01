@@ -4,7 +4,7 @@ description: "深入剖析Google Agent Development Kit的架构设计、核心�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Google ADK", "Agent Development Kit", "AI Agent", "多Agent框架", "Google", "框架应用"]
 draft: false
 ---

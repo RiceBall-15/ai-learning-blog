@@ -4,7 +4,7 @@ description: "深度对比GitHub Copilot、Cursor等AI编程助手在代码审�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["AI编程", "代码审查", "Copilot", "Cursor", "工程化"]
 draft: false
 ---

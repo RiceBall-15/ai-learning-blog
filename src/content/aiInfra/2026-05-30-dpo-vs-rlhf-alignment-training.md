@@ -4,7 +4,7 @@ description: "从原理到实战，全面剖析RLHF与DPO两种主流对齐训�
 date: 2026-05-30
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["RLHF", "DPO", "对齐训练", "PPO", "强化学习", "LLM微调"]
 draft: false
 ---

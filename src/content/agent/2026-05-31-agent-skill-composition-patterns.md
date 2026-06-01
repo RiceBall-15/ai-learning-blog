@@ -4,7 +4,7 @@ description: "深入解析Agent技能组合的核心模式，覆盖串行链式�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "AI智能体"
-subCategory: "agent-skill"
+subCategory: agent-skill
 tags: ["Agent", "Skill", "工作流编排", "组合模式", "架构设计"]
 draft: false
 ---

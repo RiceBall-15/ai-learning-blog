@@ -4,7 +4,7 @@ description: "系统评测主流AI代码审查与安全扫描工具，涵盖Code
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI代码审查", "代码安全扫描", "CodeRabbit", "SonarQube", "SAST", "AI编程工具", "代码质量", "DevSecOps"]
 draft: false
 ---

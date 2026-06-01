@@ -4,7 +4,7 @@ description: "深度对比GitHub Copilot、Cursor、Windsurf、通义灵码等�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["AI编程", "Cursor", "GitHub Copilot", "开发工具", "IDE", "生产力"]
 draft: false
 ---

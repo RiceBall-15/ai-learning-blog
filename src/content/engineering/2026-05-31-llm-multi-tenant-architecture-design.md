@@ -4,7 +4,7 @@ description: "深入解析LLM应用中多租户架构的核心挑战，涵盖认
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["多租户", "LLM应用", "架构设计", "租户隔离", "资源管理", "成本优化"]
 draft: false
 ---

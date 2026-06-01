@@ -4,7 +4,7 @@ description: "从架构原理到性能基准，深度对比四大主流LLM推理
 date: "2026-05-30"
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "protocol-tools"
+subCategory: protocol-tools
 tags: ["LLM推理", "vLLM", "SGLang", "TensorRT-LLM", "llama.cpp", "推理引擎", "性能优化"]
 draft: false
 ---

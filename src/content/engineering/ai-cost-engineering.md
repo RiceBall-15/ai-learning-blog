@@ -4,7 +4,7 @@ description: "从Token计费模型到多维度成本优化策略，系统性讲�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["成本优化", "Token经济学", "LLM工程", "Prompt压缩", "语义缓存", "成本管控"]
 draft: false
 ---

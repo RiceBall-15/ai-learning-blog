@@ -4,7 +4,7 @@ description: "系统梳理LLM推理优化的核心技术栈，涵盖KV Cache管�
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["LLM推理优化", "KV Cache", "FlashAttention", "投机解码", "vLLM", "推理引擎", "模型部署"]
 draft: false
 ---

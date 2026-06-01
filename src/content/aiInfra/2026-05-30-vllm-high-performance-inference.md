@@ -4,7 +4,7 @@ description: "从PagedAttention内存管理到生产级部署，深入解析vLLM
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["vLLM", "PagedAttention", "推理优化", "高性能部署"]
 draft: false
 ---

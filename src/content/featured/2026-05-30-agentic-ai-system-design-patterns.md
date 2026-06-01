@@ -4,7 +4,7 @@ description: "深度解析AI Agent系统的核心设计模式，覆盖ReAct、Pl
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["AI Agent", "ReAct", "Plan-and-Execute", "Multi-Agent", "系统设计", "架构模式", "LLM应用"]
 draft: false
 ---

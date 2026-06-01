@@ -4,7 +4,7 @@ description: "深入解析Sidecar架构模式在AI模型服务中的应用，覆
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["Sidecar模式", "AI架构", "模型代理", "服务网格", "分布式系统"]
 draft: false
 ---

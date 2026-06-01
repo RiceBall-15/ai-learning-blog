@@ -4,7 +4,7 @@ description: "系统梳理LLM注意力机制的技术演进路线，深入剖析
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["注意力机制", "MHA", "GQA", "MLA", "Multi-Latent Attention", "KV Cache", "LLM推理优化"]
 draft: false
 ---

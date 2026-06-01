@@ -4,7 +4,7 @@ description: "深度解析AI治理框架、负责任AI的技术实现方案与�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["AI治理", "负责任AI", "AI伦理", "模型公平性", "可解释性", "合规"]
 draft: false
 ---

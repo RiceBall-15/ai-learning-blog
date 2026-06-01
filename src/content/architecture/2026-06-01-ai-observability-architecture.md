@@ -4,7 +4,7 @@ description: "深入剖析AI系统可观测性架构设计，涵盖LLM请求追�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["AI架构", "可观测性", "监控", "LLM", "MLOps", "Prometheus", "Grafana", "分布式追踪"]
 draft: false
 ---

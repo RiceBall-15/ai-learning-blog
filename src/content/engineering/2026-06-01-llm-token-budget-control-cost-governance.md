@@ -4,7 +4,7 @@ description: "系统解析LLM应用中Token预算控制的完整工程体系，�
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["Token预算", "成本治理", "LLM应用", "AI工程化", "成本优化", "多租户计费"]
 draft: false
 ---

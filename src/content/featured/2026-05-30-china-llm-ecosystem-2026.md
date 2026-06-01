@@ -4,7 +4,7 @@ description: "深度对比DeepSeek、通义千问、智谱GLM、文心一言等�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["国产大模型", "DeepSeek", "通义千问", "智谱GLM", "文心一言", "华为昇腾", "开源生态", "Agent", "RAG"]
 draft: false
 ---

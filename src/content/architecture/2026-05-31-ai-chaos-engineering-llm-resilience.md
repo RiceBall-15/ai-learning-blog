@@ -4,7 +4,7 @@ description: "深度剖析AI系统混沌工程方法论，涵盖LLM故障模式�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["混沌工程", "AI韧性", "故障注入", "LLM可靠性", "系统架构"]
 draft: false
 ---

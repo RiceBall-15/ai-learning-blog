@@ -4,7 +4,7 @@ description: "系统讲解Embedding模型微调的完整流程，覆盖对比学
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["Embedding", "向量模型", "微调", "对比学习", "领域适配", "检索优化", "Sentence-BERT"]
 draft: false
 ---

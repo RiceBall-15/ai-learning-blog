@@ -4,7 +4,7 @@ description: "深入剖析RAG系统中检索质量、上下文压缩、多跳推
 date: 2025-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "检索增强生成", "向量数据库", "知识库", "LLM应用"]
 draft: false
 ---

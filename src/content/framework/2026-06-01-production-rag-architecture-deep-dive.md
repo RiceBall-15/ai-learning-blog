@@ -4,7 +4,7 @@ description: "深入解析 RAG 系统从基础架构到生产级部署的完整�
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "检索增强生成", "向量数据库", "混合检索", "重排序", "分块策略"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入对比三大主流LLM结构化输出框架的架构设计、
 date: 2026-05-31
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["结构化输出", "Outlines", "Instructor", "LangChain", "Pydantic", "Function Calling", "LLM框架"]
 draft: false
 ---

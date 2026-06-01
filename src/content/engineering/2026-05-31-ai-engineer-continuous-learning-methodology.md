@@ -4,7 +4,7 @@ description: "系统化AI工程师持续学习方法论，涵盖论文阅读、�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "learning"
+subCategory: learning
 tags: ["AI工程师", "持续学习", "知识管理", "论文阅读", "技术雷达", "学习方法"]
 draft: false
 ---

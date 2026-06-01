@@ -4,7 +4,7 @@ description: "深度解析LLM应用面临的Prompt Injection、数据泄露、�
 date: 2026-05-30
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM安全", "Prompt Injection", "AI安全", "Red Teaming", "防御体系"]
 draft: false
 ---

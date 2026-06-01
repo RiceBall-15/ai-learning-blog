@@ -4,7 +4,7 @@ description: "深入解析Agentic RAG的核心架构，对比传统RAG的局限�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "AI Agent", "检索增强生成", "Agentic RAG", "LLM应用"]
 draft: false
 ---

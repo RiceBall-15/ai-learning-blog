@@ -4,7 +4,7 @@ description: "深入解析AI Agent系统的灰度发布策略、版本管理体�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-ops"
+subCategory: agent-ops
 tags: ["灰度发布", "版本管理", "CI/CD", "A/B测试", "Agent运维", "生产部署"]
 draft: false
 ---

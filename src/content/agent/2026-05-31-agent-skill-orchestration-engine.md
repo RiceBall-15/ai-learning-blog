@@ -4,7 +4,7 @@ description: "深入解析Agent技能编排的核心模式，覆盖ReAct执行�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-skill"
+subCategory: agent-skill
 tags: ["Agent技能", "技能编排", "ReAct", "工作流调度", "Plan-and-Execute"]
 draft: false
 ---

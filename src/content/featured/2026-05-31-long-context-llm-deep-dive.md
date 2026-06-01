@@ -4,7 +4,7 @@ description: "深入剖析RoPE、ALiBi、Ring Attention、稀疏注意力等长�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["长上下文", "位置编码", "RoPE", "Ring Attention", "LLM", "注意力机制"]
 draft: false
 ---

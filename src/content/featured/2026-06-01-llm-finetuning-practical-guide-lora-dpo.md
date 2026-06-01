@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "featured"
 tags: ["大模型微调", "LoRA", "DPO", "模型训练", "RLHF"]
-subCategory: "deep-dive"
+subCategory: deep-dive
 draft: false
 ---
 

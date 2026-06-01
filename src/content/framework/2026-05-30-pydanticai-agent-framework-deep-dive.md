@@ -4,7 +4,7 @@ description: "深入剖析PydanticAI的设计哲学、核心架构、依赖注�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["PydanticAI", "Agent框架", "类型安全", "依赖注入", "Python", "框架应用"]
 draft: false
 ---

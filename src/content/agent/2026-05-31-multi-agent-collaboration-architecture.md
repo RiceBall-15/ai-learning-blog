@@ -4,7 +4,7 @@ description: "深入解析多Agent协作架构的设计原理、通信协议、�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-architecture"
+subCategory: agent-architecture
 tags: ["Multi-Agent", "协作架构", "群体智能", "任务协调", "通信协议"]
 draft: false
 ---

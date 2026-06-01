@@ -4,7 +4,7 @@ description: "深入解析RAG系统中重排序技术的演进路线，覆盖Cro
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["RAG", "Reranker", "Cross-Encoder", "ColBERT", "向量检索", "语义排序", "LLM应用"]
 draft: false
 ---

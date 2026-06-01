@@ -4,7 +4,7 @@ description: "深入剖析LLM推理成本的构成与优化策略，涵盖模型
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["LLM推理", "成本优化", "Token经济学", "推理架构", "缓存策略", "模型路由", "A/B测试"]
 draft: false
 ---

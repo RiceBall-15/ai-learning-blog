@@ -4,7 +4,7 @@ description: "系统性拆解AI推理编译器的核心技术栈，覆盖Triton�
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["AI编译器", "Triton", "TVM", "CUDA Kernel", "推理优化", "GPU编程", "XLA"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统剖析推理时计算(Inference-Time Compute)的核心技术
 date: 2026-05-31
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["推理时计算", "Inference-Time Compute", "Chain-of-Thought", "Test-Time Scaling", "Reasoning Model", "DeepSeek-R1", "o1", "PRM"]
 draft: false
 ---

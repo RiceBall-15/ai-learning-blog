@@ -4,7 +4,7 @@ description: "深入剖析知识图谱与大语言模型的融合架构、GraphR
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["知识图谱", "Knowledge Graph", "GraphRAG", "LLM", "RAG", "知识增强", "图数据库"]
 draft: false
 ---

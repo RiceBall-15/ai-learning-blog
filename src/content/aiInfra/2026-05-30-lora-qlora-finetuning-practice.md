@@ -4,7 +4,7 @@ description: "深入剖析LoRA与QLoRA的低秩分解原理，结合Axolotl框�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["LoRA", "QLoRA", "微调", "Axolotl", "模型训练"]
 draft: false
 ---

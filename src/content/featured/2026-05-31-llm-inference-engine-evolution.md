@@ -4,7 +4,7 @@ description: "深入剖析vLLM、SGLang、TensorRT-LLM三大推理引擎的架�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["推理优化", "vLLM", "SGLang", "TensorRT-LLM", "LLM"]
 draft: false
 ---

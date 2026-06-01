@@ -4,7 +4,7 @@ description: "系统性地解决LLM应用的国际化难题——从多语言Pro
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["国际化", "多语言", "LLM", "i18n", "翻译", "跨语言RAG", "AI工程化"]
 draft: false
 ---

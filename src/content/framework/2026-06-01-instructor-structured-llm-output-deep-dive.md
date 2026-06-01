@@ -4,7 +4,7 @@ description: "深入解析Instructor框架的核心原理与实战应用，涵�
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Instructor", "结构化输出", "Pydantic", "LLM应用", "Python", "函数调用"]
 draft: false
 ---

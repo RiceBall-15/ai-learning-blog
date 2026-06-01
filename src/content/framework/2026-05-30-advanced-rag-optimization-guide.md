@@ -4,7 +4,7 @@ description: "系统化梳理RAG技术演进，从基础Naive RAG到Advanced RAG
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "检索增强生成", "Advanced RAG", "Query优化", "Chunking策略", "重排序"]
 draft: false
 ---

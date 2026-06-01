@@ -4,7 +4,7 @@ description: "深入解析Anthropic提出的MCP协议，结合生产环境经验
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["MCP", "AI编程", "协议", "工具集成", "LLM应用"]
 draft: false
 ---

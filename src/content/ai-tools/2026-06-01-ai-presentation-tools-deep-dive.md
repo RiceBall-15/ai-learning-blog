@@ -4,7 +4,7 @@ description: "系统评测Gamma、Beautiful.ai、Tome、Canva AI、讯飞智文�
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI工具", "PPT生成", "演示文稿", "Gamma", "Beautiful.ai", "Tome", "Canva AI", "讯飞智文"]
 draft: false
 ---

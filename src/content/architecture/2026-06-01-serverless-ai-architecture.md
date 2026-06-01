@@ -4,7 +4,7 @@ description: "深入剖析Serverless架构在AI应用中的落地实践，涵盖
 date: 2026-06-01
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["Serverless", "云原生", "AI架构", "函数计算", "GPU调度", "弹性架构"]
 draft: false
 ---

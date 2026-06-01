@@ -4,7 +4,7 @@ description: "系统剖析LLM推理服务中的并发调度策略与GPU资源池
 date: 2026-05-31
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["并发调度", "GPU资源池化", "LLM推理", "连续批处理", "动态批处理", "推理优化"]
 draft: false
 ---

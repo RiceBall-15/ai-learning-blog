@@ -4,7 +4,7 @@ description: "深入剖析AI Agent记忆系统的三层架构设计，覆盖向�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-memory"
+subCategory: agent-memory
 tags: ["AI Agent", "记忆系统", "向量数据库", "长期记忆", "多Agent", "架构设计"]
 draft: false
 ---

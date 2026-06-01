@@ -4,7 +4,7 @@ description: "深入剖析投机解码的数学原理、工程实现与生产级
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["LLM", "推理优化", "投机解码", "Speculative Decoding", "Medusa", "Eagle", "推理加速", "采样"]
 draft: false
 ---

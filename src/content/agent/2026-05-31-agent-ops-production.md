@@ -4,7 +4,7 @@ description: "全面覆盖Agent系统的生产运维，包括部署架构、监�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-ops"
+subCategory: agent-ops
 tags: ["Agent运维", "MLOps", "生产部署", "监控告警"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统剖析RAG系统中的文档分块技术，覆盖固定长度
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "分块策略", "文本分割", "语义分块", "文档处理", "LangChain", "LlamaIndex"]
 draft: false
 ---

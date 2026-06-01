@@ -4,7 +4,7 @@ description: "深入解析RAG、Agent、Fine-tuning三种大模型应用架构�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM", "RAG", "Agent", "大模型", "生产环境", "性能优化", "成本控制", "行业落地"]
 draft: false
 ---

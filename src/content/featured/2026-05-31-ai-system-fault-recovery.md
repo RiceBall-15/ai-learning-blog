@@ -4,7 +4,7 @@ description: "深入解析AI系统的故障模式、恢复策略与优雅降级�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "featured"
-subCategory: "ai-architecture"
+subCategory: ai-architecture
 tags: ["高可用", "故障恢复", "优雅降级", "AI架构"]
 draft: false
 ---

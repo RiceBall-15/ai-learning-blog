@@ -4,7 +4,7 @@ description: "深入剖析模型合并(Model Merging)的核心技术原理，对
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["模型合并", "Model Merging", "LLM", "TIES-Merging", "SLERP", "DARE", "模型训练"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入剖析AI应用可观测性体系设计，涵盖Trace/Log/Met
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["可观测性", "LLM监控", "分布式追踪", "AI运维", "成本归因", "Prometheus", "OpenTelemetry"]
 draft: false
 ---

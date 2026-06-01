@@ -4,7 +4,7 @@ description: "基于InfoQ热文《编程Agent可能是软件开发史上最昂�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["AI编程", "Agent", "代码质量", "技术争议", "软件工程"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度解析LLM应用的Serverless架构设计，涵盖模型热�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["Serverless", "LLM", "推理优化", "冷启动", "弹性伸缩", "AWS Lambda", "Modal", "GPU"]
 draft: false
 ---

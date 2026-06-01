@@ -4,7 +4,7 @@ description: "深入解析LLM服务限流熔断架构设计，涵盖令牌桶算
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["系统架构", "限流熔断", "LLM网关", "流量治理", "AI系统韧性", "自适应控制"]
 draft: false
 ---

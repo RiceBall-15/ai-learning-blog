@@ -4,7 +4,7 @@ description: "从代码补全、多文件编辑、上下文理解到团队协作
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI编程", "Cursor", "Windsurf", "GitHub Copilot", "IDE工具", "开发效率"]
 draft: false
 ---

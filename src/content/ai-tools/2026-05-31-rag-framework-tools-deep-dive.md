@@ -4,7 +4,7 @@ description: "从架构设计、核心能力、生产部署三个维度深度对
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["RAG", "LangChain", "LlamaIndex", "Haystack", "检索增强生成", "框架对比", "AI工具"]
 draft: false
 ---

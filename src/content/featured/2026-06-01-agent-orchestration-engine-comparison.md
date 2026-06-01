@@ -4,7 +4,7 @@ description: "深度对比LangGraph、Temporal、AWS Step Functions、Durable Fu
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["AI Agent", "编排引擎", "LangGraph", "Temporal", "工作流引擎", "Agent架构"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统化梳理Agent架构范式，从行为范式到工程架构�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "ai-architecture"
+subCategory: ai-architecture
 tags: ["Agent架构", "Harness", "ReAct", "PlanExec", "架构范式"]
 draft: false
 ---

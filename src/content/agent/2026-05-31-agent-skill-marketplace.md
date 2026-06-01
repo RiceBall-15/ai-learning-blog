@@ -4,7 +4,7 @@ description: "深入解析Agent技能市场（Skill Marketplace）的架构设�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-skill"
+subCategory: agent-skill
 tags: ["Agent技能", "技能市场", "MCP协议", "插件生态", "版本管理", "分布式系统"]
 draft: false
 ---

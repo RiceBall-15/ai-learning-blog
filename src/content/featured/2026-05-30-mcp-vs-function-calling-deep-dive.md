@@ -4,7 +4,7 @@ description: "深度解析MCP与FC的本质差异，从定位、架构、扩展�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "ai-architecture"
+subCategory: ai-architecture
 tags: ["MCP", "Function Calling", "Agent架构", "工具协议", "Harness"]
 draft: false
 ---

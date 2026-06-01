@@ -4,7 +4,7 @@ description: "深入剖析三大模型并行策略的核心原理、通信模式
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["模型并行", "Tensor Parallel", "Pipeline Parallel", "Expert Parallel", "Megatron-LM", "DeepSpeed", "分布式训练"]
 draft: false
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
 tags: ["KV Cache", "Prompt Caching", "推理优化", "LLM", "成本优化"]
-subCategory: "inference"
+subCategory: inference
 draft: false
 ---
 

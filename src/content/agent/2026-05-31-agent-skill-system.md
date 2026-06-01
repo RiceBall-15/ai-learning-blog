@@ -4,7 +4,7 @@ description: "系统解析Agent技能系统的设计原理，覆盖工具注册�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-skill"
+subCategory: agent-skill
 tags: ["Agent技能", "工具系统", "技能进化", "能力扩展"]
 draft: false
 ---

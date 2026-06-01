@@ -4,7 +4,7 @@ description: "深度对比Sora、Kling、Runway、Pika、Vidu等主流AI视频�
 date: 2026-05-30
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI视频生成", "Sora", "Kling", "Runway", "Pika", "Vidu", "多模态AI"]
 draft: false
 ---

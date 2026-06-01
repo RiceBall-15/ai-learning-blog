@@ -4,7 +4,7 @@ description: "深入解析 AI Agent 系统的可观测性架构设计，涵盖 T
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["Agent可观测性", "链路追踪", "LLM监控", "分布式追踪", "AI运维"]
 draft: false
 ---

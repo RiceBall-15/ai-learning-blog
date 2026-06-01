@@ -4,7 +4,7 @@ description: "深度评测10+主流AI代码审查与安全扫描工具，涵盖�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["代码审查", "代码安全", "AI工具", "静态分析", "SAST", "DevSecOps", "工具评测"]
 draft: false
 ---

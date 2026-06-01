@@ -4,7 +4,7 @@ description: "系统化梳理AI系统架构从单体到分布式的演进，涵�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["云原生", "AI架构", "分布式系统", "推理服务", "弹性伸缩", "Kubernetes"]
 draft: false
 ---

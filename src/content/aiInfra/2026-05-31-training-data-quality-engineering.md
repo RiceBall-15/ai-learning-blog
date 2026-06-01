@@ -4,7 +4,7 @@ description: "深入解析LLM训练中的数据质量工程，涵盖数据清洗
 date: 2026-05-31
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["数据质量", "LLM训练", "数据工程", "数据清洗", "数据评估"]
 draft: false
 ---

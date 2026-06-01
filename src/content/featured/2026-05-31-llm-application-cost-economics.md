@@ -4,7 +4,7 @@ description: "深度解析LLM应用的成本构成、计费模型、预测方法
 date: "2026-05-31"
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM成本优化", "Token经济学", "AI应用架构", "Prompt压缩", "缓存策略", "模型路由", "MLOps"]
 draft: false
 ---

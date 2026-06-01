@@ -4,7 +4,7 @@ description: "深入解析多模态AI系统的流式处理架构设计，涵盖�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["多模态AI", "流式处理", "实时推理", "音视频AI", "管线架构", "云原生"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析微服务架构的演进历程，覆盖服务拆分、
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "microservices"
+subCategory: microservices
 tags: ["微服务", "Service Mesh", "架构演进", "Kubernetes"]
 draft: false
 ---

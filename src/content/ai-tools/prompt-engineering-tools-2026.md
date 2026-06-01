@@ -5,7 +5,7 @@ date: "2026-05-30"
 author: "RiceBall-15"
 category: "ai-tools"
 tags: ["Prompt Engineering", "LLM", "AI工具", "提示词优化", "MLOps"]
-subCategory: "coding-tools"
+subCategory: coding-tools
 draft: false
 ---
 

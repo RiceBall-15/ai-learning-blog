@@ -4,7 +4,7 @@ description: "全面剖析AI浏览器助手的技术架构、主流工具对比�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "browser-tools"
+subCategory: browser-tools
 tags: ["AI浏览器助手", "Perplexity", "Copilot", "浏览器扩展", "AI搜索", "智能浏览"]
 draft: false
 ---

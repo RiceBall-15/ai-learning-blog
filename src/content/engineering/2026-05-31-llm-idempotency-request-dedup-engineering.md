@@ -4,7 +4,7 @@ description: "深入剖析LLM应用中幂等性设计的必要性，覆盖请求
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["幂等性", "请求去重", "LLM应用", "可靠性工程", "重试策略", "分布式系统"]
 draft: false
 ---

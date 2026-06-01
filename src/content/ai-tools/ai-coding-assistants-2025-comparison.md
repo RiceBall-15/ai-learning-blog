@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
 tags: ["AI编程工具", "Cursor", "GitHub Copilot", "Claude Code", "IDE集成", "代码生成"]
-subCategory: "coding-tools"
+subCategory: coding-tools
 draft: false
 ---
 

@@ -4,7 +4,7 @@ description: "深入解析上下文工程（Context Engineering）的核心原�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["上下文工程", "Context Engineering", "Prompt工程", "LLM应用", "系统提示词", "Token管理"]
 draft: false
 ---

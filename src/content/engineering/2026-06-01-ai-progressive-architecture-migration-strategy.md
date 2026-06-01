@@ -4,7 +4,7 @@ description: "深入剖析AI应用架构迁移的完整方法论，涵盖迁移�
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["架构迁移", "AI工程", "微服务", "AI-Native", "渐进式迁移", "系统设计"]
 draft: false
 ---

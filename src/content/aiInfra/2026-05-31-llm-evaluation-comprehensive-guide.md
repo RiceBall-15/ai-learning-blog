@@ -4,7 +4,7 @@ description: "深入解析大模型评估的核心方法论，覆盖离线评估
 date: 2026-05-31
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "evaluation"
+subCategory: evaluation
 tags: ["LLM评估", "Benchmark", "Eval Pipeline", "模型评测"]
 draft: false
 ---

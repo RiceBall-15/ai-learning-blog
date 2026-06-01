@@ -4,7 +4,7 @@ description: "基于InfoQ热文《全球首个完全AI编写的训练框架来�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["ForgeTrain", "AI编程", "训练框架", "国产算力", "面壁智能"]
 draft: false
 ---

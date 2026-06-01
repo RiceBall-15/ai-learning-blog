@@ -4,7 +4,7 @@ description: "系统剖析PD分离架构(Prefill-Decode Disaggregation)的技术
 date: 2026-05-31
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["PD分离", "Prefill-Decode", "LLM推理", "推理架构", "Mooncake", "DistServe", "Splitwise", "推理优化"]
 draft: false
 ---

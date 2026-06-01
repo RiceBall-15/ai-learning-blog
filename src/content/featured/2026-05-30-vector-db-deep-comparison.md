@@ -4,7 +4,7 @@ description: "从架构原理到生产实战，全方位对比四大主流向量
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["向量数据库", "Qdrant", "Milvus", "Weaviate", "ChromaDB", "RAG", "选型指南"]
 draft: false
 ---

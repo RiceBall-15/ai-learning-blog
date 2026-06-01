@@ -4,7 +4,7 @@ description: "全面评测Label Studio、CVAT、Labelbox、Prodigy等主流数�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["数据标注", "Label Studio", "CVAT", "Labelbox", "数据工程", "AI基础设施", "MLOps"]
 draft: false
 ---

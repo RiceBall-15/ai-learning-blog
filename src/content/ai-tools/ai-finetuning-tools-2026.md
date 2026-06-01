@@ -5,7 +5,7 @@ date: "2026-05-30"
 author: "RiceBall-15"
 category: "ai-tools"
 tags: ["模型微调", "LoRA", "SFT", "PEFT", "LLaMA-Factory", "Unsloth"]
-subCategory: "coding-tools"
+subCategory: coding-tools
 draft: false
 ---
 

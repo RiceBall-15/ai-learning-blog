@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
 tags: ["LLM应用", "灰度发布", "流量治理", "A/B测试", "金丝雀发布", "生产部署"]
-subCategory: "infra"
+subCategory: infra
 draft: false
 ---
 

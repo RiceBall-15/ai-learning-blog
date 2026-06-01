@@ -4,7 +4,7 @@ description: "深入解析LLM应用中结构化输出的Schema版本管理策略
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["Schema版本管理", "Pydantic", "LLM应用", "向后兼容", "AI工程化", "版本控制"]
 draft: false
 ---

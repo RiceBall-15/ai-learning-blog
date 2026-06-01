@@ -4,7 +4,7 @@ description: "深入剖析多租户AI系统的架构演进路径、隔离策略�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "microservices"
+subCategory: microservices
 tags: ["多租户", "AI架构", "系统设计", "弹性伸缩", "资源隔离", "微服务"]
 draft: false
 ---

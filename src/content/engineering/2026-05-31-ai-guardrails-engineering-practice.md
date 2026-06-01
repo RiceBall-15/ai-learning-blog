@@ -4,7 +4,7 @@ description: "从内容安全、幻觉检测到输出质量保障，系统性解
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["Guardrails", "AI安全", "LLM工程化", "内容安全", "幻觉检测", "输出质量", "AI治理"]
 draft: false
 ---

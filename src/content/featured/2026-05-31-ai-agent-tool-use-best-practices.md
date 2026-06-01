@@ -4,7 +4,7 @@ description: "深入解析AI Agent工具调用的设计模式、实现策略与�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["AI Agent", "工具调用", "Function Calling", "Agent设计", "系统架构"]
 draft: false
 ---

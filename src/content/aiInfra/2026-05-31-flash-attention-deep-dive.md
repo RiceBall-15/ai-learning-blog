@@ -4,7 +4,7 @@ description: "从GPU内存层次出发，深入剖析FlashAttention的分块算�
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["FlashAttention", "注意力机制", "GPU优化", "CUDA", "LLM推理"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "从架构设计到生产部署，深度解析如何使用LangChain
 date: 2026-05-31
 author: "RiceBall-15"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["LangChain4j", "RAG", "向量数据库", "LLM", "Java", "企业级应用"]
 draft: false
 ---

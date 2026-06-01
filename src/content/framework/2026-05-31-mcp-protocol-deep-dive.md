@@ -4,7 +4,7 @@ description: "全面解析Model Context Protocol (MCP)的核心架构、通信�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "protocols"
+subCategory: protocols
 tags: ["MCP", "Model Context Protocol", "AI Agent", "工具集成", "协议标准"]
 draft: false
 ---

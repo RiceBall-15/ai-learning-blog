@@ -4,7 +4,7 @@ description: "系统性构建AI应用的数据漂移检测、模型性能监控�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["数据漂移", "模型监控", "MLOps", "AI架构", "可观测性", "自动化运维", "生产监控"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "从技术架构、生成质量、工作流集成到成本效益，
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI视频生成", "Sora", "Runway", "Pika", "Kling", "多模态AI", "视频创作", "AI工具"]
 draft: false
 ---

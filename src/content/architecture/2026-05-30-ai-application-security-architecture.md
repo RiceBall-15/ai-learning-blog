@@ -4,7 +4,7 @@ description: "系统构建AI应用安全防线，覆盖Prompt注入、数据泄�
 date: 2026-05-30
 author: "RiceBall"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["AI安全", "Prompt注入", "内容安全", "安全架构", "LLM防护"]
 draft: false
 ---

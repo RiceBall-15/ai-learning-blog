@@ -4,7 +4,7 @@ description: "深度解析AI应用中的隐私保护架构设计，涵盖联邦�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["隐私计算", "联邦学习", "差分隐私", "可信执行环境", "数据安全", "安全多方计算", "AI安全"]
 draft: false
 ---

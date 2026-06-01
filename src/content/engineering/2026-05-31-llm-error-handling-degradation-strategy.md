@@ -4,7 +4,7 @@ description: "深度解析LLM应用中的异常处理、模型降级、超时控
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["LLM", "错误处理", "降级策略", "容错", "可靠性", "AI工程化"]
 draft: false
 ---

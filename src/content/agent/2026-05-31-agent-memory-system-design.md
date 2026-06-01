@@ -4,7 +4,7 @@ description: "系统解析Agent记忆系统的设计原理，覆盖工作记忆�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-memory"
+subCategory: agent-memory
 tags: ["Agent记忆", "记忆系统", "向量数据库", "RAG"]
 draft: false
 ---

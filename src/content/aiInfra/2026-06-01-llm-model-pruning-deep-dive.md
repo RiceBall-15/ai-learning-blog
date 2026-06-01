@@ -4,7 +4,7 @@ description: "系统剖析LLM模型剪枝的核心技术路线，涵盖SparseGPT
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["模型剪枝", "Pruning", "SparseGPT", "Wanda", "SliceGPT", "模型压缩", "推理优化"]
 draft: false
 ---

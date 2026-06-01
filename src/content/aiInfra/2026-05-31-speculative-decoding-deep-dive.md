@@ -4,7 +4,7 @@ description: "从原理到实战，全面剖析投机采样技术的实现细节
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["推理优化", "Speculative Decoding", "LLM", "性能优化"]
 draft: false
 ---

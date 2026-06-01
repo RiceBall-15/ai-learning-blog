@@ -4,7 +4,7 @@ description: "系统讲解LLM应用的实验驱动优化方法论，覆盖AB测�
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "evaluation"
+subCategory: evaluation
 tags: ["LLM评估", "AB测试", "灰度发布", "在线评估", "MLOps"]
 draft: false
 ---

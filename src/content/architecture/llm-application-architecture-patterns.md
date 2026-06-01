@@ -4,7 +4,7 @@ description: "深入剖析LLM应用的五种核心架构模式，结合真实场
 date: 2025-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["系统架构", "LLM应用", "Agent架构", "微服务", "高可用"]
 draft: false
 ---

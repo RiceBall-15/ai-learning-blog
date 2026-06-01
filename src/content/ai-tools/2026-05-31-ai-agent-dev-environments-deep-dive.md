@@ -4,7 +4,7 @@ description: "深度评测2026年三大主流AI Agent开发环境，从架构设
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI编程", "OpenHands", "SWE-Agent", "Aider", "Agent开发", "编程工具"]
 draft: false
 ---

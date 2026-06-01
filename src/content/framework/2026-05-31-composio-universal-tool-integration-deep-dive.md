@@ -4,7 +4,7 @@ description: "全面剖析Composio如何解决AI Agent工具集成的碎片化�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Composio", "工具集成", "AI Agent", "Function Calling", "Tool Use", "MCP"]
 draft: false
 ---

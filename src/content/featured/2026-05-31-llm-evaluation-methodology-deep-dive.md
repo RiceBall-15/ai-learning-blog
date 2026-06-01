@@ -4,7 +4,7 @@ description: "系统性梳理大模型评测的完整方法论体系，涵盖学
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM评测", "基准测试", "自动化评估", "MLOps", "质量保障", "A/B测试"]
 draft: false
 ---

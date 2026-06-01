@@ -4,7 +4,7 @@ description: "深入解析微软AutoGen框架的核心架构、Agent协作模式
 date: "2026-05-30"
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["AutoGen", "多智能体", "Agent框架", "微软", "对话式AI", "协作系统"]
 draft: false
 ---

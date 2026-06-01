@@ -4,7 +4,7 @@ description: "从故障注入到韧性评估，全面介绍LLM应用的混沌工
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["混沌工程", "LLM可靠性", "故障注入", "AI运维", "SRE", "系统韧性"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统性剖析AI应用多租户架构的核心挑战与解决方�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["多租户", "AI架构", "SaaS", "数据隔离", "模型路由", "成本优化"]
 draft: false
 ---

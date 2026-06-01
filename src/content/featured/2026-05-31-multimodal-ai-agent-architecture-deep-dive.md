@@ -4,7 +4,7 @@ description: "深度解析多模态AI Agent的架构演进、模态融合策略�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["多模态AI", "AI Agent", "视觉理解", "音频处理", "架构设计", "GPT-4V", "Gemini"]
 draft: false
 ---

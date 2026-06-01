@@ -4,7 +4,7 @@ description: "系统讲解AI应用多环境配置管理的工程实践，涵盖P
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["AI工程化", "配置管理", "环境一致性", "Prompt版本化", "DevOps", "LLM运维"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统剖析推理时计算扩展(Test-Time Compute Scaling)的核
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["推理模型", "o1", "DeepSeek-R1", "Test-Time Compute", "Scaling Law", "深度解析"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析LLM应用中流式响应的传输协议选型、前端
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["LLM应用", "流式响应", "SSE", "WebSocket", "前端架构", "实时通信", "AI工程化"]
 draft: false
 ---

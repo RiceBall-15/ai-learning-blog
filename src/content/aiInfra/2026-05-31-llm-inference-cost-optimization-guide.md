@@ -4,7 +4,7 @@ description: "系统梳理LLM推理成本优化的关键技术，覆盖Prompt Ca
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["LLM推理", "Prompt Caching", "量化部署", "成本优化", "vLLM"]
 draft: false
 ---

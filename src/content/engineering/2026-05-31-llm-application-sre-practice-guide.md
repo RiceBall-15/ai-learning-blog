@@ -4,7 +4,7 @@ description: "系统讲解LLM应用在生产环境中的可靠性工程实践，
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["SRE", "LLM监控", "可观测性", "混沌工程", "生产运维"]
 draft: false
 ---

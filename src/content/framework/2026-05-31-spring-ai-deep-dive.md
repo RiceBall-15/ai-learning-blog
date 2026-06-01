@@ -4,7 +4,7 @@ description: "全面解析Spring AI框架的核心架构、声明式编程模型
 date: 2026-05-31
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Spring AI", "Java", "LLM", "Spring Boot", "AI框架", "RAG", "Agent"]
 draft: false
 ---

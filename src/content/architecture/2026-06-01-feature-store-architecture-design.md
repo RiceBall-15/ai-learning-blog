@@ -4,7 +4,7 @@ description: "深入剖析AI应用中Feature Store的架构设计，涵盖离线
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["Feature Store", "特征工程", "实时计算", "AI架构", "数据平台", "分布式系统"]
 draft: false
 ---

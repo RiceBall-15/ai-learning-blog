@@ -4,7 +4,7 @@ description: "深入剖析微软GraphRAG的核心架构、社区检测算法、�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["GraphRAG", "知识图谱", "RAG", "检索增强生成", "微软"]
 draft: false
 ---

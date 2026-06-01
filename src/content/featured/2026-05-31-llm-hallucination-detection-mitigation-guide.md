@@ -4,7 +4,7 @@ description: "系统梳理LLM幻觉的分类体系、检测方法和缓解策略
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["幻觉检测", "Hallucination", "RAG", "LLM安全", "事实性", "AI可靠性"]
 draft: false
 ---

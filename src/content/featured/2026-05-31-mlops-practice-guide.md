@@ -4,7 +4,7 @@ description: "深度剖析MLOps全流程实践，涵盖数据管理、模型训�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["MLOps", "模型部署", "机器学习", "CI/CD", "模型监控", "生产环境"]
 draft: false
 ---

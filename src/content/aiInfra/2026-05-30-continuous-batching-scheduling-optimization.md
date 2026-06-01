@@ -4,7 +4,7 @@ description: "深入剖析LLM推理中持续批处理（Continuous Batching）�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["LLM推理", "Continuous Batching", "vLLM", "SGLang", "调度优化", "吞吐量", "延迟优化"]
 draft: false
 ---

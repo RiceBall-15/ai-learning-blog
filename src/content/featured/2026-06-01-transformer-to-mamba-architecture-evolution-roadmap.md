@@ -4,7 +4,7 @@ description: "系统梳理大模型架构从Transformer到SSM、Mamba、RWKV的�
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["Transformer", "Mamba", "SSM", "RWKV", "模型架构", "状态空间模型"]
 draft: false
 ---

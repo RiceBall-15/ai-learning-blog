@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "featured"
 tags: ["多Agent", "协作架构", "任务分解", "智能调度", "Agent系统", "生产架构"]
-subCategory: "deep-dive"
+subCategory: deep-dive
 draft: false
 ---
 

@@ -6,7 +6,7 @@ author: "RiceBall"
 category: "ai-tools"
 tags: ["AI图像生成", "Midjourney", "Stable Diffusion", "Flux", "DALL-E", "工具评测"]
 draft: false
-subCategory: "coding-tools"
+subCategory: coding-tools
 ---
 
 # AI图像生成工具深度评测2026：从Midjourney到Stable Diffusion，主流工具架构解析与实战选型

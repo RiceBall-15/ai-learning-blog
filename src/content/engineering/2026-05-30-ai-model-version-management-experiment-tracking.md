@@ -4,7 +4,7 @@ description: "系统介绍AI模型开发中的版本管理与实验追踪方法�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["MLOps", "实验追踪", "版本管理", "模型管理", "AI工程化", "可复现性"]
 draft: false
 ---

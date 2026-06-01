@@ -4,7 +4,7 @@ description: "一份面向2026年的AI工程师完整学习路线图，涵盖Pyt
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "learning"
+subCategory: learning
 tags:
   - AI工程师
   - 学习路径

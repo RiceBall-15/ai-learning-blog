@@ -4,7 +4,7 @@ description: "从架构原理到工程实践，全面解析Model Context Protoco
 date: 2026-06-01
 author: "RiceBall-15"
 category: "framework"
-subCategory: "protocols"
+subCategory: protocols
 tags: ["MCP", "Model Context Protocol", "AI Agent", "工具调用", "协议标准", "Anthropic"]
 draft: false
 ---

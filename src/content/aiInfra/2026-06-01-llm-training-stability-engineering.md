@@ -4,7 +4,7 @@ description: "深度解析大模型训练中的稳定性问题，涵盖梯度裁
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["模型训练", "混合精度", "梯度裁剪", "训练稳定性", "FP16", "BF16"]
 draft: false
 ---

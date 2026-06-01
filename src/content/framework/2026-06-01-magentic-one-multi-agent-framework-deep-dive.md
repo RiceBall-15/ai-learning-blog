@@ -4,7 +4,7 @@ description: "深入剖析微软Magentic-One多智能体系统架构，涵盖Orc
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Magentic-One", "多智能体", "Agent框架", "微软", "协作架构"]
 draft: false
 ---

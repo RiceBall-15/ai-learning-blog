@@ -4,7 +4,7 @@ description: "深度评测Unstructured、LlamaParse、Docling、Marker等主流A
 date: "2026-05-31"
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["文档解析", "RAG", "知识库", "PDF解析", "Unstructured", "LlamaParse", "Docling"]
 draft: false
 ---

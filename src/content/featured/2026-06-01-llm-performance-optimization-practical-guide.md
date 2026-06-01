@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "featured"
 tags: ["LLM优化", "推理加速", "KV Cache", "量化部署", "性能调优", "生产实践"]
-subCategory: "deep-dive"
+subCategory: deep-dive
 draft: false
 ---
 

@@ -4,7 +4,7 @@ description: "手把手教你构建生产级MCP Server，涵盖Python/TypeScript
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
-subCategory: "protocols"
+subCategory: protocols
 tags: ["MCP", "MCP Server", "AI工具", "Function Calling", "Tool Use", "TypeScript", "Python"]
 draft: false
 ---

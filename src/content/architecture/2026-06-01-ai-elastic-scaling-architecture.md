@@ -4,7 +4,7 @@ description: "深度解析AI应用弹性伸缩架构，涵盖GPU集群调度、S
 date: 2026-06-01
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["弹性伸缩", "Kubernetes", "Serverless", "GPU调度", "HPA", "AI基础设施", "云原生"]
 draft: false
 ---

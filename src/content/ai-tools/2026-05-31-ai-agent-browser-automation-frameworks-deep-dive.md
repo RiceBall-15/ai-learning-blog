@@ -4,7 +4,7 @@ description: "深入解析AI Agent如何通过Playwright、Puppeteer等浏览器
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "browser-tools"
+subCategory: browser-tools
 tags: ["浏览器自动化", "AI Agent", "Playwright", "Puppeteer", "Web交互", "智能体"]
 draft: false
 ---

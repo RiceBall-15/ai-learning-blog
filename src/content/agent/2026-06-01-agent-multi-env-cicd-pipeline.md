@@ -4,7 +4,7 @@ description: "深入解析Agent系统的多环境管理策略与CI/CD流水线�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-ops"
+subCategory: agent-ops
 tags: ["Agent", "CI/CD", "多环境管理", "DevOps", "生产部署", "基础设施即代码"]
 draft: false
 ---

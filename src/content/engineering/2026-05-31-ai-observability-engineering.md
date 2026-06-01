@@ -4,7 +4,7 @@ description: "深入解析AI应用可观测性的核心挑战与工程实践，�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["可观测性", "MLOps", "LLM监控", "AI工程", "生产运维"]
 draft: false
 ---

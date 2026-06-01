@@ -4,7 +4,7 @@ description: "深度拆解Prompt注入攻击的分类、原理与防御体系，
 date: 2026-06-01
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["Prompt注入", "LLM安全", "AI安全工程", "Guardrails", "防御架构", "生产安全"]
 draft: false
 ---

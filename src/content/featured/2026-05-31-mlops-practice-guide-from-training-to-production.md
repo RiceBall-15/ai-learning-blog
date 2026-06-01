@@ -4,7 +4,7 @@ description: "基于实战经验，深度剖析MLOps全流程实践，涵盖数�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["MLOps", "模型部署", "CI/CD", "实验跟踪", "模型监控", "ML Pipeline"]
 draft: false
 ---

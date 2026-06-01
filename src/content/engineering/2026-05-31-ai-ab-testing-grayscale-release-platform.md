@@ -4,7 +4,7 @@ description: "系统讲解AI应用的灰度发布体系设计，涵盖Prompt版�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["灰度发布", "A/B测试", "Prompt管理", "效果评估", "LLM工程化", "实验平台"]
 draft: false
 ---

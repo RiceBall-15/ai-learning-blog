@@ -4,7 +4,7 @@ description: "系统性构建企业级MLOps体系，覆盖模型版本管理、�
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["MLOps", "模型部署", "MLflow", "Kubeflow", "DVC", "A/B测试", "CI/CD", "AI工程化"]
 draft: false
 ---

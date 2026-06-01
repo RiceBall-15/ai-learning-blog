@@ -4,7 +4,7 @@ description: "深入解析Model Context Protocol的技术架构、传输机制�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "protocol-tools"
+subCategory: protocol-tools
 tags: ["MCP", "Model Context Protocol", "AI协议", "工具调用", "Claude", "Anthropic", "AI基础设施"]
 draft: false
 ---

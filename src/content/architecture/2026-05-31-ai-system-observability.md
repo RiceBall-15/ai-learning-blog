@@ -4,7 +4,7 @@ description: "深入解析AI应用可观测性架构设计，涵盖LLM调用追�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["可观测性", "AI监控", "LLM追踪", "智能告警", "系统架构", "MLOps"]
 draft: false
 ---

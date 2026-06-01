@@ -4,7 +4,7 @@ description: "全面解析Vercel AI SDK的核心架构、流式处理、工具�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Vercel AI SDK", "TypeScript", "AI应用开发", "流式处理", "React", "Next.js"]
 draft: false
 ---

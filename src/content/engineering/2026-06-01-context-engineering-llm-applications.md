@@ -4,7 +4,7 @@ description: "深入剖析LLM应用中的上下文工程方法论，涵盖上下
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["Context Engineering", "LLM应用", "Prompt工程", "RAG", "上下文管理", "Token优化"]
 draft: false
 ---

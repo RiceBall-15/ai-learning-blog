@@ -4,7 +4,7 @@ description: "从原理到工程实现，全面剖析Speculative Decoding加速L
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["Speculative Decoding", "LLM推理", "推理加速", "Draft Model", "Medusa", "推理优化"]
 draft: false
 ---

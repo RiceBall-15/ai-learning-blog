@@ -4,7 +4,7 @@ description: "深度评测2026年主流AI终端部署工具，覆盖Ollama、LM 
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["端侧AI", "Ollama", "MLX", "llama.cpp", "本地部署", "大模型推理", "AI工具评测"]
 draft: false
 ---

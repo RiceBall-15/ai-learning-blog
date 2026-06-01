@@ -4,7 +4,7 @@ description: "深度对比6款主流AI写作与文案工具的核心能力、底
 date: "2026-05-31"
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI写作", "文案工具", "内容创作", "Jasper", "Notion AI", "AI工具"]
 draft: false
 ---

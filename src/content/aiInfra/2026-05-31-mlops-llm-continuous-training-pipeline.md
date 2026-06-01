@@ -4,7 +4,7 @@ description: "系统剖析LLM应用MLOps全链路，涵盖数据飞轮、模型�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["MLOps", "LLM部署", "持续训练", "模型版本管理", "A/B测试", "灰度发布"]
 draft: false
 ---

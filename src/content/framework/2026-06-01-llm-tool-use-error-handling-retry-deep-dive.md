@@ -4,7 +4,7 @@ description: "从实战角度深度剖析LLM工具调用中的常见错误类型
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["LLM", "Tool Use", "Agent", "错误处理", "重试机制", "容错设计", "Function Calling"]
 draft: false
 ---

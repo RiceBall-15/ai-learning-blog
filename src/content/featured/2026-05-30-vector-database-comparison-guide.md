@@ -4,7 +4,7 @@ description: "从索引算法、性能基准、扩展能力、生态集成四个
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["向量数据库", "Milvus", "Qdrant", "Weaviate", "Chroma", "RAG", "AI基础设施", "性能对比"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析AI Agent系统中沙箱安全架构的设计原理、�
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["AI Agent", "安全架构", "沙箱隔离", "容器安全", "可信执行"]
 draft: false
 ---

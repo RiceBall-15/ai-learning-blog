@@ -4,7 +4,7 @@ description: "深度解析RAG系统的五大架构模式，覆盖混合检索、
 date: 2025-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "检索增强生成", "向量数据库", "知识增强", "LLM应用"]
 draft: false
 ---

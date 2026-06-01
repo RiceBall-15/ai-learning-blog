@@ -4,7 +4,7 @@ description: "探讨如何将 Prompt Engineering 从手艺活升级为工程化�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["Prompt Engineering", "LLM", "版本管理", "A/B测试", "AI工程化"]
 draft: false
 ---

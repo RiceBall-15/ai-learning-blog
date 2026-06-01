@@ -4,7 +4,7 @@ description: "深入探讨事件驱动架构在AI系统中的应用，涵盖异�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["事件驱动", "AI架构", "异步处理", "消息队列", "分布式系统"]
 draft: false
 ---

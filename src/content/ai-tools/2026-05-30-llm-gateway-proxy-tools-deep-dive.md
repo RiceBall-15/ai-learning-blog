@@ -4,7 +4,7 @@ description: "从架构原理到生产实战，深度对比三款主流LLM网关
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "protocol-tools"
+subCategory: protocol-tools
 tags: ["LLM网关", "LiteLLM", "Portkey", "Helicone", "AI基础设施", "API代理"]
 draft: false
 ---

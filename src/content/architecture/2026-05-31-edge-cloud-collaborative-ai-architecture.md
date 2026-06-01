@@ -4,7 +4,7 @@ description: "深入剖析边缘-云端协同AI架构的设计模式，涵盖任
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["边缘计算", "云端协同", "AI架构", "模型部署", "IoT", "自动驾驶", "云原生"]
 draft: false
 ---

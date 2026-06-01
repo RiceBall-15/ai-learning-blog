@@ -4,7 +4,7 @@ description: "深度评测10+主流AI网页数据提取工具，覆盖Playwright
 date: "2026-06-01"
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "browser-tools"
+subCategory: browser-tools
 tags: ["Web Scraping", "AI数据提取", "Browser Use", "Firecrawl", "Crawl4AI", "网页解析", "AI工具评测"]
 draft: false
 ---

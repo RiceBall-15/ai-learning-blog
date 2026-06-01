@@ -4,7 +4,7 @@ description: "系统化梳理AI数据管道从传统ETL到流式处理再到实�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["数据管道", "ETL", "特征工程", "实时计算", "流式处理", "AI架构", "特征平台"]
 draft: false
 ---

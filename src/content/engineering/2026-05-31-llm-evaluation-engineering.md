@@ -4,7 +4,7 @@ description: "系统讲解LLM应用评估的工程化方法，涵盖评估指标
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["LLM评估", "AI测试", "评估工程", "自动化评测", "生产监控"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入探讨AI Agent系统的安全挑战、对齐问题和防御�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-architecture"
+subCategory: agent-architecture
 tags: ["AI安全", "Agent安全", "对齐", "Prompt注入", "防御策略"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入评测主流LLM路由与网关工具的核心能力、架构
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "protocol-tools"
+subCategory: protocol-tools
 tags: ["LLM Gateway", "LiteLLM", "OpenRouter", "模型路由", "LLM网关", "成本优化"]
 draft: false
 ---

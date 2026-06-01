@@ -4,7 +4,7 @@ description: "深入剖析向量数据库的核心索引算法、存储架构与
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["向量数据库", "RAG", "索引算法", "ANN搜索", "Milvus", "性能优化"]
 draft: false
 ---

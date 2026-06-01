@@ -4,7 +4,7 @@ description: "系统剖析AI应用网关的架构设计，涵盖LLM请求路由�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["AI网关", "架构设计", "流量治理", "LLM运维", "分布式系统"]
 draft: false
 ---

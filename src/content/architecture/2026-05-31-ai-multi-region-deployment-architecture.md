@@ -4,7 +4,7 @@ description: "深度解析AI应用在全球多区域部署中的架构设计，�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["多区域部署", "AI架构", "数据合规", "延迟优化", "容灾设计", "全球化", "模型分发", "跨境推理"]
 draft: false
 ---

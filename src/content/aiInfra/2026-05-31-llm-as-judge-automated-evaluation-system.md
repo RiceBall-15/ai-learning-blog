@@ -4,7 +4,7 @@ description: "深入解析LLM-as-Judge自动化评估技术，涵盖评估架构
 date: 2026-05-31
 author: "RiceBall-15"
 category: "AI基础设施"
-subCategory: "evaluation"
+subCategory: evaluation
 tags: ["LLM评估", "自动化测试", "LLM-as-Judge", "模型评估", "AI质量保障"]
 draft: false
 ---

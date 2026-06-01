@@ -4,7 +4,7 @@ description: "深入解析高并发场景下的订单系统架构，从消息队
 date: 2026-05-30
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["高并发", "订单系统", "分布式事务", "消息队列", "数据一致性"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "从Token计费到架构层面，系统性拆解LLM推理成本优�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["LLM推理", "成本优化", "推理架构", "KV Cache", "Prompt Caching", "模型路由", "工程实践"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入剖析AI应用中LLM服务不稳定、API限流、模型幻�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["系统架构", "故障恢复", "优雅降级", "AI系统韧性", "熔断器", "多模型路由"]
 draft: false
 ---

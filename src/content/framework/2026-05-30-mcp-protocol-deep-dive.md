@@ -4,7 +4,7 @@ description: "深入剖析MCP（Model Context Protocol）的架构设计、核�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
-subCategory: "protocols"
+subCategory: protocols
 tags: ["MCP", "Model Context Protocol", "工具协议", "AI工具", "Anthropic", "框架应用"]
 draft: false
 ---

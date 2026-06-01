@@ -4,7 +4,7 @@ description: "深入解析Smolagents的设计哲学、核心架构与实战用�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Smolagents", "HuggingFace", "AI Agent", "Agent框架", "工具调用", "代码生成", "LLM应用"]
 draft: false
 ---

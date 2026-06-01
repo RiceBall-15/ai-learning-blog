@@ -4,7 +4,7 @@ description: "深度评测8款主流AI安全工具，涵盖Prompt注入防护、
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI安全", "内容审核", "Prompt注入", "Guardrails", "LLM安全", "工具评测"]
 draft: false
 ---

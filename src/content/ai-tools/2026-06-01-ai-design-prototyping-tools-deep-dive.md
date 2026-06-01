@@ -4,7 +4,7 @@ description: "系统评测AI辅助设计与原型生成工具，涵盖v0.dev、F
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI设计", "原型生成", "UI设计", "前端开发", "v0.dev", "Figma AI", "设计工具"]
 draft: false
 ---

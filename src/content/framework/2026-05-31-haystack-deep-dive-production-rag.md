@@ -4,7 +4,7 @@ description: "深度剖析Haystack框架的管道化架构设计、核心组件�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["Haystack", "LLM框架", "RAG系统", "Agent开发", "Pipeline"]
 draft: false
 ---

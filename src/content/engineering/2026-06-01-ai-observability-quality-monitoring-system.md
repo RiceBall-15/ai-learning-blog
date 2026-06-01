@@ -4,7 +4,7 @@ description: "系统性讲解AI应用可观测性体系的建设方法，涵盖�
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["可观测性", "质量监控", "LLM监控", "SRE", "智能告警"]
 draft: false
 ---

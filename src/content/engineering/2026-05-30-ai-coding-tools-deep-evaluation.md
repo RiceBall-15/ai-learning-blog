@@ -4,7 +4,7 @@ description: "全面对比Cursor、Claude Code、Cline、Windsurf、GitHub Copil
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["AI编程", "Cursor", "Claude Code", "Cline", "Windsurf", "Copilot", "代码生成", "开发者工具"]
 draft: false
 ---

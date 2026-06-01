@@ -4,7 +4,7 @@ description: "从智能补全到Agent编程，深度对比四大主流AI编码�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI编程", "Cursor", "GitHub Copilot", "Windsurf", "Claude Code", "编码助手", "开发者工具"]
 draft: false
 ---

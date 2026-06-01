@@ -4,7 +4,7 @@ description: "系统评测主流AI会议助手与笔记工具，涵盖Otter.ai�
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI会议助手", "语音转录", "智能笔记", "Otter.ai", "Fireflies", "Fathom", "通义听悟", "飞书妙记"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析AI Gateway的架构设计，涵盖智能路由、负�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["AI Gateway", "LLM网关", "架构设计", "负载均衡", "可观测性", "系统架构"]
 draft: false
 ---

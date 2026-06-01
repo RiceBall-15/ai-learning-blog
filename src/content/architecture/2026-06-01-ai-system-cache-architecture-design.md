@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
 tags: ["缓存架构", "语义缓存", "AI系统", "性能优化", "生产架构", "分布式缓存"]
-subCategory: "distributed"
+subCategory: distributed
 draft: false
 ---
 

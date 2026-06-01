@@ -4,7 +4,7 @@ description: "深度解析CrewAI框架的核心架构与实战技巧，涵盖角
 date: 2026-05-30
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["CrewAI", "多Agent", "Agent框架", "LLM应用", "框架应用", "多Agent协作"]
 draft: false
 ---

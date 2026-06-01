@@ -4,7 +4,7 @@ description: "深度解析Agentic RAG的核心架构、多轮推理策略与工�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["RAG", "Agentic RAG", "检索增强生成", "AI架构", "知识系统", "Agent"]
 draft: false
 ---

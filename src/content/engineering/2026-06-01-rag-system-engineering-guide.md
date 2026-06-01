@@ -4,7 +4,7 @@ description: "深度剖析RAG系统的核心组件设计与工程化实践，涵
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["RAG", "检索增强生成", "向量数据库", "Embedding", "LLM", "AI工程化"]
 draft: false
 ---

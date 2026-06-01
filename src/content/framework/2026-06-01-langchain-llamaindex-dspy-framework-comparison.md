@@ -4,7 +4,7 @@ description: "从架构理念、核心能力、性能表现、生态成熟度四
 date: 2026-06-01
 author: "RiceBall-15"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["LangChain", "LlamaIndex", "DSPy", "框架对比", "LLM应用", "选型指南", "RAG", "Agent"]
 draft: false
 ---

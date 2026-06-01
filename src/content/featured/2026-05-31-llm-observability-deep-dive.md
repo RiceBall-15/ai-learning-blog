@@ -4,7 +4,7 @@ description: "深度剖析LLM应用可观测性的三大支柱（Traces、Metric
 date: "2026-05-31"
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM可观测性", "AI监控", "LangSmith", "Langfuse", "Tracing", "MLOps", "LLM运维"]
 draft: false
 ---

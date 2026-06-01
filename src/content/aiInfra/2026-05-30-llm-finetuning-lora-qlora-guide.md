@@ -4,7 +4,7 @@ description: "从原理到工程实践，系统对比三大微调方案的显存
 date: 2026-05-30
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["微调", "LoRA", "QLoRA", "Full Fine-tuning", "PEFT", "大模型训练"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "从Sora到Kling，从Runway到Pika，深度对比六大主流AI视
 date: 2026-06-01
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI视频", "Sora", "Kling", "Runway", "Pika", "视频生成", "AIGC", "创作者工具"]
 draft: false
 ---

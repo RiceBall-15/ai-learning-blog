@@ -4,7 +4,7 @@ description: "对主流AI代码审查工具进行全面深度评测，从审查�
 date: 2025-01-15
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI代码审查", "Code Review", "Copilot", "Codeium", "AI编程工具"]
 draft: false
 ---

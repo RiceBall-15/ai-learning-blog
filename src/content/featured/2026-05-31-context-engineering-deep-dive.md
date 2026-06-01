@@ -4,7 +4,7 @@ description: "从Prompt Engineering到Context Engineering的范式迁移，深�
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["Context Engineering", "LLM应用", "Prompt Engineering", "RAG", "系统设计"]
 draft: false
 ---

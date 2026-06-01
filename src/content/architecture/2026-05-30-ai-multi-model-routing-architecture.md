@@ -4,7 +4,7 @@ description: "深入剖析多模型路由架构设计，涵盖智能调度策略
 date: 2026-05-30
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["多模型路由", "架构设计", "LLM网关", "故障转移", "负载均衡"]
 draft: false
 ---

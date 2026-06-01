@@ -4,7 +4,7 @@ description: "从PagedAttention到RadixAttention，深入解析三大推理引�
 date: 2025-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["vLLM", "SGLang", "TensorRT-LLM", "推理优化", "PagedAttention", "LLM部署"]
 draft: false
 ---

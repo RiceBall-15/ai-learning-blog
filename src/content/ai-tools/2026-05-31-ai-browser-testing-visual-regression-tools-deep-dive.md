@@ -4,7 +4,7 @@ description: "深度评测10+款AI浏览器测试与视觉回归工具，覆盖�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "browser-tools"
+subCategory: browser-tools
 tags: ["AI测试", "视觉回归", "Applitools", "Playwright", "浏览器测试", "自动化测试", "质量保障"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "从限流熔断到弹性伸缩，系统性解决LLM应用在高并
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["限流", "降级", "弹性伸缩", "LLM", "高可用", "SRE", "AI工程化"]
 draft: false
 ---

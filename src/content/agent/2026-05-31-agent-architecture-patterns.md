@@ -4,7 +4,7 @@ description: "系统梳理Agent架构的核心设计模式，覆盖单Agent推�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-architecture"
+subCategory: agent-architecture
 tags: ["Agent架构", "设计模式", "ReAct", "多Agent"]
 draft: false
 ---

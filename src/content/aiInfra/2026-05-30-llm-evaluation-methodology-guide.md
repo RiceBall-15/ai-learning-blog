@@ -4,7 +4,7 @@ description: "系统化梳理大模型评估的方法论体系，涵盖评估维
 date: 2026-05-30
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "evaluation"
+subCategory: evaluation
 tags: ["大模型评估", "Benchmark", "LLM Evaluation", "MLOps", "模型对比", "自动化评测"]
 draft: false
 ---

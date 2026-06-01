@@ -4,7 +4,7 @@ description: "全面对比四款主流本地LLM部署工具的性能、易用性
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["本地部署", "Ollama", "LM Studio", "llama.cpp", "vLLM", "LLM推理", "性能评测"]
 draft: false
 ---

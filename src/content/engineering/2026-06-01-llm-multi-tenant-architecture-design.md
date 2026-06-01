@@ -4,7 +4,7 @@ description: "深入剖析LLM应用的多租户架构设计模式，涵盖资源
 date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["多租户", "LLM架构", "SaaS", "资源隔离", "企业级AI", "云原生"]
 draft: false
 ---

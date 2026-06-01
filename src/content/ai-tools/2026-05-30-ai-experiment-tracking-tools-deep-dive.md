@@ -4,7 +4,7 @@ description: "深度评测MLflow、Weights & Biases、ClearML三大主流实验�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["MLflow", "Weights & Biases", "ClearML", "实验追踪", "模型管理", "MLOps", "AI基础设施"]
 draft: false
 ---

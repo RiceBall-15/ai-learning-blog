@@ -6,7 +6,7 @@ author: "RiceBall"
 category: "framework"
 tags: ["LangGraph", "Agent框架", "状态机", "工作流编排", "多Agent"]
 draft: false
-subCategory: "agent-framework"
+subCategory: agent-framework
 ---
 
 # LangGraph深度解析：构建复杂Agent工作流的核心引擎——从状态机原理到生产级多Agent系统

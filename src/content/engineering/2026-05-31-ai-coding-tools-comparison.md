@@ -4,7 +4,7 @@ description: "深度评测三款主流AI编码工具的核心能力、实际效�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "ai-coding"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["AI编码工具", "Cursor", "GitHub Copilot", "Claude Code", "开发效率", "工具评测"]
 draft: false
 ---

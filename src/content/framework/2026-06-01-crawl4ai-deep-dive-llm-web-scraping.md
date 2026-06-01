@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "framework"
 tags: ["Crawl4AI", "Web Scraping", "RAG", "数据采集", "LLM"]
-subCategory: "rag"
+subCategory: rag
 draft: false
 ---
 

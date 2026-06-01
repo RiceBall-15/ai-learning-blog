@@ -4,7 +4,7 @@ description: "系统化介绍AI应用测试工程的完整体系，涵盖Prompt�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["AI测试", "LLM评估", "Prompt测试", "质量保障", "回归测试", "自动化测试", "MLOps"]
 draft: false
 ---

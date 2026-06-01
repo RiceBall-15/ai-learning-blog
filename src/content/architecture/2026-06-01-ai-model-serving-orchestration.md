@@ -4,7 +4,7 @@ description: "深入解析AI模型服务的编排架构设计，对比K8s原生�
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["Kubernetes", "KServe", "Serverless", "模型服务", "AI架构", "MLOps"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入解析AI应用在生产环境中面临的高可用挑战，�
 date: 2026-06-01
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["AI架构", "高可用", "分布式系统", "负载均衡", "故障恢复", "生产部署"]
 draft: false
 ---

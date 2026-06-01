@@ -4,7 +4,7 @@ description: "深度剖析LLM流式响应的全链路优化技术，覆盖SSE/We
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["流式响应", "SSE", "Token Streaming", "背压控制", "前端优化", "LLM应用"]
 draft: false
 ---

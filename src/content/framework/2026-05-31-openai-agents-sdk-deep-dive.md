@@ -4,7 +4,7 @@ description: "全面拆解OpenAI Agents SDK的架构设计、核心机制与生�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["OpenAI", "Agents SDK", "Multi-Agent", "Handoff", "Swarm", "AI框架"]
 draft: false
 ---

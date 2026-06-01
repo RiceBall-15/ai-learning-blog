@@ -4,7 +4,7 @@ description: "深入解析LLM推理系统中的请求调度策略，覆盖连续
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["推理优化", "请求调度", "QoS", "Continuous Batching", "GPU调度", "多租户"]
 draft: false
 ---

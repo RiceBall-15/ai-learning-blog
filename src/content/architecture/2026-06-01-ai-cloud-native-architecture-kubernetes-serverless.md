@@ -4,7 +4,7 @@ description: "深度解析AI应用的云原生架构设计，覆盖GPU调度、�
 date: "2026-06-01"
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["云原生", "Kubernetes", "Serverless", "GPU调度", "AI架构", "模型部署", "弹性伸缩"]
 draft: false
 ---

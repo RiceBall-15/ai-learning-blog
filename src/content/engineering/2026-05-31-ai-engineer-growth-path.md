@@ -4,7 +4,7 @@ description: "系统梳理AI工程师的技术成长路径，覆盖基础能力�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "learning"
+subCategory: learning
 tags: ["技术成长", "学习路径", "AI工程师", "职业发展"]
 draft: false
 ---

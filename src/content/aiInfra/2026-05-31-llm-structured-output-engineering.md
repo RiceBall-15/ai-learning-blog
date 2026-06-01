@@ -4,7 +4,7 @@ description: "系统剖析LLM结构化输出的三大技术路径——约束解
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["结构化输出", "约束解码", "Function Calling", "JSON Mode", "vLLM", "SGLang", "推理优化"]
 draft: false
 ---

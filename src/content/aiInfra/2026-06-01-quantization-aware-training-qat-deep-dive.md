@@ -4,7 +4,7 @@ description: "深度剖析量化感知训练(QAT)的核心原理与工程实践�
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["量化感知训练", "QAT", "PTQ", "模型量化", "推理优化", "显存优化"]
 draft: false
 ---

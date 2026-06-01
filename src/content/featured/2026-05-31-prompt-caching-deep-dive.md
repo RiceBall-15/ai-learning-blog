@@ -4,7 +4,7 @@ description: "深度剖析Prompt Caching的底层原理、主流实现方案与�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["Prompt Caching", "LLM优化", "推理加速", "KV Cache", "成本优化"]
 draft: false
 ---

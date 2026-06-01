@@ -4,7 +4,7 @@ description: "深入解析Agent规划系统的核心架构，覆盖任务分解�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "agent-architecture"
+subCategory: agent-architecture
 tags: ["Agent架构", "任务分解", "动态规划", "Planning", "多步推理"]
 draft: false
 ---

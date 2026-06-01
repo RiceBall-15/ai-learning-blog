@@ -4,7 +4,7 @@ description: "系统性拆解LLM推理中的内存管理难题：CUDA显存碎�
 date: "2026-05-31"
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["LLM推理", "内存管理", "CUDA", "PagedAttention", "vLLM", "KV Cache", "显存优化", "推理优化"]
 draft: false
 ---

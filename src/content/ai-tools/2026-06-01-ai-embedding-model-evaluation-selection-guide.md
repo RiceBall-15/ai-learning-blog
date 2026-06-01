@@ -4,7 +4,7 @@ description: "深度评测主流Embedding模型在检索、分类、聚类等任
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "protocol-tools"
+subCategory: protocol-tools
 tags: ["Embedding", "向量检索", "语义搜索", "RAG", "向量数据库", "模型评测"]
 draft: false
 ---

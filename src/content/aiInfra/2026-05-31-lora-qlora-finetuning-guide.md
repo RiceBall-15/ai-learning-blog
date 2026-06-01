@@ -4,7 +4,7 @@ description: "深入解析LoRA和QLoRA微调技术，覆盖原理推导、参数
 date: 2026-05-31
 author: "RiceBall-15"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["LoRA", "QLoRA", "模型微调", "PEFT"]
 draft: false
 ---

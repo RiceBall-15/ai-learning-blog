@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
 tags: ["AI Agent", "多智能体", "编排架构", "分布式系统", "Agent协作"]
-subCategory: "cloud-native"
+subCategory: cloud-native
 draft: false
 ---
 

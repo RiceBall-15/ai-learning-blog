@@ -4,7 +4,7 @@ description: "深入探讨AI编程工具从个人使用走向团队工程化落�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "ai-coding"
+subCategory: ai-coding
 tags: ["AI编程", "团队协作", "工程化", "Cursor", "代码质量", "DevOps", "组织效率"]
 draft: false
 ---

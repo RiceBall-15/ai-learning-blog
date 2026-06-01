@@ -4,7 +4,7 @@ description: "深入解析事件溯源模式在AI应用中的实践，覆盖LLM�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["事件溯源", "Event Sourcing", "LLM审计", "AI应用架构", "可观测性", "对话回放"]
 draft: false
 ---

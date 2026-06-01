@@ -4,7 +4,7 @@ description: "深入剖析企业遗留系统向AI-Native演进的完整路径，
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["AI改造", "渐进式迁移", "遗留系统", "AI工程化", "系统架构", "数据管道"]
 draft: false
 ---

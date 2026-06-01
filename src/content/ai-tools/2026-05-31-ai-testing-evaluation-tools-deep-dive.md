@@ -4,7 +4,7 @@ description: "深度评测DeepEval、Ragas、Promptfoo、Braintrust等主流AI�
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI测试", "LLM评估", "DeepEval", "Ragas", "Promptfoo", "AI质量保证"]
 draft: false
 ---

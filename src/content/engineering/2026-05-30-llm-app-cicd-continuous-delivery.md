@@ -4,7 +4,7 @@ description: "系统讲解大模型应用的持续集成与交付体系，覆盖
 date: 2026-05-30
 author: "RiceBall-15"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["CI/CD", "LLM工程化", "Prompt管理", "灰度发布", "模型评估", "持续交付", "DevOps"]
 draft: false
 ---

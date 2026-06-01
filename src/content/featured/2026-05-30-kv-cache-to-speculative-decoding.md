@@ -4,7 +4,7 @@ description: "深入剖析LLM推理系统的核心优化技术，涵盖KV Cache�
 date: 2026-05-30
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM推理", "KV Cache", "PagedAttention", "Speculative Decoding", "推理优化", "vLLM"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度解析Agent系统的7大攻击面、Prompt注入攻防、工
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "interview"
+subCategory: interview
 tags: ["Agent安全", "对齐", "Prompt注入", "面试"]
 draft: false
 ---

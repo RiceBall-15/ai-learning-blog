@@ -4,7 +4,7 @@ description: "深度解析LLM级联推理架构设计，涵盖模型路由策略
 date: 2026-06-01
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["LLM", "级联推理", "模型路由", "成本优化", "推理架构", "Mixture of Agents", "智能调度"]
 draft: false
 ---

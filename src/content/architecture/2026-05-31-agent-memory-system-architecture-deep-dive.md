@@ -4,7 +4,7 @@ description: "深度剖析AI Agent记忆系统的四层架构设计——工作�
 date: "2026-05-31"
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["AI Agent", "记忆系统", "系统架构", "RAG", "向量数据库", "Agent架构"]
 draft: false
 ---

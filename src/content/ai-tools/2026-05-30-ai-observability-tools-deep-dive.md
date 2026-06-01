@@ -4,7 +4,7 @@ description: "全面评测主流AI可观测性与监控工具，涵盖LangSmith�
 date: 2026-05-30
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "protocol-tools"
+subCategory: protocol-tools
 tags: ["AI可观测性", "LLM监控", "LangSmith", "Phoenix", "Langfuse", "MLOps"]
 draft: false
 ---

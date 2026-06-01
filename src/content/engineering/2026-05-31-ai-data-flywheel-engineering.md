@@ -4,7 +4,7 @@ description: "系统讲解如何构建AI应用的数据飞轮，涵盖反馈采�
 date: 2026-05-31
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["数据飞轮", "AI工程化", "模型优化", "用户反馈", "持续学习", "MLOps"]
 draft: false
 ---

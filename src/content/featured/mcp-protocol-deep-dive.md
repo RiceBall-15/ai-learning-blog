@@ -4,7 +4,7 @@ description: "深入剖析Model Context Protocol的架构原理、通信机制�
 date: 2025-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["MCP", "AI工具协议", "LLM应用", "工具调用", "Agent架构"]
 draft: false
 ---

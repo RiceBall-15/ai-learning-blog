@@ -4,7 +4,7 @@ description: "深度对比OpenCompass、lm-evaluation-harness、HELM等主流LLM
 date: "2026-05-30"
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["LLM评测", "OpenCompass", "模型评估", "Benchmark", "AI工具"]
 draft: false
 ---

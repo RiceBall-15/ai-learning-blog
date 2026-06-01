@@ -4,7 +4,7 @@ description: "深入剖析Mixture of Experts架构的核心原理、路由策略
 date: 2026-06-01
 author: "RiceBall-15"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["MoE", "混合专家模型", "大模型架构", "模型训练", "推理优化", "稀疏激活"]
 draft: false
 ---

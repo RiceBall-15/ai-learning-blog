@@ -4,7 +4,7 @@ description: "全面剖析LlamaIndex架构设计、核心组件与生产级RAG�
 date: 2026-05-30
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["LlamaIndex", "RAG", "向量检索", "知识库", "Agent", "数据索引"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度解析LLM网关的架构演进，涵盖负载均衡、智能
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["LLM网关", "API网关", "智能路由", "负载均衡", "AI架构", "高可用"]
 draft: false
 ---

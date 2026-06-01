@@ -4,7 +4,7 @@ description: "深入解析AI应用的韧性架构设计模式，涵盖熔断器�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["韧性架构", "熔断降级", "高可用", "混沌工程", "AI系统架构", "分布式系统"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "系统梳理AI系统架构从单体LLM调用到多智能体协作�
 date: 2026-05-30
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["AI架构", "多智能体", "分布式系统", "微服务", "架构模式"]
 draft: false
 ---

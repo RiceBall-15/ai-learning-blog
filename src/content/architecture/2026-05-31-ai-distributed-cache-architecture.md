@@ -4,7 +4,7 @@ description: "深入剖析AI应用中三种核心缓存机制的设计原理、�
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["缓存架构", "语义缓存", "Prompt缓存", "KV缓存", "LLM优化", "分布式系统", "成本优化"]
 draft: false
 ---

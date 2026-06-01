@@ -4,7 +4,7 @@ description: "全面剖析LlamaIndex Workflows的设计理念、核心架构与�
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["LlamaIndex", "Workflows", "AI应用编排", "事件驱动", "RAG", "Agent"]
 draft: false
 ---

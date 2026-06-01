@@ -4,7 +4,7 @@ description: "系统性地剖析AI应用性能瓶颈的定位、分析与优化�
 date: 2026-05-30
 author: "RiceBall"
 category: "engineering"
-subCategory: "infra"
+subCategory: infra
 tags: ["性能优化", "AI工程化", "LLM推理", "RAG优化", "性能分析"]
 draft: false
 ---

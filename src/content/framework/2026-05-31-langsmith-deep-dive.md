@@ -4,7 +4,7 @@ description: "全面剖析LangSmith作为LLM应用开发平台的核心能力，
 date: 2026-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "agent-framework"
+subCategory: agent-framework
 tags: ["LangSmith", "LLM可观测性", "Tracing", "评估", "Prompt工程", "MLOps"]
 draft: false
 ---

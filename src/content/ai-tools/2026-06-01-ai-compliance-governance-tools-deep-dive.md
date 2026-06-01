@@ -4,7 +4,7 @@ description: "深度评测主流AI合规与治理工具，涵盖模型公平性�
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["AI合规", "AI治理", "模型公平性", "监管合规", "可解释性", "风险管理"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "高频面试题：如何选择合适的Agent框架？从架构设�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "interview"
+subCategory: interview
 tags: ["面试题", "Agent框架", "LangChain", "CrewAI", "框架选型"]
 draft: false
 ---

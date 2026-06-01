@@ -4,7 +4,7 @@ description: "系统性解析KV Cache的工作原理、内存瓶颈与优化策�
 date: 2026-05-31
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "inference"
+subCategory: inference
 tags: ["KV Cache", "LLM推理", "PagedAttention", "推理优化", "显存管理"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入剖析LLM推理优化的六大核心技术路线，结合工
 date: 2025-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["推理优化", "量化", "KV Cache", "投机采样", "vLLM", "SGLang"]
 draft: false
 ---

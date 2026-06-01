@@ -4,7 +4,7 @@ description: "从理论到实战，深入解析CQRS模式在AI推理系统中的
 date: 2026-05-31
 author: "RiceBall"
 category: "architecture"
-subCategory: "distributed"
+subCategory: distributed
 tags: ["架构设计", "CQRS", "读写分离", "AI系统", "分布式系统"]
 draft: false
 ---

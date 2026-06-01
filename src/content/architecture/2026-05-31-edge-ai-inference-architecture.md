@@ -4,7 +4,7 @@ description: "深入解析边缘AI推理架构的设计原理，涵盖端云协�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "architecture"
-subCategory: "cloud-native"
+subCategory: cloud-native
 tags: ["边缘计算", "AI推理", "端云协同", "模型压缩", "边缘智能", "系统架构"]
 draft: false
 ---

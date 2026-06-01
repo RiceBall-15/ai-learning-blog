@@ -4,7 +4,7 @@ description: "从架构设计到生产落地，全面对比三大主流RAG框架
 date: 2025-05-31
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "LangChain", "LlamaIndex", "Haystack", "框架选型"]
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深度解析AI系统的混沌工程方法论，涵盖LLM服务故�
 date: 2026-06-01
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["混沌工程", "AI系统", "故障注入", "韧性设计", "可观测性", "生产实践"]
 draft: false
 ---

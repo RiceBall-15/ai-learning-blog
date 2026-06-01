@@ -4,7 +4,7 @@ description: "深度对比Milvus、Qdrant、Weaviate、ChromaDB等8大向量数�
 date: "2026-05-30"
 author: "RiceBall-15"
 category: "ai-tools"
-subCategory: "protocol-tools"
+subCategory: protocol-tools
 tags: ["向量数据库", "Milvus", "Qdrant", "Weaviate", "ChromaDB", "RAG", "Embedding"]
 draft: false
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: "RiceBall"
 category: "engineering"
 tags: ["AI测试", "LLM应用", "质量工程", "自动化测试", "CI/CD"]
-subCategory: "ai-coding"
+subCategory: ai-coding
 draft: false
 ---
 

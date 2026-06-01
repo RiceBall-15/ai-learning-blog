@@ -4,7 +4,7 @@ description: "深度评测主流AI代码审查工具，涵盖CodeRabbit、GitHub
 date: 2026-05-31
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "coding-tools"
+subCategory: coding-tools
 tags: ["代码审查", "AI工具", "CodeRabbit", "GitHub Copilot", "Codeium", "Code Review", "开发效率"]
 draft: false
 ---

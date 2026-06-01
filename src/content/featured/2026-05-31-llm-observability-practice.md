@@ -4,7 +4,7 @@ description: "系统构建LLM应用的可观测性体系，覆盖Tracing、Metri
 date: 2026-05-31
 author: "RiceBall"
 category: "featured"
-subCategory: "deep-dive"
+subCategory: deep-dive
 tags: ["可观测性", "LLM应用", "Tracing", "MLOps", "生产监控"]
 draft: false
 ---

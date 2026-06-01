@@ -4,7 +4,7 @@ description: "深入剖析RAG系统四代架构的技术演进，结合真实业
 date: 2025-01-15
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "GraphRAG", "向量检索", "知识图谱", "检索增强生成"]
 draft: false
 ---

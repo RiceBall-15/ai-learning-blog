@@ -4,7 +4,7 @@ description: "高频面试题：如何优化Agent系统的性能？从推理优�
 date: 2026-05-31
 author: "RiceBall-15"
 category: "agent"
-subCategory: "interview"
+subCategory: interview
 tags: ["面试题", "性能优化", "Agent优化", "延迟优化"]
 draft: false
 ---

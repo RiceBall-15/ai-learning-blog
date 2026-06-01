@@ -4,7 +4,7 @@ description: "深度评测2026年主流AI浏览器自动化工具，涵盖Browse
 date: 2026-06-01
 author: "RiceBall"
 category: "ai-tools"
-subCategory: "browser-tools"
+subCategory: browser-tools
 tags: ["AI浏览器自动化", "Browser Use", "Playwright", "LaVague", "AgentQL", "Web Agent", "自动化测试"]
 draft: false
 ---

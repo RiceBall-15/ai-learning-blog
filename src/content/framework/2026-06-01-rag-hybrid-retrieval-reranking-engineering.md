@@ -4,7 +4,7 @@ description: "深入解析RAG系统中的混合检索架构，覆盖向量检索
 date: 2026-06-01
 author: "RiceBall"
 category: "framework"
-subCategory: "rag"
+subCategory: rag
 tags: ["RAG", "混合检索", "向量检索", "BM25", "重排序", "Milvus", "Elasticsearch", "LangChain"]
 draft: false
 ---

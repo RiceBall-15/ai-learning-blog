@@ -4,7 +4,7 @@ description: "系统剖析LLM训练数据合成的技术演进、主流方法论
 date: 2026-06-01
 author: "RiceBall"
 category: "aiInfra"
-subCategory: "model-training"
+subCategory: model-training
 tags: ["LLM", "合成数据", "Self-Instruct", "数据工程", "模型训练", "数据质量", "Evol-Instruct"]
 draft: false
 ---
