@@ -56,6 +56,12 @@ const aiTools = defineCollection({
   schema: postSchema,
 });
 
+// 💼 面试精选 (新增: 独立面试分类)
+const interview = defineCollection({
+  type: 'content',
+  schema: postSchema,
+});
+
 export const collections = {
   agent,
   aiInfra,
@@ -64,6 +70,7 @@ export const collections = {
   architecture,
   featured,
   'ai-tools': aiTools,
+  interview,
 };
 
 // ============ 子分类定义 ============
@@ -96,8 +103,13 @@ export const subCategories: Record<string, { id: string; name: string; icon: str
   ],
   featured: [
     { id: 'ai-architecture', name: 'AI架构', icon: '🤖' },
-    { id: 'interview', name: '面试精选', icon: '💼' },
     { id: 'deep-dive', name: '深度解析', icon: '🔍' },
+  ],
+  interview: [
+    { id: 'system-design', name: '系统设计', icon: '🏗️' },
+    { id: 'coding', name: '算法编程', icon: '💻' },
+    { id: 'behavioral', name: '行为面试', icon: '🗣️' },
+    { id: 'technical', name: '技术面试', icon: '🔧' },
   ],
   'ai-tools': [
     { id: 'coding-tools', name: '编程工具', icon: '💻' },
@@ -136,7 +148,12 @@ export const categoryMeta: Record<string, { name: string; icon: string; descript
   featured: {
     name: '优秀文章精选',
     icon: '⭐',
-    description: '参考优秀博主风格的深度技术文章，面试精选与架构深度解析',
+    description: '参考优秀博主风格的深度技术文章与架构深度解析',
+  },
+  interview: {
+    name: '面试精选',
+    icon: '💼',
+    description: '系统设计、算法编程、行为面试与技术面试深度解析',
   },
   'ai-tools': {
     name: 'AI工具评测',
