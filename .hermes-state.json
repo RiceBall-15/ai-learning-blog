@@ -4,53 +4,53 @@
     {
       "date": "2026-06-01",
       "files": [
-        "src/content/architecture/2026-06-01-ai-microservices-circuit-breaker-adaptive-rate-limiting.md",
-        "src/content/aiInfra/2026-06-01-rag-evaluation-framework-comprehensive-guide.md"
+        "src/content/ai-tools/2026-06-01-playwright-mcp-server-browser-tool-protocol.md",
+        "src/content/engineering/2026-06-01-ai-engineer-knowledge-system-construction.md"
       ],
       "subcategories": [
-        "architecture/microservices",
-        "aiInfra/evaluation"
+        "ai-tools/browser-tools",
+        "engineering/learning"
       ]
     }
   ],
-  "total_articles": 542,
+  "total_articles": 7,
   "subcategory_distribution": {
     "agent/agent-architecture": 21,
     "agent/agent-memory": 20,
+    "agent/agent-skill": 24,
     "agent/agent-ops": 8,
-    "agent/agent-skill": 25,
     "agent/interview": 37,
-    "ai-tools/browser-tools": 7,
+    "aiInfra/inference": 45,
+    "aiInfra/model-training": 16,
+    "aiInfra/evaluation": 9,
+    "framework/agent-framework": 39,
+    "framework/rag": 21,
+    "framework/protocols": 8,
+    "engineering/ai-coding": 20,
+    "engineering/infra": 45,
+    "engineering/learning": 6,
+    "architecture/distributed": 49,
+    "architecture/cloud-native": 15,
+    "architecture/microservices": 8,
+    "featured/deep-dive": 61,
+    "featured/ai-architecture": 7,
     "ai-tools/coding-tools": 51,
     "ai-tools/protocol-tools": 15,
-    "aiInfra/evaluation": 9,
-    "aiInfra/inference": 46,
-    "aiInfra/model-training": 17,
-    "architecture/cloud-native": 15,
-    "architecture/distributed": 50,
-    "architecture/microservices": 8,
-    "engineering/ai-coding": 20,
-    "engineering/infra": 46,
-    "engineering/learning": 7,
-    "featured/ai-architecture": 7,
-    "featured/deep-dive": 63,
-    "framework/agent-framework": 39,
-    "framework/protocols": 9,
-    "framework/rag": 22
+    "ai-tools/browser-tools": 6
   },
   "weakest_subcategories": [
-    "engineering/learning: 7",
+    "ai-tools/browser-tools: 6",
+    "engineering/learning: 6",
     "featured/ai-architecture: 7",
-    "ai-tools/browser-tools: 7",
     "agent/agent-ops: 8",
     "architecture/microservices: 8",
-    "aiInfra/evaluation: 9",
-    "framework/protocols: 9"
+    "framework/protocols: 8",
+    "aiInfra/evaluation: 9"
   ],
   "next_execution_recommendations": [
-    "engineering/learning: AI工程师学习路径与成长体系",
-    "featured/ai-architecture: AI架构演进趋势与最佳实践",
-    "ai-tools/browser-tools: 浏览器自动化工具深度评测",
-    "framework/protocols: MCP协议深度解析与实战"
+    "ai-tools/browser-tools: AIai-tools领域深度文章",
+    "engineering/learning: AIengineering领域深度文章",
+    "featured/ai-architecture: AIfeatured领域深度文章",
+    "agent/agent-ops: AIagent领域深度文章"
   ]
 }
