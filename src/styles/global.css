@@ -1,126 +1,165 @@
-/* ==================== 现代博客设计 - 灵感来自vhAstro-Theme ==================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* ============================================================================
+   设计系统：技术规格书 / 仪表盘
+   ----------------------------------------------------------------------------
+   内容是 Agent 运行时的内部机制——不变式、状态机、伪码、故障复盘。
+   所以视觉语言取自它自己的世界：技术规格书与仪表读数。
+   规则、刻度、等宽编号承担结构；信号琥珀只用于「此处有读数」。
+   字体用 IBM Plex（本为 IBM 技术文档而设计）；中文走系统字体栈，
+   因为 CJK 网络字体动辄数 MB，长文阅读不该为此付首屏代价。
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap');
 
 /* ==================== CSS变量 ==================== */
 :root {
-  /* 主色调 - 现代渐变配色 */
-  --color-primary: #6366f1;
-  --color-primary-light: #818cf8;
-  --color-primary-dark: #4f46e5;
-  --color-accent: #06b6d4;
-  
-  /* 背景色 - 柔和渐变 */
-  --color-bg: #fafbfc;
-  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  --color-surface: #ffffff;
-  --color-surface-hover: #f8fafc;
-  
-  /* 文本色 */
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #94a3b8;
-  --color-text-inverse: #ffffff;
-  
-  /* 边框和阴影 */
-  --color-border: #e2e8f0;
-  --color-border-light: #f1f5f9;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  
-  /* 圆角 */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
+  /* ── 纸面（浅色）：暖中性，刻意比常见米色更冷更灰 ── */
+  --paper:            #f7f7f4;
+  --paper-raised:     #ffffff;
+  --paper-sunken:     #f1f1ed;
+
+  /* ── 信号琥珀：仅用于强调与当前位置读数 ── */
+  --signal:           #b4661a;
+  --signal-soft:      rgba(180, 102, 26, 0.10);
+
+  /* ── 板岩青：链接与代码，结构性冷色 ── */
+  --slate-teal:       #2c6e72;
+
+  /* 语义别名（沿用原有变量名，让既有样式自动继承新身份） */
+  --color-primary:        var(--signal);
+  --color-primary-light:  #c8802f;
+  --color-primary-dark:   #8f4f12;
+  --color-accent:         var(--slate-teal);
+
+  --color-bg:             var(--paper);
+  --color-bg-gradient:    var(--paper);   /* 去掉渐变：仪表盘不需要 */
+  --color-surface:        var(--paper-raised);
+  --color-surface-hover:  var(--paper-sunken);
+
+  --color-text-primary:   #191b20;
+  --color-text-secondary: #4a4e57;
+  --color-text-muted:     #868b95;
+  --color-text-inverse:   #ffffff;
+
+  --color-border:          #e2e1db;
+  --color-border-light:    #ecebe6;
+  --color-border-strong:   #cfcdc5;
+
+  /* 阴影极轻——用规则线而非投影表达层级 */
+  --shadow-sm: 0 1px 1px rgb(25 27 32 / 0.04);
+  --shadow-md: 0 1px 2px rgb(25 27 32 / 0.05), 0 2px 6px rgb(25 27 32 / 0.04);
+  --shadow-lg: 0 2px 4px rgb(25 27 32 / 0.05), 0 8px 20px rgb(25 27 32 / 0.06);
+  --shadow-xl: 0 4px 8px rgb(25 27 32 / 0.06), 0 16px 36px rgb(25 27 32 / 0.08);
+
+  /* 圆角：紧、精确——器械感，不是药丸感 */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 5px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
   --radius-full: 9999px;
-  
-  /* 动画 */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  
-  /* 字体 */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+
+  --transition-fast: 120ms cubic-bezier(0.2, 0, 0.3, 1);
+  --transition-base: 180ms cubic-bezier(0.2, 0, 0.3, 1);
+  --transition-slow: 280ms cubic-bezier(0.2, 0, 0.3, 1);
+  --transition-bounce: 420ms cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  /* ── 字体 ── */
+  --font-cjk: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+              'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, var(--font-cjk);
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-label: 'IBM Plex Sans Condensed', 'IBM Plex Sans', var(--font-cjk);
+
+  /* 正文行宽：CJK 一行 34em 左右最舒服，再宽回扫就累 */
+  --measure: 34em;
 }
 
-/* ==================== 深色主题 - 首页标题修复 ==================== */
-[data-theme="dark"] .banner-title,
-[data-theme="dark"] .title-line {
-  color: #f8fafc !important;
+/* 标题一律跟随语义变量，不再硬编码色值（原先的 !important 会锁死主题） */
+.banner-title,
+.title-line,
+.article-title,
+.section-title,
+.sidebar-title,
+.stat-number {
+  color: var(--color-text-primary);
 }
 
-[data-theme="dark"] .title-line.accent {
-  background: linear-gradient(90deg, #e0e7ff 0%, #c7d2fe 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
+/* 强调行用信号色实心，不用渐变文字——渐变文字在深色下发灰且不可读 */
+.title-line.accent {
+  color: var(--signal);
+  background: none;
+  -webkit-text-fill-color: currentColor;
 }
 
-[data-theme="dark"] .article-title,
-[data-theme="dark"] .section-title,
-[data-theme="dark"] .sidebar-title {
-  color: #f8fafc !important;
-}
-
-[data-theme="dark"] .stat-number {
-  color: #f8fafc !important;
-}
-
-/* ==================== 深色主题 ==================== */
+/* ==================== 深色主题（墨） ==================== */
 [data-theme="dark"],
 .dark-mode {
-  --color-primary: #818cf8;
-  --color-primary-light: #a5b4fc;
-  --color-primary-dark: #6366f1;
-  --color-accent: #22d3ee;
-  
-  --color-bg: #0f172a;
-  --color-bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --color-surface: #1e293b;
-  --color-surface-hover: #334155;
-  
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #64748b;
-  --color-text-inverse: #0f172a;
-  
-  --color-border: #334155;
-  --color-border-light: #1e293b;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+  --paper:        #14161b;
+  --paper-raised: #1a1d23;
+  --paper-sunken: #101216;
+
+  --signal:      #e0913a;
+  --signal-soft: rgba(224, 145, 58, 0.12);
+  --slate-teal:  #5fa8ad;
+
+  --color-primary:       var(--signal);
+  --color-primary-light: #eda954;
+  --color-primary-dark:  #c2761f;
+  --color-accent:        var(--slate-teal);
+
+  --color-bg:            var(--paper);
+  --color-bg-gradient:   var(--paper);
+  --color-surface:       var(--paper-raised);
+  --color-surface-hover: #22262e;
+
+  --color-text-primary:   #e9e7e2;
+  --color-text-secondary: #afb3bc;
+  --color-text-muted:     #767b85;
+  --color-text-inverse:   #14161b;
+
+  --color-border:        #282c34;
+  --color-border-light:  #1f232a;
+  --color-border-strong: #3a3f49;
+
+  --shadow-sm: 0 1px 1px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.35), 0 2px 6px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.35), 0 8px 20px rgb(0 0 0 / 0.35);
+  --shadow-xl: 0 4px 8px rgb(0 0 0 / 0.4), 0 16px 36px rgb(0 0 0 / 0.45);
 }
 
 /* ==================== 系统主题跟随 ==================== */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-primary: #818cf8;
-    --color-primary-light: #a5b4fc;
-    --color-primary-dark: #6366f1;
-    --color-accent: #22d3ee;
-    
-    --color-bg: #0f172a;
-    --color-bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    --color-surface: #1e293b;
-    --color-surface-hover: #334155;
-    
-    --color-text-primary: #f8fafc;
-    --color-text-secondary: #cbd5e1;
-    --color-text-muted: #64748b;
-    --color-text-inverse: #0f172a;
-    
-    --color-border: #334155;
-    --color-border-light: #1e293b;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    --paper:        #14161b;
+    --paper-raised: #1a1d23;
+    --paper-sunken: #101216;
+
+    --signal:      #e0913a;
+    --signal-soft: rgba(224, 145, 58, 0.12);
+    --slate-teal:  #5fa8ad;
+
+    --color-primary:       var(--signal);
+    --color-primary-light: #eda954;
+    --color-primary-dark:  #c2761f;
+    --color-accent:        var(--slate-teal);
+
+    --color-bg:            var(--paper);
+    --color-bg-gradient:   var(--paper);
+    --color-surface:       var(--paper-raised);
+    --color-surface-hover: #22262e;
+
+    --color-text-primary:   #e9e7e2;
+    --color-text-secondary: #afb3bc;
+    --color-text-muted:     #767b85;
+    --color-text-inverse:   #14161b;
+
+    --color-border:        #282c34;
+    --color-border-light:  #1f232a;
+    --color-border-strong: #3a3f49;
+
+    --shadow-sm: 0 1px 1px rgb(0 0 0 / 0.3);
+    --shadow-md: 0 1px 2px rgb(0 0 0 / 0.35), 0 2px 6px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.35), 0 8px 20px rgb(0 0 0 / 0.35);
+    --shadow-xl: 0 4px 8px rgb(0 0 0 / 0.4), 0 16px 36px rgb(0 0 0 / 0.45);
   }
 }
 
@@ -138,13 +177,15 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-bg-gradient);
+  background: var(--color-bg);
   color: var(--color-text-primary);
-  line-height: 1.6;
+  line-height: 1.7;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* 中英混排时给标点与西文留出呼吸空间 */
+  text-spacing-trim: space-first;
 }
 
 a {
@@ -163,6 +204,30 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* ── 质量底线：键盘焦点必须看得见 ── */
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── 质量底线：尊重降低动效偏好 ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 等宽数字：表格与读数里的数字要对齐 */
+.stat-number,
+table,
+time {
+  font-variant-numeric: tabular-nums;
 }
 
 /* ==================== Hero Section ==================== */
@@ -1121,182 +1186,58 @@ img {
   }
 }
 
-/* ==================== 代码块样式 - vhAstro-Theme ==================== */
+/* ==================== 代码与表格 ====================
+   文章内的代码块 / 表格由 PostLayout 负责（含语言标签、复制、滚动容器）。
+   这里只保留非文章场景（如系列页、关于页）的基础样式，且不使用 !important，
+   以免与组件级样式互相覆盖——那是旧版本里最难排查的一类问题。 */
 pre {
-  background: var(--color-surface) !important;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 0;
-  overflow: hidden;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.4;
-  margin: 1.5rem 0;
-  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 code {
   font-family: var(--font-mono);
-  font-size: 0.875em;
-}
-
-/* 行内代码 */
-p code, li code, td code {
-  background: var(--color-surface-hover);
-  padding: 0.15rem 0.4rem;
-  border-radius: var(--radius-sm);
-  color: var(--color-primary);
+  font-size: 0.88em;
 }
 
 pre code {
-  display: block;
-  background: transparent;
-  padding: 1.25rem;
-  color: var(--color-text-primary);
-  overflow-x: auto;
-  line-height: 1.4;
+  font-family: var(--font-mono);
 }
 
-/* Shiki 代码块 - 支持Astro双主题 */
+/* shiki 双主题：每个 span 自带 --shiki-light / --shiki-dark 内联变量 */
 pre.astro-code {
-  background: var(--shiki-light-bg, var(--color-surface)) !important;
-  border: 1px solid var(--color-border) !important;
-  border-radius: var(--radius-lg) !important;
-  padding: 0 !important;
-  overflow: hidden;
-  margin: 1.5rem 0 !important;
-  line-height: 1.4 !important;
+  background: var(--shiki-light-bg, var(--paper-sunken));
+  color: var(--shiki-light, var(--color-text-primary));
+}
+pre.astro-code span {
+  color: var(--shiki-light, inherit);
 }
 
-pre.astro-code code {
-  line-height: 1.4 !important;
-}
-
-pre.astro-code .line {
-  line-height: 1.4 !important;
-}
-
-/* 暗色模式 - 强制覆盖内联样式 */
 [data-theme="dark"] pre.astro-code {
-  background: var(--shiki-dark-bg, #24292e) !important;
-  color: var(--shiki-dark, #e1e4e8) !important;
-  border-color: #2d3748 !important;
+  background: var(--shiki-dark-bg, var(--paper-sunken));
+  color: var(--shiki-dark, var(--color-text-primary));
 }
-
-[data-theme="dark"] pre.astro-code code {
-  color: var(--shiki-dark, #e1e4e8) !important;
-}
-
 [data-theme="dark"] pre.astro-code span {
-  color: var(--shiki-dark, #e1e4e8) !important;
+  color: var(--shiki-dark, inherit);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) pre.astro-code {
-    background: var(--shiki-dark-bg, #24292e) !important;
-    color: var(--shiki-dark, #e1e4e8) !important;
-    border-color: #2d3748 !important;
+    background: var(--shiki-dark-bg, var(--paper-sunken));
+    color: var(--shiki-dark, var(--color-text-primary));
   }
-  
-  :root:not([data-theme="light"]) pre.astro-code code {
-    color: var(--shiki-dark, #e1e4e8) !important;
+  :root:not([data-theme="light"]) pre.astro-code span {
+    color: var(--shiki-dark, inherit);
   }
 }
 
-/* 代码块行号 */
-pre.astro-code .line {
-  display: block;
-  padding: 0 1rem;
-  line-height: 1.4 !important;
-}
-
+/* 行号：靠等宽与低对比度做，不抢代码本身 */
 pre.astro-code .line-number {
   display: inline-block;
-  width: 2.5rem;
-  margin-right: 1rem;
+  width: 2.2em;
+  margin-right: 1em;
   text-align: right;
   color: var(--color-text-muted);
   opacity: 0.5;
   user-select: none;
-}
-
-[data-theme="dark"] pre.astro-code .line-number {
-  color: #8b949e !important;
-}
-
-/* 代码块语言标签 */
-pre.astro-code[data-language]::before {
-  content: attr(data-language);
-  display: block;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 0, 0, 0.15);
-  color: var(--color-text-muted);
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  text-transform: lowercase;
-  border-bottom: 1px solid var(--color-border);
-}
-
-[data-theme="dark"] pre.astro-code[data-language]::before {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) pre.astro-code[data-language]::before {
-    background: rgba(0, 0, 0, 0.3);
-  }
-}
-
-/* 代码块行号 */
-.line-number {
-  color: var(--color-text-muted);
-  user-select: none;
-  margin-right: 1rem;
-  min-width: 1.5rem;
-  text-align: right;
-  display: inline-block;
-}
-
-/* 代码块高亮 */
-.highlight-line {
-  background: rgba(99, 102, 241, 0.1);
-  border-left: 3px solid var(--color-primary);
-  margin: 0 -1.25rem;
-  padding: 0 1.25rem;
-}
-
-/* 复制按钮 */
-.code-block-wrapper {
-  position: relative;
-}
-
-.copy-button {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  padding: 0.375rem 0.75rem;
-  background: var(--color-surface-hover);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  opacity: 0;
-  transition: var(--transition);
-}
-
-.code-block-wrapper:hover .copy-button {
-  opacity: 1;
-}
-
-.copy-button:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
-}
-
-.copy-button.copied {
-  background: #10b981;
-  border-color: #10b981;
-  color: white;
 }

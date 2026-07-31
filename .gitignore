@@ -25,4 +25,4 @@ yarn-error.log
 .env.*.local
 
 # 缓存
-.cache
+.cache.claude/launch.json

@@ -1,640 +1,896 @@
 ---
 import Layout from './Layout.astro';
+import { getCollection } from 'astro:content';
+import { seriesMeta, subCategories, categoryMeta, tagSlug } from '../content/config';
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
-// 格式化日期
 const formattedDate = post.data.date.toLocaleDateString('zh-CN', {
   year: 'numeric',
   month: 'long',
-  day: 'numeric'
+  day: 'numeric',
 });
+
+// 目录只取 h2/h3：h2 是论证主干，h3 是其下的分点。
+// 给每个 h3 记下所属 h2，这样轨上只展开当前那一段的分点，不必一次铺满。
+let currentH2 = '';
+const toc = headings
+  .filter((h: any) => h.depth === 2 || h.depth === 3)
+  .map((h: any) => {
+    if (h.depth === 2) currentH2 = h.slug;
+    return { ...h, parent: h.depth === 3 ? currentH2 : h.slug };
+  });
+
+// 系列上下篇导航
+const seriesId = post.data.series;
+const series = seriesId ? seriesMeta[seriesId] : null;
+let seriesPosts: any[] = [];
+if (seriesId && series) {
+  seriesPosts = (await getCollection(series.collection as any))
+    .filter((p: any) => !p.data.draft && p.data.series === seriesId)
+    .sort((a: any, b: any) => (a.data.seriesOrder ?? 999) - (b.data.seriesOrder ?? 999));
+}
+const idx = seriesPosts.findIndex((p: any) => p.slug === post.slug);
+const prev = idx > 0 ? seriesPosts[idx - 1] : null;
+const next = idx >= 0 && idx < seriesPosts.length - 1 ? seriesPosts[idx + 1] : null;
+
+// 分类与子分类的可读名称
+const cat = post.data.category ? categoryMeta[post.data.category] : null;
+const sub = post.data.category
+  ? (subCategories[post.data.category] || []).find((s) => s.id === post.data.subCategory)
+  : null;
+
+// 阅读量级：中文按字数估算，给读者一个预期
+const words = post.body.replace(/\s+/g, '').length;
+const readMinutes = Math.max(1, Math.round(words / 550));
 ---
 
 <Layout title={post.data.title}>
-  <article class="article-container">
-    <!-- Article Header -->
-    <header class="article-header">
-      <div class="article-meta-top">
-        <a href="/ai-learning-blog/" class="back-link">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          返回列表
+  <div class="read-progress" aria-hidden="true"><span id="readBar"></span></div>
+
+  <article class="doc">
+    <!-- ══ 签名元素：规格轨 ══
+         把文档结构画成一列刻度，当前所在段落亮起。
+         它同时是目录、是位置读数——长文里最缺的那件事。 -->
+    <aside class="rail" aria-label="文档结构">
+      <a href="/ai-learning-blog/" class="rail-back">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        全部文章
+      </a>
+
+      {series && (
+        <a class="rail-series" href={`/ai-learning-blog/series/${seriesId}`}>
+          <span class="rail-series-label">所属系列</span>
+          <span class="rail-series-name">{series.name}</span>
+          {post.data.seriesOrder && (
+            <span class="rail-series-pos">
+              第 {post.data.seriesOrder} / {seriesPosts.length} 篇
+            </span>
+          )}
         </a>
-      </div>
-      
-      <div class="article-info">
-        <time class="article-date">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M4.5 2V3.5M11.5 2V3.5M2 5.5H14M3 1.5H13C13.5523 1.5 14 1.94772 14 2.5V13.5C14 14.0523 13.5523 14.5 13 14.5H3C2.44772 14.5 2 14.0523 2 13.5V2.5C2 1.94772 2.44772 1.5 3 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          {formattedDate}
-        </time>
-        
-        {post.data.category && (
-          <span class="article-category">{post.data.category}</span>
-        )}
-      </div>
-      
-      {post.data.tags && post.data.tags.length > 0 && (
-        <div class="article-tags">
-          {post.data.tags.map(tag => (
-            <span class="tag">#{tag}</span>
-          ))}
-        </div>
       )}
-    </header>
 
-    <!-- Article Content -->
-    <div class="article-content">
-      <Content />
-    </div>
+      {toc.length > 1 && (
+        <details class="rail-toc" id="railToc">
+          {/* 窄屏折叠：目录排在标题之前会让人先看见结构再看见题目，
+              所以移动端只留一行摘要，点开才展开（桌面由脚本置为常开） */}
+          <summary class="rail-heading">本文结构<span class="rail-count">{toc.length}</span></summary>
+          <ul>
+            {toc.map((h: any) => (
+              <li
+                class={`tick tick-h${h.depth}`}
+                data-slug={h.slug}
+                data-parent={h.parent}
+              >
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </aside>
 
-    <!-- Article Footer -->
-    <footer class="article-footer">
-      <div class="share-section">
-        <span class="share-label">分享文章：</span>
-        <div class="share-buttons">
-          <button class="share-btn" data-platform="twitter" aria-label="分享到Twitter">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-          </button>
-          <button class="share-btn" data-platform="copy" aria-label="复制链接">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+    <div class="doc-main">
+      <header class="doc-head">
+        <div class="eyebrow">
+          {cat && <span class="eyebrow-cat">{cat.name}</span>}
+          {sub && <span class="eyebrow-sub">{sub.name}</span>}
         </div>
+
+        <h1 class="doc-title">{post.data.title}</h1>
+
+        {post.data.description && (
+          <p class="doc-deck">{post.data.description}</p>
+        )}
+
+        <div class="doc-meta">
+          <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
+          <span class="meta-sep">/</span>
+          <span>约 {readMinutes} 分钟</span>
+          <span class="meta-sep">/</span>
+          <span>{post.data.author}</span>
+        </div>
+
+        {post.data.tags?.length > 0 && (
+          <ul class="doc-tags">
+            {post.data.tags.map((tag: string) => (
+              <li><a href={`/ai-learning-blog/tags/${tagSlug(tag)}`}>{tag}</a></li>
+            ))}
+          </ul>
+        )}
+      </header>
+
+      <div class="prose" id="prose">
+        <Content />
       </div>
-    </footer>
+
+      <footer class="doc-foot">
+        {(prev || next) && (
+          <nav class="series-nav" aria-label="系列导航">
+            {prev ? (
+              <a class="sn-item sn-prev" href={`/ai-learning-blog/${series.collection}/${prev.slug}`}>
+                <span class="sn-dir">← 上一篇</span>
+                <span class="sn-title">{prev.data.title}</span>
+              </a>
+            ) : <span class="sn-item sn-empty"></span>}
+            {next ? (
+              <a class="sn-item sn-next" href={`/ai-learning-blog/${series.collection}/${next.slug}`}>
+                <span class="sn-dir">下一篇 →</span>
+                <span class="sn-title">{next.data.title}</span>
+              </a>
+            ) : <span class="sn-item sn-empty"></span>}
+          </nav>
+        )}
+
+        <div class="doc-actions">
+          <button class="act" id="copyLink">复制链接</button>
+          <a class="act" href="/ai-learning-blog/">返回全部文章</a>
+        </div>
+      </footer>
+    </div>
   </article>
 </Layout>
 
 <style>
-  /* Article Container */
-  .article-container {
-    max-width: 800px;
+  /* ════════ 文档骨架：规格轨 + 量过的正文列 ════════ */
+  .doc {
+    display: grid;
+    grid-template-columns: 15.5rem minmax(0, 1fr);
+    gap: 3.5rem;
+    max-width: 70rem;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 3rem 2rem 5rem;
+    align-items: start;
   }
 
-  @media (max-width: 768px) {
-    .article-container {
-      padding: 1.5rem 1rem;
-    }
+  /* 顶部进度线：极细，用不到时几乎看不见 */
+  .read-progress {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 2px;
+    z-index: 60;
+    background: transparent;
+    pointer-events: none;
+  }
+  .read-progress span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--signal);
   }
 
-  /* Article Header */
-  .article-header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-border);
+  /* ──────── 规格轨 ──────── */
+  .rail {
+    position: sticky;
+    top: 5.5rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    font-family: var(--font-label);
+    scrollbar-width: thin;
   }
 
-  .article-meta-top {
-    margin-bottom: 1rem;
-  }
-
-  .back-link {
+  .rail-back {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    font-size: 0.875rem;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
     color: var(--color-text-muted);
-    text-decoration: none;
     transition: color var(--transition-fast);
   }
+  .rail-back:hover { color: var(--signal); }
 
-  .back-link:hover {
-    color: var(--color-primary);
+  .rail-series {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-left: 2px solid var(--signal);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: var(--signal-soft);
   }
-
-  .article-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
+  .rail-series-label {
+    display: block;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal);
   }
-
-  .article-date {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    font-size: 0.875rem;
+  .rail-series-name {
+    display: block;
+    margin-top: 0.2rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+  }
+  .rail-series-pos {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     color: var(--color-text-muted);
   }
 
-  .article-date svg {
+  .rail-toc { margin-top: 1.75rem; }
+  .rail-heading {
+    margin: 0 0 0.6rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    list-style: none;
+  }
+  .rail-heading::-webkit-details-marker { display: none; }
+  .rail-count {
+    margin-left: 0.4rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0;
     opacity: 0.7;
   }
+  /* 桌面上目录常开，摘要退化为普通小标题 */
+  @media (min-width: 1081px) {
+    .rail-heading { cursor: default; }
+  }
+  .rail-toc ul { list-style: none; margin: 0; padding: 0; }
 
-  .article-category {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: linear-gradient(135deg, var(--color-primary-light, #818cf8), var(--color-primary, #6366f1));
-    color: white;
-    border-radius: var(--radius-full, 9999px);
-    font-size: 0.8125rem;
-    font-weight: 500;
+  /* 每一项是一道刻度：左侧刻线 + 标签 */
+  .tick { position: relative; }
+  .tick a {
+    display: block;
+    padding: 0.3rem 0 0.3rem 1rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--color-text-secondary);
+    border-left: 1px solid var(--color-border);
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+  .tick a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.95em;
+    width: 0.45rem;
+    height: 1px;
+    background: var(--color-border-strong);
+    transition: width var(--transition-base), background var(--transition-base);
+  }
+  .tick-h3 a {
+    padding-left: 1.7rem;
+    font-size: 0.76rem;
+    color: var(--color-text-muted);
+  }
+  .tick-h3 a::before { left: 0.7rem; width: 0.3rem; }
+
+  /* 分点默认收起——只展开当前所在段落的那一组，
+     否则一篇十几节的长文会把整条轨铺满，反而看不出「我在哪」 */
+  .tick-h3 { display: none; }
+  .tick-h3.in-group { display: block; }
+
+  .tick a:hover { color: var(--signal); }
+  .tick a:hover::before { background: var(--signal); }
+
+  /* 当前所在段落：刻线变长、变信号色 */
+  .tick.is-active > a {
+    color: var(--signal);
+    font-weight: 600;
+    border-left-color: var(--signal);
+  }
+  .tick.is-active > a::before {
+    width: 0.8rem;
+    background: var(--signal);
   }
 
-  .article-tags {
+  /* ──────── 文档头 ──────── */
+  .doc-head {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2.5rem;
+  }
+
+  .eyebrow {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.5rem;
+    margin-bottom: 1.1rem;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
+  .eyebrow-cat { color: var(--signal); }
+  .eyebrow-sub { color: var(--color-text-muted); }
+  .eyebrow-sub::before { content: '· '; }
 
-  .tag {
-    display: inline-block;
-    padding: 0.375rem 0.75rem;
-    background: var(--color-surface-hover, #f1f5f9);
-    color: var(--color-text-muted, #64748b);
-    border-radius: var(--radius-full, 9999px);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all var(--transition-fast, 150ms);
-  }
-
-  .tag:hover {
-    background: var(--color-primary, #6366f1);
-    color: white;
-  }
-
-  /* Article Content - vhAstro-Theme Style */
-  .article-content {
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    color: var(--color-text-primary);
-  }
-
-  /* Headings - 清晰层级 */
-  .article-content :global(h1) {
-    font-size: 1.75rem;
+  .doc-title {
+    margin: 0;
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.6rem);
     font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    max-width: 30em;
     color: var(--color-text-primary);
-    margin: 2.5rem 0 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-primary);
   }
 
-  .article-content :global(h2) {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin: 2.5rem 0 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .article-content :global(h3) {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin: 2rem 0 0.75rem;
-  }
-
-  .article-content :global(h4) {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin: 1.5rem 0 0.5rem;
-  }
-
-  /* Paragraphs */
-  .article-content :global(p) {
-    margin-bottom: 1.5rem;
+  /* 摘要用等宽斜体：像规格书开头那段说明 */
+  .doc-deck {
+    margin: 1.1rem 0 0;
+    max-width: 38rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
     color: var(--color-text-secondary);
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border-strong);
   }
 
-  /* Links */
-  .article-content :global(a) {
-    color: var(--color-primary);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .article-content :global(a:hover) {
-    color: var(--color-primary-dark);
-  }
-
-  /* Lists */
-  .article-content :global(ul),
-  .article-content :global(ol) {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    color: var(--color-text-secondary);
-  }
-
-  .article-content :global(li) {
-    margin-bottom: 0.5rem;
-    color: var(--color-text-secondary);
-  }
-
-  /* Blockquote - vhAstro-Theme Style */
-  .article-content :global(blockquote) {
-    margin: 1.5rem 0;
-    padding: 1rem 1.5rem;
-    background: var(--color-surface);
-    border-left: 4px solid var(--color-primary);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    color: var(--color-text-secondary);
-  }
-
-  .article-content :global(blockquote p) {
-    margin-bottom: 0;
-  }
-
-  /* Inline Code */
-  .article-content :global(code:not(pre code)) {
-    background: var(--color-surface-hover);
-    color: var(--color-primary);
-    padding: 0.15rem 0.4rem;
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono, 'JetBrains Mono', monospace);
-    font-size: 0.875em;
-    font-weight: 500;
-  }
-
-  /* Code Blocks - vhAstro-Theme Style */
-  .article-content :global(pre),
-  .article-content :global(pre.astro-code) {
-    background: var(--color-surface) !important;
-    border: 1px solid var(--color-border) !important;
-    border-radius: var(--radius-lg) !important;
-    padding: 0 !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    margin: 1.5rem 0 !important;
-    position: relative !important;
-    line-height: 1.4 !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .article-content :global(pre code),
-  .article-content :global(pre.astro-code code) {
-    display: block;
-    padding: 1.25rem !important;
-    overflow-x: visible;
-    font-family: var(--font-mono, 'JetBrains Mono', monospace);
-    font-size: 0.875rem;
-    line-height: 1.4 !important;
-    background: transparent !important;
-    color: var(--color-text-primary) !important;
-    white-space: pre !important;
-  }
-
-  /* Shiki 行元素：确保每行是独立块，换行时行距正确 */
-  .article-content :global(pre .line),
-  .article-content :global(pre.astro-code .line) {
-    display: block !important;
-    line-height: 1.4 !important;
-    min-height: 1.4em !important;
-  }
-
-  /* 暗色模式：强制覆盖内联样式 */
-  [data-theme="dark"] .article-content :global(pre),
-  [data-theme="dark"] .article-content :global(pre.astro-code) {
-    background: #1a2332 !important;
-    color: #e2e8f0 !important;
-  }
-
-  [data-theme="dark"] .article-content :global(pre code),
-  [data-theme="dark"] .article-content :global(pre.astro-code code) {
-    color: #e2e8f0 !important;
-  }
-
-  [data-theme="dark"] .article-content :global(pre span),
-  [data-theme="dark"] .article-content :global(pre.astro-code span) {
-    color: inherit !important;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .article-content :global(pre),
-    :root:not([data-theme="light"]) .article-content :global(pre.astro-code) {
-      background: #1a2332 !important;
-      color: #e2e8f0 !important;
-    }
-    
-    :root:not([data-theme="light"]) .article-content :global(pre code),
-    :root:not([data-theme="light"]) .article-content :global(pre.astro-code code) {
-      color: #e2e8f0 !important;
-    }
-
-    :root:not([data-theme="light"]) .article-content :global(pre) .copy-button,
-    :root:not([data-theme="light"]) .article-content :global(pre.astro-code) .copy-button {
-      /* 深色模式copy按钮由JS注入样式处理 */
-    }
-  }
-
-  /* 语言标签 */
-  .article-content :global(pre.astro-code[data-language]::before) {
-    content: attr(data-language);
-    display: block;
-    padding: 0.5rem 1rem;
-    background: rgba(0, 0, 0, 0.15);
-    color: var(--color-text-muted);
-    font-size: 0.75rem;
+  .doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
     font-family: var(--font-mono);
-    text-transform: lowercase;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  [data-theme="dark"] .article-content :global(pre.astro-code[data-language]::before) {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .article-content :global(pre.astro-code[data-language]::before) {
-      background: rgba(0, 0, 0, 0.3);
-    }
-  }
-
-  /* Line numbers in code blocks */
-  .article-content :global(.line-number) {
+    font-size: 0.78rem;
     color: var(--color-text-muted);
-    user-select: none;
-    margin-right: 1rem;
-    display: inline-block;
-    min-width: 1.5rem;
-    text-align: right;
+  }
+  .meta-sep { opacity: 0.45; }
+
+  .doc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 1.1rem 0 0;
+    padding: 0;
+  }
+  .doc-tags a {
+    display: block;
+    padding: 0.15rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+  .doc-tags a:hover {
+    color: var(--signal);
+    border-color: var(--signal);
   }
 
-  /* Tables - vhAstro-Theme Style */
-  .article-content :global(.table-wrapper) {
-    overflow-x: auto;
-    margin: 1.5rem 0;
+  /* ══════════ 正文排版 ══════════
+     正文列 39rem 保证 CJK 回扫舒服；
+     代码与表格允许更宽——技术内容里它们才是主体。 */
+  .prose {
+    max-width: 50rem;
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: var(--color-text-primary);
+  }
+
+  .prose :global(p),
+  .prose :global(ul),
+  .prose :global(ol) {
+    max-width: 39rem;
+  }
+
+  .prose :global(> * + *) { margin-top: 1.35em; }
+
+  /* ── 标题层级：用规则线与字号区分，不靠颜色 ── */
+  .prose :global(h2) {
+    margin: 3.2rem 0 1.2rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 1.42rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    scroll-margin-top: 5rem;
+  }
+  .prose :global(h3) {
+    margin: 2.3rem 0 0.9rem;
+    font-size: 1.13rem;
+    font-weight: 600;
+    line-height: 1.5;
+    scroll-margin-top: 5rem;
+  }
+  .prose :global(h4) {
+    margin: 1.9rem 0 0.7rem;
+    font-family: var(--font-label);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-text-secondary);
+    scroll-margin-top: 5rem;
+  }
+  .prose :global(h1) { display: none; } /* 正文里的 H1 与页头标题重复 */
+
+  /* 标题锚点：hover 才出现，不干扰阅读 */
+  .prose :global(.anchor) {
+    margin-left: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.75em;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+  .prose :global(h2:hover .anchor),
+  .prose :global(h3:hover .anchor),
+  .prose :global(.anchor:focus-visible) { opacity: 1; }
+  .prose :global(.anchor:hover) { color: var(--signal); }
+
+  .prose :global(strong) {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .prose :global(a:not(.anchor)) {
+    color: var(--slate-teal);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: color-mix(in srgb, var(--slate-teal) 35%, transparent);
+    transition: text-decoration-color var(--transition-fast);
+  }
+  .prose :global(a:not(.anchor):hover) {
+    text-decoration-color: var(--slate-teal);
+  }
+
+  /* ── 列表 ── */
+  .prose :global(ul),
+  .prose :global(ol) { padding-left: 1.3rem; }
+  .prose :global(li) { margin-top: 0.4em; }
+  .prose :global(li::marker) { color: var(--color-text-muted); }
+  .prose :global(ol) { list-style: decimal; }
+  .prose :global(ol li::marker) {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+
+  /* ── 引用：轻处理。原先是整块填充，太重，抢正文 ── */
+  .prose :global(blockquote) {
+    margin: 1.8rem 0;
+    padding: 0.1rem 0 0.1rem 1.25rem;
+    border-left: 2px solid var(--signal);
+    background: none;
+    max-width: 39rem;
+  }
+  .prose :global(blockquote p) {
+    color: var(--color-text-secondary);
+    font-size: 0.97rem;
+  }
+  .prose :global(blockquote strong) { color: var(--color-text-primary); }
+  .prose :global(blockquote blockquote) {
+    border-left-color: var(--color-border-strong);
+    margin: 0.9rem 0;
+  }
+
+  /* ── 行内代码 ── */
+  .prose :global(code:not(pre code)) {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    padding: 0.12em 0.36em;
+    border-radius: var(--radius-sm);
+    background: var(--paper-sunken);
+    border: 1px solid var(--color-border);
+    color: var(--slate-teal);
+    word-break: break-word;
+  }
+
+  /* ── 代码块：加语言标签与复制，横向滚动不撑破页面 ── */
+  .prose :global(.code-block) {
+    margin: 1.8rem 0;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--paper-sunken);
+  }
+  .prose :global(.code-bar) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.4rem 0.5rem 0.4rem 0.85rem;
+    border-bottom: 1px solid var(--color-border);
     background: var(--color-surface);
   }
+  .prose :global(.code-lang) {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .prose :global(.code-copy) {
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    transition: all var(--transition-fast);
+  }
+  .prose :global(.code-copy:hover) {
+    color: var(--signal);
+    border-color: var(--signal);
+  }
+  .prose :global(.code-copy.done) {
+    color: var(--slate-teal);
+    border-color: var(--slate-teal);
+  }
 
-  .article-content :global(table) {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9375rem;
-    background: transparent;
+  .prose :global(pre) {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    font-size: 0.855rem;
+    line-height: 1.75;
+    background: transparent !important;
     border: none;
     border-radius: 0;
-    overflow: visible;
+    -webkit-overflow-scrolling: touch;
   }
-
-  .article-content :global(thead) {
-    background: var(--color-surface-hover);
+  .prose :global(pre code) {
+    font-family: var(--font-mono);
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
   }
-
-  .article-content :global(th) {
-    padding: 0.875rem 1rem;
-    text-align: left;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    border-bottom: 2px solid var(--color-border);
-  }
-
-  .article-content :global(td) {
-    padding: 0.75rem 1rem;
-    text-align: left;
+  /* 纯文本伪码块（```text）不做语法高亮，靠字重与行距即可 */
+  .prose :global(pre.language-text code),
+  .prose :global(pre.language-plaintext code) {
     color: var(--color-text-secondary);
-    border-bottom: 1px solid var(--color-border-light);
   }
 
-  .article-content :global(tr:last-child td) {
-    border-bottom: none;
-  }
-
-  .article-content :global(tbody tr:hover) {
-    background: var(--color-surface-hover);
-  }
-
-  /* Images */
-  .article-content :global(img) {
-    max-width: 100%;
-    height: auto;
+  /* ── 表格：这些文章大量用表格做对比，值得单独处理 ── */
+  .prose :global(.table-wrap) {
+    margin: 1.8rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    margin: 1.5rem 0;
-    box-shadow: var(--shadow-md);
+    -webkit-overflow-scrolling: touch;
   }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+  .prose :global(thead th) {
+    position: sticky;
+    top: 0;
+    padding: 0.6rem 0.85rem;
+    text-align: left;
+    font-family: var(--font-label);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+  .prose :global(td) {
+    padding: 0.6rem 0.85rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-text-secondary);
+  }
+  .prose :global(td:first-child) {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+  .prose :global(tbody tr:last-child td) { border-bottom: none; }
+  .prose :global(tbody tr:hover td) { background: var(--signal-soft); }
 
-  /* Horizontal Rule */
-  .article-content :global(hr) {
-    margin: 2rem 0;
+  .prose :global(hr) {
+    margin: 3rem 0;
     border: none;
     border-top: 1px solid var(--color-border);
   }
 
-  /* Article Footer */
-  .article-footer {
-    margin-top: 3rem;
+  .prose :global(img) {
+    margin: 1.8rem 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  /* ──────── 文档尾 ──────── */
+  .doc-foot {
+    margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid var(--color-border);
   }
 
-  .share-section {
-    display: flex;
-    align-items: center;
+  .series-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-
-  .share-label {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    font-weight: 500;
-  }
-
-  .share-buttons {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .share-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--color-surface);
+  .sn-item {
+    display: block;
+    padding: 0.9rem 1rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+  }
+  a.sn-item:hover {
+    border-color: var(--signal);
+    background: var(--signal-soft);
+  }
+  .sn-empty { border: none; }
+  .sn-next { text-align: right; }
+  .sn-dir {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--color-text-muted);
-    cursor: pointer;
+  }
+  .sn-title {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+  }
+
+  .doc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  .act {
+    font-family: var(--font-label);
+    font-size: 0.82rem;
+    padding: 0.4rem 0.8rem;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
     transition: all var(--transition-fast);
   }
-
-  .share-btn:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: white;
-    transform: translateY(-2px);
+  .act:hover {
+    color: var(--signal);
+    border-color: var(--signal);
   }
 
-  /* 代码复制 Toast 提示 */
-  .copy-toast {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 12px 24px;
-    background: #10b981;
-    color: white;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
-    z-index: 9999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+  /* ──────── 响应式：轨在窄屏收起，改为顶部折叠目录 ──────── */
+  @media (max-width: 1080px) {
+    .doc {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      padding: 2rem 1.5rem 4rem;
+      max-width: 52rem;
+    }
+    .rail {
+      position: static;
+      max-height: none;
+      overflow: visible;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .rail-toc {
+      max-height: 13rem;
+      overflow-y: auto;
+    }
+    .rail-series { margin-top: 1rem; }
+    .prose, .prose :global(p), .prose :global(ul), .prose :global(ol),
+    .prose :global(blockquote) { max-width: none; }
   }
-  .copy-toast.show {
-    opacity: 1;
+
+  @media (max-width: 600px) {
+    .doc { padding: 1.5rem 1.1rem 3rem; }
+    .series-nav { grid-template-columns: 1fr; }
+    .sn-next { text-align: left; }
+    .sn-empty { display: none; }
+    .prose { font-size: 1rem; line-height: 1.85; }
+    .prose :global(pre) { font-size: 0.8rem; }
   }
 </style>
 
 <script>
-  // 注入复制按钮样式（绕过Astro scoped CSS限制）
-  (function injectCopyButtonStyles() {
-    if (document.getElementById('copy-btn-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'copy-btn-styles';
-    style.textContent = `
-      .article-content pre .copy-button {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        padding: 4px 10px;
-        font-size: 12px;
-        background: #f1f5f9;
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        color: #64748b;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.2s, background 0.2s;
-        z-index: 10;
-      }
-      .article-content pre:hover .copy-button {
-        opacity: 1;
-      }
-      .article-content .copy-button:hover {
-        background: #6366f1 !important;
-        border-color: #6366f1 !important;
-        color: white !important;
-      }
-      .article-content .copy-button.copied {
-        background: #10b981 !important;
-        border-color: #10b981 !important;
-        color: white !important;
-      }
-      [data-theme="dark"] .article-content pre .copy-button {
-        background: #334155;
-        border-color: #475569;
-        color: #94a3b8;
-      }
-    `;
-    document.head.appendChild(style);
-  })();
+  // ── 阅读进度：顶部 2px 线 ──
+  const bar = document.getElementById('readBar');
+  const prose = document.getElementById('prose');
 
-  // Toast 提示函数
-  function showCopyToast(message) {
-    let toast = document.querySelector('.copy-toast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.className = 'copy-toast';
-      document.body.appendChild(toast);
-    }
-    toast.textContent = message;
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 1800);
+  function updateProgress() {
+    if (!bar || !prose) return;
+    const start = prose.offsetTop;
+    const total = prose.offsetHeight - window.innerHeight + 200;
+    const passed = window.scrollY - start + 200;
+    const pct = Math.min(100, Math.max(0, (passed / Math.max(total, 1)) * 100));
+    bar.style.width = pct + '%';
   }
 
-  function initCodeCopyAndTables() {
-    // 包裹表格用于横向滚动
-    const tables = document.querySelectorAll('.article-content table');
-    tables.forEach((table) => {
-      if (table.parentElement?.classList.contains('table-wrapper')) return;
-      const wrapper = document.createElement('div');
-      wrapper.className = 'table-wrapper';
-      table.parentNode?.insertBefore(wrapper, table);
-      wrapper.appendChild(table);
-    });
+  // ── 代码块：包一层壳，加语言标签与复制按钮 ──
+  function enhanceCode() {
+    if (!prose) return;
+    prose.querySelectorAll('pre').forEach((pre) => {
+      if (pre.parentElement?.classList.contains('code-block')) return;
 
-    // 代码块复制功能
-    const codeBlocks = document.querySelectorAll('.article-content pre');
-    
-    codeBlocks.forEach((block) => {
-      // 跳过已添加按钮的代码块
-      if (block.querySelector('.copy-button')) return;
-      
-      // 确保代码块有相对定位
-      block.style.position = 'relative';
-      
-      // 创建复制按钮
-      const copyButton = document.createElement('button');
-      copyButton.className = 'copy-button';
-      copyButton.innerHTML = '📋 复制';
-      copyButton.setAttribute('aria-label', '复制代码');
-      block.appendChild(copyButton);
-      
-      // 点击复制功能
-      copyButton.addEventListener('click', async () => {
-        const code = block.querySelector('code');
-        const text = code ? code.textContent : block.textContent;
-        
+      const code = pre.querySelector('code');
+      // Astro/shiki 把语言放在 pre 或 code 的 class / data 属性上
+      const lang =
+        pre.getAttribute('data-language') ||
+        [...(code?.classList ?? [])].find((c) => c.startsWith('language-'))?.replace('language-', '') ||
+        'text';
+      if (code) pre.classList.add('language-' + lang);
+
+      const shell = document.createElement('div');
+      shell.className = 'code-block';
+
+      const bar = document.createElement('div');
+      bar.className = 'code-bar';
+
+      const label = document.createElement('span');
+      label.className = 'code-lang';
+      label.textContent = lang === 'text' ? '伪码' : lang;
+
+      const btn = document.createElement('button');
+      btn.className = 'code-copy';
+      btn.type = 'button';
+      btn.textContent = '复制';
+      btn.addEventListener('click', async () => {
         try {
-          await navigator.clipboard.writeText(text || '');
-          copyButton.innerHTML = '✅ 已复制';
-          copyButton.classList.add('copied');
-          showCopyToast('✅ 代码已复制到剪贴板');
-          
+          await navigator.clipboard.writeText(code?.textContent ?? '');
+          btn.textContent = '已复制';
+          btn.classList.add('done');
           setTimeout(() => {
-            copyButton.innerHTML = '📋 复制';
-            copyButton.classList.remove('copied');
-          }, 2000);
-        } catch (err) {
-          copyButton.innerHTML = '❌ 失败';
-          showCopyToast('❌ 复制失败，请手动复制');
-          setTimeout(() => {
-            copyButton.innerHTML = '📋 复制';
-          }, 2000);
+            btn.textContent = '复制';
+            btn.classList.remove('done');
+          }, 1600);
+        } catch {
+          btn.textContent = '复制失败';
+          setTimeout(() => (btn.textContent = '复制'), 1600);
         }
       });
-    });
 
-    // 分享功能
-    document.querySelectorAll('.share-btn').forEach(btn => {
-      if (btn.dataset.initialized) return;
-      btn.dataset.initialized = 'true';
-      btn.addEventListener('click', () => {
-        const platform = btn.getAttribute('data-platform');
-        const url = window.location.href;
-        const title = document.querySelector('h1')?.textContent || '';
-        
-        if (platform === 'twitter') {
-          window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
-        } else if (platform === 'copy') {
-          navigator.clipboard.writeText(url).then(() => {
-            btn.innerHTML = '✅';
-            setTimeout(() => {
-              btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>`;
-            }, 2000);
-          });
-        }
-      });
+      bar.append(label, btn);
+      pre.replaceWith(shell);
+      shell.append(bar, pre);
     });
   }
 
-  // 兼容 Astro SPA 导航和首次加载
-  document.addEventListener('astro:page-load', initCodeCopyAndTables);
-  document.addEventListener('DOMContentLoaded', initCodeCopyAndTables);
+  // ── 表格：套一层可横向滚动的容器，宽表不再撑破版面 ──
+  function wrapTables() {
+    if (!prose) return;
+    prose.querySelectorAll('table').forEach((t) => {
+      if (t.parentElement?.classList.contains('table-wrap')) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'table-wrap';
+      t.replaceWith(wrap);
+      wrap.append(t);
+    });
+  }
+
+  // ── 标题锚点：便于把某一节直接发给别人 ──
+  function addAnchors() {
+    if (!prose) return;
+    prose.querySelectorAll('h2[id], h3[id]').forEach((h) => {
+      if (h.querySelector('.anchor')) return;
+      const a = document.createElement('a');
+      a.className = 'anchor';
+      a.href = '#' + h.id;
+      a.textContent = '#';
+      a.setAttribute('aria-label', '本节链接');
+      h.append(a);
+    });
+  }
+
+  // ── 规格轨：滚动时点亮当前所在段落 ──
+  function initRail() {
+    const ticks = [...document.querySelectorAll('#railToc .tick')];
+    if (!ticks.length || !prose) return;
+
+    const targets = ticks
+      .map((li) => {
+        const slug = li.getAttribute('data-slug');
+        const el = slug ? document.getElementById(slug) : null;
+        return el ? { li, el } : null;
+      })
+      .filter(Boolean);
+
+    function sync() {
+      const line = window.scrollY + 140;
+      let current = targets[0];
+      for (const t of targets) {
+        if (t.el.offsetTop <= line) current = t;
+        else break;
+      }
+      if (!current) return;
+
+      // 当前所在段落所属的 h2 分组：用它决定展开哪一组分点
+      const group = current.li.getAttribute('data-parent');
+
+      ticks.forEach((li) => {
+        li.classList.remove('is-active');
+        if (li.classList.contains('tick-h3')) {
+          li.classList.toggle('in-group', li.getAttribute('data-parent') === group);
+        }
+      });
+      current.li.classList.add('is-active');
+    }
+
+    return sync;
+  }
+
+  // ── 复制链接 ──
+  document.getElementById('copyLink')?.addEventListener('click', async (e) => {
+    const btn = e.currentTarget;
+    try {
+      await navigator.clipboard.writeText(location.href);
+      btn.textContent = '链接已复制';
+      setTimeout(() => (btn.textContent = '复制链接'), 1600);
+    } catch {
+      btn.textContent = '复制失败';
+      setTimeout(() => (btn.textContent = '复制链接'), 1600);
+    }
+  });
+
+  // 桌面常开目录、窄屏折叠；跟随窗口宽度变化
+  const tocEl = document.getElementById('railToc');
+  const wide = window.matchMedia('(min-width: 1081px)');
+  function syncTocOpen() {
+    if (!tocEl) return;
+    if (wide.matches) tocEl.setAttribute('open', '');
+    else tocEl.removeAttribute('open');
+  }
+  syncTocOpen();
+  wide.addEventListener('change', syncTocOpen);
+
+  enhanceCode();
+  wrapTables();
+  addAnchors();
+  const syncRail = initRail();
+
+  let raf = 0;
+  function onScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      updateProgress();
+      syncRail?.();
+      raf = 0;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  // 初始状态直接算，不经 rAF：页面在后台标签打开时 rAF 会被暂停，
+  // 那样进度线与轨上的高亮要等用户切回来才出现。
+  updateProgress();
+  syncRail?.();
 </script>

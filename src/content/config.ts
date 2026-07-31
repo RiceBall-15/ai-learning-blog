@@ -79,53 +79,60 @@ export const collections = {
 // ============ 子分类定义 ============
 export const subCategories: Record<string, { id: string; name: string; icon: string }[]> = {
   agent: [
-    { id: 'agent-architecture', name: '架构设计', icon: '🏛️' },
-    { id: 'agent-memory', name: '记忆系统', icon: '🧠' },
-    { id: 'agent-skill', name: '技能开发', icon: '⚡' },
-    { id: 'agent-ops', name: '运维实践', icon: '🔧' },
+    { id: 'agent-architecture', name: '架构设计', icon: 'AC' },
+    { id: 'agent-memory', name: '记忆系统', icon: 'MM' },
+    { id: 'agent-skill', name: '技能开发', icon: 'SK' },
+    { id: 'agent-ops', name: '运维实践', icon: 'OP' },
   ],
   aiInfra: [
-    { id: 'model-training', name: '模型训练', icon: '🏋️' },
-    { id: 'inference', name: '推理优化', icon: '🚀' },
-    { id: 'evaluation', name: '量化评估', icon: '📊' },
+    { id: 'model-training', name: '模型训练', icon: 'TR' },
+    { id: 'inference', name: '推理优化', icon: 'IF' },
+    { id: 'evaluation', name: '量化评估', icon: 'EV' },
   ],
   framework: [
-    { id: 'rag', name: 'RAG系统', icon: '📚' },
-    { id: 'agent-framework', name: 'Agent框架', icon: '🤖' },
-    { id: 'protocols', name: '工具协议', icon: '🔌' },
+    { id: 'rag', name: 'RAG系统', icon: 'RG' },
+    { id: 'agent-framework', name: 'Agent框架', icon: 'AF' },
+    { id: 'protocols', name: '工具协议', icon: 'PR' },
   ],
   engineering: [
-    { id: 'ai-coding', name: 'AI编程工具', icon: '💻' },
-    { id: 'infra', name: '基础设施', icon: '🏗️' },
-    { id: 'learning', name: '学习方法', icon: '📖' },
+    { id: 'ai-coding', name: 'AI编程工具', icon: 'CD' },
+    { id: 'infra', name: '基础设施', icon: 'IS' },
+    { id: 'learning', name: '学习方法', icon: 'LN' },
   ],
   architecture: [
-    { id: 'distributed', name: '分布式系统', icon: '🌐' },
-    { id: 'microservices', name: '微服务架构', icon: '🧩' },
-    { id: 'cloud-native', name: '云原生', icon: '☁️' },
+    { id: 'distributed', name: '分布式系统', icon: 'DS' },
+    { id: 'microservices', name: '微服务架构', icon: 'MS' },
+    { id: 'cloud-native', name: '云原生', icon: 'CN' },
   ],
   featured: [
-    { id: 'ai-architecture', name: 'AI架构', icon: '🤖' },
-    { id: 'deep-dive', name: '深度解析', icon: '🔍' },
+    { id: 'ai-architecture', name: 'AI架构', icon: 'AA' },
+    { id: 'deep-dive', name: '深度解析', icon: 'DD' },
   ],
   // 面试分类按「Agent 工程师真实面试考察面」划分，而非通用的系统设计/算法/行为三分法
   interview: [
-    { id: 'orchestration', name: '编排与调度', icon: '🔀' },
-    { id: 'memory-retrieval', name: '记忆与检索', icon: '🧠' },
-    { id: 'tools-protocol', name: '工具与协议', icon: '🔌' },
-    { id: 'gateway-cost', name: '网关与成本', icon: '💰' },
-    { id: 'eval-observability', name: '评测与可观测', icon: '📊' },
-    { id: 'production', name: '生产与运维', icon: '🚀' },
-    { id: 'security', name: '安全与对齐', icon: '🔒' },
-    { id: 'context-prompt', name: '上下文与提示词', icon: '📝' },
-    { id: 'guide', name: '面试方法论', icon: '🎯' },
+    { id: 'orchestration', name: '编排与调度', icon: 'OR' },
+    { id: 'memory-retrieval', name: '记忆与检索', icon: 'MR' },
+    { id: 'tools-protocol', name: '工具与协议', icon: 'TP' },
+    { id: 'gateway-cost', name: '网关与成本', icon: 'GC' },
+    { id: 'eval-observability', name: '评测与可观测', icon: 'EO' },
+    { id: 'production', name: '生产与运维', icon: 'PD' },
+    { id: 'security', name: '安全与对齐', icon: 'SC' },
+    { id: 'context-prompt', name: '上下文与提示词', icon: 'CP' },
+    { id: 'guide', name: '面试方法论', icon: 'GD' },
   ],
   'ai-tools': [
-    { id: 'coding-tools', name: '编程工具', icon: '💻' },
-    { id: 'browser-tools', name: '浏览器工具', icon: '🌐' },
-    { id: 'protocol-tools', name: '协议工具', icon: '🔌' },
+    { id: 'coding-tools', name: '编程工具', icon: 'CT' },
+    { id: 'browser-tools', name: '浏览器工具', icon: 'BT' },
+    { id: 'protocol-tools', name: '协议工具', icon: 'PT' },
   ],
 };
+
+// ============ 标签 URL slug ============
+// 标签是自由文本，里面可能有 '/'（如 CI/CD）或空格。直接拿它当路由参数，
+// 斜杠会被当成路径分隔符，Astro 报 "Missing parameter: tag" 并中断整个构建。
+// 所以统一走这个函数生成 URL 片段；凡是链接到标签页的地方都必须用它。
+export const tagSlug = (t: string) =>
+  t.trim().replace(/[\/\\?#%\s]+/g, '-');
 
 // ============ 系列元数据（供系列索引页使用）============
 // 系列 = 有阅读顺序的成套文章，与「分类」正交：分类回答「这属于哪个领域」，
@@ -136,7 +143,7 @@ export const seriesMeta: Record<
 > = {
   'agent-interview-deep': {
     name: 'Agent 工程师面试深度系列',
-    icon: '🎯',
+    icon: 'SR',
     description:
       '面向后端/平台方向的 Agent 工程师面试，从 DAG 编排、工具调用、记忆分层到召回准确率与评测闭环，每篇一个考察面，含机制推导、伪码与生产踩坑。',
     collection: 'interview',
@@ -147,42 +154,42 @@ export const seriesMeta: Record<
 export const categoryMeta: Record<string, { name: string; icon: string; description: string }> = {
   agent: {
     name: 'AI智能体',
-    icon: '🤖',
+    icon: 'AG',
     description: 'Agent架构、记忆系统、技能开发与运维实践',
   },
   interview: {
     name: '面试精选',
-    icon: '💼',
+    icon: 'IV',
     description: '系统设计、算法编程、行为面试与技术面试深度解析',
   },
   aiInfra: {
     name: 'AI基础设施',
-    icon: '🔧',
+    icon: 'IN',
     description: '模型训练、推理优化、量化评估与AI Infra工程实践',
   },
   framework: {
     name: '框架应用',
-    icon: '📚',
+    icon: 'FW',
     description: '主流AI框架的深度解析与实战指南',
   },
   engineering: {
     name: 'AI工程化',
-    icon: '🛠',
+    icon: 'EN',
     description: 'AI编程工具、基础设施、工程实践与学习方法',
   },
   architecture: {
     name: '系统架构',
-    icon: '🏗',
+    icon: 'AR',
     description: 'AI系统架构设计、分布式系统与工程实践',
   },
   featured: {
     name: '优秀文章精选',
-    icon: '⭐',
+    icon: 'FT',
     description: '参考优秀博主风格的深度技术文章与架构深度解析',
   },
   'ai-tools': {
     name: 'AI工具评测',
-    icon: '🔧',
+    icon: 'TL',
     description: 'AI工具深度评测、对比分析与最佳实践',
   },
 };

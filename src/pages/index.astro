@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { categoryMeta, subCategories, legacySubCategoryMap } from '../content/config';
+import { categoryMeta, subCategories, legacySubCategoryMap, seriesMeta, tagSlug } from '../content/config';
 
 // 动态获取所有分类的文章
 const collectionData: Record<string, { name: string; icon: string; description: string; posts: any[] }> = {};
@@ -30,6 +30,15 @@ allPosts.forEach(post => {
 
 const totalPosts = allPosts.length;
 const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.posts.length > 0);
+
+// 报头要推荐的成套阅读：取第一个系列，按序号列出
+const featuredSeriesId = Object.keys(seriesMeta)[0];
+const featuredSeries = featuredSeriesId ? seriesMeta[featuredSeriesId] : null;
+const featuredSeriesPosts = featuredSeries
+  ? (collectionData[featuredSeries.collection]?.posts ?? [])
+      .filter((p: any) => p.data.series === featuredSeriesId)
+      .sort((a: any, b: any) => (a.data.seriesOrder ?? 999) - (b.data.seriesOrder ?? 999))
+  : [];
 
 // 准备JSON数据供JavaScript使用
 const postsData = allPosts.map(post => ({
@@ -89,59 +98,60 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
     </svg>
   </button>
   
-  <!-- Hero Banner -->
-  <section class="hero-banner">
-    <div class="banner-bg"></div>
-    <div class="banner-content">
-      <div class="banner-text">
-        <h1 class="banner-title">
-          <span class="title-line">深入探索</span>
-          <span class="title-line accent">AI 技术世界</span>
+  <!-- ══ 报头 ══
+       原先是渐变 + 假代码窗 + 三个大数字。那套写法哪个博客都能套，
+       且滚过整屏才见到内容。改成手册式报头：一句真正的论点，
+       紧跟成套阅读入口与领域索引——读者第一屏就能决定去哪。 -->
+  <section class="masthead">
+    <div class="mh-inner">
+      <div class="mh-lead">
+        <p class="mh-eyebrow">技术笔记 · 持续更新</p>
+        <h1 class="mh-title">
+          把 Agent 拆到<br />
+          <span class="mh-em">能讲清每一处机制</span>
         </h1>
-        <p class="banner-subtitle">
-          <span class="typing-text" id="typingText"></span>
-          <span class="cursor">|</span>
+        <p class="mh-thesis">
+          编排怎么保证跑得对、工具怎么保证不双花、记忆怎么保证不越记越乱、
+          成本怎么算得住、质量怎么证明真的变好了——这里记录的是这些问题的具体答案，
+          不是概念综述。
         </p>
-        <div class="banner-stats">
-          <div class="stat-item">
-            <span class="stat-number">{totalPosts}</span>
-            <span class="stat-label">篇文章</span>
+        <dl class="mh-facts">
+          <div>
+            <dt>笔记</dt>
+            <dd>{totalPosts} 篇</dd>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">{activeCollections.length}</span>
-            <span class="stat-label">个系列</span>
+          <div>
+            <dt>领域</dt>
+            <dd>{activeCollections.length} 个</dd>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">{allTags.size}</span>
-            <span class="stat-label">个标签</span>
+          <div>
+            <dt>标签</dt>
+            <dd>{allTags.size} 个</dd>
           </div>
-        </div>
+        </dl>
       </div>
-      <div class="banner-visual">
-        <div class="code-window">
-          <div class="window-header">
-            <div class="dot red"></div>
-            <div class="dot yellow"></div>
-            <div class="dot green"></div>
+
+      {featuredSeries && featuredSeriesPosts.length > 0 && (
+        <aside class="mh-series">
+          <div class="mhs-head">
+            <span class="mhs-label">成套阅读</span>
+            <a class="mhs-name" href={`/ai-learning-blog/series/${featuredSeriesId}`}>
+              {featuredSeries.name}
+            </a>
+            <span class="mhs-count">{featuredSeriesPosts.length} 篇 · 建议按顺序</span>
           </div>
-          <div class="window-content">
-            <div class="code-line">
-              <span class="line-number">1</span>
-              <span class="code-text"><span class="keyword">const</span> <span class="variable">aiKnowledge</span> = <span class="function">explore</span>();</span>
-            </div>
-            <div class="code-line">
-              <span class="line-number">2</span>
-              <span class="code-text"><span class="keyword">await</span> <span class="variable">aiKnowledge</span>.<span class="function">deepLearn</span>();</span>
-            </div>
-            <div class="code-line">
-              <span class="line-number">3</span>
-              <span class="code-text"><span class="comment">// 持续学习，不断进化</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
+          <ol class="mhs-list">
+            {featuredSeriesPosts.map((p: any) => (
+              <li>
+                <a href={`/ai-learning-blog/${featuredSeries.collection}/${p.slug}`}>
+                  <span class="mhs-no">{String(p.data.seriesOrder).padStart(2, '0')}</span>
+                  <span class="mhs-t">{p.data.title.replace(/^Agent 面试深挖（[^）]+）：/, '')}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </aside>
+      )}
     </div>
   </section>
 
@@ -152,8 +162,7 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
       <section class="articles-section">
         <div class="section-header">
           <h2 class="section-title">
-            <span class="title-icon">📝</span>
-            <span id="sectionTitle">最新文章</span>
+                        <span id="sectionTitle">最新文章</span>
             <span class="article-count" id="articleCount">({totalPosts}篇)</span>
           </h2>
           <!-- 视图切换 -->
@@ -280,8 +289,7 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
                   return (
                     <div class="subcategory-group">
                       <div class="subcategory-header" data-toggle={`sub-uncategorized-${catKey}`}>
-                        <span class="subcategory-icon">📄</span>
-                        <span class="subcategory-name">其他</span>
+                                                <span class="subcategory-name">其他</span>
                         <span class="subcategory-count">{uncategorized.length}</span>
                         <span class="subcategory-arrow">›</span>
                       </div>
@@ -327,8 +335,7 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
         <!-- 公告 -->
         <div class="sidebar-card">
           <h3 class="sidebar-title">
-            <span class="title-icon">📢</span>
-            <span>公告</span>
+                        <span>公告</span>
           </h3>
           <div class="announcement">
             <p>欢迎访问我的AI技术博客！这里记录了大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验。</p>
@@ -338,8 +345,7 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
         <!-- 学习系列 - 树形导航 -->
         <div class="sidebar-card">
           <h3 class="sidebar-title">
-            <span class="title-icon">📚</span>
-            <span>学习系列</span>
+                        <span>学习系列</span>
           </h3>
           <nav class="category-tree">
             {activeCollections.map(([key, meta]) => (
@@ -373,8 +379,7 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
                     if (uncategorizedCount === 0) return null;
                     return (
                       <a href="#" class="tree-child-link" data-category={key} data-subcategory="">
-                        <span class="child-icon">📄</span>
-                        <span class="child-name">其他</span>
+                                                <span class="child-name">其他</span>
                         <span class="child-count">{uncategorizedCount}</span>
                       </a>
                     );
@@ -388,12 +393,11 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
         <!-- 热门标签 -->
         <div class="sidebar-card">
           <h3 class="sidebar-title">
-            <span class="title-icon">🏷️</span>
-            <span>热门标签</span>
+                        <span>热门标签</span>
           </h3>
           <div class="tags-cloud">
             {Array.from(allTags).slice(0, 20).map(tag => (
-              <a href={`/ai-learning-blog/tags/${tag}`} class="tag-item">
+              <a href={`/ai-learning-blog/tags/${tagSlug(tag)}`} class="tag-item">
                 #{tag}
               </a>
             ))}
@@ -403,13 +407,11 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
         <!-- 个人网站 -->
         <div class="sidebar-card">
           <h3 class="sidebar-title">
-            <span class="title-icon">🔗</span>
-            <span>个人网站</span>
+                        <span>个人网站</span>
           </h3>
           <div class="website-links">
             <a href="https://github.com/RiceBall-15" target="_blank" rel="noopener" class="website-link">
-              <span class="link-icon">🐱</span>
-              <span class="link-text">GitHub</span>
+                            <span class="link-text">GitHub</span>
             </a>
           </div>
         </div>
@@ -421,8 +423,7 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <span class="brand-icon">🤖</span>
-        <span class="brand-text">AI 深度学习笔记</span>
+                <span class="brand-text">AI 深度学习笔记</span>
       </div>
       <p class="footer-description">记录AI技术学习之路，分享深度研究心得</p>
       <div class="footer-links">
@@ -434,198 +435,189 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
 </Layout>
 
 <style>
-  /* ==================== 全局样式 ==================== */
+  /* 本页只补两个 global.css 里没有的别名；
+     配色、圆角、阴影一律继承设计令牌——原先这里重定义了一整套 indigo 变量，
+     会把全站配色在首页覆盖掉，是主题不统一的根因。 */
   :root {
-    --color-primary: #6366f1;
-    --color-primary-light: #818cf8;
-    --color-primary-dark: #4f46e5;
-    --color-text: #1e293b;
-    --color-text-secondary: #64748b;
-    --color-text-muted: #94a3b8;
-    --color-bg: #ffffff;
-    --color-bg-secondary: #f8fafc;
-    --color-border: #e2e8f0;
-    --color-border-light: #f1f5f9;
-    --transition: all 0.3s ease;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --radius-sm: 6px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
-  }
-
-  [data-theme="dark"] {
-    --color-text: #f1f5f9;
-    --color-text-secondary: #94a3b8;
-    --color-text-muted: #64748b;
-    --color-bg: #0f172a;
-    --color-bg-secondary: #1e293b;
-    --color-border: #334155;
-    --color-border-light: #1e293b;
+    --color-text: var(--color-text-primary);
+    --color-bg-secondary: var(--paper-sunken);
+    --transition: all var(--transition-base);
   }
 
   /* ==================== Hero Banner ==================== */
-  .hero-banner {
-    position: relative;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* 分类代号：两个字母的等宽标签，替代原先的 emoji 图标。
+     与文章页规格轨、报头统一成一套「仪表标签」语言。 */
+  .tab-icon,
+  .tree-icon {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.6rem;
+    padding: 0.05rem 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+  }
+  .filter-tab.active .tab-icon {
+    color: var(--signal);
+    border-color: color-mix(in srgb, var(--signal) 45%, transparent);
   }
 
-  .banner-bg {
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  /* ==================== 报头 Masthead ==================== */
+  .masthead {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
   }
 
-  .banner-content {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
+  .mh-inner {
+    max-width: 70rem;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 3.25rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     gap: 4rem;
-    align-items: center;
+    align-items: start;
   }
 
-  .banner-text {
-    color: white;
+  .mh-eyebrow {
+    margin: 0 0 1.1rem;
+    font-family: var(--font-label);
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--signal);
   }
 
-  .banner-title {
-    font-size: 3rem;
+  .mh-title {
+    margin: 0;
+    font-size: clamp(2rem, 1.3rem + 2.6vw, 3.1rem);
     font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary);
   }
 
-  .title-line {
-    display: block;
-  }
-
-  .title-line.accent {
-    background: linear-gradient(90deg, #fff 0%, #e0e7ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .banner-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-    min-height: 2rem;
-  }
-
-  .typing-text {
-    display: inline;
-  }
-
-  .cursor {
+  /* 第二行压在一条信号色底线上：报头唯一的装饰，其余保持安静 */
+  .mh-em {
     display: inline-block;
-    margin-left: 2px;
-    animation: blink 1s infinite;
+    padding-bottom: 0.1em;
+    border-bottom: 3px solid var(--signal);
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  .mh-thesis {
+    margin: 1.5rem 0 0;
+    max-width: 34em;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--color-text-secondary);
   }
 
-  .banner-stats {
+  .mh-facts {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    gap: 2.5rem;
+    margin: 2rem 0 0;
+  }
+  .mh-facts dt {
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .mh-facts dd {
+    margin: 0.25rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
   }
 
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: white;
-  }
-
-  .stat-label {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  .banner-visual {
-    display: flex;
-    justify-content: center;
-  }
-
-  .code-window {
-    background: #1e293b;
-    border-radius: var(--radius-lg);
+  /* ── 成套阅读：报头右侧直接给出目录，不用再翻一层 ── */
+  .mh-series {
+    border: 1px solid var(--color-border);
+    border-top: 2px solid var(--signal);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background: var(--color-surface);
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    width: 100%;
-    max-width: 400px;
   }
 
-  .window-header {
+  .mhs-head {
+    padding: 1rem 1.1rem 0.9rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .mhs-label {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal);
+  }
+  .mhs-name {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+  }
+  .mhs-name:hover { color: var(--signal); }
+  .mhs-count {
+    display: block;
+    margin-top: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+  }
+
+  .mhs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.35rem 0;
+    max-height: 19rem;
+    overflow-y: auto;
+  }
+  .mhs-list a {
     display: flex;
-    gap: 8px;
-    padding: 12px 16px;
-    background: #0f172a;
+    gap: 0.75rem;
+    padding: 0.4rem 1.1rem;
+    align-items: baseline;
+    transition: background var(--transition-fast);
   }
-
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+  .mhs-list a:hover { background: var(--signal-soft); }
+  .mhs-no {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
   }
-
-  .dot.red { background: #ef4444; }
-  .dot.yellow { background: #f59e0b; }
-  .dot.green { background: #10b981; }
-
-  .window-content {
-    padding: 1rem;
-  }
-
-  .code-line {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.25rem 0;
-    font-family: 'Monaco', 'Menlo', monospace;
+  .mhs-list a:hover .mhs-no { color: var(--signal); }
+  .mhs-t {
     font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+  .mhs-list a:hover .mhs-t { color: var(--color-text-primary); }
+
+  @media (max-width: 900px) {
+    .mh-inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2.5rem;
+      padding: 2.75rem 1.5rem 2.5rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .mh-inner { padding: 2.25rem 1.1rem 2rem; }
+    .mh-facts { gap: 1.75rem; }
+    .mhs-list { max-height: none; }
   }
 
-  .line-number {
-    color: #64748b;
-    min-width: 20px;
-    text-align: right;
-  }
-
-  .code-text {
-    color: #e2e8f0;
-  }
-
-  .keyword { color: #c084fc; }
-  .variable { color: #60a5fa; }
-  .function { color: #34d399; }
-  .comment { color: #64748b; }
 
   /* ==================== 主内容区 ==================== */
   .main-content {
@@ -1538,14 +1530,6 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
   }
 
   @media (max-width: 640px) {
-    .hero-banner {
-      min-height: 300px;
-    }
-
-    .banner-content {
-      padding: 2rem 1rem;
-    }
-
     .main-container {
       padding: 2rem 1rem;
     }
@@ -1565,45 +1549,7 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
 </style>
 
 <script define:vars={{ postsData, categoriesData }}>
-// 打字机效果
-const typingTexts = [
-  '记录大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验',
-  '持续学习，不断进化，探索AI技术的无限可能',
-  '分享实战经验，助力技术成长'
-];
-
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typingElement = document.getElementById('typingText');
-
-function typeWriter() {
-  const currentText = typingTexts[textIndex];
-  
-  if (isDeleting) {
-    typingElement.textContent = currentText.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typingElement.textContent = currentText.substring(0, charIndex + 1);
-    charIndex++;
-  }
-
-  let typeSpeed = isDeleting ? 30 : 50;
-
-  if (!isDeleting && charIndex === currentText.length) {
-    typeSpeed = 2000;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    textIndex = (textIndex + 1) % typingTexts.length;
-    typeSpeed = 500;
-  }
-
-  setTimeout(typeWriter, typeSpeed);
-}
-
-// 启动打字机
-typeWriter();
+// (打字机效果已随报头改版移除)
 
 // 分页状态
 const POSTS_PER_PAGE = 12;

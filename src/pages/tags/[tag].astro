@@ -1,64 +1,173 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { categoryMeta, tagSlug } from '../../content/config';
 
+// 原实现查的是 getCollection('blog')——这个 collection 并不存在，
+// 结果一个标签页都没生成，全站的 #标签 链接全是 404。
+// 现在按真实的 8 个 collection 汇总，并按 slug 归组
+//（'CI/CD' 这类含斜杠的标签必须先 slug 化，否则路由参数缺失会中断构建）。
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  const tags = new Set<string>();
-  posts.forEach(post => {
-    post.data.tags.forEach(tag => tags.add(tag));
-  });
+  const all: any[] = [];
+  for (const key of Object.keys(categoryMeta)) {
+    const posts = await getCollection(key as any);
+    all.push(...posts.filter((p: any) => !p.data.draft));
+  }
 
-  return [...tags].map(tag => ({
-    params: { tag },
-    props: { tag, posts },
+  // slug → { 展示名, 文章集合 }；不同原文可能 slug 相同，合并到一页
+  const groups = new Map<string, { name: string; posts: any[] }>();
+  for (const post of all) {
+    for (const raw of post.data.tags ?? []) {
+      const slug = tagSlug(raw);
+      if (!slug) continue;
+      if (!groups.has(slug)) groups.set(slug, { name: raw, posts: [] });
+      const g = groups.get(slug)!;
+      if (!g.posts.includes(post)) g.posts.push(post);
+    }
+  }
+
+  return [...groups.entries()].map(([slug, g]) => ({
+    params: { tag: slug },
+    props: {
+      tag: g.name,
+      posts: g.posts.sort((a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
   }));
 }
 
 const { tag, posts } = Astro.props;
-const tagPosts = posts.filter(post =>
-  post.data.tags.includes(tag)
-).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout title={`标签: ${tag} - LangChain4j 学习笔记`}>
-  <div class="post-content">
-    <h1>🏷️ 标签: #{tag}</h1>
-    <p>找到 {tagPosts.length} 篇相关文章</p>
+<Layout title={`标签 ${tag}`} description={`带有「${tag}」标签的全部技术笔记`}>
+  <main class="tp-page">
+    <header class="tp-head">
+      <a href="/ai-learning-blog/" class="back-link">← 返回首页</a>
+      <p class="tp-eyebrow">标签</p>
+      <h1>{tag}</h1>
+      <p class="tp-count">{posts.length} 篇</p>
+    </header>
 
-    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);" />
-
-    {tagPosts.length === 0 ? (
-      <p>暂无相关文章</p>
+    {posts.length === 0 ? (
+      <p class="empty">该标签下暂无文章。</p>
     ) : (
-      <div>
-        {tagPosts.map((post) => (
-          <article class="article-card">
-            <h2 class="article-title">
-              <a href={`/langchain4j-blog/${post.slug}`}>
-                {post.data.title}
+      <ul class="tp-list">
+        {posts.map((post: any) => {
+          const cat = categoryMeta[post.collection];
+          return (
+            <li class="tp-item">
+              <a href={`/ai-learning-blog/${post.collection}/${post.slug}`}>
+                <div class="ti-meta">
+                  <time datetime={post.data.date.toISOString()}>
+                    {post.data.date.toLocaleDateString('zh-CN')}
+                  </time>
+                  {cat && <span class="ti-cat">{cat.name}</span>}
+                </div>
+                <h2 class="ti-title">{post.data.title}</h2>
+                {post.data.description && (
+                  <p class="ti-desc">{post.data.description}</p>
+                )}
               </a>
-            </h2>
-
-            <div class="article-meta">
-              <span>📅 {post.data.date.toLocaleDateString('zh-CN')}</span>
-              {post.data.category && <span>📁 {post.data.category}</span>}
-            </div>
-
-            {post.data.description && (
-              <p class="article-excerpt">{post.data.description}</p>
-            )}
-
-            {post.data.tags && post.data.tags.length > 0 && (
-              <div class="tags">
-                {post.data.tags.map(t => (
-                  <a href={`/langchain4j-blog/tags/${t}`} class="tag">#{t}</a>
-                ))}
-              </div>
-            )}
-          </article>
-        ))}
-      </div>
+            </li>
+          );
+        })}
+      </ul>
     )}
-  </div>
+  </main>
 </Layout>
+
+<style>
+  .tp-page {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-label);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .back-link:hover { color: var(--signal); }
+
+  .tp-head {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+  }
+  .tp-eyebrow {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--signal);
+  }
+  .tp-head h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .tp-count {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+
+  .tp-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tp-item + .tp-item { border-top: 1px solid var(--color-border-light); }
+  .tp-item > a {
+    display: block;
+    padding: 1.25rem 0.75rem;
+    margin: 0 -0.75rem;
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+  }
+  .tp-item > a:hover { background: var(--signal-soft); }
+
+  .ti-meta {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+  .ti-cat {
+    font-family: var(--font-label);
+    letter-spacing: 0.04em;
+    color: var(--signal);
+  }
+
+  .ti-title {
+    margin: 0.4rem 0 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+  }
+  .ti-desc {
+    margin: 0.45rem 0 0;
+    max-width: 42rem;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .empty { color: var(--color-text-muted); }
+
+  @media (max-width: 600px) {
+    .tp-page { padding: 2rem 1.1rem 3rem; }
+  }
+</style>
