@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-skill
 tags: ["Agent Skill", "调试", "错误处理", "日志", "问题排查"]
+series: agent-skill-dev
+seriesOrder: 6
 ---
 
 

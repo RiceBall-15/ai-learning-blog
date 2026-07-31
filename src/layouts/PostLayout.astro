@@ -22,18 +22,34 @@ const toc = headings
     return { ...h, parent: h.depth === 3 ? currentH2 : h.slug };
   });
 
-// 系列上下篇导航
+// ── 续读导航 ──
+// 两层：属于系列的走系列顺序；不属于的退回「同子分类按时间顺序」，
+// 这样每篇文章都有下一篇可读，而不是读完就断在这里。
+// 标签上也如实区分，不把「同类下一篇」说成系列。
 const seriesId = post.data.series;
 const series = seriesId ? seriesMeta[seriesId] : null;
-let seriesPosts: any[] = [];
+
+let siblings: any[] = [];
+let navKind: 'series' | 'topic' = 'topic';
+let navCollection = post.collection;
+
 if (seriesId && series) {
-  seriesPosts = (await getCollection(series.collection as any))
+  navKind = 'series';
+  navCollection = series.collection;
+  siblings = (await getCollection(series.collection as any))
     .filter((p: any) => !p.data.draft && p.data.series === seriesId)
     .sort((a: any, b: any) => (a.data.seriesOrder ?? 999) - (b.data.seriesOrder ?? 999));
+} else {
+  const mySub = post.data.subCategory ?? '';
+  siblings = (await getCollection(post.collection as any))
+    .filter((p: any) => !p.data.draft && (p.data.subCategory ?? '') === mySub)
+    .sort((a: any, b: any) => a.data.date.valueOf() - b.data.date.valueOf());
 }
-const idx = seriesPosts.findIndex((p: any) => p.slug === post.slug);
-const prev = idx > 0 ? seriesPosts[idx - 1] : null;
-const next = idx >= 0 && idx < seriesPosts.length - 1 ? seriesPosts[idx + 1] : null;
+
+const idx = siblings.findIndex((p: any) => p.slug === post.slug);
+const prev = idx > 0 ? siblings[idx - 1] : null;
+const next = idx >= 0 && idx < siblings.length - 1 ? siblings[idx + 1] : null;
+const seriesPosts = navKind === 'series' ? siblings : [];
 
 // 分类与子分类的可读名称
 const cat = post.data.category ? categoryMeta[post.data.category] : null;
@@ -129,26 +145,39 @@ const readMinutes = Math.max(1, Math.round(words / 550));
       </div>
 
       <footer class="doc-foot">
-        {(prev || next) && (
-          <nav class="series-nav" aria-label="系列导航">
-            {prev ? (
-              <a class="sn-item sn-prev" href={`/ai-learning-blog/${series.collection}/${prev.slug}`}>
-                <span class="sn-dir">← 上一篇</span>
-                <span class="sn-title">{prev.data.title}</span>
-              </a>
-            ) : <span class="sn-item sn-empty"></span>}
-            {next ? (
-              <a class="sn-item sn-next" href={`/ai-learning-blog/${series.collection}/${next.slug}`}>
-                <span class="sn-dir">下一篇 →</span>
-                <span class="sn-title">{next.data.title}</span>
-              </a>
-            ) : <span class="sn-item sn-empty"></span>}
-          </nav>
+        {/* 下一篇是主动作：读完最想做的事就是接着读，所以给它整块可点区域 */}
+        {next && (
+          <a class="next-up" href={`/ai-learning-blog/${navCollection}/${next.slug}`}>
+            <span class="nu-label">
+              {navKind === 'series'
+                ? `继续读系列第 ${next.data.seriesOrder} 篇`
+                : `继续读${sub ? sub.name : '同类'}的下一篇`}
+            </span>
+            <span class="nu-title">{next.data.title}</span>
+            {next.data.description && (
+              <span class="nu-desc">{next.data.description}</span>
+            )}
+            <span class="nu-go">继续阅读 →</span>
+          </a>
+        )}
+
+        {!next && navKind === 'series' && (
+          <div class="next-up next-done">
+            <span class="nu-label">系列已读完</span>
+            <span class="nu-title">这是《{series.name}》的最后一篇</span>
+            <a class="nu-go" href={`/ai-learning-blog/series/${seriesId}`}>回到系列目录 →</a>
+          </div>
         )}
 
         <div class="doc-actions">
+          {prev && (
+            <a class="act" href={`/ai-learning-blog/${navCollection}/${prev.slug}`}>← 上一篇</a>
+          )}
+          {navKind === 'series' && (
+            <a class="act" href={`/ai-learning-blog/series/${seriesId}`}>系列目录</a>
+          )}
           <button class="act" id="copyLink">复制链接</button>
-          <a class="act" href="/ai-learning-blog/">返回全部文章</a>
+          <a class="act" href="/ai-learning-blog/">全部文章</a>
         </div>
       </footer>
     </div>
@@ -631,40 +660,58 @@ const readMinutes = Math.max(1, Math.round(words / 550));
     border-top: 1px solid var(--color-border);
   }
 
-  .series-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-  .sn-item {
+  /* ── 下一篇：整块主动作 ── */
+  .next-up {
     display: block;
-    padding: 0.9rem 1rem;
+    padding: 1.25rem 1.4rem;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: border-color var(--transition-fast), background var(--transition-fast);
+    border-left: 3px solid var(--signal);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    background: var(--color-surface);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
   }
-  a.sn-item:hover {
-    border-color: var(--signal);
+  a.next-up:hover {
     background: var(--signal-soft);
+    border-color: color-mix(in srgb, var(--signal) 40%, var(--color-border));
+    border-left-color: var(--signal);
   }
-  .sn-empty { border: none; }
-  .sn-next { text-align: right; }
-  .sn-dir {
+  .nu-label {
     display: block;
     font-family: var(--font-label);
     font-size: 0.72rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: var(--signal);
   }
-  .sn-title {
+  .nu-title {
     display: block;
-    margin-top: 0.3rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    line-height: 1.5;
+    margin-top: 0.4rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.45;
     color: var(--color-text-primary);
   }
+  .nu-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 0.45rem;
+    max-width: 40rem;
+    font-size: 0.89rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+  .nu-go {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: var(--font-label);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--signal);
+  }
+  .next-done { border-left-color: var(--color-border-strong); }
+  .next-done .nu-label { color: var(--color-text-muted); }
 
   .doc-actions {
     display: flex;
@@ -758,7 +805,8 @@ const readMinutes = Math.max(1, Math.round(words / 550));
 
       const label = document.createElement('span');
       label.className = 'code-lang';
-      label.textContent = lang === 'text' ? '伪码' : lang;
+      // text / plaintext 都是伪码与结构图，标成语言名没有意义
+      label.textContent = ['text', 'plaintext', 'plain'].includes(lang) ? '伪码' : lang;
 
       const btn = document.createElement('button');
       btn.className = 'code-copy';

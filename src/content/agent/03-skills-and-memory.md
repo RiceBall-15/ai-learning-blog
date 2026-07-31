@@ -12,6 +12,8 @@ tags:
   - 长期记忆
   - 技能系统
 draft: false
+series: claude-code-arch
+seriesOrder: 3
 ---
 
 # Claude Code Skills与Memory：Agent的长期记忆与技能进化

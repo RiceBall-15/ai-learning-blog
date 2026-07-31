@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-skill
 tags: ["Agent Skill", "Skill 设计", "最佳实践", "Prompt 优化"]
+series: agent-skill-dev
+seriesOrder: 2
 ---
 
 

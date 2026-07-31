@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-skill
 tags: ["Agent Skill", "依赖管理", "版本控制", "Git", "CI/CD"]
+series: agent-skill-dev
+seriesOrder: 4
 ---
 
 

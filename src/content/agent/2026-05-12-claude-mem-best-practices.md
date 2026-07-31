@@ -12,6 +12,8 @@ tags:
   - 部署配置
   - 性能调优
 draft: false
+series: claude-mem-deep
+seriesOrder: 6
 ---
 
 # Claude-Mem系列(6)：应用场景与最佳实践

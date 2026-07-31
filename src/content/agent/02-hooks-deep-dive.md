@@ -12,6 +12,8 @@ tags:
   - Agent扩展
   - 事件驱动
 draft: false
+series: claude-code-arch
+seriesOrder: 2
 ---
 
 # Claude Code Hooks深度解析：Agent生命周期的可编程扩展

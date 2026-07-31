@@ -12,6 +12,8 @@ tags:
   - Copilot
   - Agent框架
 draft: false
+series: claude-code-arch
+seriesOrder: 4
 ---
 
 # Claude Code vs 竞品：为什么它是Top 1 Agent框架

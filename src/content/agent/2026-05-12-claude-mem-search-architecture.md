@@ -12,6 +12,8 @@ tags:
   - MCP
   - 渐进式披露
 draft: false
+series: claude-mem-deep
+seriesOrder: 4
 ---
 
 # Claude-Mem系列(4)：搜索架构详解

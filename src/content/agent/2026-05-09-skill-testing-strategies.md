@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-skill
 tags: ["Agent Skill", "测试", "单元测试", "集成测试", "CI/CD"]
+series: agent-skill-dev
+seriesOrder: 5
 ---
 
 

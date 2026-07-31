@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-skill
 tags: ["Agent Skill", "生命周期", "CI/CD", "版本控制", "质量保证"]
+series: agent-skill-dev
+seriesOrder: 3
 ---
 
 

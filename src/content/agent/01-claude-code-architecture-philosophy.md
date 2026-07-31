@@ -12,6 +12,8 @@ tags:
   - 操作系统
   - Anthropic
 draft: false
+series: claude-code-arch
+seriesOrder: 1
 ---
 
 # Claude Code架构设计哲学：为什么它是Agent时代的操作系统

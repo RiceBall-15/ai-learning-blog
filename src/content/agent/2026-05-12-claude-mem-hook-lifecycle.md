@@ -12,6 +12,8 @@ tags:
   - Claude-Mem
   - 自动化
 draft: false
+series: claude-mem-deep
+seriesOrder: 2
 ---
 
 # Claude-Mem系列(2)：Hook生命周期机制详解

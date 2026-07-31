@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-architecture
 tags: ["Agent Skill", "架构设计", "Prompt Engineering", "Skill 框架"]
+series: agent-skill-dev
+seriesOrder: 1
 ---
 
 

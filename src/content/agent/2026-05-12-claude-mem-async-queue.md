@@ -12,6 +12,8 @@ tags:
   - Claude-Mem
   - 优雅降级
 draft: false
+series: claude-mem-deep
+seriesOrder: 5
 ---
 
 # Claude-Mem系列(5)：异步队列与容错机制

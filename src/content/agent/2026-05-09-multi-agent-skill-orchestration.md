@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-architecture
 tags: ["Agent Skill", "多Agent协作", "任务编排", "分布式", "并行计算"]
+series: agent-skill-dev
+seriesOrder: 9
 ---
 
 

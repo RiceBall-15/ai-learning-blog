@@ -31,6 +31,16 @@ allPosts.forEach(post => {
 const totalPosts = allPosts.length;
 const activeCollections = Object.entries(collectionData).filter(([_, c]) => c.posts.length > 0);
 
+// 全部系列（供侧栏用）。系列与分类是两个维度：
+// 分类回答「属于哪个领域」，系列回答「按什么顺序读完能形成完整认知」，
+// 所以侧栏列系列，不再重复一遍上方的分类筛选。
+const allSeries = Object.entries(seriesMeta).map(([id, meta]) => {
+  const posts = (collectionData[meta.collection]?.posts ?? []).filter(
+    (p: any) => p.data.series === id
+  );
+  return { id, meta, count: posts.length };
+}).filter((s) => s.count > 0);
+
 // 报头要推荐的成套阅读：取第一个系列，按序号列出
 const featuredSeriesId = Object.keys(seriesMeta)[0];
 const featuredSeries = featuredSeriesId ? seriesMeta[featuredSeriesId] : null;
@@ -332,60 +342,19 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
 
       <!-- 右侧：侧边栏 -->
       <aside class="sidebar">
-        <!-- 公告 -->
+        <!-- 成套系列：与上方分类筛选是两个维度，不重复 -->
         <div class="sidebar-card">
-          <h3 class="sidebar-title">
-                        <span>公告</span>
-          </h3>
-          <div class="announcement">
-            <p>欢迎访问我的AI技术博客！这里记录了大语言模型、Agent系统、推理框架等前沿技术的深度研究和实践经验。</p>
-          </div>
-        </div>
-
-        <!-- 学习系列 - 树形导航 -->
-        <div class="sidebar-card">
-          <h3 class="sidebar-title">
-                        <span>学习系列</span>
-          </h3>
-          <nav class="category-tree">
-            {activeCollections.map(([key, meta]) => (
-              <div class="tree-parent">
-                <a href="#" class="tree-parent-link" data-category={key}>
-                  <span class="tree-icon">{meta.icon}</span>
-                  <span class="tree-name">{meta.name}</span>
-                  <span class="tree-count">{meta.posts.length}</span>
-                  <span class="tree-arrow" data-toggle-tree={key}>▶</span>
-                </a>
-                <div class="tree-children" id={`tree-${key}`}>
-                  {(subCategories[key] || []).map(sub => {
-                    const subCount = allPosts.filter(p => {
-                      const postSubCat = p.data.subCategory || legacySubCategoryMap[p.data.category] || '';
-                      return p.collection === key && postSubCat === sub.id;
-                    }).length;
-                    if (subCount === 0) return null;
-                    return (
-                      <a href="#" class="tree-child-link" data-category={key} data-subcategory={sub.id}>
-                        <span class="child-icon">{sub.icon}</span>
-                        <span class="child-name">{sub.name}</span>
-                        <span class="child-count">{subCount}</span>
-                      </a>
-                    );
-                  })}
-                  {(() => {
-                    const uncategorizedCount = allPosts.filter(p => {
-                      const postSubCat = p.data.subCategory || legacySubCategoryMap[p.data.category] || '';
-                      return p.collection === key && !postSubCat;
-                    }).length;
-                    if (uncategorizedCount === 0) return null;
-                    return (
-                      <a href="#" class="tree-child-link" data-category={key} data-subcategory="">
-                                                <span class="child-name">其他</span>
-                        <span class="child-count">{uncategorizedCount}</span>
-                      </a>
-                    );
-                  })()}
-                </div>
-              </div>
+          <h3 class="sidebar-title"><span>成套系列</span></h3>
+          <p class="sidebar-note">按顺序读完能形成完整认知的成套文章。</p>
+          <nav class="series-nav-list">
+            {allSeries.map((s) => (
+              <a href={`/ai-learning-blog/series/${s.id}`} class="snl-item">
+                <span class="snl-code">{s.meta.icon}</span>
+                <span class="snl-body">
+                  <span class="snl-name">{s.meta.name}</span>
+                  <span class="snl-count">{s.count} 篇</span>
+                </span>
+              </a>
             ))}
           </nav>
         </div>
@@ -404,17 +373,6 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
           </div>
         </div>
 
-        <!-- 个人网站 -->
-        <div class="sidebar-card">
-          <h3 class="sidebar-title">
-                        <span>个人网站</span>
-          </h3>
-          <div class="website-links">
-            <a href="https://github.com/RiceBall-15" target="_blank" rel="noopener" class="website-link">
-                            <span class="link-text">GitHub</span>
-            </a>
-          </div>
-        </div>
       </aside>
     </div>
   </main>
@@ -466,6 +424,65 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
   .filter-tab.active .tab-icon {
     color: var(--signal);
     border-color: color-mix(in srgb, var(--signal) 45%, transparent);
+  }
+
+  /* ==================== 侧栏：成套系列 ==================== */
+  .sidebar-note {
+    margin: 0 0 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+
+  .series-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .snl-item {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    padding: 0.55rem 0.6rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+  }
+  .snl-item:hover {
+    background: var(--signal-soft);
+    border-color: color-mix(in srgb, var(--signal) 30%, transparent);
+  }
+  .snl-code {
+    flex: none;
+    margin-top: 0.1rem;
+    min-width: 1.6rem;
+    padding: 0.05rem 0.25rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+  .snl-item:hover .snl-code {
+    color: var(--signal);
+    border-color: color-mix(in srgb, var(--signal) 45%, transparent);
+  }
+  .snl-body { min-width: 0; }
+  .snl-name {
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--color-text-primary);
+  }
+  .snl-count {
+    display: block;
+    margin-top: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
   }
 
   /* ==================== 报头 Masthead ==================== */
@@ -1192,113 +1209,14 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
     margin: 0 0 1rem 0;
   }
 
-  .announcement {
-    font-size: 0.9375rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-  }
-
-  .announcement p {
-    margin: 0;
-  }
-
   /* ==================== 树形导航 ==================== */
-  .category-tree {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .tree-parent {
-    margin-bottom: 0.25rem;
-  }
-
-  .tree-parent-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 0.75rem;
-    background: var(--color-bg-secondary);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    color: var(--color-text);
-    transition: var(--transition);
-  }
-
-  .tree-parent-link:hover {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--color-primary);
-  }
 
   .tree-icon {
     font-size: 1rem;
   }
 
-  .tree-name {
-    flex: 1;
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-
-  .tree-count {
-    font-size: 0.7rem;
-    padding: 0.125rem 0.375rem;
-    background: var(--color-primary);
-    color: white;
-    border-radius: 10px;
-  }
-
-  .tree-arrow {
-    font-size: 0.625rem;
-    color: var(--color-text-muted);
-    transition: transform 0.3s ease;
-  }
-
-  .tree-parent.expanded .tree-arrow {
-    transform: rotate(90deg);
-  }
-
-  .tree-children {
-    display: none;
-    padding-left: 1.5rem;
-    margin-top: 0.25rem;
-  }
-
-  .tree-parent.expanded .tree-children {
-    display: block;
-  }
-
-  .tree-child-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    text-decoration: none;
-    color: var(--color-text-secondary);
-    border-radius: var(--radius-sm);
-    transition: var(--transition);
-    font-size: 0.8125rem;
-  }
-
-  .tree-child-link:hover {
-    background: rgba(99, 102, 241, 0.05);
-    color: var(--color-primary);
-  }
-
   .child-icon {
     font-size: 0.875rem;
-  }
-
-  .child-name {
-    flex: 1;
-  }
-
-  .child-count {
-    font-size: 0.6875rem;
-    padding: 0.0625rem 0.3125rem;
-    background: var(--color-bg-secondary);
-    color: var(--color-text-muted);
-    border-radius: 8px;
   }
 
   .tags-cloud {
@@ -1323,36 +1241,8 @@ console.log('SubCategoryPosts found:', Object.keys(subCategoryPosts));
     color: var(--color-primary);
   }
 
-  .website-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .website-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    background: var(--color-bg-secondary);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    color: var(--color-text);
-    transition: var(--transition);
-  }
-
-  .website-link:hover {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--color-primary);
-  }
-
   .link-icon {
     font-size: 1.25rem;
-  }
-
-  .link-text {
-    font-size: 0.9375rem;
-    font-weight: 500;
   }
 
   /* ==================== Footer ==================== */
@@ -1726,21 +1616,6 @@ function filterByCategory(category, subCategory = '') {
     btn.classList.toggle('active', btn.dataset.category === category);
   });
   
-  // 更新侧边栏树形导航状态
-  document.querySelectorAll('.tree-parent').forEach(item => {
-    const key = item.querySelector('.tree-parent-link')?.dataset.category;
-    if (key === category) {
-      item.classList.add('expanded');
-    } else {
-      item.classList.remove('expanded');
-    }
-  });
-  
-  document.querySelectorAll('.tree-child-link').forEach(item => {
-    const isMatch = item.dataset.category === category && item.dataset.subcategory === subCategory;
-    item.classList.toggle('active', isMatch);
-  });
-  
   renderArticles();
   renderPagination();
   updateTitle();
@@ -1792,30 +1667,6 @@ document.getElementById('filterTabs').addEventListener('click', (e) => {
   if (btn) {
     filterByCategory(btn.dataset.category);
   }
-});
-
-// 树形导航点击
-document.querySelectorAll('.tree-parent-link').forEach(item => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
-    const category = item.dataset.category;
-    const parent = item.closest('.tree-parent');
-    
-    // 切换展开状态
-    parent.classList.toggle('expanded');
-    
-    // 应用分类筛选
-    filterByCategory(category);
-  });
-});
-
-document.querySelectorAll('.tree-child-link').forEach(item => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
-    const category = item.dataset.category;
-    const subCategory = item.dataset.subcategory;
-    filterByCategory(category, subCategory);
-  });
 });
 
 // 分组视图展开/折叠

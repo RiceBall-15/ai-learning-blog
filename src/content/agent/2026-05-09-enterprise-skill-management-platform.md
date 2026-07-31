@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-skill
 tags: ["Agent Skill", "企业管理", "平台设计", "微服务", "DevOps"]
+series: agent-skill-dev
+seriesOrder: 10
 ---
 
 

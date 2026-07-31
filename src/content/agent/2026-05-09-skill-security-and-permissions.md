@@ -6,6 +6,8 @@ author: RiceBall-15
 category: agentSkill
 subCategory: agent-skill
 tags: ["Agent Skill", "安全", "权限控制", "沙箱", "RBAC"]
+series: agent-skill-dev
+seriesOrder: 8
 ---
 
 

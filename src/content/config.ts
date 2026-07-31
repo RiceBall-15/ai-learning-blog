@@ -148,6 +148,27 @@ export const seriesMeta: Record<
       '面向后端/平台方向的 Agent 工程师面试，从 DAG 编排、工具调用、记忆分层到召回准确率与评测闭环，每篇一个考察面，含机制推导、伪码与生产踩坑。',
     collection: 'interview',
   },
+  'agent-skill-dev': {
+    name: 'Agent Skill 开发全流程',
+    icon: 'SK',
+    description:
+      '从概念与架构入手，依次走过编写规范、生命周期、依赖管理、测试与调试、性能与安全，最后到多 Agent 编排与企业级平台化。按这个顺序读能形成完整的 Skill 工程认知。',
+    collection: 'agent',
+  },
+  'claude-mem-deep': {
+    name: 'Claude-Mem 记忆系统深度解析',
+    icon: 'MM',
+    description:
+      '逐层拆解一个开源 Agent 记忆系统：项目定位、Hook 生命周期、SQLite + 向量双存储、渐进式披露的搜索架构、异步队列容错，最后回到落地实践。',
+    collection: 'agent',
+  },
+  'claude-code-arch': {
+    name: 'Claude Code 架构解析',
+    icon: 'AC',
+    description:
+      '从设计哲学讲到 Hook 机制、Skills 与 Memory 的协作，最后做同类工具的横向对比。适合想理解 Agent 编程工具内部怎么搭的读者。',
+    collection: 'agent',
+  },
 };
 
 // ============ 分类元数据（供首页和导航使用）============

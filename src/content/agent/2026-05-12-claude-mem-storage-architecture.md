@@ -12,6 +12,8 @@ tags:
   - 向量搜索
   - 存储架构
 draft: false
+series: claude-mem-deep
+seriesOrder: 3
 ---
 
 # Claude-Mem系列(3)：存储架构详解

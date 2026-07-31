@@ -12,6 +12,8 @@ tags:
   - 系统架构
   - 上下文管理
 draft: false
+series: claude-mem-deep
+seriesOrder: 1
 ---
 
 # Claude-Mem系列(1)：项目概述与核心价值
