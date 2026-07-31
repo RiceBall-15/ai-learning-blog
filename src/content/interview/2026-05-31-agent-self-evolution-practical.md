@@ -4,7 +4,7 @@ description: "深度解析Agent自进化机制，涵盖自我反思、经验积�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: interview
-subCategory: system-design
+subCategory: production
 tags: ['Agent进化', '自我学习', 'Prompt优化', '面试']
 draft: false
 ---

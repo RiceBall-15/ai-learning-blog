@@ -4,7 +4,7 @@ description: "深入探讨Agent系统的测试策略与质量保障体系，涵�
 date: 2026-05-30
 author: "技术学习笔记"
 category: interview
-subCategory: behavioral
+subCategory: eval-observability
 tags: ["Agent", "测试", "质量保障", "面试"]
 ---
 

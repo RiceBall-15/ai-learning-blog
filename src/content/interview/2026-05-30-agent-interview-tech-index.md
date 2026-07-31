@@ -4,7 +4,7 @@ description: '系统梳理Agent开发面试的10大核心技术方向，涵盖�
 date: 2026-05-30
 author: 'RiceBall-15'
 category: interview
-subCategory: system-design
+subCategory: guide
 tags: ['面试体系', 'Agent架构', '技术方向', '面试题']
 draft: false
 ---

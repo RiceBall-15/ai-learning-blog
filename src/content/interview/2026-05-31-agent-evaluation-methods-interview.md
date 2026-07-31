@@ -4,7 +4,7 @@ description: "高频面试题：如何评测Agent系统？从评测维度、基�
 date: 2026-05-31
 author: "RiceBall-15"
 category: interview
-subCategory: system-design
+subCategory: eval-observability
 tags: ["面试题", "Agent评测", "基准测试", "效果评估"]
 draft: false
 ---

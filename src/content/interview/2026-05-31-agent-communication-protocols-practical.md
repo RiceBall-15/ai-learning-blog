@@ -4,7 +4,7 @@ description: "深度解析Google A2A与Anthropic MCP两大Agent通信协议，�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: interview
-subCategory: system-design
+subCategory: tools-protocol
 tags: ['A2A协议', 'MCP', 'Agent通信', '面试']
 draft: false
 ---

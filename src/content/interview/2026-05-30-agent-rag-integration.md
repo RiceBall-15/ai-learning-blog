@@ -4,7 +4,7 @@ description: "深入剖析Agent与RAG的融合架构模式，涵盖检索增强�
 date: 2026-05-30
 author: 技术学习笔记
 category: interview
-subCategory: system-design
+subCategory: memory-retrieval
 tags: [Agent, RAG, 知识增强, 面试]
 ---
 

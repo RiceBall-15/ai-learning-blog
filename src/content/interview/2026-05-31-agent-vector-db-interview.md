@@ -4,7 +4,7 @@ description: "高频面试题：如何为Agent选择合适的向量数据库？�
 date: 2026-05-31
 author: "RiceBall-15"
 category: interview
-subCategory: system-design
+subCategory: memory-retrieval
 tags: ["面试题", "向量数据库", "Milvus", "Pinecone", "选型"]
 draft: false
 ---

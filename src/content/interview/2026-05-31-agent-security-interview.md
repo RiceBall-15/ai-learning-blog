@@ -4,7 +4,7 @@ description: "高频面试题：如何保障Agent系统的安全？从攻击类�
 date: 2026-05-31
 author: "RiceBall-15"
 category: interview
-subCategory: behavioral
+subCategory: security
 tags: ["面试题", "Agent安全", "Prompt注入", "安全防护"]
 draft: false
 ---

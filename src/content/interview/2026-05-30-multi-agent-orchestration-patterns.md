@@ -4,7 +4,7 @@ description: "深入剖析多Agent系统的核心编排模式、通信拓扑、�
 date: 2026-05-30
 author: "技术学习笔记"
 category: interview
-subCategory: system-design
+subCategory: orchestration
 tags: ["Agent", "MultiAgent", "Orchestration", "面试"]
 ---
 

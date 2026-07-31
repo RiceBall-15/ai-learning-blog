@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { seriesMeta, subCategories } from '../../content/config';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const [id, meta] of Object.entries(seriesMeta)) {
+    const posts = (await getCollection(meta.collection as any))
+      .filter((p: any) => !p.data.draft && p.data.series === id)
+      .sort((a: any, b: any) => (a.data.seriesOrder ?? 999) - (b.data.seriesOrder ?? 999));
+    paths.push({ params: { series: id }, props: { id, meta, posts } });
+  }
+  return paths;
+}
+
+const { id, meta, posts } = Astro.props;
+const subs = subCategories[meta.collection] || [];
+const subName = (sid: string) => subs.find((s) => s.id === sid);
+---
+
+<Layout title={meta.name}>
+  <main class="series-page">
+    <header class="series-header">
+      <a href="/ai-learning-blog/" class="back-link">← 返回首页</a>
+      <h1><span class="series-icon">{meta.icon}</span> {meta.name}</h1>
+      <p class="series-desc">{meta.description}</p>
+      <div class="series-stats">
+        <span>{posts.length} 篇</span>
+        <span class="dot">·</span>
+        <span>建议按顺序阅读</span>
+      </div>
+    </header>
+
+    <ol class="series-list">
+      {posts.map((post: any) => {
+        const sub = subName(post.data.subCategory);
+        return (
+          <li class="series-item">
+            <div class="item-order">{post.data.seriesOrder ?? '–'}</div>
+            <div class="item-body">
+              <a
+                class="item-title"
+                href={`/ai-learning-blog/${meta.collection}/${post.slug}`}
+              >
+                {post.data.title}
+              </a>
+              {post.data.description && (
+                <p class="item-desc">{post.data.description}</p>
+              )}
+              <div class="item-meta">
+                {sub && <span class="item-sub">{sub.icon} {sub.name}</span>}
+                {post.data.tags?.slice(0, 4).map((t: string) => (
+                  <span class="item-tag">#{t}</span>
+                ))}
+              </div>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+
+    {posts.length === 0 && <p class="empty">该系列暂无文章。</p>}
+  </main>
+</Layout>
+
+<style>
+  .series-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-muted, #6b7280);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .back-link:hover { color: var(--color-primary, #2563eb); }
+  .series-header {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+    margin-bottom: 2rem;
+  }
+  .series-header h1 {
+    font-size: 1.9rem;
+    line-height: 1.3;
+    margin: 0 0 0.75rem;
+  }
+  .series-icon { margin-right: 0.35rem; }
+  .series-desc {
+    color: var(--color-text-muted, #6b7280);
+    line-height: 1.75;
+    margin: 0 0 1rem;
+  }
+  .series-stats {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #6b7280);
+  }
+  .dot { opacity: 0.5; }
+
+  .series-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    counter-reset: none;
+  }
+  .series-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .series-item:hover {
+    border-color: var(--color-primary, #2563eb);
+    transform: translateY(-1px);
+  }
+  .item-order {
+    flex: 0 0 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--color-bg-subtle, #f3f4f6);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary, #2563eb);
+  }
+  .item-body { flex: 1 1 auto; min-width: 0; }
+  .item-title {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--color-text, #111827);
+    text-decoration: none;
+  }
+  .item-title:hover { color: var(--color-primary, #2563eb); }
+  .item-desc {
+    margin: 0.45rem 0 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-muted, #6b7280);
+  }
+  .item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .item-sub,
+  .item-tag {
+    font-size: 0.76rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .item-sub {
+    background: var(--color-primary-subtle, #eff6ff);
+    color: var(--color-primary, #2563eb);
+  }
+  .item-tag {
+    background: var(--color-bg-subtle, #f3f4f6);
+    color: var(--color-text-muted, #6b7280);
+  }
+  .empty { color: var(--color-text-muted, #6b7280); }
+
+  @media (max-width: 640px) {
+    .series-header h1 { font-size: 1.5rem; }
+    .series-item { padding: 0.9rem 1rem; gap: 0.75rem; }
+  }
+</style>

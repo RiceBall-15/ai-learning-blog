@@ -4,7 +4,7 @@ description: '系统讲解Agent评估Pipeline的搭建方法，涵盖评估维�
 date: 2026-05-31
 author: 'RiceBall-15'
 category: interview
-subCategory: system-design
+subCategory: eval-observability
 tags: ['Eval Pipeline', 'Agent评估', 'A/B测试', '面试']
 draft: false
 ---

@@ -4,7 +4,7 @@ description: "深入剖析AI Agent系统的常见故障模式与调试方法论�
 date: 2026-05-30
 author: "技术学习笔记"
 category: interview
-subCategory: system-design
+subCategory: production
 tags: ["Agent", "调试", "运维", "面试"]
 ---
 
